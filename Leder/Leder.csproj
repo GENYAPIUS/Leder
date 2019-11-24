@@ -165,21 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\BundleConfig2.cs" />
-    <Compile Include="App_Start\BundleConfig3.cs" />
-    <Compile Include="App_Start\BundleConfig4.cs" />
-    <Compile Include="App_Start\BundleConfig5.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\FilterConfig2.cs" />
-    <Compile Include="App_Start\FilterConfig3.cs" />
-    <Compile Include="App_Start\FilterConfig4.cs" />
-    <Compile Include="App_Start\FilterConfig5.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\RouteConfig2.cs" />
-    <Compile Include="App_Start\RouteConfig3.cs" />
-    <Compile Include="App_Start\RouteConfig4.cs" />
-    <Compile Include="App_Start\RouteConfig5.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -201,17 +189,9 @@
     <Content Include="Assets\css\jquery.simpleLens.css" />
     <Content Include="Assets\css\jquery.smartmenus.bootstrap.css" />
     <Content Include="Assets\css\nouislider.css" />
-    <Content Include="Assets\css\ProductCSS.css" />
     <Content Include="Assets\css\scss\style.css" />
     <Content Include="Assets\css\sequence-theme.modern-slide-in.css" />
     <Content Include="Assets\css\slick.css" />
-    <Content Include="Assets\images\Backpack.jpg" />
-    <Content Include="Assets\images\Backpack2.jpg" />
-    <Content Include="Assets\images\carousel.jpg" />
-    <Content Include="Assets\images\carousel2.jpg" />
-    <Content Include="Assets\images\carousel3.jpg" />
-    <Content Include="Assets\images\CoinWallet.jpg" />
-    <Content Include="Assets\images\CoinWallet2.jpg" />
     <Content Include="Assets\images\HomeImages\bag1.jpg" />
     <Content Include="Assets\images\HomeImages\bag2.jpg" />
     <Content Include="Assets\images\HomeImages\bag3.jpg" />
@@ -255,12 +235,31 @@
     <Content Include="Assets\images\HomeImages\Wallets6.jpg" />
     <Content Include="Assets\images\HomeImages\Wallets7.jpg" />
     <Content Include="Assets\images\HomeImages\Wallets8.jpg" />
-    <Content Include="Assets\images\Longclip.jpg" />
-    <Content Include="Assets\images\Longclip2.jpg" />
-    <Content Include="Assets\images\NameCard.jpg" />
-    <Content Include="Assets\images\NameCard2.jpg" />
-    <Content Include="Assets\images\Totebag.jpg" />
-    <Content Include="Assets\images\Totebag2.jpg" />
+    <Content Include="Assets\images\ProductImages\Backpack\Tone Oilnume 中型後背包.jpg" />
+    <Content Include="Assets\images\ProductImages\Backpack\Tone Oilnume 後背包.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Belchord零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Bridle方形零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Diario 雙釦式零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Tone Oilnume 蛙嘴式迷你零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Tone Oilnume 蛙嘴式零錢袋.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Urbano零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Belchord 長夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Diario 長夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Tone Oilnume 纏繞式長夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Tone Oilnume 蛙嘴式零錢長夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Urbano 長皮夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Bridle 名片夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Clarte 信封名片夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Cordovan 馬臀皮名片夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Cordovan 馬臀皮票卡套.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Urbano 名片夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Urbano 拉鍊卡片夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Clarte 流蘇迷你箱型包.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Diario 迷你隨行斜肩袋.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Plota 防水兩用斜背包.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Tone Oilnume 兩用托特包.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Tone Oilnume 拉鍊斜背包.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Tone Oilnume 迷你郵差包.jpg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery.simpleGallery.js" />
@@ -367,7 +366,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\Product\ProductMainPage.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -381,6 +380,10 @@
     <Content Include="Views\Shared\_HomePageLayout.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
+    <Content Include="Views\Product\Backpack.cshtml" />
+    <Content Include="Views\Product\Longclip.cshtml" />
+    <Content Include="Views\Product\Coinwallet.cshtml" />
+    <Content Include="Views\Product\Namecard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
