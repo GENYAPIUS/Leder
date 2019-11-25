@@ -33,18 +33,18 @@ namespace Leder
     }
 
     // 設定此應用程式中使用的應用程式使用者管理員。UserManager 在 ASP.NET Identity 中定義且由應用程式中使用。
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class ApplicationUserManager : UserManager<User>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+        public ApplicationUserManager(IUserStore<User> store)
             : base(store)
         {
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
             // 設定使用者名稱的驗證邏輯
-            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            manager.UserValidator = new UserValidator<User>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -53,11 +53,11 @@ namespace Leder
             // 設定密碼的驗證邏輯
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequiredLength = 8,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = true,
+                RequireUppercase = false,
             };
 
             // 設定使用者鎖定詳細資料
@@ -67,11 +67,11 @@ namespace Leder
 
             // 註冊雙因素驗證提供者。此應用程式使用手機和電子郵件接收驗證碼以驗證使用者
             // 您可以撰寫專屬提供者，並將它外掛到這裡。
-            manager.RegisterTwoFactorProvider("電話代碼", new PhoneNumberTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("電話代碼", new PhoneNumberTokenProvider<User>
             {
                 MessageFormat = "您的安全碼為 {0}"
             });
-            manager.RegisterTwoFactorProvider("電子郵件代碼", new EmailTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("電子郵件代碼", new EmailTokenProvider<User>
             {
                 Subject = "安全碼",
                 BodyFormat = "您的安全碼為 {0}"
@@ -82,21 +82,21 @@ namespace Leder
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
     }
 
     // 設定在此應用程式中使用的應用程式登入管理員。
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    public class ApplicationSignInManager : SignInManager<User, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }

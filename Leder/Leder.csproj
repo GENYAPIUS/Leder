@@ -188,6 +188,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911250228037_InitialCreate.cs" />
+    <Compile Include="Migrations\201911250228037_InitialCreate.Designer.cs">
+      <DependentUpon>201911250228037_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911251527281_identityModified.cs" />
+    <Compile Include="Migrations\201911251527281_identityModified.Designer.cs">
+      <DependentUpon>201911251527281_identityModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -319,6 +328,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911250228037_InitialCreate.resx">
+      <DependentUpon>201911250228037_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911251527281_identityModified.resx">
+      <DependentUpon>201911251527281_identityModified.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
