@@ -7,8 +7,27 @@ namespace Leder.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "電子郵件")]
+        [EmailAddress]
+        [Display(Name = "電子信箱")]
         public string Email { get; set; }
+
+        //[RegularExpression(@"/^09[0-9]{8}$/")]
+        [Display(Name = "行動電話")]
+        public string CellPhone { get; set; }
+        [Required]
+        [Display(Name = "住家地址")]
+        public string Address { get; set; }
+        [Required]
+        [Display(Name = "運送地址")]
+        public string ShipAddress { get; set; }
+        [Required]
+        [Display(Name = "生日")]
+        public DateTime BirthDate { get; set; }
+        [Required]
+        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
+        [Display(Name = "身分證")]
+        public string IdentityCard { get; set; }
+
     }
 
     public class ExternalLoginListViewModel

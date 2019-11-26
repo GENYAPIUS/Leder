@@ -1,15 +1,18 @@
 ﻿@model Leder.Models.ExternalLoginConfirmationViewModel
 @{
     ViewBag.Title = "註冊";
+    Layout = "~/Views/Shared/_HomePageLayout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>關聯您的 @ViewBag.LoginProvider 帳戶。</h3>
+    <div style="text-align:center">
+        <h2>@ViewBag.Title</h2>
+        <h3>關聯您的 @ViewBag.LoginProvider 帳戶。</h3>
+    </div>
 
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-    <h4>關聯表單</h4>
+   
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <p class="text-info">
@@ -19,9 +22,39 @@
     </p>
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShipAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.ShipAddress, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @placeholder = "(例):1980-01-01" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CellPhone, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", @placeholder = "(例):09XX-XXX-XXX" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.IdentityCard, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.IdentityCard, new { @class = "form-control", @placeholder = "(例):A123456789" })
         </div>
     </div>
     <div class="form-group">
