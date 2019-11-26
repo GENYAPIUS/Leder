@@ -199,6 +199,8 @@
     <Content Include="Assets\images\HomeImages\blog1.jpg" />
     <Content Include="Assets\images\HomeImages\blog2.jpg" />
     <Content Include="Assets\images\HomeImages\blog3.jpg" />
+    <Content Include="Assets\images\HomeImages\Fake300x300.png" />
+    <Content Include="Assets\images\HomeImages\fashion-banner.jpg" />
     <Content Include="Assets\images\HomeImages\ig1.jpg" />
     <Content Include="Assets\images\HomeImages\ig10.jpg" />
     <Content Include="Assets\images\HomeImages\ig2.jpg" />
@@ -384,6 +386,18 @@
     <Content Include="Views\Product\Longclip.cshtml" />
     <Content Include="Views\Product\Coinwallet.cshtml" />
     <Content Include="Views\Product\Namecard.cshtml" />
+    <Content Include="Views\Shared\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\_PromoteProductsPartial.cshtml" />
+    <Content Include="Views\Shared\_ProductsSectionPartial.cshtml" />
+    <Content Include="Views\Shared\_ProductsSection1.cshtml" />
+    <Content Include="Views\Shared\_ProductsSection2.cshtml" />
+    <Content Include="Views\Shared\_ProductsSection3.cshtml" />
+    <Content Include="Views\Shared\_ProductsSection4.cshtml" />
+    <Content Include="Views\Shared\_ProductsSection5.cshtml" />
+    <Content Include="Views\Shared\_PopularSectionPartial.cshtml" />
+    <Content Include="Views\Shared\_BannerSectionPartial.cshtml" />
+    <Content Include="Views\Shared\_BlogPartial.cshtml" />
+    <Content Include="Views\Shared\_SubscribePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1081,17 +1081,27 @@ img {
   float: left;
 }
 
-#aa-product .aa-product-area .aa-product-inner #men {
+#aa-product .aa-product-area .aa-product-inner #pdsect1 {
   text-align: center;
   padding-bottom: 35px;
 }
 
-#aa-product .aa-product-area .aa-product-inner #electronics {
+#aa-product .aa-product-area .aa-product-inner #pdsect2 {
   text-align: center;
   padding-bottom: 35px;
 }
 
-#aa-product .aa-product-area .aa-product-inner #women {
+#aa-product .aa-product-area .aa-product-inner #pdsect3 {
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+#aa-product .aa-product-area .aa-product-inner #pdsect4 {
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+#aa-product .aa-product-area .aa-product-inner #pdsect5 {
   text-align: center;
   padding-bottom: 35px;
 }
