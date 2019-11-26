@@ -149,11 +149,11 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            var db = new ApplicationDbContext();
+            var db = new ApplicationDbContext();//實體化存取資料庫的EntityframeWork
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
-                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, CellPhone = model.CellPhone, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress };
+                var user = new User { UserName = model.Email, Email = model.Email,PhoneNumber=model.CellPhone };
+                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -179,7 +179,7 @@ namespace Leder.Controllers
                             }
                         }
                         throw raise;
-                    }
+                    }//為了偵錯而增加
 
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

@@ -13,8 +13,6 @@ namespace Leder.Models
     public class User : IdentityUser
     {
 
-        [Key]
-        public override string Id { get; set; }
         public int? UserDetailId { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
@@ -34,8 +32,6 @@ namespace Leder.Models
         [Key]
         public int UserDetailID { get; set; }
         //[RegularExpression(@"/^09[0-9]{8}$/")]
-        [Display(Name = "行動電話")]
-        public string CellPhone { get; set; }
         [Required]
         [Display(Name = "地址")]
         public string Address { get; set; }
