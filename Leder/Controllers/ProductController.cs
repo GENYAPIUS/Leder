@@ -22,18 +22,45 @@ namespace Leder.Controllers
                 new Product{ Name = "Totebag001", Category="Totebag", Photo="Totebag.jpg", ProductPage="https://shorturl.at/aiOS0" },
                 new Product{ Name = "Totebag002", Category="Totebag", Photo="Totebag2.jpg", ProductPage="https://shorturl.at/aiOS0" },
 
-            }; 
-
-        // GET: Product
-        public ActionResult Index()
-        {
-            return View();
-        }
+            };
 
         //把Model帶入，傳給View
         public ActionResult Product()
         {
             return View(products);
         }
+
+        //預設是顯示側背包類別
+        public ActionResult ProductMainPage()
+        {
+            return View();
+        }
+
+        //後背包類別
+        public ActionResult Backpack()
+        {
+            return View();
+        }
+
+        //長夾類別
+        public ActionResult Longclip()
+        {
+            return View();
+        }
+
+        //零錢包類別
+        public ActionResult Coinwallet()
+        {
+            return View();
+        }
+
+        //名片夾類別
+        public ActionResult Namecard()
+        {
+            return View();
+        }
+
+
+
     }
 }
