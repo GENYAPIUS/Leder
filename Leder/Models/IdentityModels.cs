@@ -13,7 +13,7 @@ namespace Leder.Models
     public class User : IdentityUser
     {
 
-        public int? UserDetailId { get; set; }
+       
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -21,11 +21,12 @@ namespace Leder.Models
             // Add custom user claims here
             return userIdentity;
         }
-        [ForeignKey("UserDetailId")]
-        public UserDetail UserDetail { get; set; }
+       
 
 
+       
     }
+   
     public class UserDetail
     {
 
@@ -45,6 +46,8 @@ namespace Leder.Models
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
+        public string Email { get; set; }
+
 
     }
 
@@ -59,16 +62,16 @@ namespace Leder.Models
         {
             return new ApplicationDbContext();
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<User>().ToTable("User").Property(x => x.Id).HasColumnName("UserID");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClame").Property(x => x.Id).HasColumnName("UserClameId");
-            modelBuilder.Entity<IdentityRole>().ToTable("Role").Property(x => x.Id).HasColumnName("RoleID");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //    modelBuilder.Entity<User>().ToTable("User").Property(x => x.Id).HasColumnName("UserID");
+        //    modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
+        //    modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClame").Property(x => x.Id).HasColumnName("UserClameId");
+        //    modelBuilder.Entity<IdentityRole>().ToTable("Role").Property(x => x.Id).HasColumnName("RoleID");
+        //    modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
 
-        }
+        //}
         //更改Identity本來的命名Convension，自定義所有的Table名稱
         public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
 

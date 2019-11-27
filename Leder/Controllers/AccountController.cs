@@ -153,10 +153,11 @@ namespace Leder.Controllers
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Email, Email = model.Email,PhoneNumber=model.CellPhone };
-                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress };
+                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress ,Email=model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     db.UserDetail.Add(userdetail);
                     try
@@ -380,6 +381,8 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
+            var db = new ApplicationDbContext();
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -394,15 +397,22 @@ namespace Leder.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new User { UserName = model.Email, Email = model.Email };
+                var userdetail = new UserDetail { Address = model.Address, Email = model.Email, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    db.UserDetail.Add(userdetail);
+                    db.SaveChanges();
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                       
                         return RedirectToLocal(returnUrl);
+                       
+
                     }
+                  
                 }
                 AddErrors(result);
             }
