@@ -243,6 +243,7 @@
     <Content Include="Assets\images\ProductImages\Coinwallet\Tone Oilnume 蛙嘴式迷你零錢包.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Tone Oilnume 蛙嘴式零錢袋.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Urbano零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\loading.gif" />
     <Content Include="Assets\images\ProductImages\Longclip\Belchord 長夾.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Diario 長夾.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Tone Oilnume 纏繞式長夾.jpg" />
@@ -366,7 +367,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Product\ProductMainPage.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -384,6 +384,10 @@
     <Content Include="Views\Product\Longclip.cshtml" />
     <Content Include="Views\Product\Coinwallet.cshtml" />
     <Content Include="Views\Product\Namecard.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Shared\_QuickViewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
