@@ -1,9 +1,6 @@
-﻿@model List<HomePartialViewModel>
+﻿@using Leder.ViewModels;
+@model List<PromoteProductViewModel>
 
-@*@{ 
-    var PS1L = Model.Where(x => x.Section = )
-
-}*@
 
 
 <!-- Start Promo section1 -->
@@ -14,12 +11,12 @@
                 <div class="aa-promo-area">
                     <div class="row">
                         <!-- promo left -->
-                        <div class="@Model[0].ClassSize">
+                        <div class="col-md-6">
                             <div class="aa-promo-left">
                                 <div class="aa-promo-banner">
                                     <img src="@Model[0].PhotoUrl" alt="@Model[0].ProductName">
                                     <div class="aa-prom-content">
-                                        <span>15% Off</span>
+                                        <span>@Model[0].DiscountWord</span>
                                         <h4><a href="#">@Model[0].Statement</a></h4>
                                     </div>
                                 </div>
@@ -27,12 +24,12 @@
                         </div>
 
                         <!-- promo right -->
-                        <div class="@Model[1].ClassSize">
+                        <div class="col-md-6">
                             <div class="aa-promo-left">
                                 <div class="aa-promo-banner">
                                     <img src="@Model[1].PhotoUrl" alt="@Model[1].ProductName">
                                     <div class="aa-prom-content">
-                                        <span>15% Off</span>
+                                        <span>@Model[1].DiscountWord</span>
                                         <h4><a href="#">@Model[1].Statement</a></h4>
                                     </div>
                                 </div>

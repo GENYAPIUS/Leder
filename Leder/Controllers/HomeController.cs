@@ -4,37 +4,36 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Leder.Models;
+using Leder.ViewModels;
 
 namespace Leder.Controllers
 {
     public class HomeController : Controller
     {
+        HomeContext db = new HomeContext();
         public ActionResult Index()
         {
-            List<HomePartialViewModel> PMSL = new List<HomePartialViewModel>
-            {
-                new HomePartialViewModel{
-                    Section = "Promo section 1-L",
-                    ClassSize = "col-md-6",
-                    ProductName = "Bag1",
-                    Category = "Bags",
-                    PhotoUrl = "/Assets/images/HomeImages/img_main_images1.jpg",
-                    Discount = 0.15m,
-                    Statement = "For Gift"
-                },
-                new HomePartialViewModel{
-                    Section = "Promo section 1-R",
-                    ClassSize = "col-md-6",
-                    ProductName = "Bag2",
-                    Category = "Bags",
-                    PhotoUrl = "/Assets/images/HomeImages/img_main_images2.jpg",
-                    Discount = 0.15m,
-                    Statement = "For X'mas"
-                }
+            var promoteProductsData = db.promoteProducts.ToList();
+            //List<PromoteProduct> promote = new List<PromoteProduct>
+            //{
+            //    new PromoteProduct{
+            //        SectionId = "Promo section 1-L",                                       
+            //        ProductName = "NewYear",                    
+            //        PhotoUrl = "/Assets/images/HomeImages/img_main_images1.jpg",
+            //        DiscountWord = "15% Off",
+            //        Statement = "For Gift"
+            //    },
+            //    new PromoteProduct{
+            //        SectionId = "Promo section 1-R",                                       
+            //        ProductName = "Xmas",                    
+            //        PhotoUrl = "/Assets/images/HomeImages/img_main_images2.jpg",
+            //        DiscountWord = "15% Off",
+            //        Statement = "For X'mas"
+            //    }
 
-            };
+            //};
 
-            return View(PMSL);
+            return View(promoteProductsData);
         }
 
         public ActionResult About()
