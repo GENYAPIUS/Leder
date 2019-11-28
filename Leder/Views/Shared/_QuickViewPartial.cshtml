@@ -59,7 +59,9 @@
                             </div>
                             <div class="aa-prod-view-bottom">
                                 <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                                @*<a href="#" class="aa-add-to-cart-btn">View Details</a>*@
+                                
+                                @Html.ActionLink("View Detail", "ProductDetail", new { id=@Model.Id,category=@Model.Category},htmlAttributes: new { @class = "aa-add-to-cart-btn" })
                             </div>
                         </div>
                     </div>

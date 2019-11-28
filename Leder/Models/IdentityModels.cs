@@ -29,5 +29,7 @@ namespace Leder.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Leder.Models.Product> Products { get; set; }
     }
 }

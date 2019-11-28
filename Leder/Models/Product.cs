@@ -6,7 +6,7 @@ using System.Web;
 namespace Leder.Models
 {
     public class Product
-    {
+    {  
         public int Id { get; set; }
         public string Name { get; set; }    //商品名稱
         public string Price { get; set; }    //商品價格

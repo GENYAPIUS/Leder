@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,7 +11,7 @@ namespace Leder.Controllers
     public class ProductController : Controller
     {
         //側背包
-        List<Product> totebags = new List<Product>
+        List<Product> Totebags = new List<Product>
             {      
                 new Product{ Id =1, Name = "Clarte 流蘇迷你箱型包", Category="Totebag", Photo="Totebag1.jpg"},
                 new Product{ Id =2, Name = "Diario 迷你隨行斜肩袋", Category="Totebag", Photo="Totebag2.jpg"},
@@ -21,7 +22,7 @@ namespace Leder.Controllers
             };
 
         //後背包
-        List<Product> backpacks = new List<Product>
+        List<Product> Backpacks = new List<Product>
             {
                 new Product{ Id =1, Name = "Tone Oilnume 中型後背包", Category="Backpack", Photo="Backpack1.jpg"},
                 new Product{ Id =2, Name = "Tone Oilnume 後背包", Category="Backpack", Photo="Backpack2.jpg"},
@@ -29,7 +30,7 @@ namespace Leder.Controllers
             };
 
         //長夾
-        List<Product> longclips = new List<Product>
+        List<Product> Longclips = new List<Product>
             {
                 new Product{ Id =1, Name = "Belchord 長夾", Category="Longclip", Photo="Longclip1.jpg"},
                 new Product{ Id =2, Name = "Diario 長夾", Category="Longclip", Photo="Longclip2.jpg"},
@@ -40,7 +41,7 @@ namespace Leder.Controllers
         };
 
         //零錢包
-        List<Product> coinwallets = new List<Product>
+        List<Product> Coinwallets = new List<Product>
             {
                 new Product{ Id =1, Name = "Belchord零錢包", Category="Coinwallet", Photo="Coinwallet1.jpg"},
                 new Product{ Id =2, Name = "Bridle方形零錢包", Category="Coinwallet", Photo="Coinwallet2.jpg"},
@@ -51,7 +52,7 @@ namespace Leder.Controllers
         };
 
         //名片夾
-        List<Product> namecards = new List<Product>
+        List<Product> Namecards = new List<Product>
             {
                 new Product{ Id =1, Name = "Bridle 名片夾", Category="Namecard", Photo="Namecard1.jpg"},
                 new Product{ Id =2, Name = "Clarte 信封名片夾", Category="Namecard", Photo="Namecard2.jpg"},
@@ -65,38 +66,43 @@ namespace Leder.Controllers
         //預設Index是顯示側背包類別
         public ActionResult Index()
         {
-            return View(totebags);
+            return View(Totebags);
         }
 
         //後背包類別
         public ActionResult Backpack()
         {
-            return View(backpacks);
+            return View(Backpacks);
         }
 
         //長夾類別
         public ActionResult Longclip()
         {
-            return View(longclips);
+            return View(Longclips);
         }
 
         //零錢包類別
         public ActionResult Coinwallet()
         {
-            return View(coinwallets);
+            return View(Coinwallets);
         }
 
         //名片夾類別
         public ActionResult Namecard()
         {
-            return View(namecards);
+            return View(Namecards);
         }
 
         //ProductDetail試做
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail(int? Id, string Category) 
         {
-            return View();
+            
+            var prd = cat.Where(x => x.Category == Category);
+            var item = prd.Where((x) => x.Id == Id);
+            return View(item);
+
         }
+
 
     }
 }
