@@ -186,6 +186,18 @@
     <Compile Include="Migrations\201911270733547_InitialSeedData1.Designer.cs">
       <DependentUpon>201911270733547_InitialSeedData1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911280342570_AddStringArray.cs" />
+    <Compile Include="Migrations\201911280342570_AddStringArray.Designer.cs">
+      <DependentUpon>201911280342570_AddStringArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911280358407_EditViewModel.cs" />
+    <Compile Include="Migrations\201911280358407_EditViewModel.Designer.cs">
+      <DependentUpon>201911280358407_EditViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911280610380_AddData.cs" />
+    <Compile Include="Migrations\201911280610380_AddData.Designer.cs">
+      <DependentUpon>201911280610380_AddData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -432,6 +444,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911270733547_InitialSeedData1.resx">
       <DependentUpon>201911270733547_InitialSeedData1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911280342570_AddStringArray.resx">
+      <DependentUpon>201911280342570_AddStringArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911280358407_EditViewModel.resx">
+      <DependentUpon>201911280358407_EditViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911280610380_AddData.resx">
+      <DependentUpon>201911280610380_AddData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,7 +9,8 @@ namespace Leder.ViewModels
     public class PromoteProductViewModel
     {
         [Key]
-        public string SectionId { get; set; }
+        public int Id { get; set; }
+        public string Section { get; set; }
         public string ProductName { get; set; }        
         public string PhotoUrl { get; set; }
         public string DiscountWord { get; set; }
