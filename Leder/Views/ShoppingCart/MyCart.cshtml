@@ -3,12 +3,10 @@
 @{
     ViewBag.Title = "MyCart";
     Layout = "~/Views/Shared/_HomePageLayout.cshtml";
-
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 }
 
-@section topCSS{
 
-}
 
 
 <!-- Cart view section -->
@@ -24,7 +22,7 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>@Html.DisplayNameFor(m=>m.Photo)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Photo)</th>
                                             <th>@Html.DisplayNameFor(m => m.Name)</th>
                                             <th>@Html.DisplayNameFor(m => m.Price)</th>
                                             <th>Quantity</th>
@@ -67,7 +65,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="aa-cart-view-btn">Proced to Checkout</a>
+                            <a href="~/ShoppingCart/Checkout" class="aa-cart-view-btn">Proced to Checkout</a>
                         </div>
                     </div>
                 </div>
@@ -75,4 +73,7 @@
         </div>
     </div>
 </section>
+@section endJS
+    {
+}
 <!-- / Cart view section -->

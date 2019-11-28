@@ -25,12 +25,18 @@ namespace Leder.Controllers
             };
 
         // GET: ShoppingCart
-        public ActionResult Index()
+        public ActionResult MyCart()
         {
             return View(products); 
         }
-            
-       
+
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+
+
+
 
 
 
