@@ -7,9 +7,9 @@
 <!-- start single product item -->
     <li>
         <figure>
-            @*@Html.ActionLink("ok", "ProductDetail", "Product", htmlAttributes: new { @class = "aa-product-img" })*@
-
-            <a class="aa-product-img" href="~/Product/ProductDetail">
+            <!--當我按下圖片，就會連到路由:ProductDetail/Id-->
+            <a class="aa-product-img" href="@Url.Action("ProductDetail", new { id = @Model.Id })">
+                @*<a class="aa-product-img" href="#">*@
                 <img src="~/Assets/images/ProductImages/@Model.Category/@Model.Photo" style="width:280px" alt="polo shirt img">
             </a>
             <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
@@ -19,10 +19,10 @@
                 <p class="aa-product-descrip">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus facere iusto, autem soluta amet sapiente ratione inventore nesciunt a, maxime quasi consectetur, rerum illum.</p>
             </figcaption>
         </figure>
-        <div class="aa-product-hvr-content">
-            <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-            <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#@Model.Id"><span class="fa fa-search"></span></a>
-        </div>
-        <!-- product badge右上角的sales標籤 -->
-        <!--<span class="aa-badge aa-sale" href="#">SALE!</span>-->
-    </li>
+    <div class="aa-product-hvr-content">
+        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+        <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#@Model.Id"><span class="fa fa-search"></span></a>
+    </div>
+    <!-- product badge右上角的sales標籤 -->
+            <!--<span class="aa-badge aa-sale" href="#">SALE!</span>-->
+</li>
