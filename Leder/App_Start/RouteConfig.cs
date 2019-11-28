@@ -15,8 +15,8 @@ namespace Leder
 
             routes.MapRoute(
                 name: "ShoppingCart",
-                url: "MyCart",
-                defaults: new { controller = "ShoppingCart", action = "MyCart", id = UrlParameter.Optional }
+                url: "Index",
+                defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

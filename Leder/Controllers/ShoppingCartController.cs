@@ -25,7 +25,7 @@ namespace Leder.Controllers
             };
 
         // GET: ShoppingCart
-        public ActionResult MyCart()
+        public ActionResult Index()
         {
             return View(products); 
         }

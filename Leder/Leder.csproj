@@ -385,7 +385,7 @@
     <Content Include="Views\Product\Longclip.cshtml" />
     <Content Include="Views\Product\Coinwallet.cshtml" />
     <Content Include="Views\Product\Namecard.cshtml" />
-    <Content Include="Views\ShoppingCart\MyCart.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
