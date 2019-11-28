@@ -11,16 +11,16 @@ namespace Leder.Controllers
     {
         List<Product> products = new List<Product>
             {
-                new Product{ Name = "Backpack001", Category="Backpack", Photo="Tone Oilnume 中型後背包.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Backpack002", Category="Backpack", Photo="Tone Oilnume 後背包.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "CoinWallet001", Category="CoinWallet", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "CoinWallet002", Category="CoinWallet", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Longclip001", Category="Longclip", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Longclip002", Category="Longclip", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "NameCard001", Category="NameCard", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "NameCard002", Category="NameCard", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Totebag001", Category="Totebag", Photo="", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Totebag002", Category="Totebag", Photo="", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Tone Oilnume 中型後背包", Category="Backpack",Price=300, Photo="Tone Oilnume 中型後背包.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Tone Oilnume 後背包", Category="Backpack",Price=350, Photo="Tone Oilnume 後背包.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Bridle方形零錢包", Category="CoinWallet",Price=100, Photo="Bridle方形零錢包.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Tone Oilnume 蛙嘴式迷你零錢包", Category="CoinWallet",Price=80, Photo="Tone Oilnume 蛙嘴式迷你零錢包.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Tone Oilnume 蛙嘴式零錢長夾", Category="Longclip",Price=150, Photo="Tone Oilnume 蛙嘴式零錢長夾.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Urbano 長皮夾", Category="Longclip",Price=180, Photo="Urbano 長皮夾.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Cordovan 馬臀皮名片夾", Category="NameCard",Price=70, Photo="Cordovan 馬臀皮名片夾.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Urbano 拉鍊卡片夾", Category="NameCard",Price=50, Photo="Urbano 拉鍊卡片夾.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Plota 防水兩用斜背包", Category="Totebag",Price=600, Photo="Plota 防水兩用斜背包.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                new Product{ Name = "Tone Oilnume 迷你郵差包", Category="Totebag",Price=500, Photo="Tone Oilnume 迷你郵差包.jpg", ProductPage="https://shorturl.at/aiOS0" },
 
             };
 
@@ -30,11 +30,7 @@ namespace Leder.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Product(User user)
-        {
-            return View();
-        }
+
 
         //預設是顯示側背包類別
         public ActionResult ProductMainPage()

@@ -177,19 +177,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911270009056_不想上課.cs" />
-    <Compile Include="Migrations\201911270009056_不想上課.Designer.cs">
-      <DependentUpon>201911270009056_不想上課.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Order_Details.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ShoppingCartContext.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -394,9 +385,7 @@
     <Content Include="Views\Product\Longclip.cshtml" />
     <Content Include="Views\Product\Coinwallet.cshtml" />
     <Content Include="Views\Product\Namecard.cshtml" />
-    <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\MyCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,11 +400,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911270009056_不想上課.resx">
-      <DependentUpon>201911270009056_不想上課.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
