@@ -1,70 +1,33 @@
-﻿<!-- Start slider -->
+﻿@using Leder.ViewModels;
+
+@{ 
+    var slidersData = (List<SliderPartialViewModel>)ViewData["SlidersData"];
+    var items = slidersData.Where(x => x.Id != 0);
+}
+
+
+<!-- Start slider -->
 <section id="aa-slider">
     <div class="aa-slider-area">
         <div id="sequence" class="seq">
             <div class="seq-screen">
                 <ul class="seq-canvas">
                     <!-- single slide item -->
-                    <li>
-                        <div class="seq-model">
-                            <img data-seq src="~/Assets/images/HomeImages/top_picture1.jpg" alt="Top slide img1" />
-                        </div>
-                        <div class="seq-title">
-                            <span data-seq>Save Up to 25% Off</span>
-                            <h2 data-seq>Leder Collection</h2>
-                            <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                            <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-                        </div>
-                    </li>
-                    <!-- single slide item -->
-                    <li>
-                        <div class="seq-model">
-                            <img data-seq src="~/Assets/images/HomeImages/top_picture2.jpg" alt="Top slide img2" />
-                        </div>
-                        <div class="seq-title">
-                            <span data-seq>Save Up to 30% Off</span>
-                            <h2 data-seq>Leder Collection</h2>
-                            <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                            <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-                        </div>
-                    </li>
-                    <!-- single slide item -->
-
-                    <li>
-                        <div class="seq-model">
-                            <img data-seq src="~/Assets/images/HomeImages/top_picture3.jpg" alt="top slide img3" />
-                        </div>
-                        <div class="seq-title">
-                            <span data-seq>Save Up to 75% Off</span>
-                            <h2 data-seq>Leder Collection</h2>
-                            <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                            <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-                        </div>
-                    </li>
-                    <!-- single slide item
-                    <li>
-                      <div class="seq-model">
-                        <img data-seq src="img/slider/4.jpg" alt="Shoes slide img" />
-                      </div>
-                      <div class="seq-title">
-                        <span data-seq>Save Up to 75% Off</span>
-                        <h2 data-seq>Exclusive Shoes</h2>
-                        <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                        <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-                      </div>
-                    </li>
-                    single slide item
-                     <li>
-                      <div class="seq-model">
-                        <img data-seq src="img/slider/5.jpg" alt="Male Female slide img" />
-                      </div>
-                      <div class="seq-title">
-                        <span data-seq>Save Up to 50% Off</span>
-                        <h2 data-seq>Best Collection</h2>
-                        <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                        <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-                      </div>
-                    </li>-->
+                    @foreach (var item in items)
+                    {
+                        <li>
+                            <div class="seq-model">
+                                <img data-seq src="@item.ADUrl" alt="@item.ADTopic" />
+                            </div>
+                            <div class="seq-title">
+                                <span data-seq>@item.ADDiscount</span>
+                                <h2 data-seq>@item.ADTopic</h2>
+                                <p data-seq>@item.ADStatement</p>
+                                <a data-seq href="@item.ADPageLink" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                            </div>
+                        </li>
+                    }
+                    <!-- / single slide item -->                    
                 </ul>
             </div>
             <!-- slider navigation btn -->

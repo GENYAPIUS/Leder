@@ -12,6 +12,8 @@ namespace Leder.ViewModels
         {
         }
         public DbSet<PromoteProductViewModel> promoteProducts { get; set; }
+        public DbSet<SliderPartialViewModel> sliders { get; set; }
+        public DbSet<ProductsSectionViewModel> productsSections { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

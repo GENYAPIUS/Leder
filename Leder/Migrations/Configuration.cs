@@ -20,6 +20,42 @@ namespace Leder.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            context.sliders.AddOrUpdate(
+                x => x.Id,
+                new SliderPartialViewModel
+                {
+                    Id = 1,
+                    ADTopic = "Leder Collection No.1",
+                    ADUrl = "/Assets/images/HomeImages/top_picture1.jpg",
+                    ADStatement = "Share with you. Leder.",
+                    ADDiscount = "Save Up to 25% Off",
+                    ADPageLink = "#"
+
+                },
+                new SliderPartialViewModel
+                {
+                    Id = 2,
+                    ADTopic = "Leder Collection No.2",
+                    ADUrl = "/Assets/images/HomeImages/top_picture2.jpg",
+                    ADStatement = "Share with you. Leder.",
+                    ADDiscount = "Save Up to 30% Off",
+                    ADPageLink = "#"
+
+                },
+                new SliderPartialViewModel
+                {
+                    Id = 3,
+                    ADTopic = "Leder Collection No.3",
+                    ADUrl = "/Assets/images/HomeImages/top_picture3.jpg",
+                    ADStatement = "Share with you. Leder.",
+                    ADDiscount = "Save Up to 35% Off",
+                    ADPageLink = "#"
+
+                }
+
+                );
+
+
             context.promoteProducts.AddOrUpdate(
                 x => x.Id,
                 new PromoteProductViewModel
@@ -130,6 +166,40 @@ namespace Leder.Migrations
                     DiscountWord = "10% Off",
                     Statement = "For Men"
                 }
+                );
+
+
+            context.productsSections.AddOrUpdate(
+                x => x.Id,
+                new ProductsSectionViewModel { Id = 1, Name = "Clarte 流蘇迷你箱型包", Price = 8888, Category = "Totebag", Photo = "/Assets/images/ProductImages/Totebag/Totebag1.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 2, Name = "Diario 迷你隨行斜肩袋", Price = 8888, Category = "Totebag", Photo = "/Assets/images/ProductImages/Totebag/Totebag2.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 3, Name = "Plota 防水兩用斜背包", Price = 8888, Category = "Totebag", Photo = "/Assets/images/ProductImages/Totebag/Totebag3.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 4, Name = "Tone Oilnume 兩用托特包", Price = 8888, Category = "Totebag", Photo = "/Assets/images/ProductImages/Totebag/Totebag4.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 5, Name = "Tone Oilnume 拉鍊斜背包", Price = 8888, Category = "Totebag", Photo = "/Assets/images/ProductImages/Totebag/Totebag5.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 6, Name = "Tone Oilnume 迷你郵差包", Price = 8888, Category = "Totebag", Photo = "/Assets/images/ProductImages/Totebag/Totebag6.jpg", ProductPage = "#" },
+
+                new ProductsSectionViewModel { Id = 7, Name = "Tone Oilnume 中型後背包", Price = 8888, Category = "Backpack", Photo = "/Assets/images/ProductImages/Backpack/Backpack1.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 8, Name = "Tone Oilnume 後背包", Price = 8888, Category = "Backpack", Photo = "/Assets/images/ProductImages/Backpack/Backpack2.jpg", ProductPage = "#" },
+
+                new ProductsSectionViewModel { Id = 9, Name = "Belchord 長夾", Price = 8888, Category = "Longclip", Photo = "/Assets/images/ProductImages/Longclip/Longclip1.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 10, Name = "Diario 長夾", Price = 8888, Category = "Longclip", Photo = "/Assets/images/ProductImages/Longclip/Longclip2.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 11, Name = "Tone Oilnume 蛙嘴式零錢長夾", Price = 8888, Category = "Longclip", Photo = "/Assets/images/ProductImages/Longclip/Longclip3.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 12, Name = "Tone Oilnume 纏繞式長夾", Price = 8888, Category = "Longclip", Photo = "/Assets/images/ProductImages/Longclip/Longclip4.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 13, Name = "Urbano 長皮夾", Price = 8888, Category = "Longclip", Photo = "/Assets/images/ProductImages/Longclip/Longclip5.jpg", ProductPage = "#" },
+
+                new ProductsSectionViewModel { Id = 14, Name = "Belchord零錢包", Price = 8888, Category = "Coinwallet", Photo = "/Assets/images/ProductImages/Coinwallet/Coinwallet1.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 15, Name = "Bridle方形零錢包", Price = 8888, Category = "Coinwallet", Photo = "/Assets/images/ProductImages/Coinwallet/Coinwallet2.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 16, Name = "Diario 雙釦式零錢包", Price = 8888, Category = "Coinwallet", Photo = "/Assets/images/ProductImages/Coinwallet/Coinwallet3.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 17, Name = "Tone Oilnume 蛙嘴式迷你零錢包", Price = 8888, Category = "Coinwallet", Photo = "/Assets/images/ProductImages/Coinwallet/Coinwallet4.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 18, Name = "Tone Oilnume 蛙嘴式零錢袋", Price = 8888, Category = "Coinwallet", Photo = "/Assets/images/ProductImages/Coinwallet/Coinwallet5.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 19, Name = "Urbano零錢包", Price = 8888, Category = "Coinwallet", Photo = "/Assets/images/ProductImages/Coinwallet/Coinwallet6.jpg", ProductPage = "#" },
+
+                new ProductsSectionViewModel { Id = 20, Name = "Bridle 名片夾", Price = 8888, Category = "Namecard", Photo = "/Assets/images/ProductImages/Namecard/Namecard1.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 21, Name = "Clarte 信封名片夾", Price = 8888, Category = "Namecard", Photo = "/Assets/images/ProductImages/Namecard/Namecard2.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 22, Name = "Cordovan 馬臀皮名片夾", Price = 8888, Category = "Namecard", Photo = "/Assets/images/ProductImages/Namecard/Namecard3.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 23, Name = "Cordovan 馬臀皮票卡套", Price = 8888, Category = "Namecard", Photo = "/Assets/images/ProductImages/Namecard/Namecard4.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 24, Name = "Urbano 名片夾", Price = 8888, Category = "Namecard", Photo = "/Assets/images/ProductImages/Namecard/Namecard5.jpg", ProductPage = "#" },
+                new ProductsSectionViewModel { Id = 25, Name = "Urbano 拉鍊卡片夾", Price = 8888, Category = "Namecard", Photo = "/Assets/images/ProductImages/Namecard/Namecard6.jpg", ProductPage = "#" }
                 );
         }
     }

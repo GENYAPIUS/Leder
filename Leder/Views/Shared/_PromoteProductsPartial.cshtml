@@ -1,12 +1,13 @@
 ﻿@using Leder.ViewModels;
-@model List<PromoteProductViewModel>
+
 
 @{
-    var section1 = Model.Where(x => x.Section == "Promo section 1");
-    var section2one = Model.Where(x => x.Section == "Promo section 2 one");
-    var section2four = Model.Where(x => x.Section == "Promo section 2 four");
-    var section3four = Model.Where(x => x.Section == "Promo section 3 four");
-    var section3one = Model.Where(x => x.Section == "Promo section 3 one");
+    var promoteProductsData = (List<PromoteProductViewModel>)ViewData["promoteProductsData"];
+    var section1 = promoteProductsData.Where(x => x.Section == "Promo section 1");
+    var section2one = promoteProductsData.Where(x => x.Section == "Promo section 2 one");
+    var section2four = promoteProductsData.Where(x => x.Section == "Promo section 2 four");
+    var section3four = promoteProductsData.Where(x => x.Section == "Promo section 3 four");
+    var section3one = promoteProductsData.Where(x => x.Section == "Promo section 3 one");
 
 }
 

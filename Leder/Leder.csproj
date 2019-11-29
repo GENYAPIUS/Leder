@@ -198,6 +198,14 @@
     <Compile Include="Migrations\201911280610380_AddData.Designer.cs">
       <DependentUpon>201911280610380_AddData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911290125567_AddSliderData.cs" />
+    <Compile Include="Migrations\201911290125567_AddSliderData.Designer.cs">
+      <DependentUpon>201911290125567_AddSliderData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911290223431_AddProductsSectionData.cs" />
+    <Compile Include="Migrations\201911290223431_AddProductsSectionData.Designer.cs">
+      <DependentUpon>201911290223431_AddProductsSectionData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -206,7 +214,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\HomeContext.cs" />
+    <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
+    <Compile Include="ViewModels\SliderPartialViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\bootstrap.css" />
@@ -262,16 +272,29 @@
     <Content Include="Assets\images\HomeImages\Wallets6.jpg" />
     <Content Include="Assets\images\HomeImages\Wallets7.jpg" />
     <Content Include="Assets\images\HomeImages\Wallets8.jpg" />
+    <Content Include="Assets\images\ProductImages\Backpack\Backpack1.jpg" />
+    <Content Include="Assets\images\ProductImages\Backpack\Backpack2.jpg" />
     <Content Include="Assets\images\ProductImages\Backpack\Tone Oilnume 中型後背包.jpg" />
     <Content Include="Assets\images\ProductImages\Backpack\Tone Oilnume 後背包.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Belchord零錢包.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Bridle方形零錢包.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Coinwallet1.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Coinwallet2.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Coinwallet3.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Coinwallet4.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Coinwallet5.jpg" />
+    <Content Include="Assets\images\ProductImages\Coinwallet\Coinwallet6.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Diario 雙釦式零錢包.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Tone Oilnume 蛙嘴式迷你零錢包.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Tone Oilnume 蛙嘴式零錢袋.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Urbano零錢包.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Belchord 長夾.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Diario 長夾.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Longclip1.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Longclip2.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Longclip3.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Longclip4.jpg" />
+    <Content Include="Assets\images\ProductImages\Longclip\Longclip5.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Tone Oilnume 纏繞式長夾.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Tone Oilnume 蛙嘴式零錢長夾.jpg" />
     <Content Include="Assets\images\ProductImages\Longclip\Urbano 長皮夾.jpg" />
@@ -279,6 +302,12 @@
     <Content Include="Assets\images\ProductImages\Namecard\Clarte 信封名片夾.jpg" />
     <Content Include="Assets\images\ProductImages\Namecard\Cordovan 馬臀皮名片夾.jpg" />
     <Content Include="Assets\images\ProductImages\Namecard\Cordovan 馬臀皮票卡套.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Namecard1.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Namecard2.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Namecard3.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Namecard4.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Namecard5.jpg" />
+    <Content Include="Assets\images\ProductImages\Namecard\Namecard6.jpg" />
     <Content Include="Assets\images\ProductImages\Namecard\Urbano 名片夾.jpg" />
     <Content Include="Assets\images\ProductImages\Namecard\Urbano 拉鍊卡片夾.jpg" />
     <Content Include="Assets\images\ProductImages\Totebag\Clarte 流蘇迷你箱型包.jpg" />
@@ -287,6 +316,12 @@
     <Content Include="Assets\images\ProductImages\Totebag\Tone Oilnume 兩用托特包.jpg" />
     <Content Include="Assets\images\ProductImages\Totebag\Tone Oilnume 拉鍊斜背包.jpg" />
     <Content Include="Assets\images\ProductImages\Totebag\Tone Oilnume 迷你郵差包.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Totebag1.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Totebag2.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Totebag3.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Totebag4.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Totebag5.jpg" />
+    <Content Include="Assets\images\ProductImages\Totebag\Totebag6.jpg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery.simpleGallery.js" />
@@ -453,6 +488,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911280610380_AddData.resx">
       <DependentUpon>201911280610380_AddData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911290125567_AddSliderData.resx">
+      <DependentUpon>201911290125567_AddSliderData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911290223431_AddProductsSectionData.resx">
+      <DependentUpon>201911290223431_AddProductsSectionData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

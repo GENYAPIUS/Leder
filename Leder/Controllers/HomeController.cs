@@ -13,27 +13,13 @@ namespace Leder.Controllers
         HomeContext db = new HomeContext();
         public ActionResult Index()
         {
-            var promoteProductsData = db.promoteProducts.ToList();
-            //List<PromoteProduct> promote = new List<PromoteProduct>
-            //{
-            //    new PromoteProduct{
-            //        SectionId = "Promo section 1-L",                                       
-            //        ProductName = "NewYear",                    
-            //        PhotoUrl = "/Assets/images/HomeImages/img_main_images1.jpg",
-            //        DiscountWord = "15% Off",
-            //        Statement = "For Gift"
-            //    },
-            //    new PromoteProduct{
-            //        SectionId = "Promo section 1-R",                                       
-            //        ProductName = "Xmas",                    
-            //        PhotoUrl = "/Assets/images/HomeImages/img_main_images2.jpg",
-            //        DiscountWord = "15% Off",
-            //        Statement = "For X'mas"
-            //    }
+            ViewData["promoteProductsData"] = db.promoteProducts.ToList();
+            ViewData["SlidersData"] = db.sliders.ToList();
+            ViewData["ProductsSectionData"] = db.productsSections.ToList();
 
-            //};
 
-            return View(promoteProductsData);
+
+            return View();
         }
 
         public ActionResult About()
