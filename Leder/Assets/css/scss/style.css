@@ -1010,6 +1010,10 @@ img {
   margin-top: -10%;
 }
 
+#aa-promo .aa-promo-area .aa-promo-banner:hover h4 a {
+  color: #970001 !important;
+}
+
 #aa-promo .aa-promo-area .aa-promo-banner:hover:before {
   -webkit-transform: scale(2);
   transform: scale(2);
@@ -1046,7 +1050,7 @@ img {
 }
 
 #aa-promo .aa-promo-area .aa-promo-banner .aa-prom-content h4 a {
-  color: #fff !important;
+  color: #fff;
   text-decoration: none;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -1063,6 +1067,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  text-align: center;
 }
 
 #aa-product .aa-product-area {

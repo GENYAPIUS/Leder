@@ -449,16 +449,11 @@
     <Content Include="Views\Shared\_SliderPartial.cshtml" />
     <Content Include="Views\Shared\_PromoteProductsPartial.cshtml" />
     <Content Include="Views\Shared\_ProductsSectionPartial.cshtml" />
-    <Content Include="Views\Shared\_ProductsSection1.cshtml" />
-    <Content Include="Views\Shared\_ProductsSection2.cshtml" />
-    <Content Include="Views\Shared\_ProductsSection3.cshtml" />
-    <Content Include="Views\Shared\_ProductsSection4.cshtml" />
-    <Content Include="Views\Shared\_ProductsSection5.cshtml" />
     <Content Include="Views\Shared\_PopularSectionPartial.cshtml" />
     <Content Include="Views\Shared\_BannerSectionPartial.cshtml" />
     <Content Include="Views\Shared\_BlogPartial.cshtml" />
     <Content Include="Views\Shared\_SubscribePartial.cshtml" />
-    <Content Include="Views\Shared\_ProductSectionsLinq.cshtml" />
+    <Content Include="Views\Shared\_ProductsSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
