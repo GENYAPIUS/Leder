@@ -184,6 +184,14 @@
     <Compile Include="Migrations\201911300500465_InsertData.Designer.cs">
       <DependentUpon>201911300500465_InsertData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911300734220_ProductViewMode.cs" />
+    <Compile Include="Migrations\201911300734220_ProductViewMode.Designer.cs">
+      <DependentUpon>201911300734220_ProductViewMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911300921113_AddPrice.cs" />
+    <Compile Include="Migrations\201911300921113_AddPrice.Designer.cs">
+      <DependentUpon>201911300921113_AddPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -193,6 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\bootstrap.css" />
@@ -420,6 +429,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911300500465_InsertData.resx">
       <DependentUpon>201911300500465_InsertData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911300734220_ProductViewMode.resx">
+      <DependentUpon>201911300734220_ProductViewMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911300921113_AddPrice.resx">
+      <DependentUpon>201911300921113_AddPrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

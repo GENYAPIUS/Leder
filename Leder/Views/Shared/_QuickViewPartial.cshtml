@@ -1,4 +1,5 @@
-﻿@model Product
+﻿@using Leder.ViewModels;
+@model ProductViewModel
 
 @{
     ViewBag.Title = "_QuickViewPartial";
@@ -34,7 +35,7 @@
                         <div class="aa-product-view-content">
                             <h4>@Model.Name</h4>
                             <div class="aa-price-block">
-                                <span class="aa-product-view-price">$34.99</span>
+                                <span class="aa-product-view-price">NT$@Model.Price</span>
                                 <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                             </div>
                             <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h6>
