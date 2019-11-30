@@ -19,6 +19,10 @@ namespace Leder.Models
         {
         }
 
+        //一個DbSet 中包含許多Entity實體資料
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+
     }
 }

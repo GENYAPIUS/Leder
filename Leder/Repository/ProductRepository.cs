@@ -21,10 +21,15 @@ namespace Leder.Repository
             return result;
         }
 
-        public IEnumerable<Product> GetProductInCatagory(string Category)
-        {
-            var result = _db.Products.Where(x => x.Category == Category).AsQueryable();
-            return result;
-        }
+        //public IEnumerable<Product> GetProductInCatagory(string Category)
+        //{
+        //    var result = _db.Products.Where(x => x.CategoryId == Category).AsQueryable();
+        //    return result;
+        //}
+        //public IEnumerable<Product> GetProductInCatagoryByID(int Categoryid)
+        //{
+        //    var result = _db.Products.Where(x => x.CategoryId == Categoryid).AsQueryable();
+        //    return result;
+        //}
     }
 }

@@ -15,34 +15,32 @@ namespace Leder.Controllers
     
         private ProductContext db = new ProductContext();
         private ProductRepository repo;
+        private CategoryRepository categoryRepo;
 
-        //呼叫Repository類別裡面的GetAll方法
-        public ActionResult ListAllProducts()
-        {
-            repo = new ProductRepository(db);
-            return View(repo.GetAll().ToList());
-        }
-
+       
         //預設是側背包
         //呼叫Repository類別裡面的GetProductInCatagory方法
         public ActionResult Index()
         {
             repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetProductInCatagory("Totebag").ToList();
+            var ProductList = repo.GetAll().ToList();
             foreach(var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
-                    Id = i.Id,
+                    Id = i.ProductId,
                     Name = i.Name,
-                    Category = i.Category,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
                     Photo = "Totebag1.jpg"
                 });
                 
             }
+
             return View(productVM);
            
         }
@@ -51,21 +49,24 @@ namespace Leder.Controllers
         public ActionResult Backpack()
         {
             repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetProductInCatagory("Backpack").ToList();
+            var ProductList = repo.GetAll().ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
-                    Id = i.Id,
+                    Id = i.ProductId,
                     Name = i.Name,
-                    Category = i.Category,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
                     Photo = "Backpack1.jpg"
                 });
 
             }
+
             return View(productVM);
 
         }
@@ -74,43 +75,50 @@ namespace Leder.Controllers
         public ActionResult Longclip()
         {
             repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetProductInCatagory("Longclip").ToList();
+            var ProductList = repo.GetAll().ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
-                    Id = i.Id,
+                    Id = i.ProductId,
                     Name = i.Name,
-                    Category = i.Category,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
                     Photo = "Longclip1.jpg"
                 });
 
             }
+
             return View(productVM);
+
         }
 
         //零錢包
         public ActionResult Coinwallet()
         {
             repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetProductInCatagory("Coinwallet").ToList();
+            var ProductList = repo.GetAll().ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
-                    Id = i.Id,
+                    Id = i.ProductId,
                     Name = i.Name,
-                    Category = i.Category,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
                     Photo = "Coinwallet1.jpg"
                 });
 
             }
+
             return View(productVM);
         }
 
@@ -118,28 +126,33 @@ namespace Leder.Controllers
         public ActionResult Namecard()
         {
             repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetProductInCatagory("Namecard").ToList();
+            var ProductList = repo.GetAll().ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
-                    Id = i.Id,
+                    Id = i.ProductId,
                     Name = i.Name,
-                    Category = i.Category,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
                     Photo = "Namecard1.jpg"
                 });
 
             }
+
             return View(productVM);
         }
 
         public ActionResult ProductDetail(int? Id)
         {
             repo = new ProductRepository(db);
-            var item = repo.GetAll().FirstOrDefault((x) => x.Id == Id);
+            categoryRepo = new CategoryRepository(db);
+
+            var item = repo.GetAll().FirstOrDefault((x) => x.ProductId == Id);
             if (item == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -148,9 +161,9 @@ namespace Leder.Controllers
             //我是用FirstOrDefault找出唯一的一組，如果這邊寫成List<ProductViewModel>會報錯
             ProductViewModel productVM = new ProductViewModel() 
             {
-                Id = item.Id,
+                Id = item.ProductId,
                 Name = item.Name,
-                Category = item.Category,
+                Category = categoryRepo.GetCategoryNameById(item.CategoryId),
                 Price = (int)item.Price,
                 Photo = item.Photo
             };
@@ -158,9 +171,6 @@ namespace Leder.Controllers
             return View(productVM);
 
         }
-
-
-
 
     }
 }
