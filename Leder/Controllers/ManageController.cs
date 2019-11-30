@@ -13,6 +13,7 @@ namespace Leder.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -332,8 +333,44 @@ namespace Leder.Controllers
 
             base.Dispose(disposing);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUserDetail()
+        {
+            UserDetail userDetail = db.UserDetail.Find(7);
+            return View(userDetail);
+        
+        }
+            public ActionResult EditUserDetail([Bind(Include = "Address,ShipAddress,BirthDay,IdentityCard")]UserDetail userDetail)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                User.Identity.GetUserName();
+                
+                db.Entry(userDetail).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(userDetail);
+            //var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+            //if (result.Succeeded)
+            //{
+            //    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            //    if (user != null)
+            //    {
+            //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+            //    }
+            //    return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
+            //}
+            //AddErrors(result);
+        }
 
-#region Helper
+            // 如果執行到這裡，發生某項失敗，則重新顯示表單
+            //return View(userde);
+        
+
+        #region Helper
         // 新增外部登入時用來當做 XSRF 保護
         private const string XsrfKey = "XsrfId";
 

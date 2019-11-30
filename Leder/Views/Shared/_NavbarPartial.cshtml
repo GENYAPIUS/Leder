@@ -1,4 +1,5 @@
-﻿<!-- Start header section -->
+﻿@using Microsoft.AspNet.Identity
+<!-- Start header section -->
 <header id="aa-header">
     <!-- start header top  -->
     <div class="aa-header-top">
@@ -10,13 +11,30 @@
                         <!-- / header top right -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li>@Html.ActionLink("MyAccount","Index","Manage")</a></li>
+
                                 <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                                 <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
                                 <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
-                                <li>@Html.ActionLink("Register","Register","Account")</li>
+                                @if (Request.IsAuthenticated)
 
-                                <li>@Html.ActionLink("Login", "Login", "Account")</a></li>
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <li>
+                                            @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                        </li>
+                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                                    }
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+
+                                }
+
                             </ul>
                         </div>
                     </div>
