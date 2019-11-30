@@ -177,14 +177,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911300522425_InitialCreate.cs" />
+    <Compile Include="Migrations\201911300522425_InitialCreate.Designer.cs">
+      <DependentUpon>201911300522425_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911300526184_001.cs" />
+    <Compile Include="Migrations\201911300526184_001.Designer.cs">
+      <DependentUpon>201911300526184_001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LederContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\LederContext-20191130130625.mdf" />
+    <Content Include="App_Data\LederContext-20191130130625_log.ldf">
+      <DependentUpon>LederContext-20191130130625.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\css\bootstrap.css" />
     <Content Include="Assets\css\font-awesome.css" />
     <Content Include="Assets\css\jquery.simpleLens.css" />
@@ -193,49 +207,31 @@
     <Content Include="Assets\css\scss\style.css" />
     <Content Include="Assets\css\sequence-theme.modern-slide-in.css" />
     <Content Include="Assets\css\slick.css" />
-    <Content Include="Assets\images\HomeImages\bag1.jpg" />
-    <Content Include="Assets\images\HomeImages\bag2.jpg" />
-    <Content Include="Assets\images\HomeImages\bag3.jpg" />
-    <Content Include="Assets\images\HomeImages\bag4.jpg" />
-    <Content Include="Assets\images\HomeImages\blog1.jpg" />
-    <Content Include="Assets\images\HomeImages\blog2.jpg" />
-    <Content Include="Assets\images\HomeImages\blog3.jpg" />
-    <Content Include="Assets\images\HomeImages\ig1.jpg" />
-    <Content Include="Assets\images\HomeImages\ig10.jpg" />
-    <Content Include="Assets\images\HomeImages\ig2.jpg" />
-    <Content Include="Assets\images\HomeImages\ig3.jpg" />
-    <Content Include="Assets\images\HomeImages\ig4.jpg" />
-    <Content Include="Assets\images\HomeImages\ig5.jpg" />
-    <Content Include="Assets\images\HomeImages\ig6.jpg" />
-    <Content Include="Assets\images\HomeImages\ig7.jpg" />
-    <Content Include="Assets\images\HomeImages\ig8.jpg" />
-    <Content Include="Assets\images\HomeImages\ig9.jpg" />
-    <Content Include="Assets\images\HomeImages\img_main_images1.jpg" />
-    <Content Include="Assets\images\HomeImages\img_main_images2.jpg" />
-    <Content Include="Assets\images\HomeImages\pickup2left1.jpg" />
-    <Content Include="Assets\images\HomeImages\pickup2left2.jpg" />
-    <Content Include="Assets\images\HomeImages\pickup2left3.jpg" />
-    <Content Include="Assets\images\HomeImages\pickup2right1.jpg" />
-    <Content Include="Assets\images\HomeImages\pickupleft1.jpg" />
-    <Content Include="Assets\images\HomeImages\pickupright1.jpg" />
-    <Content Include="Assets\images\HomeImages\pickupright2.jpg" />
-    <Content Include="Assets\images\HomeImages\pickupright3.jpg" />
-    <Content Include="Assets\images\HomeImages\puc2-1.jpg" />
-    <Content Include="Assets\images\HomeImages\puc2-2.jpg" />
-    <Content Include="Assets\images\HomeImages\puc2-3.jpg" />
-    <Content Include="Assets\images\HomeImages\puc2-4.jpg" />
-    <Content Include="Assets\images\HomeImages\puc2-5.jpg" />
-    <Content Include="Assets\images\HomeImages\top_picture1.jpg" />
-    <Content Include="Assets\images\HomeImages\top_picture2.jpg" />
-    <Content Include="Assets\images\HomeImages\top_picture3.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets1.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets2.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets3.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets4.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets5.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets6.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets7.jpg" />
-    <Content Include="Assets\images\HomeImages\Wallets8.jpg" />
+    <Content Include="Assets\images\HomeImages\Backpack1.jpg" />
+    <Content Include="Assets\images\HomeImages\Backpack2.jpg" />
+    <Content Include="Assets\images\HomeImages\Coinwallet1.jpg" />
+    <Content Include="Assets\images\HomeImages\Coinwallet2.jpg" />
+    <Content Include="Assets\images\HomeImages\Coinwallet3.jpg" />
+    <Content Include="Assets\images\HomeImages\Coinwallet4.jpg" />
+    <Content Include="Assets\images\HomeImages\Coinwallet5.jpg" />
+    <Content Include="Assets\images\HomeImages\Coinwallet6.jpg" />
+    <Content Include="Assets\images\HomeImages\Longclip1.jpg" />
+    <Content Include="Assets\images\HomeImages\Longclip2.jpg" />
+    <Content Include="Assets\images\HomeImages\Longclip3.jpg" />
+    <Content Include="Assets\images\HomeImages\Longclip4.jpg" />
+    <Content Include="Assets\images\HomeImages\Longclip5.jpg" />
+    <Content Include="Assets\images\HomeImages\Namecard1.jpg" />
+    <Content Include="Assets\images\HomeImages\Namecard2.jpg" />
+    <Content Include="Assets\images\HomeImages\Namecard3.jpg" />
+    <Content Include="Assets\images\HomeImages\Namecard4.jpg" />
+    <Content Include="Assets\images\HomeImages\Namecard5.jpg" />
+    <Content Include="Assets\images\HomeImages\Namecard6.jpg" />
+    <Content Include="Assets\images\HomeImages\Totebag1.jpg" />
+    <Content Include="Assets\images\HomeImages\Totebag2.jpg" />
+    <Content Include="Assets\images\HomeImages\Totebag3.jpg" />
+    <Content Include="Assets\images\HomeImages\Totebag4.jpg" />
+    <Content Include="Assets\images\HomeImages\Totebag5.jpg" />
+    <Content Include="Assets\images\HomeImages\Totebag6.jpg" />
     <Content Include="Assets\images\ProductImages\Backpack\Tone Oilnume 中型後背包.jpg" />
     <Content Include="Assets\images\ProductImages\Backpack\Tone Oilnume 後背包.jpg" />
     <Content Include="Assets\images\ProductImages\Coinwallet\Belchord零錢包.jpg" />
@@ -389,7 +385,12 @@
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\201911300522425_InitialCreate.resx">
+      <DependentUpon>201911300522425_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911300526184_001.resx">
+      <DependentUpon>201911300526184_001.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
