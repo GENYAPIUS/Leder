@@ -27,7 +27,7 @@ namespace Leder.Models
        
     }
    
-    public class UserDetail
+    public class UserDetail //使用者詳細資料的欄位，正規化還沒開。
     {
 
         [Key]
@@ -46,7 +46,7 @@ namespace Leder.Models
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
-        public string Email { get; set; }
+        public string Email { get; set; } //跟User裡面的UserName同名且絕不重複，拿來當作索引鍵。
 
 
     }

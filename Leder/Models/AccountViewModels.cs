@@ -82,7 +82,7 @@ namespace Leder.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel //註冊時的ViewModel，我加了其他必備欄位。
     {
         [Required]
         [EmailAddress]

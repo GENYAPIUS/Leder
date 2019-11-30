@@ -152,19 +152,19 @@ namespace Leder.Controllers
             var db = new ApplicationDbContext();//實體化存取資料庫的EntityframeWork
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email,PhoneNumber=model.CellPhone };
-                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress ,Email=model.Email};
+                var user = new User { UserName = model.Email, Email = model.Email,PhoneNumber=model.CellPhone };//拿來接User的資料
+                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress ,Email=model.Email};//拿來接UserDetail的資料
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    db.UserDetail.Add(userdetail);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false); //User經由Identity寫入資料庫
+                    db.UserDetail.Add(userdetail);//UserDetail經由EF寫入資料庫
                     try
                     {
                         db.SaveChanges();
                     }
-                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) //當初為了除錯而增加的，日後維護也方便
                     {
                         Exception raise = dbEx;
                         foreach (var validationErrors in dbEx.EntityValidationErrors)
@@ -180,7 +180,7 @@ namespace Leder.Controllers
                             }
                         }
                         throw raise;
-                    }//為了偵錯而增加
+                    }
 
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

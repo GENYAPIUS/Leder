@@ -336,33 +336,34 @@ namespace Leder.Controllers
             base.Dispose(disposing);
         }
         
-        public ActionResult EditUserDetail()
+        public ActionResult EditUserDetail() //自行增加的ActionResult
         {
-            string username = User.Identity.GetUserName();
-            var userdetail=  db.UserDetail.FirstOrDefault(x=>x.Email == username);
+            string username = User.Identity.GetUserName(); //使用Identity抓取登入現在頁面的使用者名稱(Email)
+            var userdetail=  db.UserDetail.FirstOrDefault(x=>x.Email == username); //用Email的名稱抓取UserDetail。
 
-            int userid = userdetail.UserDetailID;
+            int userid = userdetail.UserDetailID; //指派userid抓到的ID值
 
-            var userdetailinfo = db.UserDetail.Find(userid);
-            return View(userdetailinfo);
+            var userdetailinfo = db.UserDetail.Find(userid);//經由EF撈到該ID值的ROW資料
+            return View(userdetailinfo);//傳入View方便修改
        
         
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         
-        public ActionResult EditUserDetail([Bind(Include = "UserDetailID,Address,ShipAddress,BirthDay,IdentityCard,Email")]
+        public ActionResult EditUserDetail([Bind(Include = "UserDetailID,Address,ShipAddress,BirthDay,IdentityCard,Email")]//用Bind使模型繫結在這六個欄位上
             UserDetail userDetail)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//如果改動成功
             {
 
-                db.Entry(userDetail).State = EntityState.Modified;
+                db.Entry(userDetail).State = EntityState.Modified;//告訴EF狀態為改動成功
                 
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.SaveChanges();//儲存改動
+                return RedirectToAction("Index");//回到管理帳號主頁面(Manager,Index)
             }
             return View(userDetail);
+            //不要理下面註解。。。
             //var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
             //if (result.Succeeded)
             //{
