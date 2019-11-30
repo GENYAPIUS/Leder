@@ -176,13 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911271019082_add.cs" />
-    <Compile Include="Migrations\201911271019082_add.Designer.cs">
-      <DependentUpon>201911271019082_add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280157238_add2.cs" />
-    <Compile Include="Migrations\201911280157238_add2.Designer.cs">
-      <DependentUpon>201911280157238_add2.cs</DependentUpon>
+    <Compile Include="Migrations\201911300736324_InitialCreate.cs" />
+    <Compile Include="Migrations\201911300736324_InitialCreate.Designer.cs">
+      <DependentUpon>201911300736324_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -410,11 +406,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911271019082_add.resx">
-      <DependentUpon>201911271019082_add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280157238_add2.resx">
-      <DependentUpon>201911280157238_add2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911300736324_InitialCreate.resx">
+      <DependentUpon>201911300736324_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Leder.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace Leder.Controllers
 {
@@ -333,22 +335,30 @@ namespace Leder.Controllers
 
             base.Dispose(disposing);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult EditUserDetail()
         {
-            UserDetail userDetail = db.UserDetail.Find(7);
-            return View(userDetail);
+            string username = User.Identity.GetUserName();
+            var userdetail=  db.UserDetail.FirstOrDefault(x=>x.Email == username);
+
+            int userid = userdetail.UserDetailID;
+
+            var userdetailinfo = db.UserDetail.Find(userid);
+            return View(userdetailinfo);
+       
         
         }
-            public ActionResult EditUserDetail([Bind(Include = "Address,ShipAddress,BirthDay,IdentityCard")]UserDetail userDetail)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        
+        public ActionResult EditUserDetail([Bind(Include = "UserDetailID,Address,ShipAddress,BirthDay,IdentityCard,Email")]
+            UserDetail userDetail)
         {
-           
             if (ModelState.IsValid)
             {
-                User.Identity.GetUserName();
+
+                db.Entry(userDetail).State = EntityState.Modified;
                 
-                db.Entry(userDetail).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
