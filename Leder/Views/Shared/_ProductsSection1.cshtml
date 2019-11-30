@@ -2,7 +2,7 @@
 
 @{
     var productsSectionData = (List<ProductsSectionViewModel>)ViewData["ProductsSectionData"];
-    var totebag = productsSectionData.Where(x => x.Category == "Totebag");
+    var totebag = productsSectionData.Where(x => x.Category == "Totebag").Take(4);
 }
 
 

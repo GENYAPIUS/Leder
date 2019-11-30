@@ -1,0 +1,56 @@
+﻿@using Leder.ViewModels;
+
+
+@{
+    var productsSectionData = (List<ProductsSectionViewModel>)ViewData["ProductsSectionData"];
+    var tag = new string[] { "Totebag", "Backpack", "Longclip", "Coinwallet", "Namecard" };
+    var classtag = new string[] { "tab-pane fade in active", "tab-pane fade", "tab-pane fade", "tab-pane fade", "tab-pane fade" };
+}
+
+
+
+@for (int i = 0; i < 5; i++)
+{
+    var PdData = productsSectionData.Where(x => x.Category == tag[i]).Take(4);   
+
+    <!-- Start product category -->
+    <div class="@classtag[i]" id="@tag[i]">
+        <ul class="aa-product-catg">
+            @foreach (var item in PdData)
+            {
+                <!-- start single product item -->
+                <li>
+                    <figure>
+                        <a class="aa-product-img" href="@item.ProductPage">
+                            <img class="img-responsive" src="@item.Photo" alt="@item.Name">
+                        </a>
+                        <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                        <figcaption>
+                            <h4 class="aa-product-title"><a href="#">@item.Name</a></h4>
+                            <span class="aa-product-price ">$@item.Price</span><span class="aa-product-price"><del>$@item.Price</del></span>
+                        </figcaption>
+                    </figure>
+                    <div class="aa-product-hvr-content">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                            <span class="fa fa-heart-o"></span>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Compare">
+                            <span class="fa fa-exchange"></span>
+                        </a>
+                        <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal"
+                           data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                    </div>
+                    <!-- product badge -->
+                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                    @*<span class="aa-badge aa-hot" href="#">HOT!</span>
+                        <span class="aa-badge aa-sold-out" href="#">Sold Out!</span>*@
+                </li>
+                <!-- / start single product item -->
+            }
+        </ul>
+        <a class="aa-browse-btn" href="#">
+            Browse all Product <span class="fa fa-long-arrow-right"></span>
+        </a>
+    </div>
+    <!-- / product category  -->
+}

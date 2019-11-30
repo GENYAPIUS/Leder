@@ -458,6 +458,7 @@
     <Content Include="Views\Shared\_BannerSectionPartial.cshtml" />
     <Content Include="Views\Shared\_BlogPartial.cshtml" />
     <Content Include="Views\Shared\_SubscribePartial.cshtml" />
+    <Content Include="Views\Shared\_ProductSectionsLinq.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
