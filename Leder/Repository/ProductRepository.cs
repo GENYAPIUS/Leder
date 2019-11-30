@@ -15,9 +15,12 @@ namespace Leder.Repository
             _db = productContext;
         }
 
-        public IEnumerable<Product> GetAll()
+  
+
+        //只抓特定類別的值，Namecard頁面只會秀出Namecard類別的商品
+        public IEnumerable<Product> GetProductInCatagory(int CategoryId)
         {
-            var result = _db.Products.AsQueryable();
+            var result = _db.Products.Where(x => x.CategoryId == CategoryId).AsQueryable();
             return result;
         }
 
@@ -26,9 +29,10 @@ namespace Leder.Repository
         //    var result = _db.Products.Where(x => x.CategoryId == Category).AsQueryable();
         //    return result;
         //}
-        //public IEnumerable<Product> GetProductInCatagoryByID(int Categoryid)
+
+        //public IEnumerable<Product> GetAll()
         //{
-        //    var result = _db.Products.Where(x => x.CategoryId == Categoryid).AsQueryable();
+        //    var result = _db.Products.AsQueryable();
         //    return result;
         //}
     }

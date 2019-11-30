@@ -26,8 +26,9 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetAll().ToList();
-            foreach(var i in ProductList)
+            //var ProductList = repo.GetAll().ToList(); 用GetAll()會抓到全部25個產品秀在頁面上
+            var ProductList = repo.GetProductInCatagory(1).ToList();
+            foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
@@ -52,7 +53,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetAll().ToList();
+            var ProductList = repo.GetProductInCatagory(2).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
@@ -78,7 +79,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetAll().ToList();
+            var ProductList = repo.GetProductInCatagory(3).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
@@ -104,7 +105,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetAll().ToList();
+            var ProductList = repo.GetProductInCatagory(4).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
@@ -129,7 +130,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = repo.GetAll().ToList();
+            var ProductList = repo.GetProductInCatagory(5).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel

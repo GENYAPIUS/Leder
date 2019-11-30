@@ -46,7 +46,7 @@ namespace Leder.Migrations
                 new Product { ProductId = 18, Name = "Diario 雙釦式零錢包", Price = 2757, CategoryId = 4 },
                 new Product { ProductId = 19, Name = "Tone Oilnume 蛙嘴式迷你零錢包", Price = 2573, CategoryId = 4 },
 
-                new Product { ProductId = 20, Name = "BrProductIdle 名片夾", Price = 5113, CategoryId = 5 },
+                new Product { ProductId = 20, Name = "Bridle 名片夾", Price = 5113, CategoryId = 5 },
                 new Product { ProductId = 21, Name = "Clarte 信封名片夾", Price = 3492, CategoryId = 5 },
                 new Product { ProductId = 22, Name = "Cordovan 馬臀皮名片夾", Price = 7719, CategoryId = 5 },
                 new Product { ProductId = 23, Name = "Cordovan 馬臀皮票卡套", Price = 4962, CategoryId = 5 },
