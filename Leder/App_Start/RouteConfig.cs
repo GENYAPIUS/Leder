@@ -15,7 +15,7 @@ namespace Leder
             //購物車
             routes.MapRoute(
                 name: "ShoppingCart",
-                url: "Index",
+                url: "ShoppingCart",
                 defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional }
             );
             //結帳頁面
