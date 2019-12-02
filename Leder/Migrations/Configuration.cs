@@ -6,7 +6,7 @@ namespace Leder.Migrations
     using System.Linq;
     using Leder.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Leder.Models.ProductContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ProductContext>
     {
         public Configuration()
         {
@@ -20,7 +20,7 @@ namespace Leder.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-
+            //只修改資料庫內容，那就打update-database指令就好
             context.Products.AddOrUpdate(
                x => x.ProductId,
                 new Product { ProductId = 1, Name = "Diario 迷你隨行斜肩袋", Price = 12856, CategoryId = 1 },
