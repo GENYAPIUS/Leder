@@ -22,15 +22,16 @@ namespace Leder.Controllers
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList());
         }
-        //取得目前購物車頁面
-        public ActionResult GetCart()
-        {
-            return PartialView("_CartPartial");
-        }
         public ActionResult AddToCart(int id)
         {
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             currentCart.AddProduct(id);
+            return PartialView("_CartPartial");
+        }
+        public ActionResult RemoveFromCart(int id)
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.RemoveProduct(id);
             return PartialView("_CartPartial");
         }
 

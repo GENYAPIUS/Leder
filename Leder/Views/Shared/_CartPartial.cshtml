@@ -20,7 +20,7 @@
                         <h4><a href="#">@cartItem.Name</a></h4>
                         <p>@cartItem.Quantity x $@cartItem.Price</p>
                     </div>
-                    <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                    <a class="aa-remove-product"><span class="fa fa-times" onclick="RemoveFromCart('@cartItem.Id')"></span></a>
                 </li>
                 }
                 <li>

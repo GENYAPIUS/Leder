@@ -85,6 +85,25 @@ namespace Leder.Models.Cart
             return true;
         }
 
+        //移除一筆Product，使用ProductId
+        public bool RemoveProduct(int ProductId)
+        {
+            var findItem = this.cartItems.Where(s => s.Id == ProductId)
+                                         .Select(s => s)
+                                         .FirstOrDefault();
+
+            //判斷相同Id的CartItem是否已經存在購物車內
+            if (findItem == default(CartItem))
+            {
+                //不存在購物車不做任何動作
+            }
+            else
+            {   //存在購物車內，將商品移除
+                this.cartItems.Remove(findItem);
+            }
+            return true;
+        }
+
         public IEnumerator<CartItem> GetEnumerator()
         {
             return ((IEnumerable<CartItem>)cartItems).GetEnumerator();

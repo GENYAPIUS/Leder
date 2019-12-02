@@ -395,6 +395,7 @@
     <Content Include="Views\Products1\Edit.cshtml" />
     <Content Include="Views\Products1\Index.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
+    <Content Include="Views\Shared\ShoppingCartFunction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201911300522425_InitialCreate.resx">
