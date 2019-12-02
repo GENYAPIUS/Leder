@@ -1,7 +1,8 @@
-﻿
+﻿@model IEnumerable<Leder.Models.Cart.CartItem>
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_HomePageLayout.cshtml";
+    var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
 
 <body>
@@ -271,36 +272,23 @@
                                             <table class="table table-responsive">
                                                 <thead>
                                                     <tr>
-                                                        <th>Product</th>
-                                                        <th>Total</th>
+                                                        <th>@Html.DisplayNameFor(m=>m.Name)</th>
+                                                        <th>@Html.DisplayNameFor(m => m.Amount)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>T-Shirt <strong> x  1</strong></td>
-                                                        <td>$150</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Polo T-Shirt <strong> x  1</strong></td>
-                                                        <td>$250</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Shoes <strong> x  1</strong></td>
-                                                        <td>$350</td>
-                                                    </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(m=>item.Name)<strong>  x  @Html.DisplayFor(m=>item.Quantity)</strong></td>
+                                                            <td>$@Html.DisplayFor(m=>item.Amount)</td>
+                                                        </tr>
+                                                    }
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Subtotal</th>
-                                                        <td>$750</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tax</th>
-                                                        <td>$35</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Total</th>
-                                                        <td>$785</td>
+                                                        <th>總價</th>
+                                                        <td>@String.Format(currentCart.TotalAmount.ToString())</td>
                                                     </tr>
                                                 </tfoot>
                                             </table>

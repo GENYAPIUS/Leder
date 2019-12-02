@@ -13,12 +13,14 @@ namespace Leder.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            return View(db.Products.ToList()); 
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            return View(currentCart.ToList()); 
         }
 
         public ActionResult Checkout()
         {
-            return View();
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            return View(currentCart.ToList());
         }
         //取得目前購物車頁面
         public ActionResult GetCart()

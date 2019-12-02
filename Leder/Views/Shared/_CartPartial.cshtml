@@ -9,9 +9,11 @@
         <span class="aa-cart-notify">@String.Format("{0}",currentCart.Count)</span>
     </a>
     <div class="aa-cartbox-summary">
-        <ul>
-            @foreach (var cartItem in currentCart)
-            {
+        @if (currentCart.Count > 0)
+        {
+            <ul>
+                @foreach (var cartItem in currentCart)
+                {
                 <li>
                     <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/@cartItem.Photo" alt="img"></a>
                     <div class="aa-cartbox-info">
@@ -20,17 +22,33 @@
                     </div>
                     <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                 </li>
-            }
-            <li>
-                <span class="aa-cartbox-total-title">
-                    Total
-                </span>
-                <span class="aa-cartbox-total-price">
-                    @String.Format("{0}",currentCart.TotalAmount)
-                </span>
-            </li>
-        </ul>
-        <a class="aa-cartbox-checkout aa-primary-btn" href="~/Checkout">還敢買阿!冰鳥</a>
+                }
+                <li>
+                    <span class="aa-cartbox-total-title">
+                        Total
+                    </span>
+                    <span class="aa-cartbox-total-price">
+                        @String.Format("{0}", currentCart.TotalAmount)
+                    </span>
+                </li>
+            </ul>
+            <a class="aa-cartbox-checkout aa-primary-btn" href="~/Checkout">前往結帳</a>
+        }
+        else
+        {
+            <ul>
+                <li>
+                    <span class="aa-cartbox-total-title">
+                        目前還沒選擇任何商品
+                    </span>
+                </li>
+                <li>
+                    <a class="aa-cartbox-checkout aa-primary-btn" href="~/Products1/Index">前往購物頁面</a>
+                </li>
+            </ul>
+
+        }
+
     </div>
 </div>
 
