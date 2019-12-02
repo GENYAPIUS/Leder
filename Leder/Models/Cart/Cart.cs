@@ -104,6 +104,13 @@ namespace Leder.Models.Cart
             return true;
         }
 
+        //清空購物車
+        public bool ClearCart()
+        {
+            this.cartItems.Clear();
+            return true;
+        }
+
         public IEnumerator<CartItem> GetEnumerator()
         {
             return ((IEnumerable<CartItem>)cartItems).GetEnumerator();
