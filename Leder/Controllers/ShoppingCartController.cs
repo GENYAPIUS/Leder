@@ -20,7 +20,17 @@ namespace Leder.Controllers
         {
             return View();
         }
-
+        //取得目前購物車頁面
+        public ActionResult GetCart()
+        {
+            return PartialView("_CartPartial");
+        }
+        public ActionResult AddToCart(int id)
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.AddProduct(id);
+            return PartialView("_CartPartial");
+        }
 
 
 

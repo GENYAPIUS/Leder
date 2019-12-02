@@ -1,34 +1,32 @@
-﻿
+﻿@{ 
+    //取得當前購物車所有內容
+    var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
+}
 <div class="aa-cartbox">
     <a class="aa-cart-link" href="~/ShoppingCart">
         <span class="fa fa-shopping-basket"></span>
         <span class="aa-cart-title">SHOPPING CART</span>
-        <span class="aa-cart-notify">2</span>
+        <span class="aa-cart-notify">@String.Format("{0}",currentCart.Count)</span>
     </a>
     <div class="aa-cartbox-summary">
         <ul>
-            <li>
-                <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/ig2.jpg" alt="img"></a>
-                <div class="aa-cartbox-info">
-                    <h4><a href="#">Product Name</a></h4>
-                    <p>1 x $250</p>
-                </div>
-                <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-            </li>
-            <li>
-                <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/ig3.jpg" alt="img"></a>
-                <div class="aa-cartbox-info">
-                    <h4><a href="#">Product Name</a></h4>
-                    <p>1 x $250</p>
-                </div>
-                <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-            </li>
+            @foreach (var cartItem in currentCart)
+            {
+                <li>
+                    <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/@cartItem.Photo" alt="img"></a>
+                    <div class="aa-cartbox-info">
+                        <h4><a href="#">@cartItem.Name</a></h4>
+                        <p>@cartItem.Quantity x $@cartItem.Price</p>
+                    </div>
+                    <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                </li>
+            }
             <li>
                 <span class="aa-cartbox-total-title">
                     Total
                 </span>
                 <span class="aa-cartbox-total-price">
-                    $500
+                    @String.Format("{0}",currentCart.TotalAmount)
                 </span>
             </li>
         </ul>

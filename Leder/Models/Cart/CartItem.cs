@@ -15,6 +15,7 @@ namespace Leder.Models.Cart
         public decimal Price { get; set; }//商品購買價格
         public int Quantity { get; set; }//商品購買數量
         //商品小計
+        public string Photo { get; set; }
         public decimal Amount
         {
             get { return this.Price * this.Quantity; }

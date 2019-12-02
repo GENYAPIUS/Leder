@@ -12,7 +12,7 @@
                             <ul class="aa-head-top-nav-right">
                                 <li><a href="account.html">My Account</a></li>
                                 <li class="hidden-xs"><a href="#">Wishlist</a></li>
-                                <li class="hidden-xs"><a href="~/Index">My Cart</a></li>
+                                <li class="hidden-xs"><a href="~/ShoppingCart">My Cart</a></li>
                                 <li class="hidden-xs"><a href="~/Checkout">Checkout</a></li>
                                 <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
                             </ul>
@@ -41,7 +41,9 @@
                         </div>
                         <!-- / logo  -->
                         <!-- cart box -->
-                        @Html.Partial("_CartPartial")
+                        <div id="CartLayout">
+                            @Html.Partial("_CartPartial")
+                        </div>
                         <!--/ cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
