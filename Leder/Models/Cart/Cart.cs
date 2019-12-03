@@ -30,6 +30,7 @@ namespace Leder.Models.Cart
         {
             get 
             {
+                _totalAmount = 0.0m;
                 foreach(var cartItem in this.cartItems)
                 {
                     _totalAmount = _totalAmount + cartItem.Amount;
