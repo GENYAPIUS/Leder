@@ -179,40 +179,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911270702051_InitialSeedData.cs" />
-    <Compile Include="Migrations\201911270702051_InitialSeedData.Designer.cs">
-      <DependentUpon>201911270702051_InitialSeedData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911270733547_InitialSeedData1.cs" />
-    <Compile Include="Migrations\201911270733547_InitialSeedData1.Designer.cs">
-      <DependentUpon>201911270733547_InitialSeedData1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280342570_AddStringArray.cs" />
-    <Compile Include="Migrations\201911280342570_AddStringArray.Designer.cs">
-      <DependentUpon>201911280342570_AddStringArray.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280358407_EditViewModel.cs" />
-    <Compile Include="Migrations\201911280358407_EditViewModel.Designer.cs">
-      <DependentUpon>201911280358407_EditViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280610380_AddData.cs" />
-    <Compile Include="Migrations\201911280610380_AddData.Designer.cs">
-      <DependentUpon>201911280610380_AddData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911290125567_AddSliderData.cs" />
-    <Compile Include="Migrations\201911290125567_AddSliderData.Designer.cs">
-      <DependentUpon>201911290125567_AddSliderData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911290223431_AddProductsSectionData.cs" />
-    <Compile Include="Migrations\201911290223431_AddProductsSectionData.Designer.cs">
-      <DependentUpon>201911290223431_AddProductsSectionData.cs</DependentUpon>
-    <Compile Include="Migrations\201911300736324_InitialCreate.cs" />
-    <Compile Include="Migrations\201911300736324_InitialCreate.Designer.cs">
-      <DependentUpon>201911300736324_InitialCreate.cs</DependentUpon>
-    <Compile Include="Migrations\201911301241143_InitialCreate.cs" />
-    <Compile Include="Migrations\201911301241143_InitialCreate.Designer.cs">
-      <DependentUpon>201911301241143_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -461,33 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911270702051_InitialSeedData.resx">
-      <DependentUpon>201911270702051_InitialSeedData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911270733547_InitialSeedData1.resx">
-      <DependentUpon>201911270733547_InitialSeedData1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280342570_AddStringArray.resx">
-      <DependentUpon>201911280342570_AddStringArray.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280358407_EditViewModel.resx">
-      <DependentUpon>201911280358407_EditViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280610380_AddData.resx">
-      <DependentUpon>201911280610380_AddData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911290125567_AddSliderData.resx">
-      <DependentUpon>201911290125567_AddSliderData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911290223431_AddProductsSectionData.resx">
-      <DependentUpon>201911290223431_AddProductsSectionData.cs</DependentUpon>
-    <EmbeddedResource Include="Migrations\201911300736324_InitialCreate.resx">
-      <DependentUpon>201911300736324_InitialCreate.cs</DependentUpon>
-    <EmbeddedResource Include="Migrations\201911301241143_InitialCreate.resx">
-      <DependentUpon>201911301241143_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

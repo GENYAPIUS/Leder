@@ -100,7 +100,7 @@ namespace Leder.Controllers
 
         //零錢包
         public ActionResult Coinwallet()
-        {
+        { 
             repo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
