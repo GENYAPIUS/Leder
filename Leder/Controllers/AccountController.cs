@@ -149,26 +149,53 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            var db = new ApplicationDbContext();//實體化存取資料庫的EntityframeWork
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email,PhoneNumber=model.CellPhone };//拿來接User的資料
+                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress ,Email=model.Email};//拿來接UserDetail的資料
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                    // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
-                    // 傳送包含此連結的電子郵件
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false); //User經由Identity寫入資料庫
+                    db.UserDetail.Add(userdetail);//UserDetail經由EF寫入資料庫
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) //當初為了除錯而增加的，日後維護也方便
+                    {
+                        Exception raise = dbEx;
+                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                string message = string.Format("{0}:{1}",
+                                    validationErrors.Entry.Entity.ToString(),
+                                    validationError.ErrorMessage);
+                                // raise a new exception nesting
+                                // the current instance as InnerException
+                                raise = new InvalidOperationException(message, raise);
+                            }
+                        }
+                        throw raise;
+                    }
+
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 AddErrors(result);
             }
 
-            // 如果執行到這裡，發生某項失敗，則重新顯示表單
+            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -354,6 +381,8 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
+            var db = new ApplicationDbContext();
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -367,16 +396,23 @@ namespace Leder.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
+                var userdetail = new UserDetail { Address = model.Address, Email = model.Email, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    db.UserDetail.Add(userdetail);
+                    db.SaveChanges();
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                       
                         return RedirectToLocal(returnUrl);
+                       
+
                     }
+                  
                 }
                 AddErrors(result);
             }

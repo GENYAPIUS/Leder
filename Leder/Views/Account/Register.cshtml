@@ -1,41 +1,89 @@
 ﻿@model Leder.Models.RegisterViewModel
 @{
-    ViewBag.Title = "註冊";
+    ViewBag.Title = "會員註冊";
+    Layout = "~/Views/Shared/_HomePageLayout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 style="text-align:center">@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>建立新帳戶。</h4>
+    <h4 style="text-align:center">美好的購物經驗就此開始</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="註冊" />
+        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShipAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.ShipAddress, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label"})
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control",@placeholder="(例):1980-01-01" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CellPhone, new { @class = "col-md-2 control-label"})
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control",@placeholder="(例):09XX-XXX-XXX"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.IdentityCard, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.IdentityCard, new { @class = "form-control",@placeholder="(例):A123456789"})
+        </div>
+    </div>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="btn_register" class="btn btn-default" value="Register" />
+            <p>
+                @Html.ActionLink("登入", "Login",new { @class = "btn"})
+            </p>
+        </div>
+    </div>
+   
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+@section topCSS{
+    <style>
+        .validation-summary-errors {
+            text-align: center;
+        }
+
+        #btn_register {
+            color: antiquewhite;
+            background-color: rgb(151,0,1);
+        }
+    </style>
 }

@@ -205,6 +205,9 @@
     <Compile Include="Migrations\201911290223431_AddProductsSectionData.cs" />
     <Compile Include="Migrations\201911290223431_AddProductsSectionData.Designer.cs">
       <DependentUpon>201911290223431_AddProductsSectionData.cs</DependentUpon>
+    <Compile Include="Migrations\201911300736324_InitialCreate.cs" />
+    <Compile Include="Migrations\201911300736324_InitialCreate.Designer.cs">
+      <DependentUpon>201911300736324_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -454,6 +457,7 @@
     <Content Include="Views\Shared\_BlogPartial.cshtml" />
     <Content Include="Views\Shared\_SubscribePartial.cshtml" />
     <Content Include="Views\Shared\_ProductsSection.cshtml" />
+    <Content Include="Views\Manage\EditUserDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -490,6 +494,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911290223431_AddProductsSectionData.resx">
       <DependentUpon>201911290223431_AddProductsSectionData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911300736324_InitialCreate.resx">
+      <DependentUpon>201911300736324_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
