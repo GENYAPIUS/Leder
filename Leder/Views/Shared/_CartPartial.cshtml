@@ -1,0 +1,55 @@
+﻿@{ 
+    //取得當前購物車所有內容
+    var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
+}
+<div class="aa-cartbox">
+    <a class="aa-cart-link" href="~/ShoppingCart">
+        <span class="fa fa-shopping-basket"></span>
+        <span class="aa-cart-title">SHOPPING CART</span>
+        <span class="aa-cart-notify">@String.Format("{0}",currentCart.Count)</span>
+    </a>
+    <div class="aa-cartbox-summary">
+        @if (currentCart.Count > 0)
+        {
+            <ul>
+                @foreach (var cartItem in currentCart)
+                {
+                    <li>
+                        <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/@cartItem.Photo" alt="img"></a>
+                        <div class="aa-cartbox-info">
+                            <h4><a href="#">@cartItem.Name</a></h4>
+                            <p>@cartItem.Quantity x $@cartItem.Price</p>
+                        </div>
+                        <a class="aa-remove-product"><span class="fa fa-times" onclick="RemoveFromCart('@cartItem.Id')"></span></a>
+                    </li>
+                }
+                <li>
+                    <span class="aa-cartbox-total-title">
+                        Total
+                    </span>
+                    <span class="aa-cartbox-total-price">
+                        @String.Format("{0}", currentCart.TotalAmount)
+                    </span>
+                </li>
+            </ul>
+            <a class="aa-cartbox-checkout aa-primary-btn" href="~/Checkout">前往結帳</a>
+            <a class="aa-cartbox-checkout aa-primary-btn" onclick="ClearCart()">清空</a>
+        }
+        else
+        {
+            <ul>
+                <li>
+                    <span class="aa-cartbox-total-title">
+                        目前還沒選擇任何商品
+                    </span>
+                </li>
+                <li>
+                    <a class="aa-cartbox-checkout aa-primary-btn" href="~/Products1/Index">前往購物頁面</a>
+                </li>
+            </ul>
+
+        }
+
+    </div>
+</div>
+

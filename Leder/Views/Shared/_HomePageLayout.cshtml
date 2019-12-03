@@ -4,9 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Leder</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.css" />
     <!-- Font awesome -->
     <link href="~/Assets/css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
@@ -38,46 +36,49 @@
 
     @RenderSection("topCSS", required: false)
     @RenderSection("topJS", required: false)
+
+
+
 </head>
-<body>
-    @Html.Partial("_NavbarPartial")
-    <div class="">
-        <main role="main" class="">
-            @RenderBody()
-        </main>
-    </div>
+   <body>
+       @Html.Partial("_NavbarPartial")
+       <div class="">
+           <main role="main" class="">
+               @RenderBody()
+           </main>
+       </div>
 
-    @Html.Partial("_FooterPartial")
-    
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+       @Html.Partial("_FooterPartial")
 
-    @RenderSection("endCSS", required: false)
-    @RenderSection("endJS", required: false)
+       <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+       @*購物車的JavaScripts*@
+       @Html.Partial("ShoppingCartFunction")
+       @RenderSection("Scripts", required: false)
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Assets/js/bootstrap.js"></script>
-    <!-- SmartMenus jQuery plugin -->
-    <script type="text/javascript" src="~/Assets/js/jquery.smartmenus.js"></script>
-    <!-- SmartMenus jQuery Bootstrap Addon -->
-    <script type="text/javascript" src="~/Assets/js/jquery.smartmenus.bootstrap.js"></script>
-    <!-- To Slider JS -->
-    <script src="~/Assets/js/sequence.js"></script>
-    <script src="~/Assets/js/sequence-theme.modern-slide-in.js"></script>
-    <!-- Product view slider -->
-    <script type="text/javascript" src="~/Assets/js/jquery.simpleGallery.js"></script>
-    <script type="text/javascript" src="~/Assets/js/jquery.simpleLens.js"></script>
-    <!-- slick slider -->
-    <script type="text/javascript" src="~/Assets/js/slick.js"></script>
-    <!-- Price picker slider -->
-    <script type="text/javascript" src="~/Assets/js/nouislider.js"></script>
-    <!-- Custom js -->
-    <script src="~/Assets/js/custom.js"></script>
-</body>
+       @RenderSection("endCSS", required: false)
+       @RenderSection("endJS", required: false)
+
+       <!-- jQuery library -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+       <!-- Include all compiled plugins (below), or include individual files as needed -->
+       <script src="~/Assets/js/bootstrap.js"></script>
+       <!-- SmartMenus jQuery plugin -->
+       <script type="text/javascript" src="~/Assets/js/jquery.smartmenus.js"></script>
+       <!-- SmartMenus jQuery Bootstrap Addon -->
+       <script type="text/javascript" src="~/Assets/js/jquery.smartmenus.bootstrap.js"></script>
+       <!-- To Slider JS -->
+       <script src="~/Assets/js/sequence.js"></script>
+       <script src="~/Assets/js/sequence-theme.modern-slide-in.js"></script>
+       <!-- Product view slider -->
+       <script type="text/javascript" src="~/Assets/js/jquery.simpleGallery.js"></script>
+       <script type="text/javascript" src="~/Assets/js/jquery.simpleLens.js"></script>
+       <!-- slick slider -->
+       <script type="text/javascript" src="~/Assets/js/slick.js"></script>
+       <!-- Price picker slider -->
+       <script type="text/javascript" src="~/Assets/js/nouislider.js"></script>
+       <!-- Custom js -->
+       <script src="~/Assets/js/custom.js"></script>
+   </body>
 </html>
 
 

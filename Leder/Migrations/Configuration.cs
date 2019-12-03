@@ -1,5 +1,9 @@
 namespace Leder.Migrations
 {
+<<<<<<< HEAD
+=======
+    using Leder.Models;
+>>>>>>> addshopping
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
