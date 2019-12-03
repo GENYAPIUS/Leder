@@ -37,7 +37,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photo = "Totebag1.jpg"
+                    Photo = i.Photo
                 });
                 
             }
@@ -63,7 +63,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photo = "Backpack1.jpg"
+                    Photo = i.Photo
                 });
 
             }
@@ -89,7 +89,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photo = "Longclip1.jpg"
+                    Photo = i.Photo
                 });
 
             }
@@ -115,7 +115,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photo = "Coinwallet1.jpg"
+                    Photo = i.Photo
                 });
 
             }
@@ -140,7 +140,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photo = "Namecard1.jpg"
+                    Photo = i.Photo
                 });
 
             }
@@ -153,8 +153,8 @@ namespace Leder.Controllers
             repo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
-            var item = repo.GetAll().FirstOrDefault((x) => x.ProductId == Id);
-            if (item == null)
+            var i = repo.GetAll().FirstOrDefault((x) => x.ProductId == Id);
+            if (i == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -162,11 +162,11 @@ namespace Leder.Controllers
             //我是用FirstOrDefault找出唯一的一組，如果這邊寫成List<ProductViewModel>會報錯
             ProductViewModel productVM = new ProductViewModel() 
             {
-                Id = item.ProductId,
-                Name = item.Name,
-                Category = categoryRepo.GetCategoryNameById(item.CategoryId),
-                Price = (int)item.Price,
-                Photo = item.Photo
+                Id = i.ProductId,
+                Name = i.Name,
+                Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                Price = (int)i.Price,
+                Photo = i.Photo
             };
 
             return View(productVM);
