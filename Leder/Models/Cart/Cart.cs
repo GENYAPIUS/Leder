@@ -25,16 +25,16 @@ namespace Leder.Models.Cart
         }
 
         //取得商品總價
-        public decimal TotalAmount
+        private decimal? _totalAmount = 0.0m;
+        public decimal? TotalAmount
         {
             get 
             {
-                decimal totalAmount = 0.0m;
                 foreach(var cartItem in this.cartItems)
                 {
-                    totalAmount = totalAmount + cartItem.Amount;
+                    _totalAmount = _totalAmount + cartItem.Amount;
                 }
-                return totalAmount;
+                return _totalAmount;
             }
         }
 
@@ -52,7 +52,7 @@ namespace Leder.Models.Cart
                 using (LederContext db = new LederContext())
                 {
                     var product = (from s in db.Products
-                                   where s.Id == ProuctId
+                                   where s.ProductId == ProuctId
                                    select s).FirstOrDefault();
                     if(product !=default(Models.Product))
                     {
@@ -74,7 +74,7 @@ namespace Leder.Models.Cart
             //將Product轉為CartItem
             var cartItem = new Models.Cart.CartItem()
             {
-                Id = product.Id,
+                Id = product.ProductId,
                 Name = product.Name,
                 Price = product.Price,
                 Photo = product.Photo,

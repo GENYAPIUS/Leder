@@ -9,8 +9,8 @@ namespace Leder.Repository
 {
     public class ProductRepository //擴充方法static+this
     {
-        private ProductContext _db;
-        public ProductRepository(ProductContext productContext)
+        private LederContext _db;
+        public ProductRepository(LederContext productContext)
         {
             _db = productContext;
         }

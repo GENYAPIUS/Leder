@@ -42,7 +42,7 @@ namespace Leder
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<User>(context.Get<LederContext>()));
             // 設定使用者名稱的驗證邏輯
             manager.UserValidator = new UserValidator<User>(manager)
             {

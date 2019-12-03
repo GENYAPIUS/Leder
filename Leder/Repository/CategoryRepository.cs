@@ -8,9 +8,9 @@ namespace Leder.Repository
 {
     public class CategoryRepository
     {
-        private ProductContext _db;
+        private LederContext _db;
 
-        public CategoryRepository(ProductContext productContext)
+        public CategoryRepository(LederContext productContext)
         {
             _db = productContext;
         }

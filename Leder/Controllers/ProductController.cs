@@ -13,7 +13,7 @@ namespace Leder.Controllers
     public class ProductController : Controller
     {
     
-        private ProductContext db = new ProductContext();
+        private LederContext db = new LederContext();
         private ProductRepository repo;
         private CategoryRepository categoryRepo;
 

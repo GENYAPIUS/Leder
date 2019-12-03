@@ -15,7 +15,7 @@ namespace Leder.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private LederContext db = new LederContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 

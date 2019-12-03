@@ -1,61 +1,56 @@
 namespace Leder.Migrations
 {
-<<<<<<< HEAD
-=======
     using Leder.Models;
->>>>>>> addshopping
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Leder.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Leder.Models.LederContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Leder.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(Leder.Models.ApplicationDbContext context)
+        protected override void Seed(Leder.Models.LederContext context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            //ï¿½uï¿½×§ï¿½ï¿½Æ®wï¿½ï¿½ï¿½eï¿½Aï¿½ï¿½ï¿½Nï¿½ï¿½update-databaseï¿½ï¿½ï¿½Oï¿½Nï¿½n
             context.Products.AddOrUpdate(
                x => x.ProductId,
-                new Product { ProductId = 1, Name = "Diario ï¿½gï¿½Aï¿½Hï¿½ï¿½×ªÓ³U", Price = 12856, CategoryId = 1 },
-                new Product { ProductId = 2, Name = "Clarte ï¿½yÄ¬ï¿½gï¿½Aï¿½cï¿½ï¿½ï¿½]", Price = 15438, CategoryId = 1 },
-                new Product { ProductId = 3, Name = "Tone Oilnume ï¿½gï¿½Aï¿½lï¿½tï¿½]", Price = 18378, CategoryId = 1 },
-                new Product { ProductId = 4, Name = "Tone Oilnume ï¿½ï¿½Î¦ï¿½ï¿½Sï¿½]", Price = 26648, CategoryId = 1 },
-                new Product { ProductId = 5, Name = "Tone Oilnume ï¿½ï¿½ï¿½ï¿½×­Iï¿½]", Price = 25729, CategoryId = 1 },
-                new Product { ProductId = 6, Name = "Plota ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î±×­Iï¿½]", Price = 12497, CategoryId = 1 },
+                new Product { ProductId = 1, Name = "Diario °g§AÀH¦æ±×ªÓ³U", Price = 12856, CategoryId = 1 },
+                new Product { ProductId = 2, Name = "Clarte ¬yÄ¬°g§A½c«¬¥]", Price = 15438, CategoryId = 1 },
+                new Product { ProductId = 3, Name = "Tone Oilnume °g§A¶l®t¥]", Price = 18378, CategoryId = 1 },
+                new Product { ProductId = 4, Name = "Tone Oilnume ¨â¥Î¦«¯S¥]", Price = 26648, CategoryId = 1 },
+                new Product { ProductId = 5, Name = "Tone Oilnume ©ÔÁå±×­I¥]", Price = 25729, CategoryId = 1 },
+                new Product { ProductId = 6, Name = "Plota ¨¾¤ô¨â¥Î±×­I¥]", Price = 12497, CategoryId = 1 },
 
-                new Product { ProductId = 7, Name = "Tone Oilnume ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½]", Price = 27199, CategoryId = 2 },
-                new Product { ProductId = 8, Name = "Tone Oilnume ï¿½ï¿½Iï¿½]", Price = 28670, CategoryId = 2 },
+                new Product { ProductId = 7, Name = "Tone Oilnume ¤¤«¬«á­I¥]", Price = 27199, CategoryId = 2 },
+                new Product { ProductId = 8, Name = "Tone Oilnume «á­I¥]", Price = 28670, CategoryId = 2 },
 
-                new Product { ProductId = 9, Name = "Belchord ï¿½ï¿½ï¿½ï¿½", Price = 22605, CategoryId = 3 },
-                new Product { ProductId = 10, Name = "Diario ï¿½ï¿½ï¿½ï¿½", Price = 9189, CategoryId = 3 },
-                new Product { ProductId = 11, Name = "Tone Oilnume ï¿½ï¿½Lï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Price = 8822, CategoryId = 3 },
-                new Product { ProductId = 12, Name = "Tone Oilnume ï¿½ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Price = 8454, CategoryId = 3 },
-                new Product { ProductId = 13, Name = "Urbano ï¿½ï¿½ï¿½Ö§ï¿½", Price = 9924, CategoryId = 3 },
+                new Product { ProductId = 9, Name = "Belchord ªø§¨", Price = 22605, CategoryId = 3 },
+                new Product { ProductId = 10, Name = "Diario ªø§¨", Price = 9189, CategoryId = 3 },
+                new Product { ProductId = 11, Name = "Tone Oilnume µì¼L¦¡¹s¿úªø§¨", Price = 8822, CategoryId = 3 },
+                new Product { ProductId = 12, Name = "Tone Oilnume ÄñÂ¶¦¡ªø§¨", Price = 8454, CategoryId = 3 },
+                new Product { ProductId = 13, Name = "Urbano ªø¥Ö§¨", Price = 9924, CategoryId = 3 },
 
-                new Product { ProductId = 14, Name = "Belchord ï¿½sï¿½ï¿½ï¿½]", Price = 7719, CategoryId = 4 },
-                new Product { ProductId = 15, Name = "Urbano ï¿½sï¿½ï¿½ï¿½]", Price = 4044, CategoryId = 4 },
-                new Product { ProductId = 16, Name = "BrProductIdle ï¿½ï¿½Î¹sï¿½ï¿½ï¿½]", Price = 3910, CategoryId = 4 },
-                new Product { ProductId = 17, Name = "Tone Oilnume ï¿½ï¿½Lï¿½ï¿½ï¿½sï¿½ï¿½ï¿½U", Price = 5514, CategoryId = 4 },
-                new Product { ProductId = 18, Name = "Diario ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½]", Price = 2757, CategoryId = 4 },
-                new Product { ProductId = 19, Name = "Tone Oilnume ï¿½ï¿½Lï¿½ï¿½ï¿½gï¿½Aï¿½sï¿½ï¿½ï¿½]", Price = 2573, CategoryId = 4 },
+                new Product { ProductId = 14, Name = "Belchord ¹s¿ú¥]", Price = 7719, CategoryId = 4 },
+                new Product { ProductId = 15, Name = "Urbano ¹s¿ú¥]", Price = 4044, CategoryId = 4 },
+                new Product { ProductId = 16, Name = "BrProductIdle ¤è§Î¹s¿ú¥]", Price = 3910, CategoryId = 4 },
+                new Product { ProductId = 17, Name = "Tone Oilnume µì¼L¦¡¹s¿ú³U", Price = 5514, CategoryId = 4 },
+                new Product { ProductId = 18, Name = "Diario Âù³§¦¡¹s¿ú¥]", Price = 2757, CategoryId = 4 },
+                new Product { ProductId = 19, Name = "Tone Oilnume µì¼L¦¡°g§A¹s¿ú¥]", Price = 2573, CategoryId = 4 },
 
-                new Product { ProductId = 20, Name = "Bridle ï¿½Wï¿½ï¿½ï¿½ï¿½", Price = 5113, CategoryId = 5 },
-                new Product { ProductId = 21, Name = "Clarte ï¿½Hï¿½Ê¦Wï¿½ï¿½ï¿½ï¿½", Price = 3492, CategoryId = 5 },
-                new Product { ProductId = 22, Name = "Cordovan ï¿½ï¿½ï¿½vï¿½Ö¦Wï¿½ï¿½ï¿½ï¿½", Price = 7719, CategoryId = 5 },
-                new Product { ProductId = 23, Name = "Cordovan ï¿½ï¿½ï¿½vï¿½Ö²ï¿½ï¿½dï¿½M", Price = 4962, CategoryId = 5 },
-                new Product { ProductId = 24, Name = "Urbano ï¿½Wï¿½ï¿½ï¿½ï¿½", Price = 6249, CategoryId = 5 },
-                new Product { ProductId = 25, Name = "Urbano ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½ï¿½ï¿½", Price = 5514, CategoryId = 5 }
+                new Product { ProductId = 20, Name = "Bridle ¦W¤ù§¨", Price = 5113, CategoryId = 5 },
+                new Product { ProductId = 21, Name = "Clarte «H«Ê¦W¤ù§¨", Price = 3492, CategoryId = 5 },
+                new Product { ProductId = 22, Name = "Cordovan °¨Áv¥Ö¦W¤ù§¨", Price = 7719, CategoryId = 5 },
+                new Product { ProductId = 23, Name = "Cordovan °¨Áv¥Ö²¼¥d®M", Price = 4962, CategoryId = 5 },
+                new Product { ProductId = 24, Name = "Urbano ¦W¤ù§¨", Price = 6249, CategoryId = 5 },
+                new Product { ProductId = 25, Name = "Urbano ©ÔÁå¥d¤ù§¨", Price = 5514, CategoryId = 5 }
                );
 
             context.Categories.AddOrUpdate(
@@ -66,7 +61,6 @@ namespace Leder.Migrations
               new Category { CategoryId = 4, CategoryName = "Coinwallet" },
               new Category { CategoryId = 5, CategoryName = "Namecard" }
               );
-
         }
     }
 }

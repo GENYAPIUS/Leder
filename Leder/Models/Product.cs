@@ -12,7 +12,7 @@ namespace Leder.Models
         [Key]
         public int ProductId { get; set; } 
         public string Name { get; set; }    //產品名稱
-        public int? Price { get; set; }    //產品價格NT$
+        public decimal? Price { get; set; }    //產品價格NT$
         public int? CategoryId { get; set; }   //產品類別
         public string Photo { get; set; }   //產品照片
         public string Description { get; set; } //產品頁面的敘述文字

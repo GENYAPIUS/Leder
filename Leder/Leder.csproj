@@ -177,34 +177,33 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\Products1Controller.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912030756535_TestCreate.cs" />
+    <Compile Include="Migrations\201912030756535_TestCreate.Designer.cs">
+      <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LederContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Models\HomeContext.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\LederContext-20191130130625.mdf" />
-    <Content Include="App_Data\LederContext-20191130130625_log.ldf">
-      <DependentUpon>LederContext-20191130130625.mdf</DependentUpon>
-    </Content>
     <Content Include="Assets\css\bootstrap.css" />
     <Content Include="Assets\css\font-awesome.css" />
     <Content Include="Assets\css\jquery.simpleLens.css" />
@@ -421,7 +420,6 @@
     <Content Include="Views\Shared\_QuickViewPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
-    <Content Include="Views\Test\GetCart.cshtml" />
     <Content Include="Views\Products1\Create.cshtml" />
     <Content Include="Views\Products1\Delete.cshtml" />
     <Content Include="Views\Products1\Details.cshtml" />
@@ -429,14 +427,6 @@
     <Content Include="Views\Products1\Index.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
     <Content Include="Views\Shared\ShoppingCartFunction.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911300522425_InitialCreate.resx">
-      <DependentUpon>201911300522425_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911300526184_001.resx">
-      <DependentUpon>201911300526184_001.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -449,7 +439,14 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
+      <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

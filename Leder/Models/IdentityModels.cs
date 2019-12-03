@@ -51,18 +51,17 @@ namespace Leder.Models
 
     }
 
-    public class ApplicationDbContext : IdentityDbContext<User>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+    //public class LederContext : IdentityDbContext<User>
+    //{
+    //    public LederContext()
+    //        : base("LederDatabase", throwIfV1Schema: false)
+    //    {
+    //    }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-        public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
-        public System.Data.Entity.DbSet<Leder.Models.Product> Products { get; set; }
-    }
+    //    public static LederContext Create()
+    //    {
+    //        return new LederContext();
+    //    }
+    //    public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
+    //}
 }

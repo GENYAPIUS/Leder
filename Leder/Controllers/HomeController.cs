@@ -10,12 +10,12 @@ namespace Leder.Controllers
 {
     public class HomeController : Controller
     {
-        HomeContext db = new HomeContext();
+        LederContext db = new LederContext();
         public ActionResult Index()
         {
-            ViewData["promoteProductsData"] = db.promoteProducts.ToList();
-            ViewData["SlidersData"] = db.sliders.ToList();
-            ViewData["ProductsSectionData"] = db.productsSections.ToList();
+            //ViewData["promoteProductsData"] = db.promoteProducts.ToList();
+            //ViewData["SlidersData"] = db.sliders.ToList();
+            //ViewData["ProductsSectionData"] = db.productsSections.ToList();
 
 
 

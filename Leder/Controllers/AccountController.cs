@@ -149,7 +149,7 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            var db = new ApplicationDbContext();//實體化存取資料庫的EntityframeWork
+            var db = new LederContext();//實體化存取資料庫的EntityframeWork
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Email, Email = model.Email,PhoneNumber=model.CellPhone };//拿來接User的資料
@@ -381,7 +381,7 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
-            var db = new ApplicationDbContext();
+            var db = new LederContext();
 
             if (User.Identity.IsAuthenticated)
             {
