@@ -1,7 +1,10 @@
 ﻿using Leder.Models;
+using Leder.Repository;
+using Leder.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,58 +12,166 @@ namespace Leder.Controllers
 {
     public class ProductController : Controller
     {
-        List<Product> products = new List<Product>
+    
+        private ProductContext db = new ProductContext();
+        private ProductRepository repo;
+        private CategoryRepository categoryRepo;
+
+       
+        //預設是側背包
+        //呼叫Repository類別裡面的GetProductInCatagory方法
+        public ActionResult Index()
+        {
+            repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            //var ProductList = repo.GetAll().ToList(); 用GetAll()會抓到全部25個產品秀在頁面上
+            var ProductList = repo.GetProductInCatagory(1).ToList();
+            foreach (var i in ProductList)
             {
-                new Product{ Name = "Backpack001", Category="Backpack", Photo="Backpack.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Backpack002", Category="Backpack", Photo="Backpack2.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "CoinWallet001", Category="CoinWallet", Photo="CoinWallet.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "CoinWallet002", Category="CoinWallet", Photo="CoinWallet2.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Longclip001", Category="Longclip", Photo="Longclip.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Longclip002", Category="Longclip", Photo="Longclip2.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "NameCard001", Category="NameCard", Photo="NameCard.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "NameCard002", Category="NameCard", Photo="NameCard2.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Totebag001", Category="Totebag", Photo="Totebag.jpg", ProductPage="https://shorturl.at/aiOS0" },
-                new Product{ Name = "Totebag002", Category="Totebag", Photo="Totebag2.jpg", ProductPage="https://shorturl.at/aiOS0" },
+                //把資料庫的值塞入ViewModel
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = (int)i.Price,
+                    Photo = "Totebag1.jpg"
+                });
+                
+            }
 
-            };
-
-        //把Model帶入，傳給View
-        public ActionResult Product()
-        {
-            return View(products);
+            return View(productVM);
+           
         }
 
-        //預設是顯示側背包類別
-        public ActionResult ProductMainPage()
-        {
-            return View();
-        }
-
-        //後背包類別
+        //後背包
         public ActionResult Backpack()
         {
-            return View();
+            repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            var ProductList = repo.GetProductInCatagory(2).ToList();
+            foreach (var i in ProductList)
+            {
+                //把資料庫的值塞入ViewModel
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = (int)i.Price,
+                    Photo = "Backpack1.jpg"
+                });
+
+            }
+
+            return View(productVM);
+
         }
 
-        //長夾類別
+        //長夾
         public ActionResult Longclip()
         {
-            return View();
+            repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            var ProductList = repo.GetProductInCatagory(3).ToList();
+            foreach (var i in ProductList)
+            {
+                //把資料庫的值塞入ViewModel
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = (int)i.Price,
+                    Photo = "Longclip1.jpg"
+                });
+
+            }
+
+            return View(productVM);
+
         }
 
-        //零錢包類別
+        //零錢包
         public ActionResult Coinwallet()
         {
-            return View();
+            repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            var ProductList = repo.GetProductInCatagory(4).ToList();
+            foreach (var i in ProductList)
+            {
+                //把資料庫的值塞入ViewModel
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = (int)i.Price,
+                    Photo = "Coinwallet1.jpg"
+                });
+
+            }
+
+            return View(productVM);
         }
 
-        //名片夾類別
+        //名片夾
         public ActionResult Namecard()
         {
-            return View();
+            repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            var ProductList = repo.GetProductInCatagory(5).ToList();
+            foreach (var i in ProductList)
+            {
+                //把資料庫的值塞入ViewModel
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = (int)i.Price,
+                    Photo = "Namecard1.jpg"
+                });
+
+            }
+
+            return View(productVM);
         }
 
+        public ActionResult ProductDetail(int? Id)
+        {
+            repo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
 
+            var item = repo.GetAll().FirstOrDefault((x) => x.ProductId == Id);
+            if (item == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            //我是用FirstOrDefault找出唯一的一組，如果這邊寫成List<ProductViewModel>會報錯
+            ProductViewModel productVM = new ProductViewModel() 
+            {
+                Id = item.ProductId,
+                Name = item.Name,
+                Category = categoryRepo.GetCategoryNameById(item.CategoryId),
+                Price = (int)item.Price,
+                Photo = item.Photo
+            };
+
+            return View(productVM);
+
+        }
 
     }
 }

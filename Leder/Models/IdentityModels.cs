@@ -62,18 +62,7 @@ namespace Leder.Models
         {
             return new ApplicationDbContext();
         }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    modelBuilder.Entity<User>().ToTable("User").Property(x => x.Id).HasColumnName("UserID");
-        //    modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
-        //    modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClame").Property(x => x.Id).HasColumnName("UserClameId");
-        //    modelBuilder.Entity<IdentityRole>().ToTable("Role").Property(x => x.Id).HasColumnName("RoleID");
-        //    modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
-
-        //}
-        //更改Identity本來的命名Convension，自定義所有的Table名稱
         public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
-
+        public System.Data.Entity.DbSet<Leder.Models.Product> Products { get; set; }
     }
 }
