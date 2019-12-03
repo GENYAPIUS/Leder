@@ -400,7 +400,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_HomePageLayout.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
-    <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Product\Backpack.cshtml" />
     <Content Include="Views\Product\Longclip.cshtml" />
     <Content Include="Views\Product\Coinwallet.cshtml" />
@@ -427,6 +426,7 @@
     <Content Include="Views\Products1\Index.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
     <Content Include="Views\Shared\ShoppingCartFunction.cshtml" />
+    <Content Include="Views\Shared\_NavbarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
