@@ -21,6 +21,7 @@ namespace Leder.Models
         [Display(Name = "運送地址")]
         public string ShipAddress { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
         [Required]
@@ -109,6 +110,7 @@ namespace Leder.Models
         [Display(Name = "運送地址")]
         public string ShipAddress { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
         [Required]
