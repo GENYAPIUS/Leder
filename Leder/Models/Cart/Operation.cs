@@ -21,7 +21,7 @@ namespace Leder.Models.Cart
                     var order = new Cart(); 
                     HttpContext.Current.Session["Cart"] = order;
                 }
-                return (Cart)System.Web.HttpContext.Current.Session["Cart"];//回傳Session["Cart"]
+                return (Cart)HttpContext.Current.Session["Cart"];//回傳Session["Cart"]
             }
             else
             {
