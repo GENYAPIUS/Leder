@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "MyCart";
-    
+
     var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
 <!-- Cart view section -->
@@ -41,7 +41,7 @@
                                             }
                                             <tr>
                                                 <td colspan="6" class="aa-cart-view-bottom">
-                                                    <input class="aa-cart-view-btn" type="submit" value="Update Cart">
+                                                    <input id="Update" class="aa-cart-view-btn" type="submit" value="Update Cart">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -92,4 +92,13 @@
     </div>
 </section>
 
+@section endJs{
+    <script>
+        $("#Update").click(function () {
+            
+            
+
+        })
+    </script>
+}
 <!-- / Cart view section -->

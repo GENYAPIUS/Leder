@@ -40,7 +40,7 @@ namespace Leder.Models.Cart
         }
 
         //新增一筆Prodct，使用ProdctId
-        public bool AddProduct(int ProuctId)
+        public bool AddProduct(int ProuctId,int? inQuantity)
         {
             var findItem = this.cartItems.Where(s=>s.Id ==ProuctId)
                                          .Select(s=>s)
@@ -57,7 +57,7 @@ namespace Leder.Models.Cart
                                    select s).FirstOrDefault();
                     if(product !=default(Models.Product))
                     {
-                        this.AddProduct(product);
+                        this.AddProduct(product,inQuantity);
                     }
                 }
             }
@@ -70,8 +70,17 @@ namespace Leder.Models.Cart
         }
 
         //新增一筆Prodct，使用Prodct物件
-        public bool AddProduct(Product product)
+        public bool AddProduct(Product product,int? inQuantity)
         {
+            int? quantity;
+            if (inQuantity==null)
+            {
+                quantity = 1;
+            }
+            else
+            {
+                quantity = inQuantity;
+            }
             //將Product轉為CartItem
             var cartItem = new Models.Cart.CartItem()
             {
@@ -79,7 +88,7 @@ namespace Leder.Models.Cart
                 Name = product.Name,
                 Price = product.Price,
                 Photo = product.Photo,
-                Quantity = 1
+                Quantity = quantity
             };
             //加入CartItem至購物車
             this.cartItems.Add(cartItem);

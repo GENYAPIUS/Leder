@@ -13,11 +13,11 @@
         });
     }
 
-    function AddToCart(productId) {
+    function AddToCart(productId,inQuantity) {
     $.ajax({
         type: 'POST',
         url: '@Url.Action("AddToCart","ShoppingCart")',
-        data: { id: productId }
+        data: { id: productId, inQuantity }
     })
         .done(function (msg) {
             //將回傳的購物車頁面填入 CartLayout#Cart

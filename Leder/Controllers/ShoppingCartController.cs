@@ -22,10 +22,10 @@ namespace Leder.Controllers
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList());
         }
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int id,int? inQuantity)
         {
             var currentCart = Models.Cart.Operation.GetCurrentCart();
-            currentCart.AddProduct(id);
+            currentCart.AddProduct(id, inQuantity);
             return PartialView("_CartPartial");
         }
         public ActionResult RemoveFromCart(int id)
