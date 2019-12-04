@@ -1,4 +1,4 @@
-@using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity
 <!-- Start header section -->
 <header id="aa-header">
     <!-- start header top  -->
@@ -13,7 +13,8 @@
                             <ul class="aa-head-top-nav-right">
 
                                 <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
-                                <li class="hidden-xs"><a href="~/Index">My Cart</a>
+                                <li class="hidden-xs">
+                                    <a href="~/Index">My Cart</a>
                                 </li>
                                 <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
                                 @if (Request.IsAuthenticated)
@@ -36,11 +37,11 @@
 
                                 }
 
-                                
+
                                 <li class="hidden-xs"><a href="#">Wishlist</a></li>
                                 <li class="hidden-xs"><a href="~/ShoppingCart">My Cart</a></li>
                                 <li class="hidden-xs"><a href="~/Checkout">Checkout</a></li>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -199,7 +200,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>                        
+                        </li>
                         <li><a href="#">關於里德</a></li>
                         <li>
                             <a href="blog-archive.html">專欄文章<span class="caret"></span></a>
@@ -209,7 +210,7 @@
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">聯絡我們</a></li>
+                        <li>@Html.ActionLink("聯絡里德", "#")</li>
                         <li>
                             <a href="#">Pages <span class="caret"></span></a>
                             <ul class="dropdown-menu">

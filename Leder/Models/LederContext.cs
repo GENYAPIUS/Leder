@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Leder.ViewModels;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -24,5 +25,6 @@ namespace Leder.Models
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
+
     }
 }

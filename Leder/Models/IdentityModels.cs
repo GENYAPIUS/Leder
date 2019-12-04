@@ -40,6 +40,8 @@ namespace Leder.Models
         [Display(Name = "運送地址")]
         public string ShipAddress { get; set; }
         [Display(Name = "生日")]
+        
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]//記得加後面那行，不然在textBox還是會顯示上午12:00:00
         public DateTime BirthDay { get; set; }
         [Required]
         //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/",ErrorMessage ="輸入格式錯誤(例:A123456789)")]
