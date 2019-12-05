@@ -10,14 +10,14 @@
 /* BASE - Base tyles, Variables, Mixins, etc. */
 
 
-@import 'base/_variables.scss';
-@import 'base/_mixins.scss';
-@import 'base/_base.scss';
+@import '../../Content/scss/base/_base.scss';
+@import '../../Content/scss/base/_mixins.scss';
+@import '../../Content/scss/base/_base.scss';
 
 /* MODULES - Individual site components */
 
-@import 'modules/_typography.scss';
-@import 'modules/_buttons.scss';
+@import '../../Content/scss/modules/_typography.scss';
+@import '../../Content/scss/modules/_buttons.scss';
 
 
 
@@ -29,26 +29,26 @@
  HEADER SECTION
 ====================*/
 
-@import 'layouts/_header.scss';
+@import '../../Content/scss/layouts/_header.scss';
 
 /*==================
  NAVBAR SECTION
 ====================*/
 
-@import 'layouts/_nav.scss';
+@import '../../Content/scss/layouts/_nav.scss';
 
 /* ALL SECTION */
 
-@import 'modules/_sections.scss';
+@import '../../Content/scss/modules/_sections.scss';
 
 /*==================
  FOOTER SECTION
 ====================*/
 
-@import 'layouts/_footer.scss';
+@import '../../Content/scss/layouts/_footer.scss';
 
 /*==================
  RESPONSIVE DESIGN
 ====================*/
 
-@import 'modules/_responsive.scss';
+@import '../../Content/scss/modules/_responsive.scss';
