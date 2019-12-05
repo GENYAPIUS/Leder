@@ -11,7 +11,7 @@
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
                             @*<form action="" class="aa-sort-form">
-                <label for="">排序</label>*@
+                                <label for="">排序</label>*@
                             @*Ajax.BeginForm，會轉譯成一組<Form>，用post把sortedItem=?傳到Controller*@
                             @*所以controller也要寫一個post方法*@
                             @using (Ajax.BeginForm("Index", "Product", new AjaxOptions { UpdateTargetId = "view1" }))
@@ -31,36 +31,14 @@
                         </div>
                     </div>
                     <div class="aa-product-catg-body">
-                        <ul class="aa-product-catg">
-
-                            @section endJS{
-
-                                @*<script>
-
-                        jQuery("#page2").click(function (e) {
-                            j = 3;
-                            GetProductInCatagory(int j);
-                        });
-
-                        jQuery("#page1").click(function (e) {
-                            j = 0;
-                        });
-                    </script>*@
-                            }
-
+                        <ul class="aa-product-catg">                  
                             <div class="row" id="view1">
 
                                 @foreach (var p in Model)
                                 {
                                     @Html.Partial("_ProductPartial", p);
-                                }
-                                @*@for (int i = 0; i <4; i++)
-                     {
-                        @Html.Partial("_ProductPartial", Model.ToList()[i]);
-                    }*@
-
+                                }                        
                             </div>
-
                         </ul>
                         <!-- quick view modal -->
 
@@ -87,20 +65,20 @@
                                 <li>@Html.ActionLink("2", "Index2")</a></li>
                                 <li>
                                     <a href="#" aria-label="Next">
-                                       <span aria-hidden="true">&raquo;</span>
+                                        <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
-                </div>
-
-                @Html.Partial("_SidebarPartial");
-
             </div>
+
+            @Html.Partial("_SidebarPartial");
+
         </div>
-    </section>
+    </div>
+</section>
 
 
 

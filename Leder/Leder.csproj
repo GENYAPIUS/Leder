@@ -175,7 +175,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\Products1Controller.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -294,6 +293,8 @@
     <Content Include="Assets\images\Totebag\Totebag4.jpg" />
     <Content Include="Assets\images\Totebag\Totebag5.jpg" />
     <Content Include="Assets\images\Totebag\Totebag6.jpg" />
+    <Content Include="Assets\images\Totebag\Totebag7.jpg" />
+    <Content Include="Assets\images\Totebag\Totebag8.jpg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery.simpleGallery.js" />
@@ -3848,16 +3849,12 @@
     <Content Include="Views\Shared\_QuickViewPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
-    <Content Include="Views\Products1\Create.cshtml" />
-    <Content Include="Views\Products1\Delete.cshtml" />
-    <Content Include="Views\Products1\Details.cshtml" />
-    <Content Include="Views\Products1\Edit.cshtml" />
-    <Content Include="Views\Products1\Index.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
     <Content Include="Views\Shared\ShoppingCartFunction.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\Product\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

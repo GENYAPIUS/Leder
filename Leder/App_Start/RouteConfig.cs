@@ -12,6 +12,16 @@ namespace Leder
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            //商品頁面
+            //從Product/ProductDetail/id變成ProductDetail/id，精簡了一點
+            routes.MapRoute(
+               name: "ProductDetail",
+               url: "ProductDetail/{Id}",
+               defaults: new { controller = "Product", action = "ProductDetail", Id = UrlParameter.Optional }
+           );
+
+
             //購物車
             routes.MapRoute(
                 name: "ShoppingCart",
