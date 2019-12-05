@@ -15,7 +15,7 @@
                 @foreach (var cartItem in currentCart)
                 {
                     <li>
-                        <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/@cartItem.Photo" alt="img"></a>
+                        <a class="aa-cartbox-img" href="#"><img src="@cartItem.Photo" alt="img"></a>
                         <div class="aa-cartbox-info">
                             <h4><a href="#">@cartItem.Name</a></h4>
                             <p>@cartItem.Quantity x $@cartItem.Price</p>

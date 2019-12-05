@@ -40,14 +40,13 @@ namespace Leder.Models.Cart
         }
 
         //新增一筆Prodct，使用ProdctId
-        public bool AddProduct(int ProuctId,int? inQuantity)
+        public bool AddProduct(int ProuctId,int? quantity)
         {
             var findItem = this.cartItems.Where(s=>s.Id ==ProuctId)
                                          .Select(s=>s)
                                          .FirstOrDefault();
-
             //判斷相同Id的CartItem是否已經存在購物車內
-            if(findItem==default(Models.Cart.CartItem))
+            if (findItem==default(CartItem))
             {
                 //不存在購物車內則新增一筆
                 using (LederContext db = new LederContext())
@@ -55,32 +54,24 @@ namespace Leder.Models.Cart
                     var product = (from s in db.Products
                                    where s.ProductId == ProuctId
                                    select s).FirstOrDefault();
-                    if(product !=default(Models.Product))
+                    if(product !=default(Product))
                     {
-                        this.AddProduct(product,inQuantity);
+                        this.AddProduct(product, quantity);
                     }
                 }
             }
+            //存在購物車內
             else
-            {   //存在購物車內，則增加數量
-                findItem.Quantity += 1;
+            {  
+                    findItem.Quantity += quantity;
             }
             return true;
                 
         }
 
         //新增一筆Prodct，使用Prodct物件
-        public bool AddProduct(Product product,int? inQuantity)
+        public bool AddProduct(Product product,int? quantity)
         {
-            int? quantity;
-            if (inQuantity==null)
-            {
-                quantity = 1;
-            }
-            else
-            {
-                quantity = inQuantity;
-            }
             //將Product轉為CartItem
             var cartItem = new Models.Cart.CartItem()
             {

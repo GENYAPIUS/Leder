@@ -30,20 +30,15 @@
                                         <tbody>
                                             @foreach (var i in Model)
                                             {
-                                                <tr>
-                                                    <td><a class="remove" onclick="RemoveFromCart('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
-                                                    <td><a href="#"><img src="~/Assets/images/HomeImages/@Html.DisplayFor(m => i.Photo)" alt="img"></a></td>
-                                                    <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
-                                                    <td>@Html.DisplayFor(m => i.Price)</td>
-                                                    <td><input id="quantity" class="aa-cart-quantity" type="number" value="@Html.DisplayFor(m => i.Quantity)"></td>
-                                                    <td>@Html.DisplayFor(m => i.Amount)</td>
-                                                </tr>
+                                                  <tr>
+                                                      <td><a href="~/ShoppingCart" class="remove" onclick="RemoveFromCart('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
+                                                      <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
+                                                      <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
+                                                      <td>@Html.DisplayFor(m => i.Price)</td>
+                                                      <td><a class="aa-cart-quantity">@Html.DisplayFor(m => i.Quantity)</a></td>
+                                                      <td>@Html.DisplayFor(m => i.Amount)</td>
+                                                  </tr>
                                             }
-                                            <tr>
-                                                <td colspan="6" class="aa-cart-view-bottom">
-                                                    <input id="Update" class="aa-cart-view-btn" type="submit" value="Update Cart">
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -79,7 +74,7 @@
                                 <table class="aa-totals-table">
                                     <tbody>
                                         <tr>
-                                            <td><a class="aa-cart-view-btn" href="~/Products1/Index">前往購物頁面</a></td>
+                                            <td><a class="aa-cart-view-btn" href="~/Product/Index">前往購物頁面</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -91,14 +86,4 @@
         </div>
     </div>
 </section>
-
-@section endJs{
-    <script>
-        $("#Update").click(function () {
-            
-            
-
-        })
-    </script>
-}
 <!-- / Cart view section -->
