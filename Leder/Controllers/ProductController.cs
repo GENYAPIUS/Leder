@@ -71,33 +71,7 @@ namespace Leder.Controllers
             return View(productVM);
         }
 
-        //側背包超過六個，跳到Index2
-        public ActionResult Index2(string sortedItem)
-        {
-            repo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-
-            var ProductList = repo.GetProductInCatagory(1, "1").ToList().Skip(6);
-
-            foreach (var i in ProductList)
-            {
-                //把資料庫的值塞入ViewModel
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = (int)i.Price,
-                    Photo = i.Photo
-                });
-            }
-            return View(productVM);
-        }
-
-
-        //後背包
+        
         public ActionResult Backpack()
         {
             repo = new ProductRepository(db);

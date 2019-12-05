@@ -3811,7 +3811,6 @@
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
-    <Content Include="Views\Product\Index2.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\index.cshtml" />
   </ItemGroup>
