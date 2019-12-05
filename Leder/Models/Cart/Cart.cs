@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace Leder.Models.Cart
 {
@@ -73,7 +74,7 @@ namespace Leder.Models.Cart
         public bool AddProduct(Product product,int? quantity)
         {
             //將Product轉為CartItem
-            var cartItem = new Models.Cart.CartItem()
+            var cartItem = new CartItem()
             {
                 Id = product.ProductId,
                 Name = product.Name,
@@ -111,6 +112,8 @@ namespace Leder.Models.Cart
             this.cartItems.Clear();
             return true;
         }
+
+
 
         public IEnumerator<CartItem> GetEnumerator()
         {
