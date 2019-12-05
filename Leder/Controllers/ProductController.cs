@@ -27,7 +27,7 @@ namespace Leder.Controllers
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
 
-            var ProductList = repo.GetProductInCatagory(1, "1").ToList().Take(6);
+            var ProductList = repo.GetProductInCatagory(1, "1").ToList();
 
             foreach (var i in ProductList)
             {

@@ -1,6 +1,10 @@
 ﻿@using Leder.ViewModels;
 
 @model IEnumerable<ProductViewModel>
+    @{ 
+        int pageSize = 6;
+        int totalPage = (int)Math.Ceiling((decimal)Model.Count() / pageSize);
+    }
 
 
 <section id="aa-product-category">
@@ -10,20 +14,7 @@
                 <div class="aa-product-catg-content">
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
-                            @*<form action="" class="aa-sort-form">
-                <label for="">排序</label>*@
-                            @*Ajax.BeginForm，會轉譯成一組<Form>，用post把sortedItem=?傳到Controller*@
-                            @*所以controller也要寫一個post方法*@
-                            @using (Ajax.BeginForm("Index", "Product", new AjaxOptions { UpdateTargetId = "view1" }))
-                            {
-                                <select name="sortedItem" onchange="$(this.form).submit();">
-                                    <option value="1">排序方式依</option>
-                                    <option value="2">名稱 </option>
-                                    <option value="3">價格(由低到高)</option>
-                                    <option value="4">價格(由高到低)</option>
-                                </select>
-                            }
-                            @*</form>*@
+                            
                         </div>
                         <div class="aa-product-catg-head-right">
                             <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -32,32 +23,12 @@
                     </div>
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
-
-                            @section endJS{
-
-                                @*<script>
-
-                        jQuery("#page2").click(function (e) {
-                            j = 3;
-                            GetProductInCatagory(int j);
-                        });
-
-                        jQuery("#page1").click(function (e) {
-                            j = 0;
-                        });
-                    </script>*@
-                            }
-
                             <div class="row" id="view1">
 
-                                @foreach (var p in Model)
+                                @foreach(var p in Model.Skip(0).Take(6))
                                 {
                                     @Html.Partial("_ProductPartial", p);
                                 }
-                                @*@for (int i = 0; i <4; i++)
-                     {
-                        @Html.Partial("_ProductPartial", Model.ToList()[i]);
-                    }*@
 
                             </div>
 
@@ -82,9 +53,11 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
+                                @for (int i = 1; i <= totalPage; i++)
+                                {
+                                <li><span aria-hidden="true">@i</span></li>
+                                }
 
-                                <li>@Html.ActionLink("1", "Index")</a></li>
-                                <li>@Html.ActionLink("2", "Index2")</a></li>
                                 <li>
                                     <a href="#" aria-label="Next">
                                        <span aria-hidden="true">&raquo;</span>
