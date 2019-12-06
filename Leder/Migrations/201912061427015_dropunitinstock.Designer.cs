@@ -7,13 +7,13 @@ namespace Leder.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class TestCreate : IMigrationMetadata
+    public sealed partial class dropunitinstock : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TestCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dropunitinstock));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912030756535_TestCreate"; }
+            get { return "201912061427015_dropunitinstock"; }
         }
         
         string IMigrationMetadata.Source

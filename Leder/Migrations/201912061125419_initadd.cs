@@ -3,7 +3,7 @@ namespace Leder.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TestCreate : DbMigration
+    public partial class initadd : DbMigration
     {
         public override void Up()
         {
@@ -26,10 +26,38 @@ namespace Leder.Migrations
                         CategoryId = c.Int(),
                         Photo = c.String(),
                         Description = c.String(),
+                        UnitInStock = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.Categories", t => t.CategoryId)
                 .Index(t => t.CategoryId);
+            
+            CreateTable(
+                "dbo.Procurements",
+                c => new
+                    {
+                        ProcurementId = c.Int(nullable: false, identity: true),
+                        ProductId = c.Int(nullable: false),
+                        PuchuseDate = c.DateTime(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                        UnitPrize = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ProcurementId)
+                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.ProductId);
+            
+            CreateTable(
+                "dbo.PromoteProductViewModels",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Section = c.String(),
+                        ProductName = c.String(),
+                        PhotoUrl = c.String(),
+                        DiscountWord = c.String(),
+                        Statement = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -120,6 +148,7 @@ namespace Leder.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Procurements", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -127,6 +156,7 @@ namespace Leder.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Procurements", new[] { "ProductId" });
             DropIndex("dbo.Products", new[] { "CategoryId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -134,6 +164,8 @@ namespace Leder.Migrations
             DropTable("dbo.UserDetails");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.PromoteProductViewModels");
+            DropTable("dbo.Procurements");
             DropTable("dbo.Products");
             DropTable("dbo.Categories");
         }

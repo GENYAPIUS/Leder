@@ -26,5 +26,8 @@ namespace Leder.Models
 
         public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
 
+        public DbSet<Procurement> Procurement { get; set; }
+
+        public System.Data.Entity.DbSet<Leder.ViewModels.PromoteProductViewModel> PromoteProductViewModels { get; set; }
     }
 }
