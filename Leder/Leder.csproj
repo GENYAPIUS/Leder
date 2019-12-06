@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -183,6 +184,10 @@
     <Compile Include="Migrations\201912030756535_TestCreate.cs" />
     <Compile Include="Migrations\201912030756535_TestCreate.Designer.cs">
       <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912060756349_TestCreate1.cs" />
+    <Compile Include="Migrations\201912060756349_TestCreate1.Designer.cs">
+      <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -215,14 +220,13 @@
     <Content Include="Assets\build\images\loading.gif" />
     <Content Include="Assets\build\js\custom.js" />
     <Content Include="Assets\build\js\custom.min.js" />
-    <Content Include="Assets\css\bootstrap.css" />
-    <Content Include="Assets\css\font-awesome.css" />
-    <Content Include="Assets\css\jquery.simpleLens.css" />
-    <Content Include="Assets\css\jquery.smartmenus.bootstrap.css" />
-    <Content Include="Assets\css\nouislider.css" />
-    <Content Include="Assets\css\scss\style.css" />
-    <Content Include="Assets\css\sequence-theme.modern-slide-in.css" />
-    <Content Include="Assets\css\slick.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\jquery.simpleLens.css" />
+    <Content Include="Content\jquery.smartmenus.bootstrap.css" />
+    <Content Include="Content\nouislider.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Content\sequence-theme.modern-slide-in.css" />
+    <Content Include="Content\slick.css" />
     <Content Include="Assets\images\Backpack\Backpack1.jpg" />
     <Content Include="Assets\images\Backpack\Backpack2.jpg" />
     <Content Include="Assets\images\Coinwallet\Coinwallet1.jpg" />
@@ -294,16 +298,15 @@
     <Content Include="Assets\images\Totebag\Totebag4.jpg" />
     <Content Include="Assets\images\Totebag\Totebag5.jpg" />
     <Content Include="Assets\images\Totebag\Totebag6.jpg" />
-    <Content Include="Assets\js\bootstrap.js" />
-    <Content Include="Assets\js\custom.js" />
-    <Content Include="Assets\js\jquery.simpleGallery.js" />
-    <Content Include="Assets\js\jquery.simpleLens.js" />
-    <Content Include="Assets\js\jquery.smartmenus.bootstrap.js" />
-    <Content Include="Assets\js\jquery.smartmenus.js" />
-    <Content Include="Assets\js\nouislider.js" />
-    <Content Include="Assets\js\sequence-theme.modern-slide-in.js" />
-    <Content Include="Assets\js\sequence.js" />
-    <Content Include="Assets\js\slick.js" />
+    <Content Include="Assets\js\script.js" />
+    <Content Include="Scripts\jquery.simpleGallery.js" />
+    <Content Include="Scripts\jquery.simpleLens.js" />
+    <Content Include="Scripts\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Scripts\jquery.smartmenus.js" />
+    <Content Include="Scripts\nouislider.js" />
+    <Content Include="Scripts\sequence-theme.modern-slide-in.js" />
+    <Content Include="Scripts\sequence.js" />
+    <Content Include="Scripts\slick.js" />
     <Content Include="Assets\vendors\animate.css\animate.css" />
     <Content Include="Assets\vendors\animate.css\animate.min.css" />
     <Content Include="Assets\vendors\animate.css\gulpfile.js" />
@@ -2910,49 +2913,26 @@
     <Content Include="Assets\vendors\validator\index.html" />
     <Content Include="Assets\vendors\validator\multifield.js" />
     <Content Include="Assets\vendors\validator\validator.js" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Assets\css\scss\base\_base.scss" />
-    <Content Include="Assets\css\scss\base\_mixins.scss" />
-    <Content Include="Assets\css\scss\base\_variables.scss" />
-    <Content Include="Assets\css\scss\layouts\_footer.scss" />
-    <Content Include="Assets\css\scss\layouts\_header.scss" />
-    <Content Include="Assets\css\scss\layouts\_nav.scss" />
-    <Content Include="Assets\css\scss\modules\_buttons.scss" />
-    <Content Include="Assets\css\scss\modules\_responsive.scss" />
-    <Content Include="Assets\css\scss\modules\_sections.scss" />
-    <Content Include="Assets\css\scss\modules\_typography.scss" />
-    <Content Include="Assets\css\scss\style.css.map" />
-    <Content Include="Assets\css\scss\style.scss" />
+    <Content Include="Content\scss\base\_base.scss" />
+    <Content Include="Content\scss\base\_mixins.scss" />
+    <Content Include="Content\scss\base\_variables.scss" />
+    <Content Include="Content\scss\layouts\_footer.scss" />
+    <Content Include="Content\scss\layouts\_header.scss" />
+    <Content Include="Content\scss\layouts\_nav.scss" />
+    <Content Include="Content\scss\modules\_buttons.scss" />
+    <Content Include="Content\scss\modules\_responsive.scss" />
+    <Content Include="Content\scss\modules\_sections.scss" />
+    <Content Include="Content\scss\modules\_typography.scss" />
+    <Content Include="Assets\scss\style.css.map" />
+    <Content Include="Assets\scss\style.scss" />
     <Content Include="Assets\vendors\animate.css\.bower.json" />
     <Content Include="Assets\vendors\animate.css\animate-config.json" />
     <Content Include="Assets\vendors\animate.css\bower.json" />
@@ -3766,25 +3746,17 @@
     <Content Include="Assets\vendors\validator\.bower.json" />
     <Content Include="Assets\vendors\validator\README.md" />
     <Content Include="Assets\vendors\validator\validator.jquery.json" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Scripts\gtag.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3819,15 +3791,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Product\Backpack.cshtml" />
     <Content Include="Views\Product\Longclip.cshtml" />
@@ -3853,16 +3816,15 @@
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\Dashboard\_ViewStart.cshtml" />
+    <Content Include="Views\Dashboard\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
     <TypeScriptCompile Include="Assets\vendors\moment\moment.d.ts" />
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -3873,6 +3835,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
       <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912060756349_TestCreate1.resx">
+      <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
