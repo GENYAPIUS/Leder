@@ -25,7 +25,7 @@ namespace Leder.Models.Cart
             get { return this.cartItems.Count; }
         }
 
-        //取得商品總價
+        //取得商品總價-----------------------------------------------
         private decimal? _totalAmount = 0.0m;
         public decimal? TotalAmount
         {
@@ -39,9 +39,27 @@ namespace Leder.Models.Cart
                 return _totalAmount;
             }
         }
+        //-----------------------------------------------------------
+        //購物車的Id-------------------------------------
+        private string CartId;
+        public void UpdataCartId()
+        {
+            if (CartId == null)
+            {
+                if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
+                { CartId = HttpContext.Current.User.Identity.Name; }
+                else
+                { // Generate a new random GUID using System.Guid class.  
+                    Guid tempCartId = Guid.NewGuid();
+                    CartId = tempCartId.ToString();
+                }
+            }
+        }
+
+
 
         //新增一筆Prodct，使用ProdctId
-        public bool AddProduct(int ProuctId,int? quantity)
+        public bool AddProduct(int ProuctId, int? quantity)
         {
             var findItem = this.cartItems.Where(s=>s.Id ==ProuctId)
                                          .Select(s=>s)
@@ -80,7 +98,8 @@ namespace Leder.Models.Cart
                 Name = product.Name,
                 Price = product.Price,
                 Photo = product.Photo,
-                Quantity = quantity
+                Quantity = quantity,
+                CartId = CartId
             };
             //加入CartItem至購物車
             this.cartItems.Add(cartItem);

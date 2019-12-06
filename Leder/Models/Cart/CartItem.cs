@@ -20,5 +20,6 @@ namespace Leder.Models.Cart
         {
             get { return this.Price * this.Quantity; }
         }
+        public string CartId { set; get; } //購物車編號(用來查詢的GUID)
     }
 }
