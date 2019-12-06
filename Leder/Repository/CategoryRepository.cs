@@ -16,7 +16,7 @@ namespace Leder.Repository
         }
 
         
-        public string GetCategoryNameById(int? CategoryId) //這一串可以移到ProductRepository嗎?
+        public string GetCategoryNameById(int? CategoryId)
         {
             var temp = _db.Categories.FirstOrDefault(x => x.CategoryId == CategoryId);
             string result = temp.CategoryName;
