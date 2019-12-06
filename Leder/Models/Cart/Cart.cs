@@ -40,20 +40,27 @@ namespace Leder.Models.Cart
             }
         }
         //-----------------------------------------------------------
-        //購物車的Id-------------------------------------
+        //購物車的Id
         private string CartId;
+        private string MemberName;
+
+        //更新購物車
         public void UpdataCartId()
         {
-            if (CartId == null)
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {   //有登入的話ID套用UserName
+                CartId = HttpContext.Current.User.Identity.Name;
+                MemberName = CartId;
+            }
+            else
             {
-                if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
-                { CartId = HttpContext.Current.User.Identity.Name; }
-                else
-                { // Generate a new random GUID using System.Guid class.  
+                if (CartId == null || CartId == MemberName)
+                {   //沒登入而且還沒有Id的話，給他一組GUID當Id
                     Guid tempCartId = Guid.NewGuid();
                     CartId = tempCartId.ToString();
                 }
             }
+            int i = 1;
         }
 
 
