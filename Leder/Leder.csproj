@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201912030756535_TestCreate.Designer.cs">
       <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912060756349_TestCreate1.cs" />
+    <Compile Include="Migrations\201912060756349_TestCreate1.Designer.cs">
+      <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
@@ -3830,6 +3834,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
       <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912060756349_TestCreate1.resx">
+      <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
