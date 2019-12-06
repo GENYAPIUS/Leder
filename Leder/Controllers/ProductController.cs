@@ -47,6 +47,9 @@ namespace Leder.Controllers
             return View(productVM);
         }
 
+        
+
+
         [HttpGet]
         public JsonResult SortData(int PageNumber)    
         {
