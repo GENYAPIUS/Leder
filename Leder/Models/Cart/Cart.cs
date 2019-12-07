@@ -35,7 +35,6 @@ namespace Leder.Models.Cart
             MyCartItem = this.cartItems.Where(s => s.CartId == CartId)
                              .Select(s => s)
                              .ToList();
-
             return MyCartItem;
         }
         //取得當前購物車內容(尾)--------------------------------------------
