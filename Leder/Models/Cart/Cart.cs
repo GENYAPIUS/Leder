@@ -17,34 +17,47 @@ namespace Leder.Models.Cart
         {
             this.cartItems = new List<CartItem>();
         }
-
+        //變數都放這(首)------------------------------------------------
         //儲存所有商品
         private List<CartItem> cartItems;
-        public int Count
-        {
-            get { return this.cartItems.Count; }
-        }
-
-        //取得商品總價-----------------------------------------------
+        //當前購物車的Id
+        private string CartId;
+        //登入者的Id(用來判斷登出後新的Id)
+        private string MemberName;
+        private List<CartItem> MyCartItem;
+        //當前購物車的總價
         private decimal? _totalAmount = 0.0m;
+        //變數都放這(尾)------------------------------------------------
+
+        //取得當前購物車內容(頭)---------------------------------------------
+        public List<CartItem> GetMyCart()
+        {
+            MyCartItem = this.cartItems.Where(s => s.CartId == CartId)
+                             .Select(s => s)
+                             .ToList();
+
+            return MyCartItem;
+        }
+        //取得當前購物車內容(尾)--------------------------------------------
+
+
+        //取得商品總價(首)-----------------------------------------------
         public decimal? TotalAmount
         {
             get 
             {
                 _totalAmount = 0.0m;
-                foreach(var cartItem in this.cartItems)
+                foreach(var cartItem in this.MyCartItem)
                 {
                     _totalAmount = _totalAmount + cartItem.Amount;
                 }
                 return _totalAmount;
             }
         }
-        //-----------------------------------------------------------
-        //購物車的Id
-        private string CartId;
-        private string MemberName;
+        //取得商品總價(尾)----------------------------------------------
 
-        //更新購物車
+
+        //更新購物車(首)------------------------------------------------
         public void UpdataCartId()
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
@@ -60,10 +73,7 @@ namespace Leder.Models.Cart
                     CartId = tempCartId.ToString();
                 }
             }
-            int i = 1;
         }
-
-
 
         //新增一筆Prodct，使用ProdctId
         public bool AddProduct(int ProuctId, int? quantity)
@@ -112,6 +122,8 @@ namespace Leder.Models.Cart
             this.cartItems.Add(cartItem);
             return true;
         }
+        //更新購物車(尾)------------------------------------------------
+
 
         //移除一筆Product，使用ProductId
         public bool RemoveProduct(int ProductId)
