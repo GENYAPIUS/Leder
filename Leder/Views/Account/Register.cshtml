@@ -1,7 +1,7 @@
 ﻿@model Leder.Models.RegisterViewModel
 @{
     ViewBag.Title = "會員註冊";
-    
+
 }
 
 <h2 style="text-align:center">@ViewBag.Title</h2>
@@ -43,21 +43,21 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label", })
         <div class="col-md-4">
-            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control",@placeholder="(例):1980-01-01" })
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @placeholder = "", @id = "BirthDate" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.CellPhone, new { @class = "col-md-2 control-label"})
+        @Html.LabelFor(m => m.CellPhone, new { @class = "col-md-2 control-label" })
         <div class="col-md-4">
-            @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control",@placeholder="(例):09XX-XXX-XXX"})
+            @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", @placeholder = "(例):09XX-XXX-XXX" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.IdentityCard, new { @class = "col-md-2 control-label" })
         <div class="col-md-4">
-            @Html.TextBoxFor(m => m.IdentityCard, new { @class = "form-control",@placeholder="(例):A123456789"})
+            @Html.TextBoxFor(m => m.IdentityCard, new { @class = "form-control", @placeholder = "(例):A123456789" })
         </div>
     </div>
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -65,17 +65,31 @@
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" id="btn_register" class="btn btn-default" value="Register" />
             <p>
-                @Html.ActionLink("登入", "Login",new { @class = "btn"})
+                @Html.ActionLink("登入", "Login", new { @class = "btn" })
             </p>
         </div>
     </div>
-   
+
 }
 
 @section Scripts {
     <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+  
+    <script type="text/javascript" src="/scripts/moment.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+
+    <script>
+        $(document).ready(function () {
+            $('#BirthDate').datetimepicker(
+                {
+                    format: "YYYY/MM/DD"
+                });
+        }
+        );
+    </script>
 }
 @section Styles{
     <style>
