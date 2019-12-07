@@ -16,12 +16,19 @@ namespace Leder.Controllers
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList()); 
         }
-
+        [Authorize]
         public ActionResult Checkout()
         {
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList());
         }
+        [Authorize]
+        public ActionResult Order()
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            return View(currentCart.ToList());
+        }
+
         public ActionResult AddToCart(int id,int? inQuantity)
         {
             var currentCart = Models.Cart.Operation.GetCurrentCart();

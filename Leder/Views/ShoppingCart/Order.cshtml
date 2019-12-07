@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Leder.Models.Cart.CartItem>
+
+@{
+    ViewBag.Title = "Order";
+    var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
+}
+
+<section id="cart-view">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-view-area">
+                    <div class="cart-view-table">
+                        <form action="">
+                            <div class="table-responsive">
+                                <h2>結帳頁面</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>                                            
+                                            <th>@Html.DisplayNameFor(m => m.Photo)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                            <th>單價</th>
+                                            <th>數量</th>
+                                            <th>總價</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var i in Model)
+                                        {
+                                            <tr>
+                                                <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
+                                                <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
+                                                <td>@Html.DisplayFor(m => i.Price)</td>
+                                                <td><a class="aa-cart-quantity">@Html.DisplayFor(m => i.Quantity)</a></td>
+                                                <td>@Html.DisplayFor(m => i.Amount)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        <!-- Cart Total view -->
+                        <div class="cart-view-total">
+                            <table class="aa-totals-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td>NTD $ @String.Format("{0}", currentCart.TotalAmount)</td>
+                                        @*<td>USD $ @String.Format("{0}", (currentCart.TotalAmount) / 30.1m)</td>*@
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div id="paypaltest" style="margin-top:10px">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script src="https://www.paypal.com/sdk/js?client-id=sb" data-namespace="paypalSandbox"></script>
+    <script>paypalSandbox.Buttons().render('#paypaltest');</script>
+}

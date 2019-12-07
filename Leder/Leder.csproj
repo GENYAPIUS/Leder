@@ -3818,6 +3818,7 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\index.cshtml" />
+    <Content Include="Views\ShoppingCart\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
