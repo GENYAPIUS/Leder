@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Leder.Models;
 
-namespace Leder.Controllers
+namespace Leder.Views
 {
     public class ProcurementsController : Controller
     {
@@ -53,11 +52,7 @@ namespace Leder.Controllers
         {
             if (ModelState.IsValid)
             {
-                var product = db.Products.Find(procurement.ProductId);
                 db.Procurement.Add(procurement);
-                product.UnitInStock += procurement.Quantity;
-                db.Entry(product).State = EntityState.Modified;
-              
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +60,6 @@ namespace Leder.Controllers
             ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", procurement.ProductId);
             return View(procurement);
         }
-      
 
         // GET: Procurements/Edit/5
         public ActionResult Edit(int? id)
@@ -90,14 +84,8 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProcurementId,ProductId,PurchaseDate,Quantity,UnitPrize")] Procurement procurement)
         {
-            
             if (ModelState.IsValid)
             {
-
-                int OriginQuantity = GetProcurement(procurement.ProcurementId);
-                var product = db.Products.Find(procurement.ProductId);
-                product.UnitInStock = product.UnitInStock + (procurement.Quantity - OriginQuantity);
-                db.Entry(product).State = EntityState.Modified;
                 db.Entry(procurement).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,11 +94,6 @@ namespace Leder.Controllers
             return View(procurement);
         }
 
-        public int GetProcurement(int id) {
-             
-            Procurement procurement = db.Procurement.Find(id);
-            return procurement.Quantity;
-        }
         // GET: Procurements/Delete/5
         public ActionResult Delete(int? id)
         {
