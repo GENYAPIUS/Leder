@@ -114,9 +114,19 @@ namespace Leder.Models
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
         [Required]
-        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
+        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", )ErrorMessage = "輸入格式錯誤(例:A123456789)")]
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
+        //[RegularExpression("(True|true)", ErrorMessage = "請閱讀隱私權政策後打勾。")]
+        //[Range(typeof(bool), "true", "true", ErrorMessage = "請閱讀隱私權政策後打勾。")]
+        //[StringLength(4, ErrorMessage = "請閱讀隱私權政策後打勾。")]
+        public bool IsTrue => true;
+
+        [Required]
+        [Display(Name = "請閱讀隱私權政策後打勾。")]
+        [Compare("IsTrue", ErrorMessage = "請閱讀隱私權政策後打勾。")]
+        //[Display(Name = "隱私權政策")]
+        public bool PrivatePolicy_Checked { get; set; }
     }
 
     public class ResetPasswordViewModel

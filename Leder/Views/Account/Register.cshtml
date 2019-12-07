@@ -60,46 +60,96 @@
             @Html.TextBoxFor(m => m.IdentityCard, new { @class = "form-control", @placeholder = "(例):A123456789" })
         </div>
     </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" id="btn_register" class="btn btn-default" value="Register" />
-            <p>
-                @Html.ActionLink("登入", "Login", new { @class = "btn" })
-            </p>
+            @Html.CheckBoxFor(m => m.PrivatePolicy_Checked)我已仔細閱讀並同意遵守<a href="#PrivatePolicy" style="color:darkgoldenrod" data-toggle="modal" data-target="#PrivatePolicyModal">隱私權政策</a><br>
+            @Html.Hidden(nameof(Model.IsTrue), "true")
         </div>
-    </div>
+        </div>
 
-}
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @* <input type="checkbox" id="MustCheck" name="MustCheck">我已仔細閱讀並同意遵守<a href="#PrivatePolicy" style="color:darkgoldenrod" data-toggle="modal" data-target="#PrivatePolicyModal">隱私權政策</a><br>*@
+                <input type="submit" id="btn_register" class="btn btn-default" value="註冊" />
+                <p>
+                    @Html.ActionLink("改至會員登入頁面", "Login", new { @class = "btn", style = "color:blue" })
+                </p>
+            </div>
+        </div>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
-@section Scripts {
-    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-  
-    <script type="text/javascript" src="/scripts/moment.min.js"></script>
-    <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+        <div class="modal fade" id="PrivatePolicyModal" role="dialog" style="background-color:antiquewhite">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div id="policy" class="inner-800  modal-base  policy-wrapper  mfp-hide">
+                    <h1>隱私權政策</h1>
+                    <p>非常感謝瀏覽Leder Co., Limited（以下稱「本公司」）的網站（以下稱「本網站」）。本公司十分重視您的隱私權保護，將依個人資料保護法及本隱私權政策，蒐集、處理及利用您的個人資料，並提供您對個人資料權利之行使與保護。若您不同意本隱私權政策之全部或部分者，請您停止使用本網站服務。</p>
+                    <h2>1. 本隱私權政策適用之範圍</h2>
+                    <p>請您在於使用本網站服務前，確認您已審閱並同意本隱私權政策所列全部條款。登錄及使用本網站，代表您同意本公司根據下列條款蒐集、使用及披露您的信息。</p>
+                    <p>本隱私權政策僅適用於本網站對您個人資料的蒐集、處理與利用，不及於其他非本公司所有或控制之其他公司或個人。您可能經由本網站連結至第三人所經營之網站，各該網站所為之個人資料蒐集係依其網站之隱私權政策規定處理，與本公司無涉。</p>
+                    <h2>2. 收集個人資料的種類</h2>
+                    <p>閣下或須不時提供可辨識閣下個人身份的資料，包括但不限於閣下的姓名、性別、年齡、電話號碼、傳真號碼、地址、電子郵件信箱、信用卡資料、銀行戶口號碼、教育程度、職業、家庭收入、興趣及喜好活動等。如閣下拒絕提供有關資料，便可能無法登入網站的部分內容，並可能令本公司無法處理閣下的申請或要求，因而令閣下無法達到瀏覽網站的目的。如閣下未滿十八歲，必須先得到家長或監護人的同意，方可向本公司提供任何可辨識個人身份的資料。</p>
+                    <h2>3. 個人資料收集，處理及利用說明</h2>
+                    <p>我們可能收集，保留及使用閣下的個人資料以作如下用途：</p>
+                    <p>(a) 核實閣下的身份。</p>
+                    <p>(b) 處理閣下選購我們服務。</p>
+                    <p>(c) 根據各國家個人資料保護法律定義的核對程式。</p>
+                    <p>(d) 提供閣下所需的服務。</p>
+                    <p>(e) 進行研究或分析，以改善我們的產品及/或服務，以及用於調查，推銷和推廣用途。</p>
+                    <p>(f) 維護和開發移動通訊的業務系統和基礎設施，包括測試及更新該等系統。</p>
+                    <p>(g) 協助預防，偵查或調查犯罪或潛在犯罪活動，或按照法律規定提供相關協助。</p>
+                    <p>除依法應提供予司法、檢調機關、相關主管機關，或與本公司協力廠商為執行相關活動必要範圍之利用外，本公司將不會任意將您的個人資料提供予第三人。</p>
+                    <h2>4. Cookie 技術</h2>
+                    <p>為便於日後的辨識，當您使用本網站服務時，本公司可能會在您的電腦上設定與存取 Cookie。您可以透過設定您的個人電腦或上網設備，決定是否允許 Cookie 技術的使用，若您關閉Cookie時，可能會造成您使用本網站服務時之不便利或部分功能限制。</p>
+                    <p>使用本公司網站服務時，我們會基於以下原因會使用 Cookies。</p>
+                    <p>・確認顧客的登錄狀況或購物車功能的安裝</p>
+                    <p>・調查本公司網站的利用狀況或進一步提升本公司的廣告、市場策劃及服務</p>
+                    <p>・第三者廣告商例如 Google 及其他網站上登廣告</p>
+                    <p>符合以上目的而取得的第三者 Cookies 資料是會根據個人資料隱私權保護條例作出處理。</p>
+                    <p>Google，Facebook 等的第三者廣告經營商，有可能使用Cookies，以取得本公司網站的瀏覽者的訪問信息，而且在第三者網站也會有機會出現本公司的廣告。此外，顧客也能夠透過訪問第三者網站上提供的「退出頁面選擇」，停止該第三者利用 Cookies 信息發放的廣告。</p>
+                    <h2>5. 保密與安全性</h2>
+                    <p>本公司之員工，僅於其為您提供產品或服務之需求範圍內，對於您的個人資料得為有限之接觸。
+                    <p>同時，您向本公司提供的個人資料將安全存置於網站內，只有獲授權人士方可查閱。本公司的網上登記程序採用 SSL 技術配合數據傳送，以可靠的加密形式保護您的資料，確保隱私權獲得保障。</p>
+                    <p>為了保護您的帳戶及個人資料的安全，請您不要任意將個人帳號、密碼提供予第三人或允許第三人以您的個人資料申請帳號、密碼，否則，相關責任由您自行負擔。若您的帳號、密碼有外洩之虞，請您立即更改密碼，或通知本公司暫停該帳號（本公司可能會要求核對您的個人資料）。</p>
+                    <p>網際網路並不是一個安全的資訊傳輸環境，請您在使用本網站時，避免將敏感的個人資料提供予他人或在網站上公開揭露。</p>
+                    <h2>6. 未成年人保護</h2>
+                    <p>本網站並非特別為未成年人/兒童設計，未成年人使用本網站時，若同意本網站蒐集、利用其個人資訊時，應在法定代理人或監護人之同意下為之。法定代理人或監護人得隨時請求本公司停止特定帳號及其相關之個人資料之蒐集、處理及利用行為。</p>
+                    <h2>7. 隱私權政策之修改</h2>
+                    <p>隱私權政策如經修改，本網站將以您所提供之電子郵件或簡訊通知您相關之重大變更，並於本網站公告。若您不同意該等變更或修改，請停止繼續使用本網站服務，並依本隱私權政策規定通知本公司停止蒐集、處理及利用您的個人資料。</p>
+                    <p>您可隨時修改個人帳號資料，我們保有權利向您傳送Leder服務相關的特定訊息 (如服務公告，管理訊息)，這些訊息被視為您帳號的一部分，您無法選擇退出接收。</p>
+                    <h2>8. 問題和建議</h2>
+                    <p>如果您有任何問題或建議，歡迎與我們聯繫。</p>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        $(document).ready(function () {
-            $('#BirthDate').datetimepicker(
-                {
+        }
+
+        @section Scripts {
+            <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+            <script type="text/javascript" src="/scripts/moment.min.js"></script>
+            <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
+            <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+
+            <script>
+
+                $('#BirthDate').datetimepicker({
                     format: "YYYY/MM/DD"
                 });
+            </script>
         }
-        );
-    </script>
-}
-@section Styles{
-    <style>
-        .validation-summary-errors {
-            text-align: center;
-        }
+        @section Styles{
+            <style>
+                .validation-summary-errors {
+                    text-align: center;
+                }
 
-        #btn_register {
-            color: antiquewhite;
-            background-color: rgb(151,0,1);
+                #btn_register {
+                    color: antiquewhite;
+                    background-color: rgb(151,0,1);
+                }
+            </style>
         }
-    </style>
-}
