@@ -72,7 +72,7 @@ namespace Leder.Controllers
             var pagedProduct = productVM.OrderBy(x => x.Id).Skip(6 * (PageNumber - 1)).Take(6).ToList();
 
             //return Json(pagedProduct, JsonRequestBehavior.AllowGet); 原本寫法
-            return View(pagedProduct); //為什麼不是跳到SortData的View???
+            return View("SortData",pagedProduct); //為什麼不是跳到SortData的View???
         }
 
         [HttpPost]
@@ -99,7 +99,8 @@ namespace Leder.Controllers
 
             }
             //return PartialView("_ProductPartial", productVM); 
-            return View(productVM); 
+            return View(productVM);
+        }
 
 
         public ActionResult Backpack()
@@ -108,7 +109,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = productRepo.GetProductInCatagory(2,"1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(2, "1").ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
