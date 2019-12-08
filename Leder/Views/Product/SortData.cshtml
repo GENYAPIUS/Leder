@@ -1,0 +1,34 @@
+﻿@using Leder.ViewModels;
+@model ProductViewModel
+@{
+    ViewBag.Title = "_ProductPartial";
+
+}
+
+
+<!-- start single product item -->
+<li>
+    <figure>
+        <!--當我按下圖片，就會連到路由:ProductDetail/Id-->
+        <a class="aa-product-img" href="@Url.Action("ProductDetail", new { id = @Model.Id })">
+            <img src="@Model.Photo" style="width:280px" alt="polo shirt img">
+        </a>
+        <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+        <figcaption>
+            <h4 class="aa-product-title"><a href="#">@Model.Name</a></h4>
+            <span class="aa-product-price">NT$@Model.Price</span><span class="aa-product-price"></span>
+            <p class="aa-product-descrip">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus facere iusto, autem soluta amet sapiente ratione inventore nesciunt a, maxime quasi consectetur, rerum illum.</p>
+        </figcaption>
+    </figure>
+    <div class="aa-product-hvr-content">
+        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+        <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#@Model.Id"><span class="fa fa-search"></span></a>
+    </div>
+    <!-- product badge右上角的sales標籤 -->
+    <!--<span class="aa-badge aa-sale" href="#">SALE!</span>-->
+</li>
+
+
+
+
+

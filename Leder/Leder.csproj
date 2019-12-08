@@ -302,6 +302,8 @@
     <Content Include="Scripts\jquery.simpleLens.js" />
     <Content Include="Scripts\jquery.smartmenus.bootstrap.js" />
     <Content Include="Scripts\jquery.smartmenus.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\nouislider.js" />
     <Content Include="Scripts\sequence-theme.modern-slide-in.js" />
     <Content Include="Scripts\sequence.js" />
@@ -3817,6 +3819,7 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\index.cshtml" />
+    <Content Include="Views\Product\SortData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

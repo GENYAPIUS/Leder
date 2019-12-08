@@ -47,11 +47,9 @@ namespace Leder.Controllers
             return View(productVM);
         }
 
-        
-
 
         [HttpGet]
-        public JsonResult SortData(int PageNumber)    
+        public ViewResult SortData(int PageNumber)    
         {
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
@@ -73,8 +71,8 @@ namespace Leder.Controllers
 
             var pagedProduct = productVM.OrderBy(x => x.Id).Skip(6 * (PageNumber - 1)).Take(6).ToList();
 
-            return Json(pagedProduct, JsonRequestBehavior.AllowGet);
-            
+            //return Json(pagedProduct, JsonRequestBehavior.AllowGet); 原本寫法
+            return View(pagedProduct); //為什麼不是跳到SortData的View???
         }
 
         [HttpPost]
@@ -98,10 +96,10 @@ namespace Leder.Controllers
                     Photo = i.Photo
                 });
 
-            }
 
-            return View(productVM);
-        }
+            }
+            //return PartialView("_ProductPartial", productVM); 
+            return View(productVM); 
 
 
         public ActionResult Backpack()

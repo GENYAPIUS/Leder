@@ -1,13 +1,14 @@
 ﻿@using Leder.ViewModels;
 
+
 @model IEnumerable<ProductViewModel>
-    @{ 
-        //一頁放六個產品
-        int pageSize = 6;
-        //Math.Ceiling無條件進位
-        //Model.Count()計算該類別共有幾種商品
-        int totalPage = (int)Math.Ceiling((decimal)Model.Count() / pageSize);
-    }
+@{
+    //一頁放六個產品
+    int pageSize = 6;
+    //Math.Ceiling無條件進位
+    //Model.Count()計算該類別共有幾種商品
+    int totalPage = (int)Math.Ceiling((decimal)Model.Count() / pageSize);
+}
 
 
 <section id="aa-product-category">
@@ -17,17 +18,19 @@
                 <div class="aa-product-catg-content">
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
-                          
-                            @using (Ajax.BeginForm("Index", "Product", new AjaxOptions { UpdateTargetId = "ProductDisplay" }))
-                            {                                                        
-                                <select name="sortedItem" onchange="$(this.form).submit();">
-                                    <option value="1">排序方式依</option>
-                                    <option value="2">名稱 </option>
-                                    <option value="3">價格(由低到高)</option>
-                                    <option value="4">價格(由高到低)</option>
-                                </select>
-                           
-                             }
+
+                            @*@using (Ajax.BeginForm("Index", "Product", new AjaxOptions { UpdateTargetId = "ProductDisplay" }))*@
+                            @*@using(Html.BeginForm("Index", "Product", FormMethod.Post,new AjaxOptions { UpdateTargetId = "ProductDisplay" } ))*@
+                            @using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ProductDisplay" }))
+                            {
+                            <select name="sortedItem" onchange="$(this.form).submit();">
+                                <option value="1">排序方式依</option>
+                                <option value="2">名稱 </option>
+                                <option value="3">價格(由低到高)</option>
+                                <option value="4">價格(由高到低)</option>
+                            </select>
+
+                            }
                         </div>
                         <div class="aa-product-catg-head-right">
                             <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -37,13 +40,15 @@
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
                             <div class="row" id="ProductDisplay">
-                             
+
                                 @foreach (var p in Model)
                                 {
+                                    //@Html.RenderPartial("_ProductPartial"); 
+
                                     @Html.Partial("_ProductPartial", p);
                                 }
 
-                               
+
 
                             </div>
 
@@ -70,12 +75,12 @@
                                 </li>
                                 @for (int i = 1; i <= totalPage; i++)
                                 {
-                                <li><span aria-hidden="true" id="@i" value="@i" onclick="SortData(@i)">@i</span></li>
+                                    <li><span class="PageNumber" aria-hidden="true" id="@i">@i</span></li>
                                 }
 
                                 <li>
                                     <a href="#" aria-label="Next">
-                                       <span aria-hidden="true">&raquo;</span>
+                                        <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
                             </ul>
@@ -84,35 +89,42 @@
                 </div>
             </div>
 
-                @Html.Partial("_SidebarPartial");
+            @Html.Partial("_SidebarPartial");
 
-            </div>
         </div>
-    </section>
-@section Scripts{  
+    </div>
+</section>
+@section Scripts{
     <script>
-        //看是按下第幾頁，傳入number參數
-        function SortData(number) {           
+        //看是按下第幾頁
+        $('.PageNumber').click(function () {
+            var number = this.innerText;  //取頁數的值
+            console.log(number);
+            SortData(number);
+        })
+        function SortData(number) {
             $.get("/Product/SortData", { PageNumber: number }, function (response) {
-                if (response != null) {  
+                if (response != null) {
                     console.log(response);
-                    $("#ProductDisplay").empty();                   
+                    $("#ProductDisplay").empty();
                     for (var i in response) {
-                       
                         var content = $("#ProductDisplay").append(i);
-                        showSortedData(response[i]);
+                        var data = response[i].Name;
+                        showSortedData(data); //一個一個把商品Print出來
                         console.log(content);
                         console.log(response[i]);
                         console.log(i);
-                    }                   
+                    }
                 }
             });
         }
 
-        function showSortedData(response[i]) {
-            alert(response[i]);
+        function showSortedData(data) {
+            var product = data;
+             $("#ProductDisplay").load('/Product/SortData');
         }
 
-    </script>   
-    }
+
+    </script>
+}
 
