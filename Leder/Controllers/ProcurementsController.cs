@@ -93,12 +93,9 @@ namespace Leder.Controllers
             
             if (ModelState.IsValid)
             {
-
-                int OriginQuantity = GetProcurement(procurement.ProcurementId);
                 var product = db.Products.Find(procurement.ProductId);
-                product.UnitInStock = product.UnitInStock + (procurement.Quantity - OriginQuantity);
-                db.Entry(product).State = EntityState.Modified;
-                db.Entry(procurement).State = EntityState.Modified;
+                ChangeProductUnitStock(product,procurement);
+                db.Entry(procurement).State = EntityState.Added;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -106,10 +103,15 @@ namespace Leder.Controllers
             return View(procurement);
         }
 
-        public int GetProcurement(int id) {
-             
-            Procurement procurement = db.Procurement.Find(id);
-            return procurement.Quantity;
+        public void ChangeProductUnitStock([Bind(Include = "UnitInStock")] Product product,Procurement procurement) {
+            if (ModelState.IsValid)
+            {
+                Procurement originProcurement = db.Procurement.Find(procurement.ProcurementId);
+                product.UnitInStock += (procurement.Quantity - originProcurement.Quantity);
+                db.Entry(originProcurement).State = EntityState.Deleted;
+                db.Entry(product).State = EntityState.Modified;
+            }
+            return;
         }
         // GET: Procurements/Delete/5
         public ActionResult Delete(int? id)
