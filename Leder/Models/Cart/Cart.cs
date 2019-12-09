@@ -16,6 +16,7 @@ namespace Leder.Models.Cart
         public Cart()
         {
             this.cartItems = new List<CartItem>();
+
         }
         //變數都放這(首)------------------------------------------------
         //儲存所有商品
@@ -24,6 +25,7 @@ namespace Leder.Models.Cart
         private decimal? _totalAmount = 0.0m;
         //變數都放這(尾)------------------------------------------------
 
+        public bool Shift = false;
         public int Count
         {
             get { return this.cartItems.Count; }
