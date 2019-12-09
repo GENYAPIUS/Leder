@@ -46,63 +46,6 @@ namespace Leder.Controllers
 
             return View(productVM);
         }
-
-
-        [HttpGet]
-        public ViewResult SortData(int PageNumber)    
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-            List<Product> ProductList = productRepo.GetProductInCatagory(1, "1").ToList();
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-            
-            foreach (var i in ProductList)
-            {
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-
-            }
-
-            var pagedProduct = productVM.OrderBy(x => x.Id).Skip(6 * (PageNumber - 1)).Take(6).ToList();
-
-            //return Json(pagedProduct, JsonRequestBehavior.AllowGet); 原本寫法
-            return View("SortData",pagedProduct); //為什麼不是跳到SortData的View???
-        }
-
-        [HttpPost]
-        public ActionResult Index(string sortedItem)
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-
-            var ProductList = productRepo.GetProductInCatagory(1, sortedItem).ToList();
-
-            foreach (var i in ProductList)
-            {
-                //把資料庫的值塞入ViewModel
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-
-
-            }
-            //return PartialView("_ProductPartial", productVM); 
-            return View(productVM);
-        }
-
-
         public ActionResult Backpack()
         {
             productRepo = new ProductRepository(db);

@@ -6,7 +6,7 @@
     //一頁放六個產品
     int pageSize = 6;
     //Math.Ceiling無條件進位
-    //Model.Count()計算該類別共有幾種商品
+    //Count()計算該類別共有幾種商品
     int totalPage = (int)Math.Ceiling((decimal)Model.Count() / pageSize);
 }
 
@@ -40,27 +40,14 @@
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
                             <div class="row" id="ProductDisplay">
-
-                                @foreach (var p in Model)
-                                {
-                                    //@Html.RenderPartial("_ProductPartial"); 
-
-                                    @Html.Partial("_ProductPartial", p);
-                                }
-
-
-
+                                    @Html.Partial("_ProductPartial", Model);
                             </div>
-
                         </ul>
                         <!-- quick view modal -->
-
                         @foreach (var p in Model)
                         {
                             @Html.Partial("_QuickViewPartial", p);
                         }
-
-
                         <!-- / quick view modal -->
                     </div>
 
@@ -100,31 +87,8 @@
         $('.PageNumber').click(function () {
             var number = this.innerText;  //取頁數的值
             console.log(number);
-            SortData(number);
         })
-        function SortData(number) {
-            $.get("/Product/SortData", { PageNumber: number }, function (response) {
-                if (response != null) {
-                    console.log(response);
-                    $("#ProductDisplay").empty();
-                    for (var i in response) {
-                        var content = $("#ProductDisplay").append(i);
-                        var data = response[i].Name;
-                        //showSortedData(data); //一個一個把商品Print出來
-                        console.log(content);
-                        console.log(response[i]);
-                        console.log(i);
-                    }
-                }
-            });
-        }
-
-        function showSortedData(data) {
-            var product = data;
-             $("#ProductDisplay").load('/Product/SortData');
-        }
-
-
+        
     </script>
 }
 
