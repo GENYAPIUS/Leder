@@ -49,7 +49,7 @@ namespace Leder.Controllers
 
 
         [HttpGet]
-        public ViewResult SortData(int PageNumber)    
+        public JsonResult SortData(int PageNumber)    
         {
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
@@ -71,8 +71,8 @@ namespace Leder.Controllers
 
             var pagedProduct = productVM.OrderBy(x => x.Id).Skip(6 * (PageNumber - 1)).Take(6).ToList();
 
-            //return Json(pagedProduct, JsonRequestBehavior.AllowGet); 原本寫法
-            return View("SortData",pagedProduct); //為什麼不是跳到SortData的View???
+            return Json(pagedProduct, JsonRequestBehavior.AllowGet);
+            //return View("SortData",pagedProduct); 
         }
 
         [HttpPost]

@@ -16,8 +16,8 @@ namespace Leder
             //商品頁面
             //從Product/ProductDetail/id變成ProductDetail/id，精簡了一點
             routes.MapRoute(
-               name: "ProductDetail",
-               url: "ProductDetail/{Id}",
+               name: "FindProductById",
+               url: "Id/{Id}",
                defaults: new { controller = "Product", action = "ProductDetail", Id = UrlParameter.Optional }
            );
 
