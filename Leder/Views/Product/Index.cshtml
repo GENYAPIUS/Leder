@@ -23,12 +23,12 @@
                             @*@using(Html.BeginForm("Index", "Product", FormMethod.Post,new AjaxOptions { UpdateTargetId = "ProductDisplay" } ))*@
                             @using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ProductDisplay" }))
                             {
-                            <select name="sortedItem" onchange="$(this.form).submit();">
-                                <option value="1">排序方式依</option>
-                                <option value="2">名稱 </option>
-                                <option value="3">價格(由低到高)</option>
-                                <option value="4">價格(由高到低)</option>
-                            </select>
+                                <select name="sortedItem" onchange="$(this.form).submit();">
+                                    <option value="1">排序方式依</option>
+                                    <option value="2">名稱 </option>
+                                    <option value="3">價格(由低到高)</option>
+                                    <option value="4">價格(由高到低)</option>
+                                </select>
 
                             }
                         </div>
@@ -40,7 +40,7 @@
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
                             <div class="row" id="ProductDisplay">
-                                    @Html.Partial("_ProductPartial", Model);
+                                @Html.Partial("_ProductPartial", Model);
                             </div>
                         </ul>
                         <!-- quick view modal -->
@@ -83,12 +83,24 @@
 </section>
 @section Scripts{
     <script>
-        //看是按下第幾頁
+        //看是按下第幾頁，讓ajax呼叫Pagination，把頁碼傳給他
         $('.PageNumber').click(function () {
             var number = this.innerText;  //取頁數的值
             console.log(number);
+            $("#ProductDisplay").empty();
+            $.ajax({
+                type: "POST",
+                url: "/Product/Pagination", 
+                data: { PageNumber: number },
+                dataType: "text",
+                success: function (response) {
+                    $("#ProductDisplay").html(response);
+                }
+            });
+            $('html, body').scrollTop(0); //讓網頁卷軸移到頂部，不然卷軸在下很怪
         })
-        
+
+
     </script>
 }
 

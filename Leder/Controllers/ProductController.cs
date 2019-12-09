@@ -48,41 +48,16 @@ namespace Leder.Controllers
         }
 
 
-        [HttpGet]
-        public JsonResult SortData(int PageNumber)    
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-            List<Product> ProductList = productRepo.GetProductInCatagory(1, "1").ToList();
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-            
-            foreach (var i in ProductList)
-            {
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-
-            }
-
-            var pagedProduct = productVM.OrderBy(x => x.Id).Skip(6 * (PageNumber - 1)).Take(6).ToList();
-
-            return Json(pagedProduct, JsonRequestBehavior.AllowGet);
-            //return View("SortData",pagedProduct); 
-        }
-
+       
         [HttpPost]
-        public ActionResult Index(string sortedItem)
+        public ActionResult Pagination(int PageNumber)
         {
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
+
             List<ProductViewModel> productVM = new List<ProductViewModel>();
 
-            var ProductList = productRepo.GetProductInCatagory(1, sortedItem).ToList();
+            var ProductList = productRepo.GetProductInCatagory(1, "1").ToList();
 
             foreach (var i in ProductList)
             {
@@ -95,11 +70,9 @@ namespace Leder.Controllers
                     Price = i.Price,
                     Photo = i.Photo
                 });
-
-
             }
-            //return PartialView("_ProductPartial", productVM); 
-            return View(productVM);
+            var pagedProduct = productVM.OrderBy(x => x.Id).Skip(6 * (PageNumber - 1)).Take(6).ToList();
+            return PartialView("_ProductPartial",pagedProduct);
         }
 
 
