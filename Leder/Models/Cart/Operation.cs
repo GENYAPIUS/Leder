@@ -13,30 +13,34 @@ namespace Leder.Models.Cart
 
     public static class Operation
     {
-
-        static Cart cart = new Cart();
-
+        [WebMethod(EnableSession = true)] //啟用Session
         public static Cart GetCurrentCart()
         {
-
-            ObjectCache cache = MemoryCache.Default;
-            string fileContents = cache["filecontents"] as string;
-            if (fileContents == null)
-            {
-                CacheItemPolicy policy = new CacheItemPolicy();
-                //Update.UpdataCartId(cart.CartId);
-                cart.UpdataCartId();
-                if (cache["Cart"] == null)
-                {
-                    policy.SlidingExpiration = TimeSpan.FromDays(3);
-                    cache.Set("Cart", cart, policy);
-                }
-                return (Cart)cache["Cart"];
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {   //有登入的話ID套用UserName
+                HttpContext.Current.Session["CartId"] = HttpContext.Current.User.Identity.Name;
+                HttpContext.Current.Session["MemberId"] = HttpContext.Current.Session["CartId"];
             }
             else
             {
-                throw new InvalidOperationException("System.Wed.HttpContext.Current為空，請檢查");
+                if (HttpContext.Current.Session["CartId"] == null || HttpContext.Current.Session["CartId"] == HttpContext.Current.Session["MemberId"])
+                {   //沒登入而且還沒有Id的話，給他一組GUID當Id
+                    Guid tempCartId = Guid.NewGuid();
+                    HttpContext.Current.Session["CartId"] = tempCartId.ToString();
+                }
             }
+            ObjectCache cache = MemoryCache.Default;  //啟用預設MemoryCache
+            CacheItemPolicy policy = new CacheItemPolicy();
+
+            string UserId = HttpContext.Current.Session["CartId"].ToString();
+            if (cache[UserId] == null)
+            {
+                Cart cart = new Cart();
+                policy.SlidingExpiration = TimeSpan.FromMinutes(30);
+                cache.Set(UserId, cart, policy);
+            }
+            return (Cart)cache[UserId];
+
         }
     }
 

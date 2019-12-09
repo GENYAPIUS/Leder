@@ -20,25 +20,15 @@ namespace Leder.Models.Cart
         //變數都放這(首)------------------------------------------------
         //儲存所有商品
         private List<CartItem> cartItems;
-        //當前購物車的Id
-        private string CartId;
-        //登入者的Id(用來判斷登出後新的Id)
-        private string MemberName;
-        private List<CartItem> MyCartItem;
         //當前購物車的總價
         private decimal? _totalAmount = 0.0m;
         //變數都放這(尾)------------------------------------------------
 
-        //取得當前購物車內容(頭)---------------------------------------------
-        public List<CartItem> GetMyCart()
+        public int Count
         {
-            MyCartItem = this.cartItems.Where(s => s.CartId == CartId)
-                             .Select(s => s)
-                             .ToList();
-            return MyCartItem;
+            get { return this.cartItems.Count; }
         }
-        //取得當前購物車內容(尾)--------------------------------------------
-
+  
 
         //取得商品總價(首)-----------------------------------------------
         public decimal? TotalAmount
@@ -46,7 +36,7 @@ namespace Leder.Models.Cart
             get 
             {
                 _totalAmount = 0.0m;
-                foreach(var cartItem in this.MyCartItem)
+                foreach(var cartItem in this.cartItems)
                 {
                     _totalAmount = _totalAmount + cartItem.Amount;
                 }
@@ -54,25 +44,6 @@ namespace Leder.Models.Cart
             }
         }
         //取得商品總價(尾)----------------------------------------------
-
-
-        //更新購物車(首)------------------------------------------------
-        public void UpdataCartId()
-        {
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {   //有登入的話ID套用UserName
-                CartId = HttpContext.Current.User.Identity.Name;
-                MemberName = CartId;
-            }
-            else
-            {
-                if (CartId == null || CartId == MemberName)
-                {   //沒登入而且還沒有Id的話，給他一組GUID當Id
-                    Guid tempCartId = Guid.NewGuid();
-                    CartId = tempCartId.ToString();
-                }
-            }
-        }
 
         //新增一筆Prodct，使用ProdctId
         public bool AddProduct(int ProuctId, int? quantity)
@@ -114,8 +85,7 @@ namespace Leder.Models.Cart
                 Name = product.Name,
                 Price = product.Price,
                 Photo = product.Photo,
-                Quantity = quantity,
-                CartId = CartId
+                Quantity = quantity
             };
             //加入CartItem至購物車
             this.cartItems.Add(cartItem);
