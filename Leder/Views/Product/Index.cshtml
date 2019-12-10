@@ -3,11 +3,8 @@
 
 @model IEnumerable<ProductViewModel>
 @{
-    //一頁放六個產品
-    int pageSize = 6;
-    //Math.Ceiling無條件進位
-    //Count()計算該類別共有幾種商品
-    int totalPage = (int)Math.Ceiling((decimal)Model.Count() / pageSize);
+    
+   int totalPage = (int)ViewData["totalPage"];
 }
 
 
@@ -19,7 +16,6 @@
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
                             @*@using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ProductDisplay" }))*@
-
                             <select id="Sorted">
                                 <option value="1">排序方式依</option>
                                 <option value="2">名稱 </option>
@@ -80,33 +76,42 @@
 </section>
 @section Scripts{
     <script>
-        //看是按下第幾頁，讓ajax呼叫Pagination，把頁碼傳給他
+        /*number跟val之所以都放全域變數，因為我希望不管按的是頁數or排序法，都希望使用者原初的頁碼or排序法能被記住*/
+        var number = 1; //按到第幾頁，number跟著變
+        var val = 1;    //排序方法
+
+        //頁碼
+        //讓ajax呼叫Pagination方法，number跟val都要傳給他
         $('.PageNumber').click(function () {
-            var number = this.innerText;  //取頁數的值
-            console.log(number);
+                              //預設的排序是1(用Id排序)
+            number = this.innerText;  //取頁數的值，也順便更動全域變數number
             $.ajax({
                 type: "POST",
                 url: "/Product/Pagination",
-                data: { PageNumber: number },
+                data: { PageNumber: number, value: val},
                 dataType: "text",
                 success: function (response) {
                     $("#ProductDisplay").empty();
                     $("#ProductDisplay").html(response);
+                    $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
                 }
             });
-            $('html, body').scrollTop(0); //讓網頁卷軸移到頂部，不然卷軸在下很怪
+           
         })
 
+        //排序方法
+        //讓ajax呼叫Pagination方法，number跟val都要傳給他
         $('#Sorted').change(function (e) { //下拉式選單改變發生時
-            var val = $(this).val();       //看選到哪個value
+            val = $(this).val();           //選到哪個value 
             $.ajax({
                 type: "POST",
-                url: "/Product/SortedTotebag",
-                data: { value: val },
+                url: "/Product/Pagination",
+                data: { PageNumber: number, value: val },
                 dataType: "text",
                 success: function (response) {
                     $("#ProductDisplay").empty();
                     $("#ProductDisplay").html(response);
+                    $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
                 }
             });
 

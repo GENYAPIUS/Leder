@@ -1201,9 +1201,9 @@ img {
   overflow: hidden;
 }
 
-.aa-product-catg li:hover figure .aa-product-img {
+/*.aa-product-catg li:hover figure .aa-product-img {
   background-color: rgba(0, 0, 0, 0.5);
-}
+}*/
 
 .aa-product-catg li:hover figure .aa-add-card-btn {
   -webkit-transform: scale(1);
@@ -1228,8 +1228,9 @@ img {
 }
 
 .aa-product-catg li figure .aa-add-card-btn {
+  top:238px;
   background: #000 none repeat scroll 0 0;
-  bottom: 0;
+  bottom: 20;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
