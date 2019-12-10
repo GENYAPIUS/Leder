@@ -95,6 +95,14 @@ namespace Leder.Models.Cart
         }
         //更新購物車(尾)------------------------------------------------
 
+        public bool EditProduct(int ProuctId, int? quantity)
+        {
+            var findItem = this.cartItems.Where(s => s.Id == ProuctId)
+                                         .Select(s => s)
+                                         .FirstOrDefault();
+            findItem.Quantity = quantity;
+            return true;
+        }
 
         //移除一筆Product，使用ProductId
         public bool RemoveProduct(int ProductId)

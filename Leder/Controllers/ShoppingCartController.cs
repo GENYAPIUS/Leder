@@ -35,6 +35,12 @@ namespace Leder.Controllers
             currentCart.AddProduct(id, inQuantity);
             return PartialView("_CartPartial");
         }
+        public ActionResult EditToCart(int id, int? inQuantity)
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.EditProduct(id, inQuantity);
+            return PartialView("_CartPartial");
+        }
         public ActionResult RemoveFromCart(int id)
         {
             var currentCart = Models.Cart.Operation.GetCurrentCart();

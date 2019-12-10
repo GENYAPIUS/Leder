@@ -28,20 +28,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @{ var cartItemId = 2000;}
                                             @foreach (var i in Model)
                                             {
-                                                  <tr>
-                                                      <td><a href="~/ShoppingCart" class="remove" onclick="RemoveFromCart('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
-                                                      <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
-                                                      <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
-                                                      <td>@Html.DisplayFor(m => i.Price)</td>
-                                                      <td><a class="aa-cart-quantity">@Html.DisplayFor(m => i.Quantity)</a></td>
-                                                      <td>@Html.DisplayFor(m => i.Amount)</td>
-                                                  </tr>
+                                                <tr>
+                                                    <td><a href="~/ShoppingCart" class="remove" onclick="RemoveFromCart('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
+                                                    <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
+                                                    <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
+                                                    <td>@Html.DisplayFor(m => i.Price)</td>
+                                                    <td>
+                                                        <input id="@(cartItemId+1000)" class="aa-cart-quantity" type="number" value="@Html.DisplayFor(m => i.Quantity)">
+                                                        <input id="@cartItemId" value="@Html.DisplayFor(m => i.Id)" style="display:none" />
+                                                    </td>
+                                                    <td>@Html.DisplayFor(m => i.Amount)</td>
+                                                </tr>
+                                                cartItemId++;
                                             }
+                                            <tr>
+                                                <td colspan="6" class="aa-cart-view-bottom">
+                                                    <div class="aa-cart-coupon">
+                                                    </div>
+                                                    <input id="Update" class="aa-cart-view-btn" type="submit" value="Update Cart">
+                                                    <input id="MyCount" value="@currentCart.Count" style="display:none" />
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
+
                             </form>
                             <!-- Cart Total view -->
                             <div class="cart-view-total">
@@ -87,3 +101,6 @@
     </div>
 </section>
 <!-- / Cart view section -->
+@section Scripts{
+    <script src="~/Scripts/CartIndex.js"></script>
+    }
