@@ -18,19 +18,16 @@
                 <div class="aa-product-catg-content">
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
+                            @*@using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ProductDisplay" }))*@
 
-                            @*@using (Ajax.BeginForm("Index", "Product", new AjaxOptions { UpdateTargetId = "ProductDisplay" }))*@
-                            @*@using(Html.BeginForm("Index", "Product", FormMethod.Post,new AjaxOptions { UpdateTargetId = "ProductDisplay" } ))*@
-                            @using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ProductDisplay" }))
-                            {
-                                <select name="sortedItem" onchange="$(this.form).submit();">
-                                    <option value="1">排序方式依</option>
-                                    <option value="2">名稱 </option>
-                                    <option value="3">價格(由低到高)</option>
-                                    <option value="4">價格(由高到低)</option>
-                                </select>
+                            <select id="Sorted">
+                                <option value="1">排序方式依</option>
+                                <option value="2">名稱 </option>
+                                <option value="3">價格(由低到高)</option>
+                                <option value="4">價格(由高到低)</option>
+                            </select>
 
-                            }
+
                         </div>
                         <div class="aa-product-catg-head-right">
                             <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -87,18 +84,37 @@
         $('.PageNumber').click(function () {
             var number = this.innerText;  //取頁數的值
             console.log(number);
-            $("#ProductDisplay").empty();
             $.ajax({
                 type: "POST",
-                url: "/Product/Pagination", 
+                url: "/Product/Pagination",
                 data: { PageNumber: number },
                 dataType: "text",
                 success: function (response) {
+                    $("#ProductDisplay").empty();
                     $("#ProductDisplay").html(response);
                 }
             });
             $('html, body').scrollTop(0); //讓網頁卷軸移到頂部，不然卷軸在下很怪
         })
+
+        $('#Sorted').change(function (e) { //下拉式選單改變發生時
+            var val = $(this).val();       //看選到哪個value
+            $.ajax({
+                type: "POST",
+                url: "/Product/SortedTotebag",
+                data: { value: val },
+                dataType: "text",
+                success: function (response) {
+                    $("#ProductDisplay").empty();
+                    $("#ProductDisplay").html(response);
+                }
+            });
+
+
+        });
+
+
+
 
 
     </script>

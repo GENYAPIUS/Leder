@@ -18,7 +18,9 @@ namespace Leder.Controllers
         private LederContext db = new LederContext();
         private ProductRepository productRepo;
         private CategoryRepository categoryRepo;
-       
+        
+        private int CurrentPage;
+        
 
         //Index側背包
         public ActionResult Index()
@@ -28,7 +30,7 @@ namespace Leder.Controllers
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
 
-            var ProductList = productRepo.GetProductInCatagory(1, "1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(1).ToList();
 
             foreach (var i in ProductList)
             {
@@ -48,7 +50,50 @@ namespace Leder.Controllers
         }
 
 
-       
+        [HttpPost]
+        public ActionResult SortedTotebag(int value)
+        {
+            productRepo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            var ProductList = productRepo.GetProductInCatagory(1).ToList();
+
+            foreach (var i in ProductList)
+            {
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = i.Price,
+                    Photo = i.Photo
+                });
+
+            }
+
+            List<ProductViewModel> sortedProduct = new List<ProductViewModel>();  //開始用條件判斷
+            if (value == 2)
+            {
+                sortedProduct = productVM.OrderBy(x => x.Name).ToList(); //用名稱分類
+            }
+            else if (value == 3)
+            {
+                sortedProduct = productVM.OrderBy(x => x.Price).ToList(); //用價格分類(從低到高)              
+            }
+
+            else if (value == 4)
+            {
+                sortedProduct = productVM.OrderByDescending(x => x.Price).ToList(); //用價格分類(從高到低)    
+
+            }
+            else
+            {
+                sortedProduct = productVM;
+            }
+
+            return PartialView("_ProductPartial", sortedProduct);
+        }
+
         [HttpPost]
         public ActionResult Pagination(int PageNumber)
         {
@@ -57,10 +102,11 @@ namespace Leder.Controllers
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
 
-            var ProductList = productRepo.GetProductInCatagory(1, "1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(1).ToList();
 
             foreach (var i in ProductList)
             {
+
                 //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
@@ -82,35 +128,10 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = productRepo.GetProductInCatagory(2, "1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(2).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-            }
-            return View(productVM);
-        }
-
-
-        [HttpPost]
-        public ActionResult Backpack(string sortedItem)
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-
-            var ProductList = productRepo.GetProductInCatagory(2, sortedItem).ToList();
-
-            foreach (var i in ProductList)
-            {
                 productVM.Add(new ProductViewModel
                 {
                     Id = i.ProductId,
@@ -131,7 +152,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = productRepo.GetProductInCatagory(3,"1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(3).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
@@ -147,29 +168,6 @@ namespace Leder.Controllers
             return View(productVM);
         }
 
-        [HttpPost]
-        public ActionResult Longclip(string sortedItem)
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-
-            var ProductList = productRepo.GetProductInCatagory(3, sortedItem).ToList();
-
-            foreach (var i in ProductList)
-            {
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-            }
-            return View(productVM);
-        }
 
         //零錢包
         public ActionResult Coinwallet()
@@ -178,7 +176,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = productRepo.GetProductInCatagory(4,"1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(4).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
@@ -194,29 +192,6 @@ namespace Leder.Controllers
             return View(productVM);
         }
 
-        [HttpPost]
-        public ActionResult Coinwallet(string sortedItem)
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-
-            var ProductList = productRepo.GetProductInCatagory(4, sortedItem).ToList();
-
-            foreach (var i in ProductList)
-            {
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-            }
-            return View(productVM);
-        }
 
         //名片夾
         public ActionResult Namecard()
@@ -225,7 +200,7 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = productRepo.GetProductInCatagory(5,"1").ToList();
+            var ProductList = productRepo.GetProductInCatagory(5).ToList();
             foreach (var i in ProductList)
             {
                 //把資料庫的值塞入ViewModel
@@ -240,30 +215,7 @@ namespace Leder.Controllers
             }
             return View(productVM);
         }
-
-        [HttpPost]
-        public ActionResult Namecard(string sortedItem)
-        {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-
-            var ProductList = productRepo.GetProductInCatagory(5, sortedItem).ToList();
-
-            foreach (var i in ProductList)
-            {
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-            }
-            return View(productVM);
-        }
+     
 
         public ActionResult ProductDetail(int? Id)
         {
