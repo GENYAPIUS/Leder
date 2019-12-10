@@ -13,13 +13,15 @@
             </div>
             <div class="modal-body">
                 <ul>
-                    @{var shiftCartId = 1; }
+                    @{var shiftCartId = 1;
+                        var QuantityId = 1001;
+                            }
                     @foreach (var cartItem in shiftCart)
                     {
 
                         <li>
-                            <input id="@shiftCartId" value="@cartItem.Id" />
-                            <input id="Quantity @shiftCartId" value="@cartItem.Quantity" />
+                            <input id="@shiftCartId" value="@cartItem.Id"style="display:none" />
+                            <input id="@QuantityId" value="@cartItem.Quantity" style="display:none"/>
                             <a class="aa-cartbox-img"><img src="@cartItem.Photo" alt="img"></a>
                             <div class="aa-cartbox-info">
                                 <h4><a>@cartItem.Name</a></h4>
@@ -27,9 +29,10 @@
                             </div>
                         </li>
                         shiftCartId++;
+                        QuantityId++;
                     }
                     <li>
-                        <input id="shiftCount" value="@shiftCartId"/>
+                        <input id="shiftCount" value="@shiftCartId"style="display:none"/>
                         <span class="aa-cartbox-total-title">
                             Total
                         </span>

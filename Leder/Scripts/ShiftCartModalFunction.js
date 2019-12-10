@@ -27,7 +27,7 @@ $("#YesAddCart").click(function () {;
     $('.modal-backdrop').hide();
     for (var i = 1; i < $("#shiftCount").val(); i++) {
         var Id = $("#" + i).val();
-        var Quantity = $("#Quantity " + i).val();
+        var Quantity = $("#"+(i+1000)).val();
         AddToCart(Id, Quantity);
     }
     ShiftCartOK();
