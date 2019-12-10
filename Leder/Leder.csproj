@@ -222,6 +222,7 @@
     <Content Include="Assets\build\images\loading.gif" />
     <Content Include="Assets\build\js\custom.js" />
     <Content Include="Assets\build\js\custom.min.js" />
+    <Content Include="Content\lite-blue-theme.css" />
     <Content Include="Scripts\ShoppingCartFunction.js" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\jquery.simpleLens.css" />

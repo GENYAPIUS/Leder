@@ -4,7 +4,7 @@
     function RemoveFromCart(productId) {
         $.ajax({
             type: 'POST',
-            url: '../ShoppingCart/RemoveFromCart',
+            url: '/ShoppingCart/RemoveFromCart',
             data: { id: productId }
         })
             .done(function (msg) {
@@ -16,7 +16,7 @@
     function AddToCart(productId,inQuantity) {
         $.ajax({
             type: 'POST',
-            url: '../ShoppingCart/AddToCart',
+            url: '/ShoppingCart/AddToCart',
             data: { id: productId, inQuantity }
         })
             .done(function (msg) {
@@ -28,7 +28,7 @@
         function ClearCart() {
         $.ajax({
             type: 'POST',
-            url: '../ShoppingCart/ClearCart',
+            url: '/ShoppingCart/ClearCart',
             data: {}
         })
             .done(function (msg) {
