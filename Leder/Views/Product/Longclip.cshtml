@@ -1,9 +1,9 @@
 ﻿@using Leder.ViewModels;
 @model IEnumerable<ProductViewModel>
+@{
+    int totalPage = (int)ViewData["totalPage"];
+}
 
-
-
-<!-- product category -->
 <section id="aa-product-category">
     <div class="container">
         <div class="row">
@@ -11,15 +11,12 @@
                 <div class="aa-product-catg-content">
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
-                            @using (Ajax.BeginForm("Longclip", "Product", new AjaxOptions { UpdateTargetId = "view1" }))
-                            {
-                                <select name="sortedItem" onchange="$(this.form).submit();">
-                                    <option value="1">排序方式依</option>
-                                    <option value="2">名稱 </option>
-                                    <option value="3">價格(由低到高)</option>
-                                    <option value="4">價格(由高到低)</option>
-                                </select>
-                            }
+                            <select id="Sorted">
+                                <option value="1">排序方式依</option>
+                                <option value="2">名稱 </option>
+                                <option value="3">價格(由低到高)</option>
+                                <option value="4">價格(由高到低)</option>
+                            </select>
                         </div>
                         <div class="aa-product-catg-head-right">
                             <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -28,13 +25,9 @@
                     </div>
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
-                            <div class="row" id="view1">
-                                @foreach (var p in Model)
-                                {
-                                    @Html.Partial("_ProductPartial", p);
-                                }
+                            <div class="row" id="ProductDisplay">
+                                @Html.Partial("_ProductPartial", Model);
                             </div>
-
                         </ul>
                         <!-- quick view modal -->
                         @foreach (var p in Model)
@@ -51,7 +44,10 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li><a href="#">1</a></li>                              
+                                @for (int i = 1; i <= totalPage; i++)
+                                {
+                                    <li><span class="PageNumber" aria-hidden="true" id="@i">@i</span></li>
+                                }
                                 <li>
                                     <a href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
@@ -66,4 +62,50 @@
         </div>
     </div>
 </section>
-<!-- / product category -->
+
+@section Scripts{
+    <script>
+        /*number跟val之所以都放全域變數，因為我希望不管按的是頁數or排序法，都希望使用者原初的頁碼or排序法能被記住*/
+        var number = 1; //按到第幾頁，number跟著變
+        var val = 1;    //排序方法
+        var categoryId = 4;
+
+        //頁碼
+        //讓ajax呼叫Pagination方法，number跟val都要傳給他
+        $('.PageNumber').click(function () {
+            number = this.innerText;  //取頁數的值，也順便更動全域變數number
+            $.ajax({
+                type: "POST",
+                url: "/Product/Pagination",
+                data: { PageNumber: number, value: val, categoryId: categoryId },
+                dataType: "text",
+                success: function (response) {
+                    $("#ProductDisplay").empty();
+                    $("#ProductDisplay").html(response);
+                    $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
+                }
+            });
+
+        })
+
+        //排序方法
+        //讓ajax呼叫Pagination方法，number跟val都要傳給他
+        $('#Sorted').change(function (e) { //下拉式選單改變發生時
+            val = $(this).val();           //選到哪個value
+            $.ajax({
+                type: "POST",
+                url: "/Product/Pagination",
+                data: { PageNumber: number, value: val, categoryId: categoryId },
+                dataType: "text",
+                success: function (response) {
+                    $("#ProductDisplay").empty();
+                    $("#ProductDisplay").html(response);
+                    $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
+                }
+            });
+
+
+        });
+
+    </script>
+}

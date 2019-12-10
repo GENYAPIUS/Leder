@@ -1,9 +1,6 @@
 ﻿@using Leder.ViewModels;
-
-
 @model IEnumerable<ProductViewModel>
-@{
-    
+@{    
    int totalPage = (int)ViewData["totalPage"];
 }
 
@@ -79,16 +76,16 @@
         /*number跟val之所以都放全域變數，因為我希望不管按的是頁數or排序法，都希望使用者原初的頁碼or排序法能被記住*/
         var number = 1; //按到第幾頁，number跟著變
         var val = 1;    //排序方法
+        var categoryId = 1; 
 
         //頁碼
         //讓ajax呼叫Pagination方法，number跟val都要傳給他
         $('.PageNumber').click(function () {
-                              //預設的排序是1(用Id排序)
             number = this.innerText;  //取頁數的值，也順便更動全域變數number
             $.ajax({
                 type: "POST",
                 url: "/Product/Pagination",
-                data: { PageNumber: number, value: val},
+                data: { PageNumber: number, value: val, categoryId: categoryId},
                 dataType: "text",
                 success: function (response) {
                     $("#ProductDisplay").empty();
@@ -106,7 +103,7 @@
             $.ajax({
                 type: "POST",
                 url: "/Product/Pagination",
-                data: { PageNumber: number, value: val },
+                data: { PageNumber: number, value: val, categoryId: categoryId},
                 dataType: "text",
                 success: function (response) {
                     $("#ProductDisplay").empty();
@@ -117,10 +114,6 @@
 
 
         });
-
-
-
-
 
     </script>
 }

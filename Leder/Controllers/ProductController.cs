@@ -19,8 +19,77 @@ namespace Leder.Controllers
         private ProductRepository productRepo;
         private CategoryRepository categoryRepo;
         
-        //private int CurrentPage = 1;   
+        //private int CurrentPage = 1;   改成用ViewData傳
 
+        //把商品排序
+        //如果沒點選任何排序方法，預設用ID排序
+        [HttpPost] 
+        public ActionResult Pagination(int value, int PageNumber, int categoryId)
+        {
+            
+            var sortedProduct = Sorted(value, categoryId);   //呼叫Sorted方法，回傳"排序後"的全部商品
+
+            List<ProductViewModel> pagedProduct = new List<ProductViewModel>();
+            //CurrentPage = (int)PageNumber;
+            if (PageNumber==1) 
+            {
+                
+             pagedProduct = sortedProduct.Skip(6 * (PageNumber - 1)).Take(6).ToList();
+             return PartialView("_ProductPartial", pagedProduct);
+
+            }
+            else 
+            {
+              pagedProduct = sortedProduct.Skip(6 * (PageNumber - 1)).Take(6).ToList();
+              return PartialView("_ProductPartial", pagedProduct);
+            }
+
+        }
+
+        public List<ProductViewModel> Sorted(int value, int categoryId)
+        {
+            productRepo = new ProductRepository(db);
+            categoryRepo = new CategoryRepository(db);
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            var ProductList = productRepo.GetProductInCatagory(categoryId).ToList();
+
+            foreach (var i in ProductList)
+            {
+                productVM.Add(new ProductViewModel
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Price = i.Price,
+                    Photo = i.Photo
+                });
+
+            }
+
+            List<ProductViewModel> sortedProduct = new List<ProductViewModel>();  //判斷是哪種排序法
+            //用名稱分類
+            if (value == 2)
+            {
+                sortedProduct = productVM.OrderBy(x => x.Name).ToList();
+            }
+            //用價格分類(從低到高)  
+            else if (value == 3)
+            {
+                sortedProduct = productVM.OrderBy(x => x.Price).ToList();
+            }
+            //用價格分類(從高到低)
+            else if (value == 4)
+            {
+                sortedProduct = productVM.OrderByDescending(x => x.Price).ToList();
+
+            }
+            else
+            {
+                sortedProduct = productVM;  //沒選任何排序方法就用ID排序
+            }
+
+            return sortedProduct;
+        }
 
         //Index側背包
         public ActionResult Index()
@@ -46,99 +115,35 @@ namespace Leder.Controllers
 
             }
 
-            
-            int pageSize = 6;  //一頁放六個產品
-            //Math.Ceiling無條件進位
-            //Count()計算有幾個商品
-            ViewData["totalPage"] = (int)Math.Ceiling((decimal)productVM.Count() / pageSize); //用ViewData傳給View
+            ViewData["totalPage"] = PageCount(productVM); //用PageCount方法去計算要有幾頁
 
             productVM = productVM.Take(6).ToList(); //預設第一頁，放六個產品
 
             return View(productVM);
         }
 
-        //把商品排序
-        //如果沒點選任何排序方法，預設用ID排序
-        public List<ProductViewModel> Sorted(int value)
+        public int PageCount(List<ProductViewModel> productVM)
         {
-            productRepo = new ProductRepository(db);
-            categoryRepo = new CategoryRepository(db);
-            List<ProductViewModel> productVM = new List<ProductViewModel>();
-            var ProductList = productRepo.GetProductInCatagory(1).ToList();
-
-            foreach (var i in ProductList)
-            {
-                productVM.Add(new ProductViewModel
-                {
-                    Id = i.ProductId,
-                    Name = i.Name,
-                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
-                    Photo = i.Photo
-                });
-
-            }
-
-            List<ProductViewModel> sortedProduct = new List<ProductViewModel>();  //判斷是哪種排序法
-            //用名稱分類
-            if (value == 2)
-            {
-                sortedProduct = productVM.OrderBy(x => x.Name).ToList();
-            }
-            //用價格分類(從低到高)  
-            else if (value == 3)
-            {
-                sortedProduct = productVM.OrderBy(x => x.Price).ToList();             
-            }
-            //用價格分類(從高到低)
-            else if (value == 4)
-            {
-                sortedProduct = productVM.OrderByDescending(x => x.Price).ToList();     
-
-            }
-            else
-            {
-                sortedProduct = productVM;  //沒選任何排序方法就用ID排序
-            }
-
-            return sortedProduct;
+            int pageSize = 6;  //一頁放六個產品
+            //Math.Ceiling無條件進位
+            //Count()計算有幾個商品
+            ViewData["totalPage"] = (int)Math.Ceiling((decimal)productVM.Count() / pageSize); //用ViewData傳給View
+            var page = (int)ViewData["totalPage"];
+            return page;
         }
 
-
-        [HttpPost] //只要按下頁碼，或是點選排序方法都會呼叫Pagination方法
-        public ActionResult Pagination(int value, int PageNumber)
-        {
-            
-            var sortedProduct = Sorted(value);   //呼叫Sorted方法，回傳"排序後"的全部商品
-
-            List<ProductViewModel> pagedProduct = new List<ProductViewModel>();
-            //CurrentPage = (int)PageNumber;
-            if (PageNumber==1) 
-            {
-                
-             pagedProduct = sortedProduct.Skip(6 * (PageNumber - 1)).Take(6).ToList();
-             return PartialView("_ProductPartial", pagedProduct);
-
-            }
-            else 
-            {
-              pagedProduct = sortedProduct.Skip(6 * (PageNumber - 1)).Take(6).ToList();
-              return PartialView("_ProductPartial", pagedProduct);
-            }
-
-        }
-
-
+        //後背包
         public ActionResult Backpack()
         {
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
+
             var ProductList = productRepo.GetProductInCatagory(2).ToList();
+
             foreach (var i in ProductList)
             {
-                //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
                     Id = i.ProductId,
@@ -147,7 +152,13 @@ namespace Leder.Controllers
                     Price = i.Price,
                     Photo = i.Photo
                 });
+
             }
+
+            ViewData["totalPage"] = PageCount(productVM); 
+
+            productVM = productVM.Take(6).ToList(); 
+
             return View(productVM);
         }
 
@@ -159,10 +170,11 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
+
             var ProductList = productRepo.GetProductInCatagory(3).ToList();
+
             foreach (var i in ProductList)
             {
-                //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
                     Id = i.ProductId,
@@ -171,22 +183,29 @@ namespace Leder.Controllers
                     Price = i.Price,
                     Photo = i.Photo
                 });
+
             }
+
+            ViewData["totalPage"] = PageCount(productVM); 
+
+            productVM = productVM.Take(6).ToList(); 
+
             return View(productVM);
         }
 
 
         //零錢包
         public ActionResult Coinwallet()
-        { 
+        {
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
+
             var ProductList = productRepo.GetProductInCatagory(4).ToList();
+
             foreach (var i in ProductList)
             {
-                //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
                     Id = i.ProductId,
@@ -195,9 +214,16 @@ namespace Leder.Controllers
                     Price = i.Price,
                     Photo = i.Photo
                 });
+
             }
+
+            ViewData["totalPage"] = PageCount(productVM); 
+
+            productVM = productVM.Take(6).ToList(); 
+
             return View(productVM);
         }
+
 
 
         //名片夾
@@ -207,10 +233,11 @@ namespace Leder.Controllers
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
+
             var ProductList = productRepo.GetProductInCatagory(5).ToList();
+
             foreach (var i in ProductList)
             {
-                //把資料庫的值塞入ViewModel
                 productVM.Add(new ProductViewModel
                 {
                     Id = i.ProductId,
@@ -219,10 +246,16 @@ namespace Leder.Controllers
                     Price = i.Price,
                     Photo = i.Photo
                 });
+
             }
+
+            ViewData["totalPage"] = PageCount(productVM);
+
+            productVM = productVM.Take(6).ToList();
+
             return View(productVM);
         }
-     
+
         //商品介紹
         public ActionResult ProductDetail(int? Id)
         {
