@@ -46,10 +46,6 @@
 
     @Html.Partial("_FooterPartial")
 
-
-    @*購物車的JavaScripts*@
-    @Html.Partial("ShoppingCartFunction")
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -70,7 +66,11 @@
     <script src="~/Scripts/nouislider.js"></script>
     <!-- Custom Script js -->
     <script src="~/Assets/js/script.js"></script>
+    <!--購物車的JavaScripts -->
+    <script src="~/Scripts/ShoppingCartFunction.js"></script>
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
 

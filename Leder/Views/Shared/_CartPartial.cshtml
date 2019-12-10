@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     //取得當前購物車所有內容
     var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
@@ -6,7 +6,7 @@
     <a class="aa-cart-link" href="~/ShoppingCart">
         <span class="fa fa-shopping-basket"></span>
         <span class="aa-cart-title">SHOPPING CART</span>
-        <span class="aa-cart-notify">@String.Format("{0}",currentCart.Count)</span>
+        <span class="aa-cart-notify">@String.Format("{0}", currentCart.Count)</span>
     </a>
     <div class="aa-cartbox-summary">
         @if (currentCart.Count > 0)
@@ -50,6 +50,63 @@
 
         }
 
+
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shiftCart">...</button>
     </div>
 </div>
 
+@if (currentCart.Shift == true)
+{
+
+    var shiftCart = Leder.Models.Cart.Operation.GetShiftCart();
+    <div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <div class="modal-title ">
+                        網站偵測到您未登入時的購物車清單，請問是否要加進您的購物車中
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        @foreach (var cartItem in shiftCart)
+                        {
+                        <li>
+                            <a class="aa-cartbox-img"><img src="@cartItem.Photo" alt="img"></a>
+                            <div class="aa-cartbox-info">
+                                <h4><a>@cartItem.Name</a></h4>
+                                <p>@cartItem.Quantity x $@cartItem.Price</p>
+                            </div>
+                        </li>
+                        }
+                        <li>
+                            <span class="aa-cartbox-total-title">
+                                Total
+                            </span>
+                            <span class="aa-cartbox-total-price">
+                                @String.Format("{0}", shiftCart.TotalAmount)
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn">是</button>
+                    <button class="btn">否</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section Scripts{
+    <script>
+        $("#ooo").modal('show');
+    </script>
+}

@@ -16,13 +16,13 @@ namespace Leder
             routes.MapRoute(
                 name: "ShoppingCart",
                 url: "ShoppingCart",
-                defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "ShoppingCart", action = "Index" }
             );
             //結帳頁面
             routes.MapRoute(
                 name: "Checkout",
                 url: "Checkout",
-                defaults: new { controller = "ShoppingCart", action = "Checkout", id = UrlParameter.Optional }
+                defaults: new { controller = "ShoppingCart", action = "Checkout" }
             );
 
             routes.MapRoute(

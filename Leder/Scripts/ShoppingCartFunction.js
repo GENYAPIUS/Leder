@@ -1,10 +1,10 @@
-﻿<script>
+﻿
     //加入編號為productId的商品進購物車
 
     function RemoveFromCart(productId) {
         $.ajax({
             type: 'POST',
-            url: '@Url.Action("RemoveFromCart","ShoppingCart")',
+            url: '../ShoppingCart/RemoveFromCart',
             data: { id: productId }
         })
             .done(function (msg) {
@@ -16,7 +16,7 @@
     function AddToCart(productId,inQuantity) {
         $.ajax({
             type: 'POST',
-            url: '@Url.Action("AddToCart","ShoppingCart")',
+            url: '../ShoppingCart/AddToCart',
             data: { id: productId, inQuantity }
         })
             .done(function (msg) {
@@ -28,7 +28,7 @@
         function ClearCart() {
         $.ajax({
             type: 'POST',
-            url: '@Url.Action("ClearCart","ShoppingCart")',
+            url: '../ShoppingCart/ClearCart',
             data: {}
         })
             .done(function (msg) {
@@ -36,5 +36,5 @@
                 $('#CartLayout').html(msg);
             });
     }
-</script>
+
 
