@@ -223,6 +223,7 @@
     <Content Include="Assets\build\js\custom.js" />
     <Content Include="Assets\build\js\custom.min.js" />
     <Content Include="Content\lite-blue-theme.css" />
+    <Content Include="Scripts\ShiftCartModalFunction.js" />
     <Content Include="Scripts\ShoppingCartFunction.js" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\jquery.simpleLens.css" />
@@ -3822,6 +3823,7 @@
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\index.cshtml" />
     <Content Include="Views\ShoppingCart\Order.cshtml" />
+    <Content Include="Views\Shared\_ShiftCartModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

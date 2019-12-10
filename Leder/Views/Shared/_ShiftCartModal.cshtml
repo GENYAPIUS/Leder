@@ -1,0 +1,57 @@
+﻿<a class="aa-cartbox-checkout aa-primary-btn" data-toggle="modal" data-target="#shiftCart">您有一項訊息</a>
+@{ var shiftCart = Leder.Models.Cart.Operation.GetShiftCart(); }
+<div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <div class="modal-title ">
+                    網站偵測到您未登入時的購物車清單，請問是否要加進您的購物車中
+                </div>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    @{var shiftCartId = 1; }
+                    @foreach (var cartItem in shiftCart)
+                    {
+
+                        <li>
+                            <input id="@shiftCartId" value="@cartItem.Id" />
+                            <input id="Quantity @shiftCartId" value="@cartItem.Quantity" />
+                            <a class="aa-cartbox-img"><img src="@cartItem.Photo" alt="img"></a>
+                            <div class="aa-cartbox-info">
+                                <h4><a>@cartItem.Name</a></h4>
+                                <p>@cartItem.Quantity x $@cartItem.Price</p>
+                            </div>
+                        </li>
+                        shiftCartId++;
+                    }
+                    <li>
+                        <input id="shiftCount" value="@shiftCartId"/>
+                        <span class="aa-cartbox-total-title">
+                            Total
+                        </span>
+                        <span class="aa-cartbox-total-price">
+                            @String.Format("{0}", shiftCart.TotalAmount)
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a id="YesAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
+                <a id="NoAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="~/Scripts/ShiftCartModalFunction.js"></script>
+
+
+
+
+
+

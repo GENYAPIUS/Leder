@@ -49,6 +49,13 @@ namespace Leder.Controllers
             return PartialView("_CartPartial");
         }
 
+        public ActionResult ShiftCartOK()
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.Shift = false;
+            return PartialView("_CartPartial");
+        }
+
 
 
 

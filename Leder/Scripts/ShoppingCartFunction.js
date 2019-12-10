@@ -35,6 +35,7 @@
                 //將回傳的購物車頁面填入 CartLayout#Cart
                 $('#CartLayout').html(msg);
             });
-    }
+}
+
 
 
