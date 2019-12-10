@@ -1,0 +1,47 @@
+﻿@{
+    var shiftCart = Leder.Models.Cart.Operation.GetShiftCart();
+}
+
+<div class="modal fade" id="shiftCartmodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">資料匯出匯入</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <ul>
+                @foreach (var cartItem in shiftCart)
+                {
+                    <li>
+                        <a class="aa-cartbox-img" href="#"><img src="@cartItem.Photo" alt="img"></a>
+                        <div class="aa-cartbox-info">
+                            <h4><a href="#">@cartItem.Name</a></h4>
+                            <p>@cartItem.Quantity x $@cartItem.Price</p>
+                        </div>
+                        <a class="aa-remove-product"><span class="fa fa-times" onclick="RemoveFromCart('@cartItem.Id')"></span></a>
+                    </li>
+                }
+                <li>
+                    <span class="aa-cartbox-total-title">
+                        Total
+                    </span>
+                    <span class="aa-cartbox-total-price">
+                        @String.Format("{0}", shiftCart.TotalAmount)
+                    </span>
+                </li>
+            </ul>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button id="ButtonImport" type="button" class="btn btn-primary" data-dismiss="modal">匯入</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#shiftCartmodal").modal();
+</script>
