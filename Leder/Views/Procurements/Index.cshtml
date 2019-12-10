@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Leder.Models.Procurement>
 
 @{
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+   Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h2>Index</h2>
+    <h2>訂單進貨主頁面</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增進貨紀錄", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,8 @@
             @Html.DisplayFor(modelItem => item.UnitPrize)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProcurementId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProcurementId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProcurementId })
+            @Html.ActionLink("修改", "Edit", new { id = item.ProcurementId })
+            @Html.ActionLink("刪除", "Delete", new { id = item.ProcurementId })
         </td>
     </tr>
 }

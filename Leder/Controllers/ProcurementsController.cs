@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -53,11 +52,7 @@ namespace Leder.Controllers
         {
             if (ModelState.IsValid)
             {
-                var product = db.Products.Find(procurement.ProductId);
                 db.Procurement.Add(procurement);
-                product.UnitInStock += procurement.Quantity;
-                db.Entry(product).State = EntityState.Modified;
-              
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +60,6 @@ namespace Leder.Controllers
             ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", procurement.ProductId);
             return View(procurement);
         }
-      
 
         // GET: Procurements/Edit/5
         public ActionResult Edit(int? id)
@@ -90,12 +84,9 @@ namespace Leder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProcurementId,ProductId,PurchaseDate,Quantity,UnitPrize")] Procurement procurement)
         {
-            
             if (ModelState.IsValid)
             {
-                var product = db.Products.Find(procurement.ProductId);
-                ChangeProductUnitStock(product,procurement);
-                db.Entry(procurement).State = EntityState.Added;
+                db.Entry(procurement).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -103,16 +94,6 @@ namespace Leder.Controllers
             return View(procurement);
         }
 
-        public void ChangeProductUnitStock([Bind(Include = "UnitInStock")] Product product,Procurement procurement) {
-            if (ModelState.IsValid)
-            {
-                Procurement originProcurement = db.Procurement.Find(procurement.ProcurementId);
-                product.UnitInStock += (procurement.Quantity - originProcurement.Quantity);
-                db.Entry(originProcurement).State = EntityState.Deleted;
-                db.Entry(product).State = EntityState.Modified;
-            }
-            return;
-        }
         // GET: Procurements/Delete/5
         public ActionResult Delete(int? id)
         {

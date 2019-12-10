@@ -1,13 +1,16 @@
 ﻿@model Leder.Models.Procurement
-@{
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
-}
-<h2>Create</h2>
 
-@using (Html.BeginForm())
+@{
+    ViewBag.Title = "Create";
+   Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<h2>新增訂單</h2>
+
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Procurement</h4>
         <hr />
@@ -53,5 +56,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("回到進貨首頁", "Index")
 </div>

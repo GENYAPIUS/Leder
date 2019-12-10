@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201912061431334_PurchaseSpellingCorrection.Designer.cs">
       <DependentUpon>201912061431334_PurchaseSpellingCorrection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912100836093_drop_UnitInStock.cs" />
+    <Compile Include="Migrations\201912100836093_drop_UnitInStock.Designer.cs">
+      <DependentUpon>201912100836093_drop_UnitInStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
@@ -3864,6 +3868,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912061431334_PurchaseSpellingCorrection.resx">
       <DependentUpon>201912061431334_PurchaseSpellingCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912100836093_drop_UnitInStock.resx">
+      <DependentUpon>201912100836093_drop_UnitInStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

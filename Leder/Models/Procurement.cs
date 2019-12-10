@@ -11,13 +11,12 @@ namespace Leder.Models
     {
         [Key]
         public int ProcurementId { get; set; }
-        
         public int ProductId { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}")]
         public DateTime PurchaseDate { get; set; }
         public int Quantity { get; set; }
         public int UnitPrize { get; set; }
-      
-
+     
         [ForeignKey("ProductId")]
 
         public virtual Product Product { get; set; }

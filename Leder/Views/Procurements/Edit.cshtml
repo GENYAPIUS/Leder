@@ -1,16 +1,18 @@
 ﻿@model Leder.Models.Procurement
+
 @{
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+   
+  Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>修改訂單</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Procurement</h4>
+       
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProcurementId)
@@ -56,5 +58,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("回到首頁", "Index")
 </div>
