@@ -37,7 +37,7 @@
                                                     <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
                                                     <td>@Html.DisplayFor(m => i.Price)</td>
                                                     <td>
-                                                        <input id="@(cartItemId+1000)" class="aa-cart-quantity" type="number" value="@Html.DisplayFor(m => i.Quantity)">
+                                                        <input id="@(cartItemId+1000)" class="aa-cart-quantity" type="number" min="1" value="@Html.DisplayFor(m => i.Quantity)">
                                                         <input id="@cartItemId" value="@Html.DisplayFor(m => i.Id)" style="display:none" />
                                                     </td>
                                                     <td>@Html.DisplayFor(m => i.Amount)</td>
