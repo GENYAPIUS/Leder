@@ -20,17 +20,14 @@ namespace Leder.Models.Cart
 
             if (HttpContext.Current.User.Identity.IsAuthenticated )
             {
-                if(HttpContext.Current.Session["Non-membersId"]==null)
+                if(HttpContext.Current.Session["Non-membersId"]!=null)
                 {
-                    HttpContext.Current.Session["Non-membersId"] = "null";
-                    Cart cart = new Cart();
-                    policy.SlidingExpiration = TimeSpan.FromMinutes(30);
-                    cache.Set(HttpContext.Current.Session["Non-membersId"].ToString(), cart, policy);
+                    if (((Cart)cache[HttpContext.Current.Session["Non-membersId"].ToString()]).Count != 0 && HttpContext.Current.Session["CartId"].ToString() != HttpContext.Current.User.Identity.Name)
+                    {
+                        shift = true;   //設定為需要轉移
+                    }
                 }
-                if (((Cart)cache[HttpContext.Current.Session["Non-membersId"].ToString()]).Count != 0 && HttpContext.Current.Session["CartId"].ToString() != HttpContext.Current.User.Identity.Name)
-                {
-                    shift = true;   //設定為需要轉移
-                }
+
                 //有登入的話ID套用UserName
                 HttpContext.Current.Session["CartId"] = HttpContext.Current.User.Identity.Name;
                 HttpContext.Current.Session["MemberId"] = HttpContext.Current.Session["CartId"];
