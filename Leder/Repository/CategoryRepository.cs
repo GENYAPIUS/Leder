@@ -23,5 +23,20 @@ namespace Leder.Repository
             return result;
         }
 
+        //傳入路由的類別名稱(ex:Totebag)取得CategoryId
+        public int GetCategoryId(string Category)
+        {
+            var temp = _db.Categories.FirstOrDefault(x => x.CategoryName == Category);
+            if(temp == null)
+            {
+                return 0;  
+            }
+            else
+            {
+                int result = temp.CategoryId;
+                return result;
+            }         
+        }
+
     }
 }

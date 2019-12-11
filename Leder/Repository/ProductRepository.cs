@@ -21,8 +21,9 @@ namespace Leder.Repository
             var result = _db.Products.Where(x => x.CategoryId == CategoryId).AsQueryable();
             return result;
         }
-       
+
         
+
         //給ProductDetail呼叫
         public IEnumerable<Product> GetAll()
         {
