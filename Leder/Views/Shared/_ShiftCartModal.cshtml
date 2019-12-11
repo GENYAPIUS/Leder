@@ -1,6 +1,6 @@
 ﻿<a class="aa-cartbox-checkout aa-primary-btn" data-toggle="modal" data-target="#shiftCart">您有一項訊息</a>
 @{ var shiftCart = Leder.Models.Cart.Operation.GetShiftCart(); }
-<div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+<div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true"backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,40 +12,55 @@
                 </div>
             </div>
             <div class="modal-body">
-                <ul>
-                    @{var shiftCartId = 1;
-                        var QuantityId = 1001;
-                            }
-                    @foreach (var cartItem in shiftCart)
-                    {
-
-                        <li>
-                            <input id="@shiftCartId" value="@cartItem.Id"style="display:none" />
-                            <input id="@QuantityId" value="@cartItem.Quantity" style="display:none"/>
-                            <a class="aa-cartbox-img"><img src="@cartItem.Photo" alt="img"></a>
-                            <div class="aa-cartbox-info">
-                                <h4><a>@cartItem.Name</a></h4>
-                                <p>@cartItem.Quantity x $@cartItem.Price</p>
+                <table class="table">
+                    @{var shiftCartId = 1; var QuantityId = 1001;}
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cartItem in shiftCart)
+                        {
+                            <tr>
+                                <td>
+                                    <a class="aa-cartbox-img"><img src="@cartItem.Photo" alt="img"></a>
+                                </td>
+                                <td>
+                                    <a>@cartItem.Name</a>
+                                </td>
+                                <td>
+                                    $@cartItem.Price
+                                </td>
+                                <td>
+                                    @cartItem.Quantity
+                                    <input id="@QuantityId" value="@cartItem.Quantity" style="display:none" />
+                                </td>
+                                <td>
+                                    @cartItem.Amount
+                                </td>
+                            </tr>
+                            <input id="@shiftCartId" value="@cartItem.Id" style="display:none" />
+                            shiftCartId++;
+                            QuantityId++;
+                        }
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            <input id="shiftCount" value="@shiftCartId" style="display:none" />
+                            <div class="yesandno">
+                                <a id="YesAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
+                                <a id="NoAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
                             </div>
-                        </li>
-                        shiftCartId++;
-                        QuantityId++;
-                    }
-                    <li>
-                        <input id="shiftCount" value="@shiftCartId"style="display:none"/>
-                        <span class="aa-cartbox-total-title">
-                            Total
-                        </span>
-                        <span class="aa-cartbox-total-price">
-                            @String.Format("{0}", shiftCart.TotalAmount)
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <a id="YesAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
-                <a id="NoAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
-            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div >
         </div>
     </div>
 </div>
