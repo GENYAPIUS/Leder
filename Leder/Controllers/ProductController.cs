@@ -20,12 +20,11 @@ namespace Leder.Controllers
         private CategoryRepository categoryRepo;
 
         int currentCategoryId = 1; //讓Controller記得我在哪個商品類別的頁面上
-        int currentPage = 1;       //讓Controller記得我在哪一頁
-
+        //int currentPage = 1;       //讓Controller記得我在哪一頁
+        
         public ActionResult Index(string Category) //string Category:接收路由傳來的參數
         {
-
-
+            
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
@@ -37,10 +36,8 @@ namespace Leder.Controllers
             {
                 return RedirectToAction("Index", "Home");  //如果由路由輸入的類別無法辨識，就跳回首頁
             }
-            currentCategoryId = CategoryId;
 
-
-            var ProductList = productRepo.GetProductInCatagory(currentCategoryId).ToList();
+            var ProductList = productRepo.GetProductInCatagory(CategoryId).ToList();
 
             foreach (var i in ProductList)
             {
@@ -64,17 +61,16 @@ namespace Leder.Controllers
         }
 
         [HttpPost] 
-        public ActionResult ChangeCategory(int categoryId)
+        public ActionResult ChangeCategory(string Category)
         {
-            currentCategoryId = categoryId;
-            
 
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
             List<ProductViewModel> productVM = new List<ProductViewModel>();
+            int CategoryId = categoryRepo.GetCategoryId(Category);
 
-            var ProductList = productRepo.GetProductInCatagory(currentCategoryId).ToList();
+            var ProductList = productRepo.GetProductInCatagory(CategoryId).ToList();
 
             foreach (var i in ProductList)
             {
@@ -108,13 +104,18 @@ namespace Leder.Controllers
 
         //判斷在哪一個頁數
         [HttpPost]
-        public ActionResult Pagination(int value, int PageNumber, int categoryId)
+        public ActionResult Pagination(int Value, int PageNumber, string RoutePath)
         {
-            currentPage = PageNumber;
-            var sortedProduct = Sorted(value, currentCategoryId);   //呼叫Sorted方法，回傳"排序後"的全部商品
+            //在/Product/Totebag抓我要的值
+            var category = RoutePath.Replace("/Product/", ""); 
+
+            categoryRepo = new CategoryRepository(db);
+            int CategoryId = categoryRepo.GetCategoryId(category);
+
+            var sortedProduct = Sorted(Value, CategoryId);   //呼叫Sorted方法，回傳"排序後"的全部商品
 
             List<ProductViewModel> pagedProduct = new List<ProductViewModel>();
-            pagedProduct = sortedProduct.Skip(6 * (currentPage - 1)).Take(6).ToList();
+            pagedProduct = sortedProduct.Skip(6 * (PageNumber - 1)).Take(6).ToList();
             return PartialView("_ProductPartial", pagedProduct);           
 
         }

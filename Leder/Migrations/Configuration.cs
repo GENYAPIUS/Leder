@@ -48,13 +48,17 @@ namespace Leder.Migrations
                 new Product { ProductId = 19, Name = "Tone Oilnume 蛙嘴式零錢袋", Price = 5514, CategoryId = 4, Photo = "/Assets/images/Coinwallet/Coinwallet4.jpg" },
                 new Product { ProductId = 20, Name = "Diario 雙釦式零錢包", Price = 2757, CategoryId = 4, Photo = "/Assets/images/Coinwallet/Coinwallet5.jpg" },
                 new Product { ProductId = 21, Name = "Tone Oilnume 蛙嘴式迷你零錢包", Price = 2573, CategoryId = 4, Photo = "/Assets/images/Coinwallet/Coinwallet6.jpg" },
+                new Product { ProductId = 22, Name = "Cordovan 馬蹄形零錢包", Price = 8150, CategoryId = 4, Photo = "/Assets/images/Coinwallet/Coinwallet7.jpg" },
+                new Product { ProductId = 23, Name = "Diario L型拉鍊短夾", Price = 4261, CategoryId = 4, Photo = "/Assets/images/Coinwallet/Coinwallet8.jpg" },
 
-                new Product { ProductId = 22, Name = "Bridle 名片夾", Price = 5113, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard1.jpg" },
-                new Product { ProductId = 23, Name = "Clarte 信封名片夾", Price = 3492, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard2.jpg" },
-                new Product { ProductId = 24, Name = "Cordovan 馬臀皮名片夾", Price = 7719, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard3.jpg" },
-                new Product { ProductId = 25, Name = "Cordovan 馬臀皮票卡套", Price = 4962, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard4.jpg" },
-                new Product { ProductId = 26, Name = "Urbano 名片夾", Price = 6249, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard5.jpg" },
-                new Product { ProductId = 27, Name = "Urbano 拉鍊卡片夾", Price = 5514, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard6.jpg" }
+                new Product { ProductId = 24, Name = "Bridle 名片夾", Price = 5113, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard1.jpg" },
+                new Product { ProductId = 25, Name = "Clarte 信封名片夾", Price = 3492, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard2.jpg" },
+                new Product { ProductId = 26, Name = "Cordovan 馬臀皮名片夾", Price = 7719, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard3.jpg" },
+                new Product { ProductId = 27, Name = "Cordovan 馬臀皮票卡套", Price = 4962, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard4.jpg" },
+                new Product { ProductId = 28, Name = "Urbano 名片夾", Price = 6249, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard5.jpg" },
+                new Product { ProductId = 29, Name = "Urbano 拉鍊卡片夾", Price = 5514, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard6.jpg" },
+                new Product { ProductId = 30, Name = "Bridle 拉鍊卡片夾", Price = 5153, CategoryId = 5, Photo = "/Assets/images/Namecard/Namecard7.jpg" }
+
                );
 
             context.Categories.AddOrUpdate(

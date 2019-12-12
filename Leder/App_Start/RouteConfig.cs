@@ -14,11 +14,36 @@ namespace Leder
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
+            //Product/ChangeCategory
+            routes.MapRoute(
+                name: "ChangeCategory",
+                url: "Product/ChangeCategory",
+                defaults: new { controller = "Product", action = "ChangeCategory" }
+
+            );
+
+            //Product/Pagination
+            routes.MapRoute(
+                name: "Pagination",
+                url: "Product/Pagination",
+                defaults: new { controller = "Product", action = "Pagination"}
+
+            );
+
+            //{Category}
+            //routes.MapRoute(
+            //    name: "CategoryOnly",
+            //    url: "{Category}",
+            //    defaults: new { controller = "Product", action = "Index", Category = UrlParameter.Optional }
+
+            //);
+
             //Product/{Category}
             routes.MapRoute(
                 name: "ProductCategory",
                 url: "Product/{Category}",
-                defaults: new { controller = "Product", action = "Index", Category = UrlParameter.Optional }               
+                defaults: new { controller = "Product", action = "Index", Category = UrlParameter.Optional }
+
             );
 
             //商品頁面
