@@ -1,72 +1,38 @@
 ﻿@using Leder.ViewModels;
 @model IEnumerable<ProductViewModel>
 @{
-    int totalPage = (int)ViewData["totalPage"];
-    var categoryRoute = Json.Encode(ViewContext.RouteData.Values["Category"]); //抓路由參數，給ajax呼叫
-
+    //int totalPage = (int)ViewData["totalPage"];
 }
 
 
 <section id="aa-product-category">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
                 <div class="aa-product-catg-content">
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
-                            @*@using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ProductDisplay" }))*@
                             <select id="SortedDropdown">
                                 <option value="1">排序方式依</option>
                                 <option value="2">名稱 </option>
                                 <option value="3">價格(由低到高)</option>
                                 <option value="4">價格(由高到低)</option>
                             </select>
-
-
                         </div>
                         <div class="aa-product-catg-head-right">
                             <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
                             <a id="list-catg" href="#"><span class="fa fa-list"></span></a>
                         </div>
                     </div>
-                    <div class="aa-product-catg-body">
-                        <ul class="aa-product-catg">
-                            <div class="row" id="ProductDisplay">
-                                @Html.Partial("_ProductPartial", Model);
-                            </div>
-                        </ul>
-                        <!-- quick view modal -->
-                        @foreach (var p in Model)
-                        {
-                            @Html.Partial("_QuickViewPartial", p);
-                        }
-                        <!-- / quick view modal -->
-                    </div>
 
-                    <!--用迴圈去計算動態分頁-->
-                    <div class="aa-product-catg-pagination">
-                        <nav>
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                @for (int i = 1; i <= totalPage; i++)
-                                {
-                                    <li><span class="PageNumber" aria-hidden="true" id="@i">@i</span></li>
-                                }
+                    @Html.Partial("_ProductPartial", Model);
 
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+
                 </div>
             </div>
+
+
 
             @Html.Partial("_SidebarPartial");
 
@@ -75,143 +41,157 @@
 </section>
 @section Scripts{
     <script>
-       
+
 
         /*number跟val放全域變數，希望使用者原初的頁碼or排序法能被記住*/
         var number = 1; //按到第幾頁，number跟著變
         var value = 1;    //排序方法
-       
-        
-        //頁碼
-        $('.PageNumber').click(function () {
-            number = this.innerText;  //取頁數的值，也順便更動全域變數number          
-            var routePath = location.pathname; //抓Url的值
-            $.ajax({
-                type: "Post",
-                url: "/Product/Pagination",
-                data: { PageNumber: number, Value: value, RoutePath: routePath},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-                    $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
-                }
-            });
-        })
+        Initialize()
+        function Initialize() {
+            //頁碼
+            $('.PageNumber').click(function () {
+                number = this.innerText;  //取頁數的值，也順便更動全域變數number
+                var routePath = location.pathname; //抓Url的值
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/Pagination",
+                    data: { PageNumber: number, Value: value, RoutePath: routePath },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                        $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
+                    }
+                });
+            })
 
-        //排序方法
-        $('#SortedDropdown').change(function (e) { //下拉式選單改變發生時
-            value = $(this).val();                   //選到哪個value
-            var routePath = location.pathname;       //抓Url的值
-            $.ajax({
-                type: "Post",
-                url: "/Product/Pagination",
-                data: { PageNumber: number, Value: value, RoutePath: routePath},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-                    $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
-                }
-            });
-        });
-
-        $('#Totebag').click(function () {
-            //更改路由參數
-            var stateObj = { index: "Totebag" };
-            window.history.pushState(stateObj, "Totebag", '/Product/Totebag');  
-            var category = "Totebag";
-            //alert(location.pathname.replace('/Product/'),'');
-            $.ajax({
-                type: "Post",
-                url: "/Product/ChangeCategory",
-                data: { Category: category},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-                }
+            //排序方法
+            $('#SortedDropdown').change(function (e) { //下拉式選單改變發生時
+                value = $(this).val();                   //選到哪個value
+                var routePath = location.pathname;       //抓Url的值
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/Pagination",
+                    data: { PageNumber: number, Value: value, RoutePath: routePath },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                        $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
+                    }
+                });
             });
 
-        })
+            $('#Totebag').click(function () {
+                //更改路由參數
+                var stateObj = { index: "Totebag" };
+                window.history.pushState(stateObj, "Totebag", '/Product/Totebag');
+                var category = "Totebag";
+                //alert(location.pathname.replace('/Product/'),'');
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/ChangeCategory",
+                    data: { Category: category },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                    }
+                });
 
-        $('#Backpack').click(function () {
-           var stateObj = { index: "Backpack" };
-            window.history.pushState(stateObj, "Backpack", '/Product/Backpack');  
-            var category = "Backpack";
-            //alert(location.pathname.replace('/Product/'),'');
-            $.ajax({
-                type: "Post",
-                url: "/Product/ChangeCategory",
-                data: { Category: category},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-                }
+            })
+
+            $('#Backpack').click(function () {
+                var stateObj = { index: "Backpack" };
+                window.history.pushState(stateObj, "Backpack", '/Product/Backpack');
+                var category = "Backpack";
+                //alert(location.pathname.replace('/Product/'),'');
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/ChangeCategory",
+                    data: { Category: category },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                    }
+                });
+
+            })
+
+            $('#Longclip').click(function () {
+                var stateObj = { index: "Longclip" };
+                window.history.pushState(stateObj, "Longclip", '/Product/Longclip');
+                var category = "Longclip";
+                //alert(location.pathname.replace('/Product/'),'');
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/ChangeCategory",
+                    data: { Category: category },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                    }
+                });
+
+            })
+
+            $('#Coinwallet').click(function () {
+                var stateObj = { index: "Coinwallet" };
+                window.history.pushState(stateObj, "Coinwallet", '/Product/Coinwallet');
+                var category = "Coinwallet";
+                //alert(location.pathname.replace('/Product/'),'');
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/ChangeCategory",
+                    data: { Category: category },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                    }
+                });
+
+            })
+
+            $('#Namecard').click(function () {
+                var stateObj = { index: "Namecard" };
+                window.history.pushState(stateObj, "Namecard", '/Product/Namecard');
+                var category = "Namecard";
+                //alert(location.pathname.replace('/Product/'),'');
+                $.ajax({
+                    type: "Post",
+                    url: "/Product/ChangeCategory",
+                    data: { Category: category },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#ProductDisplay").empty();
+                        $("#PagenumberDisplay").empty();
+                        $("#ProductDisplay").html(response);
+                        Initialize();
+                    }
+                });
+
+            })
+
+            //滑鼠移至頁碼就會變成手指鼠標
+            $('.PageNumber').hover(function () {
+                $(this).css("cursor", "pointer");
             });
-
-         })
-
-        $('#Longclip').click(function () {
-            var stateObj = { index: "Longclip" };
-            window.history.pushState(stateObj, "Longclip", '/Product/Longclip');  
-            var category = "Longclip";
-            //alert(location.pathname.replace('/Product/'),'');
-            $.ajax({
-                type: "Post",
-                url: "/Product/ChangeCategory",
-                data: { Category: category},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-                }
-            });
-
-         })
-
-        $('#Coinwallet').click(function () {
-             var stateObj = { index: "Coinwallet" };
-            window.history.pushState(stateObj, "Coinwallet", '/Product/Coinwallet');  
-            var category = "Coinwallet";
-            //alert(location.pathname.replace('/Product/'),'');
-            $.ajax({
-                type: "Post",
-                url: "/Product/ChangeCategory",
-                data: {Category: category},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-                }
-            });
-
-         })
-
-        $('#Namecard').click(function () {
-             var stateObj = { index: "Namecard" };
-            window.history.pushState(stateObj, "Namecard", '/Product/Namecard');  
-            var category = "Namecard";
-            //alert(location.pathname.replace('/Product/'),'');
-            $.ajax({
-                type: "Post",
-                url: "/Product/ChangeCategory",
-                data: {Category: category},
-                dataType: "text",
-                success: function (response) {
-                    $("#ProductDisplay").empty();
-                    $("#ProductDisplay").html(response);
-
-                }
-            });
-
-        })
-
-        //滑鼠移至頁碼就會變成手指鼠標
-        $('.PageNumber').hover(function () {
-            $(this).css("cursor", "pointer");
-        });
+        }
 
 
     </script>

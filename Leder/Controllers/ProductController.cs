@@ -19,7 +19,7 @@ namespace Leder.Controllers
         private ProductRepository productRepo;
         private CategoryRepository categoryRepo;
 
-        int currentCategoryId = 1; //讓Controller記得我在哪個商品類別的頁面上
+        //int currentCategoryId = 1; //讓Controller記得我在哪個商品類別的頁面上
         //int currentPage = 1;       //讓Controller記得我在哪一頁
         
         public ActionResult Index(string Category) //string Category:接收路由傳來的參數
@@ -113,7 +113,7 @@ namespace Leder.Controllers
             int CategoryId = categoryRepo.GetCategoryId(category);
 
             var sortedProduct = Sorted(Value, CategoryId);   //呼叫Sorted方法，回傳"排序後"的全部商品
-
+            ViewData["totalPage"] = PageCount(sortedProduct);
             List<ProductViewModel> pagedProduct = new List<ProductViewModel>();
             pagedProduct = sortedProduct.Skip(6 * (PageNumber - 1)).Take(6).ToList();
             return PartialView("_ProductPartial", pagedProduct);           
