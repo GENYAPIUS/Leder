@@ -30,14 +30,6 @@ namespace Leder
 
             );
 
-            //{Category}
-            //routes.MapRoute(
-            //    name: "CategoryOnly",
-            //    url: "{Category}",
-            //    defaults: new { controller = "Product", action = "Index", Category = UrlParameter.Optional }
-
-            //);
-
             //Product/{Category}
             routes.MapRoute(
                 name: "ProductCategory",
@@ -46,8 +38,7 @@ namespace Leder
 
             );
 
-            //商品頁面
-            //從Product/ProductDetail/id變成ProductDetail/id，精簡了一點
+            //商品頁面Id/{Id}         
             routes.MapRoute(
                name: "FindProductById",
                url: "Id/{Id}",
