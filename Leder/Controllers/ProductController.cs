@@ -20,7 +20,7 @@ namespace Leder.Controllers
         private CategoryRepository categoryRepo;
 
         
-        public ActionResult Index(string Category) //string Category:接收路由傳來的參數
+        public ActionResult Index(string Category) //接收路由傳來的參數Category
         {
             
             productRepo = new ProductRepository(db);
@@ -59,7 +59,7 @@ namespace Leder.Controllers
         }
 
         [HttpPost] 
-        public ActionResult ChangeCategory(string Category)
+        public ActionResult ChangeCategory(string Category) //Sidebar的商品類別是用ajax呼叫
         {
 
             productRepo = new ProductRepository(db);
@@ -84,7 +84,7 @@ namespace Leder.Controllers
 
             }
 
-            ViewData["totalPage"] = PageCount(productVM); //用PageCount方法去計算要有幾頁
+            ViewData["totalPage"] = PageCount(productVM); //用PageCount()去計算要有幾頁
 
             productVM = productVM.Take(6).ToList(); //預設第一頁，放六個產品
 

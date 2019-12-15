@@ -219,6 +219,8 @@
     <Content Include="Assets\build\images\loading.gif" />
     <Content Include="Assets\build\js\custom.js" />
     <Content Include="Assets\build\js\custom.min.js" />
+    <Content Include="Assets\images\Backpack\Backpack2_darkbrown.jpg" />
+    <Content Include="Assets\images\Backpack\Backpack2_green.jpg" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\jquery.simpleLens.css" />
     <Content Include="Content\jquery.smartmenus.bootstrap.css" />

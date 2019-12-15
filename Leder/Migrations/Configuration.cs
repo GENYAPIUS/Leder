@@ -33,8 +33,9 @@ namespace Leder.Migrations
                 new Product { ProductId = 8, Name = "Armas 水牛皮兩用直式托特包", Price = 27655, CategoryId = 1, Photo = "/Assets/images/Totebag/Totebag8.jpg" },
 
 
-                new Product { ProductId = 9, Name = "Tone Oilnume 中型後背包", Price = 27199, CategoryId = 2, Photo = "/Assets/images/Backpack/Backpack1.jpg" },
+                new Product { ProductId = 9, Name = "Tone Oilnume 中型後背包", Price = 27199, CategoryId = 2, Photo = "/Assets/images/Backpack/Backpack1.jpg",},
                 new Product { ProductId = 10, Name = "Tone Oilnume 後背包", Price = 28670, CategoryId = 2, Photo = "/Assets/images/Backpack/Backpack2.jpg" },
+
 
                 new Product { ProductId = 11, Name = "Belchord 長夾", Price = 22605, CategoryId = 3, Photo = "/Assets/images/Longclip/Longclip1.jpg" },
                 new Product { ProductId = 12, Name = "Diario 長夾", Price = 9189, CategoryId = 3, Photo = "/Assets/images/Longclip/Longclip2.jpg" },

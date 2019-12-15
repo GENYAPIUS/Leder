@@ -17,6 +17,8 @@ namespace Leder.Models
         public string Photo { get; set; }   //產品照片
         public string Description { get; set; } //產品頁面的敘述文字
         public int UnitInStock { get; set; } //產品庫存
+        //public string[] ColorChoices { get; set; }//產品其他顏色
+
 
         //Navigation Property
         [ForeignKey("CategoryId")]

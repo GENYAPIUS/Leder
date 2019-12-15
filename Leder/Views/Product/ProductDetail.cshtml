@@ -1,8 +1,6 @@
 ﻿@using Leder.ViewModels;
 @model ProductViewModel
 
-
-
 <!-- product category -->
 <section id="aa-product-details">
     <div class="container">
@@ -13,14 +11,28 @@
                         <div class="row">
                             <!-- Modal view slider -->
                             <div class="col-md-5 col-sm-5 col-xs-12">
-                                <div class="aa-product-view-slider">
-                                    <div id="demo-1" class="simpleLens-gallery-container">
-                                        <div class="simpleLens-container">
-                                            <div class="simpleLens-big-image-container"><a data-lens-image="@Model.Photo" class="simpleLens-lens-image"><img src="@Model.Photo" class="simpleLens-big-image"></a></div>
+                              
+                                    @*<div class="col-md-4">
+                                        <img src="@Model.Photo" style="width:45px" />
+                                        <br />
+                                        <img src="@Model.Photo" style="width:45px" />
+                                        <br />
+                                        <img src="@Model.Photo" style="width:45px" />
+                                    </div>*@
+
+                                    
+                                        <div class="aa-product-view-slider">
+                                            <div id="demo-1" class="simpleLens-gallery-container">
+                                                <div class="simpleLens-container">
+                                                    <div class="simpleLens-big-image-container"><a data-lens-image="@Model.Photo" class="simpleLens-lens-image"><img src="@Model.Photo" class="simpleLens-big-image"></a></div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                   
+                               
                             </div>
+
+
                             <!-- Modal view content -->
                             <div class="col-md-7 col-sm-7 col-xs-12">
                                 <div class="aa-product-view-content">
@@ -30,14 +42,15 @@
                                             <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                                         </div>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
-                                        
+                                        @*有分哪幾種顏色*@
                                         <h4>Color</h4>
                                         <div class="aa-color-tag">
-                                            <a href="#" class="aa-color-green"></a>
-                                            <a href="#" class="aa-color-yellow"></a>
-                                            <a href="#" class="aa-color-pink"></a>
-                                            <a href="#" class="aa-color-black"></a>
-                                            <a href="#" class="aa-color-white"></a>
+                                            <a href="#" data-toggle="tooltip" title="點我看綠色" class="aa-color-green"></a>
+                                            <a href="#" data-toggle="tooltip" title="點我看紅色" class="aa-color-red"></a>
+                                            <a href="#" data-toggle="tooltip" title="點我看深棕色" class="aa-color-darkbrown"></a>
+                                            <a href="#" data-toggle="tooltip" title="點我看淺棕色" class="aa-color-lightbrown"></a>
+                                            <a href="#" data-toggle="tooltip" title="點我看黑色" class="aa-color-black"></a>
+                                            <a href="#" data-toggle="tooltip" title="點我看粉色" class="aa-color-pink"></a>
                                         </div>
                                         <div class="aa-prod-quantity">
                                             <form action="">
@@ -51,7 +64,7 @@
                                                 </select>
                                             </form>
                                             <p class="aa-prod-category">
-                                                Category: <a href="#">Polo T-Shirt</a>
+                                                Category: <a href="~/Product/@Model.Category">@Model.Category</a>
                                             </p>
                                         </div>
                                         <div class="aa-prod-view-bottom">
@@ -164,3 +177,9 @@
     </div>
 </section>
 <!-- / product category -->
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

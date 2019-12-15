@@ -2185,21 +2185,30 @@ img {
   width: 30px;
 }
 
-#aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-red {
-  background-color: #FF0000;
+/*以下五個是有顯示在Product Detail上的*/
+.aa-color-red {
+    background-color: #8B0000;
 }
 
-#aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-green {
-  background-color: #008000;
+.aa-color-green {
+    background-color: #006400;
 }
 
-#aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-yellow {
-  background-color: #FFFF00;
+.aa-color-darkbrown {
+    background-color: #A0522D;
 }
 
-#aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-pink {
-  background-color: #FFC0CB;
+.aa-color-lightbrown {
+    background-color: #FF8C00;
 }
+
+.aa-color-pink {
+    background-color: #FF69B4;
+}
+.aa-color-black {
+    background-color: #000000;
+}
+
 
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-purple {
   background-color: #800080;
@@ -2215,10 +2224,6 @@ img {
 
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-gray {
   background-color: #bebebe;
-}
-
-#aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-black {
-  background-color: #000;
 }
 
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag .aa-color-white {
