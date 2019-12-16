@@ -184,6 +184,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,6 +207,8 @@
     <Compile Include="Models\LederContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
@@ -3833,6 +3836,7 @@
     <Content Include="Views\Dashboard\index.cshtml" />
     <Content Include="Views\ShoppingCart\Order.cshtml" />
     <Content Include="Views\Shared\_ShiftCartModal.cshtml" />
+    <Content Include="Views\ShoppingCart\CashOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -3846,6 +3850,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">

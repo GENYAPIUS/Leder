@@ -19,12 +19,42 @@ namespace Leder.Controllers
         [Authorize]
         public ActionResult Checkout()
         {
+            
+            var userData = db.UserDetail.Where(x => x.Email == HttpContext.User.Identity.Name);
             var currentCart = Models.Cart.Operation.GetCurrentCart();
+
+            ViewData["UserData"] = userData;
+            ViewData["CurrentCart"] = currentCart;
+
+
             return View(currentCart.ToList());
         }
         [Authorize]
-        public ActionResult Order()
+        [HttpPost]
+        public ActionResult Order(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
         {
+            ViewData["Email"] = Email;
+            ViewData["RecieverName"] = RecieverName;
+            ViewData["RecieverPhone"] = RecieverPhone;
+            ViewData["RecieverAddress"] = RecieverAddress;
+            ViewData["RecieverZipCode"] = RecieverZipCode;
+
+
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            return View(currentCart.ToList());
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult CashOrder(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
+        {
+
+            ViewData["Email"] = Email;
+            ViewData["RecieverName"] = RecieverName;
+            ViewData["RecieverPhone"] = RecieverPhone;
+            ViewData["RecieverAddress"] = RecieverAddress;
+            ViewData["RecieverZipCode"] = RecieverZipCode;
+
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList());
         }

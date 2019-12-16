@@ -4,10 +4,7 @@
     ViewBag.Title = "Order";
     var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
-@section css{
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 確保在移動設備上的最佳渲染。 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Internet Explorer的最佳兼容性 -->
-}
+
 <section id="cart-view">
 
     <div class="container">
@@ -36,7 +33,7 @@
                                             <td>@ViewData["RecieverAddress"]</td>
                                             <td>@ViewData["RecieverZipCode"]</td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </table>
                                 <table class="table">
@@ -70,16 +67,16 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>TWD $ @String.Format("{0}", currentCart.TotalAmount)</td>
+                                        <td>NTD $ @String.Format("{0}", currentCart.TotalAmount)</td>
                                         @*<td>USD $ @String.Format("{0}", (currentCart.TotalAmount) / 30.1m)</td>*@
                                     </tr>
                                 </tbody>
-                            </table>
 
-                            <div id="paypaltest" style="margin-top:10px">
-                                <input id="TotalAmount" type="text" style="display:none" value="@String.Format("{0}", currentCart.TotalAmount)"/>
-                            </div>
+                            </table>
+                            <button id="OrderSubmit" class="aa-browse-btn" type="button" name="OrderSubmit" style="margin-top: 20px;">確認送出</button>
+
                         </div>
+                                               
 
                     </div>
                 </div>
@@ -90,6 +87,6 @@
 
 
 @section Scripts{
-    <script src="https://www.paypal.com/sdk/js?client-id=AUaiHPKubOvW2WEVoToVgaTDf0XU6g8E3cb0pICGF1Y1tbDlzb6WKnenjVcUVPAV0opf7bk6dbXpHM_M&currency=TWD"></script>
-    <script src="~/Scripts/paypal.js"></script>
+    
 }
+
