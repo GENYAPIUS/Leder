@@ -73,33 +73,11 @@
                 });
             });
 
-
+            //Sidebar看點到哪個商品類別
             $('.ProductCategory').click(function (e) {
-                if (this.id == 'Totebag') {
-                    var stateObj = { index: "Totebag" };
-                    window.history.pushState(stateObj, "Totebag", '/Product/Totebag');
-                    var category = "Totebag";
-                }
-                else if (this.id == 'Backpack') {
-                    var stateObj = { index: "Backpack" };
-                    window.history.pushState(stateObj, "Backpack", '/Product/Backpack');
-                    var category = "Backpack";
-                }
-                else if (this.id == 'Longclip') {
-                    var stateObj = { index: "Longclip" };
-                    window.history.pushState(stateObj, "Longclip", '/Product/Longclip');
-                    var category = "Longclip";
-                }
-                else if (this.id == 'Coinwallet') {
-                    var stateObj = { index: "Coinwallet" };
-                    window.history.pushState(stateObj, "Coinwallet", '/Product/Coinwallet');
-                    var category = "Coinwallet";
-                }
-                else if (this.id == 'Namecard') {
-                    var stateObj = { index: "Namecard" };
-                    window.history.pushState(stateObj, "Namecard", '/Product/Namecard');
-                    var category = "Namecard";
-                }
+                    var stateObj = { index: this.id };
+                    window.history.pushState(stateObj, this.id, '/Product/'+this.id);
+                    var category = this.id;      
 
                 $.ajax({
                     type: "Post",
