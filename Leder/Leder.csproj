@@ -49,7 +49,13 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BraintreeHttp-Dotnet, Version=0.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BraintreeHttp-Dotnet.0.1.5\lib\netstandard2.0\BraintreeHttp-Dotnet.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPalCheckoutSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalCheckoutSdk.1.0.0\lib\netstandard2.0\PayPalCheckoutSdk.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -203,6 +209,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\PayPalClient.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
@@ -224,6 +231,7 @@
     <Content Include="Assets\build\js\custom.min.js" />
     <Content Include="Content\lite-blue-theme.css" />
     <Content Include="Scripts\CartIndex.js" />
+    <Content Include="Scripts\paypal.js" />
     <Content Include="Scripts\ShiftCartModalFunction.js" />
     <Content Include="Scripts\ShoppingCartFunction.js" />
     <Content Include="Content\font-awesome.css" />
@@ -3846,6 +3854,9 @@
     <EmbeddedResource Include="Migrations\201912060756349_TestCreate1.resx">
       <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

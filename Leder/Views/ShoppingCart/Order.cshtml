@@ -4,9 +4,12 @@
     ViewBag.Title = "Order";
     var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
-
+@section css{
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 確保在移動設備上的最佳渲染。 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Internet Explorer的最佳兼容性 -->
+}
 <section id="cart-view">
-    
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -17,7 +20,7 @@
                                 <h2>結帳頁面</h2>
                                 <table class="table">
                                     <thead>
-                                        <tr>                                            
+                                        <tr>
                                             <th>@Html.DisplayNameFor(m => m.Photo)</th>
                                             <th>@Html.DisplayNameFor(m => m.Name)</th>
                                             <th>單價</th>
@@ -46,14 +49,14 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>NTD $ @String.Format("{0}", currentCart.TotalAmount)</td>
+                                        <td>TWD $ @String.Format("{0}", currentCart.TotalAmount)</td>
                                         @*<td>USD $ @String.Format("{0}", (currentCart.TotalAmount) / 30.1m)</td>*@
                                     </tr>
                                 </tbody>
                             </table>
-                            
-                            <div id="paypaltest" style="margin-top:10px">
 
+                            <div id="paypaltest" style="margin-top:10px">
+                                <input id="TotalAmount" type="text" style="display:none" value="@String.Format("{0}", currentCart.TotalAmount)"/>
                             </div>
                         </div>
 
@@ -66,6 +69,6 @@
 
 
 @section Scripts{
-    <script src="https://www.paypal.com/sdk/js?client-id=sb" data-namespace="paypalSandbox"></script>
-    <script>paypalSandbox.Buttons().render('#paypaltest');</script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AUaiHPKubOvW2WEVoToVgaTDf0XU6g8E3cb0pICGF1Y1tbDlzb6WKnenjVcUVPAV0opf7bk6dbXpHM_M&currency=TWD"></script>
+    <script src="~/Scripts/paypal.js"></script>
 }
