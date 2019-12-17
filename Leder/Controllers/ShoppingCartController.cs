@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Leder.Models;
+using Leder.ViewModels;
 
 namespace Leder.Controllers
 {
@@ -38,7 +40,8 @@ namespace Leder.Controllers
             ViewData["RecieverPhone"] = RecieverPhone;
             ViewData["RecieverAddress"] = RecieverAddress;
             ViewData["RecieverZipCode"] = RecieverZipCode;
-
+            ViewBag.Email = Email;
+            
 
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList());
@@ -48,12 +51,15 @@ namespace Leder.Controllers
         [HttpPost]
         public ActionResult CashOrder(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
         {
+            OrderViewModel orders = new OrderViewModel();
+            orders.Email = Email;           
+            orders.RecieverName = RecieverName;
+            orders.RecieverPhone = RecieverPhone;
+            orders.RecieverAddress = RecieverAddress;
+            orders.RecieverZipCode = RecieverZipCode;
+            orders.Carts = Models.Cart.Operation.GetCurrentCart();
+            ViewData["RecieverData"] = orders;
 
-            ViewData["Email"] = Email;
-            ViewData["RecieverName"] = RecieverName;
-            ViewData["RecieverPhone"] = RecieverPhone;
-            ViewData["RecieverAddress"] = RecieverAddress;
-            ViewData["RecieverZipCode"] = RecieverZipCode;
 
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList());

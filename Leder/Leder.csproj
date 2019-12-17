@@ -215,6 +215,7 @@
     <Compile Include="Repository\PayPalClient.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />

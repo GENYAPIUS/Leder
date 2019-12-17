@@ -1,8 +1,12 @@
-﻿@model IEnumerable<Leder.Models.Cart.CartItem>
+﻿@using Leder.ViewModels;
+@using System.Diagnostics;
+@model IEnumerable<Leder.Models.Cart.CartItem>
 
 @{
     ViewBag.Title = "Order";
-    var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
+    OrderViewModel orders = (OrderViewModel)ViewData["RecieverData"];
+    Debug.WriteLine($"Email of cash is {orders.Email}");
+    Debug.WriteLine($"Phone of cash is {orders.RecieverPhone}");
 }
 
 <section id="cart-view">
@@ -27,7 +31,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>@ViewData["Email"]</td>
+                                            <td>@orders.Email</td>
                                             <td>@ViewData["RecieverName"]</td>
                                             <td>@ViewData["RecieverPhone"]</td>
                                             <td>@ViewData["RecieverAddress"]</td>
@@ -67,7 +71,7 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>NTD $ @String.Format("{0}", currentCart.TotalAmount)</td>
+                                        <td>NTD $ @String.Format("{0}", orders.Carts.TotalAmount)</td>
                                         @*<td>USD $ @String.Format("{0}", (currentCart.TotalAmount) / 30.1m)</td>*@
                                     </tr>
                                 </tbody>
@@ -76,7 +80,7 @@
                             <button id="OrderSubmit" class="aa-browse-btn" type="button" name="OrderSubmit" style="margin-top: 20px;">確認送出</button>
 
                         </div>
-                                               
+
 
                     </div>
                 </div>
@@ -87,6 +91,6 @@
 
 
 @section Scripts{
-    
+
 }
 
