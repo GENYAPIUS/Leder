@@ -9,7 +9,7 @@ namespace Leder.Models
     public class Order
     {
         [Key]
-        public int OrderId { get; set; }
+        public Guid OrderId { get; set; }
         public string Email { get; set; } // 使用者Id
         /// <summary>
         /// 收貨人姓名
@@ -46,7 +46,16 @@ namespace Leder.Models
         [Display(Name = "郵遞區號")]
         [StringLength(5, ErrorMessage = "{0} 的長度至少必須為 {3} 到 {5} 個字元。"
            , MinimumLength = 3)] //字元長度3~5
-        public int RecieverZipCode { get; set; }
+        public string RecieverZipCode { get; set; }
+
+        /// <summary>
+        /// 總金額
+        /// </summary>
+        public decimal? TotalAmount { get; set; }
+        /// <summary>
+        /// 付款方式
+        /// </summary>
+        public string PayStatus { get; set; }
 
         /// <summary>
         /// 訂單狀態

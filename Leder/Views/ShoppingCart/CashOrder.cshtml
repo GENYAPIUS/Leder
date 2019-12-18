@@ -27,7 +27,7 @@
                                             <td>@Html.DisplayFor(m => m.RecieverName)</td>
                                             <td>@Html.DisplayFor(m => m.RecieverPhone)</td>
                                             <td>@Html.DisplayFor(m => m.RecieverAddress)</td>
-                                            <td>@Html.DisplayFor(m => m.RecieverZipCode)</td>                                            
+                                            <td>@Html.DisplayFor(m => m.RecieverZipCode)</td>
                                         </tr>
 
                                     </tbody>
@@ -63,12 +63,12 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>                                        
+                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>
                                     </tr>
                                 </tbody>
 
                             </table>
-                            <button id="OrderSubmit" class="aa-browse-btn" type="button" name="OrderSubmit" style="margin-top: 20px;">確認送出</button>
+                            <a id="OrderSubmit" class="btn aa-browse-btn" href="@Url.Action("Index","Order")" name="OrderSubmit" style="margin-top: 20px;">確認送出</a>
 
                         </div>
 
@@ -79,6 +79,7 @@
         </div>
     </div>
 </section>
+
 
 
 

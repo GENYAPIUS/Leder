@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201912060756349_TestCreate1.Designer.cs">
       <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912180341171_AddOrderModel.cs" />
+    <Compile Include="Migrations\201912180341171_AddOrderModel.Designer.cs">
+      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
@@ -3848,6 +3852,7 @@
     <Content Include="Views\ShoppingCart\Order.cshtml" />
     <Content Include="Views\Shared\_ShiftCartModal.cshtml" />
     <Content Include="Views\ShoppingCart\CashOrder.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -3861,7 +3866,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
@@ -3869,6 +3873,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912060756349_TestCreate1.resx">
       <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912180341171_AddOrderModel.resx">
+      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
