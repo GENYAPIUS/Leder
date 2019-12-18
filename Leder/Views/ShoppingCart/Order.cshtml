@@ -1,20 +1,6 @@
-﻿@using System.Diagnostics;
-@using Leder.ViewModels;
-@model IEnumerable<Leder.Models.Cart.CartItem>
+﻿@model Leder.ViewModels.OrderViewModel
 
-@{
-    ViewBag.Title = "Order";
-    var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
-    string Email = (string)ViewData["Email"];
-    Debug.WriteLine($"Email is {Email}");
-    Debug.WriteLine($"Email.bag is {ViewBag.Email}");
 
-}
-@section css{
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 確保在移動設備上的最佳渲染。 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Internet Explorer的最佳兼容性 -->
-}
-<h1>@Email</h1>
 <section id="cart-view">
 
     <div class="container">
@@ -24,7 +10,6 @@
                     <div class="cart-view-table">
                         <form action="">
                             <div class="table-responsive">
-                                
                                 <h2>結帳頁面</h2>
                                 <table class="table">
                                     <thead>
@@ -38,12 +23,11 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            
-                                            <td>@ViewData["Email"]</td>
-                                            <td>@ViewData["RecieverName"]</td>
-                                            <td>@ViewData["RecieverPhone"]</td>
-                                            <td>@ViewData["RecieverAddress"]</td>
-                                            <td>@ViewData["RecieverZipCode"]</td>
+                                            <td>@Html.DisplayFor(m => m.Email)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverName)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverPhone)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverAddress)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverZipCode)</td>
                                         </tr>
 
                                     </tbody>
@@ -51,15 +35,15 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>@Html.DisplayNameFor(m => m.Photo)</th>
-                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                            <th>商品</th>
+                                            <th>商品名</th>
                                             <th>單價</th>
                                             <th>數量</th>
                                             <th>總價</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var i in Model)
+                                        @foreach (var i in Model.CartItems)
                                         {
                                             <tr>
                                                 <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
@@ -79,14 +63,14 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>TWD $ @String.Format("{0}", currentCart.TotalAmount)</td>
-                                        @*<td>USD $ @String.Format("{0}", (currentCart.TotalAmount) / 30.1m)</td>*@
+                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>                                        
                                     </tr>
                                 </tbody>
+
                             </table>
 
                             <div id="paypaltest" style="margin-top:10px">
-                                <input id="TotalAmount" type="text" style="display:none" value="@String.Format("{0}", currentCart.TotalAmount)" />
+                                <input id="TotalAmount" type="text" style="display:none" value="@String.Format("{0}",  Model.Carts.TotalAmount)" />
                             </div>
                         </div>
 

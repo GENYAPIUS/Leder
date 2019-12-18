@@ -14,5 +14,6 @@ namespace Leder.ViewModels
         public string RecieverAddress { get; set; }
         public string RecieverZipCode { get; set; }
         public Cart Carts { get; set; }
+        public IEnumerable<CartItem> CartItems { get; set; }
     }
 }

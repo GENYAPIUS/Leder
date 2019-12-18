@@ -1,13 +1,5 @@
-﻿@using Leder.ViewModels;
-@using System.Diagnostics;
-@model IEnumerable<Leder.Models.Cart.CartItem>
+﻿@model Leder.ViewModels.OrderViewModel
 
-@{
-    ViewBag.Title = "Order";
-    OrderViewModel orders = (OrderViewModel)ViewData["RecieverData"];
-    Debug.WriteLine($"Email of cash is {orders.Email}");
-    Debug.WriteLine($"Phone of cash is {orders.RecieverPhone}");
-}
 
 <section id="cart-view">
 
@@ -31,11 +23,11 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>@orders.Email</td>
-                                            <td>@ViewData["RecieverName"]</td>
-                                            <td>@ViewData["RecieverPhone"]</td>
-                                            <td>@ViewData["RecieverAddress"]</td>
-                                            <td>@ViewData["RecieverZipCode"]</td>
+                                            <td>@Html.DisplayFor(m => m.Email)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverName)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverPhone)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverAddress)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverZipCode)</td>                                            
                                         </tr>
 
                                     </tbody>
@@ -43,15 +35,15 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>@Html.DisplayNameFor(m => m.Photo)</th>
-                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                            <th>商品</th>
+                                            <th>商品名</th>
                                             <th>單價</th>
                                             <th>數量</th>
                                             <th>總價</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var i in Model)
+                                        @foreach (var i in Model.CartItems)
                                         {
                                             <tr>
                                                 <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
@@ -71,8 +63,7 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>NTD $ @String.Format("{0}", orders.Carts.TotalAmount)</td>
-                                        @*<td>USD $ @String.Format("{0}", (currentCart.TotalAmount) / 30.1m)</td>*@
+                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>                                        
                                     </tr>
                                 </tbody>
 
@@ -90,7 +81,4 @@
 </section>
 
 
-@section Scripts{
-
-}
 

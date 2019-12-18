@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Leder.Models;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Leder.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : ApiController
     {
-        // GET: Order
-        public ActionResult Index()
-        {
-            LederContext db = new LederContext();
-
-
-
-            return View();
-        }
     }
 }

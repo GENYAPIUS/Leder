@@ -31,38 +31,36 @@ namespace Leder.Controllers
 
             return View(currentCart.ToList());
         }
-        [Authorize]
-        [HttpPost]
-        public ActionResult Order(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
+        [Authorize]        
+        public ActionResult Order()
         {
-            ViewData["Email"] = Email;
-            ViewData["RecieverName"] = RecieverName;
-            ViewData["RecieverPhone"] = RecieverPhone;
-            ViewData["RecieverAddress"] = RecieverAddress;
-            ViewData["RecieverZipCode"] = RecieverZipCode;
-            ViewBag.Email = Email;
-            
+            OrderViewModel receiverData = (OrderViewModel)Session["ReceiverData"];
 
-            var currentCart = Models.Cart.Operation.GetCurrentCart();
-            return View(currentCart.ToList());
+            return View(receiverData);
+        }        
+        [Authorize]        
+        public ActionResult CashOrder()
+        {
+            OrderViewModel receiverData = (OrderViewModel)Session["ReceiverData"];         
+                           
+            return View(receiverData);
         }
-
-        [Authorize]
+        
         [HttpPost]
-        public ActionResult CashOrder(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
+        public ActionResult OrderData(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
         {
             OrderViewModel orders = new OrderViewModel();
-            orders.Email = Email;           
+            orders.Email = Email;
             orders.RecieverName = RecieverName;
             orders.RecieverPhone = RecieverPhone;
             orders.RecieverAddress = RecieverAddress;
             orders.RecieverZipCode = RecieverZipCode;
             orders.Carts = Models.Cart.Operation.GetCurrentCart();
-            ViewData["RecieverData"] = orders;
+            orders.CartItems = orders.Carts.ToList();
 
+            Session["ReceiverData"] = orders;
 
-            var currentCart = Models.Cart.Operation.GetCurrentCart();
-            return View(currentCart.ToList());
+            return View();
         }
 
         public ActionResult AddToCart(int id,int? inQuantity)
