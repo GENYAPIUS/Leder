@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -189,6 +190,14 @@
     <Compile Include="Migrations\201912060756349_TestCreate1.Designer.cs">
       <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912180341171_AddOrderModel.cs" />
+    <Compile Include="Migrations\201912180341171_AddOrderModel.Designer.cs">
+      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190328186_PhotoToPhotos.cs" />
+    <Compile Include="Migrations\201912190328186_PhotoToPhotos.Designer.cs">
+      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
@@ -198,11 +207,14 @@
     <Compile Include="Models\LederContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
@@ -3929,6 +3941,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912060756349_TestCreate1.resx">
       <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912180341171_AddOrderModel.resx">
+      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190328186_PhotoToPhotos.resx">
+      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
