@@ -77,7 +77,7 @@ namespace Leder.Models.Cart
                 Id = product.ProductId,
                 Name = product.Name,
                 Price = product.Price,
-                Photo = product.Photo,
+                //Photo = product.Photos,
                 Quantity = 1
             };
             //加入CartItem至購物車

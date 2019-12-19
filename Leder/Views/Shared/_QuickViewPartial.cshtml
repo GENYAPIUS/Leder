@@ -1,9 +1,9 @@
 ﻿@using Leder.ViewModels;
 @model ProductViewModel
+    @{ 
+         var photos = Json.Encode(Model.Photos);  //將C#陣列轉成JSON字串
 
-@{
-    ViewBag.Title = "_QuickViewPartial";
-}
+    }
 
 <!-- quick view modal -->
 <div class="modal fade" id="@Model.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -19,8 +19,8 @@
                                 <div class="simpleLens-container">
                                     <div class="simpleLens-big-image-container">
                                         <!-- data-lens-image這個屬性不是絕對路徑，不用加~ -->
-                                        <a class="simpleLens-lens-image" data-lens-image="@Model.Photo">
-                                            <img src="@Model.Photo" style="width:280px" class="simpleLens-big-image">
+                                        <a class="simpleLens-lens-image" data-lens-image="/Assets/images/@Model.Category/@photos[0]">
+                                            <img src="/Assets/images/@Model.Category/@photos[0]" style="width:280px">
                                         </a>
                                     </div>
                                 </div>

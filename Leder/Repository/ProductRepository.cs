@@ -30,5 +30,9 @@ namespace Leder.Repository
             var result = _db.Products.AsQueryable();
             return result;
         }
+
+
+       
+
     }
 }

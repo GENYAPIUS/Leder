@@ -1,5 +1,10 @@
 ﻿@using Leder.ViewModels;
 @model ProductViewModel
+@{ 
+   
+   var photos = Json.Encode(Model.Photos);  //將C#陣列轉成JSON字串
+
+}
 
 <!-- product category -->
 <section id="aa-product-details">
@@ -10,26 +15,14 @@
                     <div class="aa-product-details-content">
                         <div class="row">
                             <!-- Modal view slider -->
-                            <div class="col-md-5 col-sm-5 col-xs-12">
-                              
-                                    @*<div class="col-md-4">
-                                        <img src="@Model.Photo" style="width:45px" />
-                                        <br />
-                                        <img src="@Model.Photo" style="width:45px" />
-                                        <br />
-                                        <img src="@Model.Photo" style="width:45px" />
-                                    </div>*@
-
-                                    
+                            <div class="col-md-5 col-sm-5 col-xs-12">                           
                                         <div class="aa-product-view-slider">
                                             <div id="demo-1" class="simpleLens-gallery-container">
                                                 <div class="simpleLens-container">
-                                                    <div class="simpleLens-big-image-container"><a data-lens-image="@Model.Photo" class="simpleLens-lens-image"><img src="@Model.Photo" class="simpleLens-big-image"></a></div>
+                                                    <div class="simpleLens-big-image-container"><a data-lens-image="@Model.Photos[0]" class="simpleLens-lens-image"><img src="@Model.Photos[0]" class="simpleLens-big-image"></a></div>
                                                 </div>
                                             </div>
-                                        </div>
-                                   
-                               
+                                        </div>                                                              
                             </div>
 
 
@@ -53,15 +46,9 @@
                                             <a href="#" data-toggle="tooltip" title="點我看粉色" class="aa-color-pink"></a>
                                         </div>
                                         <div class="aa-prod-quantity">
+                                            <h4>數量</h4>
                                             <form action="">
-                                                <select id="" name="">
-                                                    <option selected="1" value="0">1</option>
-                                                    <option value="1">2</option>
-                                                    <option value="2">3</option>
-                                                    <option value="3">4</option>
-                                                    <option value="4">5</option>
-                                                    <option value="5">6</option>
-                                                </select>
+                                                <input type="number" min="1" value="1" style="width:40px"/>                                                 
                                             </form>
                                             <p class="aa-prod-category">
                                                 Category: <a href="~/Product/@Model.Category">@Model.Category</a>
@@ -95,6 +82,12 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, iusto earum voluptates autem esse molestiae ipsam, atque quam amet similique ducimus aliquid voluptate perferendis, distinctio!</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea, voluptas! Aliquam facere quas cumque rerum dolore impedit, dicta ducimus repellat dignissimos, fugiat, minima quaerat necessitatibus? Optio adipisci ab, obcaecati, porro unde accusantium facilis repudiandae.</p>
                             </div>
+
+                            @foreach (var photo in photos)
+                            {
+                            <div style=" text-align:center;"><p><img src="~/Assets/images/@Model.Category/@photo" /></p></div>
+                            }
+
                             <div class="tab-pane fade " id="review">
                                 <div class="aa-product-review-area">
                                     <h4>2 Reviews for T-Shirt</h4>
@@ -182,4 +175,6 @@
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
+
 </script>
+

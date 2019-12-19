@@ -1,8 +1,10 @@
 ﻿@using Leder.ViewModels;
+@using Newtonsoft.Json;
 @model List<ProductViewModel>
 @{
     int totalPage = (int)ViewData["totalPage"];
-
+    string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model);
+    var photos = Json.Decode(dataJson);
 }
 
 <div class="aa-product-catg-body" id="ProductDisplay">
@@ -15,11 +17,11 @@
                     <figure>
                         <!--當我按下圖片，就會連到路由:ProductDetail/Id-->
                         <a class="aa-product-img" href="@Url.Action("ProductDetail", new { id = @p.Id})">
-                            <img src="@p.Photo" style="width:280px" alt="polo shirt img">
+                            <img src="/Assets/images/@p.Category" style="width:280px" alt="polo shirt img">
                         </a>
                         <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                         <figcaption>
-                            <h4 class="aa-product-title"><a href="#">@p.Name</a></h4>
+                            <h4 class="aa-product-title"><a href="@Url.Action("ProductDetail", new { id = @p.Id})">@p.Name</a></h4>
                             <span class="aa-product-price">NT$@p.Price</span><span class="aa-product-price"></span>
                             <p class="aa-product-descrip">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus facere iusto, autem soluta amet sapiente ratione inventore nesciunt a, maxime quasi consectetur, rerum illum.</p>
                         </figcaption>
