@@ -11,7 +11,7 @@
         <!--當我按下圖片，就會連到路由:ProductDetail/Id-->
         <a class="aa-product-img" href="@Url.Action("ProductDetail", new { id = @Model.Id })">
             @*<a class="aa-product-img" href="#">*@
-            <img src="@Model.Photo" style="width:280px" alt="polo shirt img">
+            <img src="@Model.Photos" style="width:280px" alt="polo shirt img">
         </a>
         <a onclick="AddToCart('@Model.Id', 1)" class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
         <figcaption>
