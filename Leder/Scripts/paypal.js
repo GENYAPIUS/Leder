@@ -1,6 +1,8 @@
 ﻿        paypal.Buttons({
             createOrder: function (data, actions) {
                 // 此功能設置交易明細，包括金額和行項目明細。
+                console.log(data)
+                console.log(actions)
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
@@ -14,9 +16,9 @@
                 return actions.order.capture().then(function (details) {
                     // 此功能向您的買家顯示交易成功消息。
                     alert('您的交易已完成  金額總計：TWD ' + $("#TotalAmount").val())
-        //致電您的服務器以保存交易
+                    //致電您的服務器以保存交易
                     return fetch('/paypal-transaction-complete', {
-            method: 'post',
+                        method: 'post',
                         headers: {
                             'content-type': 'application/json'
                         },
