@@ -29,7 +29,5 @@ namespace Leder.Models
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
         public DbSet<Procurement> Procurement { get; set; }
-
-        public System.Data.Entity.DbSet<Leder.ViewModels.PromoteProductViewModel> PromoteProductViewModels { get; set; }
     }
 }

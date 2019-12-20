@@ -179,34 +179,13 @@
     <Compile Include="Controllers\ProcurementsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\Products1Controller.cs" />
-    <Compile Include="Controllers\PromoteProductViewModelsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912061125419_initadd.cs" />
-    <Compile Include="Migrations\201912061125419_initadd.Designer.cs">
-      <DependentUpon>201912061125419_initadd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912061427015_dropunitinstock.cs" />
-    <Compile Include="Migrations\201912061427015_dropunitinstock.Designer.cs">
-      <DependentUpon>201912061427015_dropunitinstock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912061431334_PurchaseSpellingCorrection.cs" />
-    <Compile Include="Migrations\201912061431334_PurchaseSpellingCorrection.Designer.cs">
-      <DependentUpon>201912061431334_PurchaseSpellingCorrection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912100836093_drop_UnitInStock.cs" />
-    <Compile Include="Migrations\201912100836093_drop_UnitInStock.Designer.cs">
-      <DependentUpon>201912100836093_drop_UnitInStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912180341171_AddOrderModel.cs" />
-    <Compile Include="Migrations\201912180341171_AddOrderModel.Designer.cs">
-      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912190328186_PhotoToPhotos.cs" />
-    <Compile Include="Migrations\201912190328186_PhotoToPhotos.Designer.cs">
-      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
+    <Compile Include="Migrations\201912200631374_InitialCreate.cs" />
+    <Compile Include="Migrations\201912200631374_InitialCreate.Designer.cs">
+      <DependentUpon>201912200631374_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3958,23 +3937,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912061125419_initadd.resx">
-      <DependentUpon>201912061125419_initadd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912061427015_dropunitinstock.resx">
-      <DependentUpon>201912061427015_dropunitinstock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912061431334_PurchaseSpellingCorrection.resx">
-      <DependentUpon>201912061431334_PurchaseSpellingCorrection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912100836093_drop_UnitInStock.resx">
-      <DependentUpon>201912100836093_drop_UnitInStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912180341171_AddOrderModel.resx">
-      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912190328186_PhotoToPhotos.resx">
-      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912200631374_InitialCreate.resx">
+      <DependentUpon>201912200631374_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
