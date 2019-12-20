@@ -37,7 +37,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photos = i.Photos
+                    Photos = i.Photos.Split(',')
                 });
                 
             }
@@ -63,7 +63,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photos = i.Photos
+                    Photos = i.Photos.Split(',')
                 });
 
             }
@@ -89,7 +89,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photos = i.Photos
+                    Photos = i.Photos.Split(',')
                 });
 
             }
@@ -115,7 +115,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photos = i.Photos
+                    Photos = i.Photos.Split(',')
                 });
 
             }
@@ -140,7 +140,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                     Price = (int)i.Price,
-                    Photos = i.Photos
+                    Photos = i.Photos.Split(',')
                 });
 
             }
@@ -166,7 +166,7 @@ namespace Leder.Controllers
                 Name = i.Name,
                 Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                 Price = (int)i.Price,
-                Photos = i.Photos
+                Photos = i.Photos.Split(',')
             };
 
             return View(productVM);
