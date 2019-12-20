@@ -3912,16 +3912,7 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\index.cshtml" />
-    <Content Include="Views\PromoteProductViewModels\Create.cshtml" />
-    <Content Include="Views\PromoteProductViewModels\Delete.cshtml" />
-    <Content Include="Views\PromoteProductViewModels\Details.cshtml" />
-    <Content Include="Views\PromoteProductViewModels\Edit.cshtml" />
-    <Content Include="Views\PromoteProductViewModels\Index.cshtml" />
-    <Content Include="Views\Procurements\Create.cshtml" />
-    <Content Include="Views\Procurements\Delete.cshtml" />
-    <Content Include="Views\Procurements\Details.cshtml" />
-    <Content Include="Views\Procurements\Edit.cshtml" />
-    <Content Include="Views\Procurements\Index.cshtml" />
+    <Content Include="Views\Dashboard\Procurement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
