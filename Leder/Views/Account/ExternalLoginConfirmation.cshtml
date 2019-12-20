@@ -1,18 +1,18 @@
 ﻿@model Leder.Models.ExternalLoginConfirmationViewModel
 @{
     ViewBag.Title = "註冊";
-    
+
 }
-    <div style="text-align:center">
-        <h2>@ViewBag.Title</h2>
-        <h3>關聯您的 @ViewBag.LoginProvider 帳戶。</h3>
-    </div>
+<div style="text-align:center">
+    <h2>@ViewBag.Title</h2>
+    <h3>關聯您的 @ViewBag.LoginProvider 帳戶。</h3>
+</div>
 
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-   
+
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <p class="text-info">
@@ -68,4 +68,6 @@
     <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <!-- Font awesome -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
 }

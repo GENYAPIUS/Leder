@@ -23,42 +23,42 @@ namespace Leder.Migrations
 
             context.Products.AddOrUpdate(
                x => x.ProductId,
-                new Product { ProductId = 1, Name = "Diario °g§AÀH¦æ±×ªÓ³U", Price = 12856, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag1.jpg"},
-                new Product { ProductId = 2, Name = "Clarte ¬yÄ¬°g§A½c«¬¥]", Price = 15438, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag2.jpg" },
-                new Product { ProductId = 3, Name = "Tone Oilnume °g§A¶l®t¥]", Price = 18378, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag3.jpg" },
-                new Product { ProductId = 4, Name = "Tone Oilnume ¨â¥Î¦«¯S¥]", Price = 26648, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag4.jpg" },
-                new Product { ProductId = 5, Name = "Tone Oilnume ©ÔÁå±×­I¥]", Price = 25729, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag5.jpg" },
-                new Product { ProductId = 6, Name = "Plota ¨¾¤ô¨â¥Î±×­I¥]", Price = 12497, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag6.jpg" },
-                new Product { ProductId = 7, Name = "Urbano ¤½¨Æ¦«¯S¥]", Price = 38717, CategoryId = 1, Photos = " /Assets/images/Totebag/Totebag7.jpg" },
-                new Product { ProductId = 8, Name = "Armas ¤ô¤û¥Ö¨â¥Îª½¦¡¦«¯S¥]", Price = 27655, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag8.jpg" },
+                new Product { ProductId = 1, Name = "Diario ï¿½gï¿½Aï¿½Hï¿½ï¿½×ªÓ³U", Price = 12856, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag1.jpg"},
+                new Product { ProductId = 2, Name = "Clarte ï¿½yÄ¬ï¿½gï¿½Aï¿½cï¿½ï¿½ï¿½]", Price = 15438, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag2.jpg" },
+                new Product { ProductId = 3, Name = "Tone Oilnume ï¿½gï¿½Aï¿½lï¿½tï¿½]", Price = 18378, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag3.jpg" },
+                new Product { ProductId = 4, Name = "Tone Oilnume ï¿½ï¿½Î¦ï¿½ï¿½Sï¿½]", Price = 26648, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag4.jpg" },
+                new Product { ProductId = 5, Name = "Tone Oilnume ï¿½ï¿½ï¿½ï¿½×­Iï¿½]", Price = 25729, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag5.jpg" },
+                new Product { ProductId = 6, Name = "Plota ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î±×­Iï¿½]", Price = 12497, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag6.jpg" },
+                new Product { ProductId = 7, Name = "Urbano ï¿½ï¿½ï¿½Æ¦ï¿½ï¿½Sï¿½]", Price = 38717, CategoryId = 1, Photos = " /Assets/images/Totebag/Totebag7.jpg" },
+                new Product { ProductId = 8, Name = "Armas ï¿½ï¿½ï¿½ï¿½ï¿½Ö¨ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½]", Price = 27655, CategoryId = 1, Photos = "/Assets/images/Totebag/Totebag8.jpg" },
 
 
-                new Product { ProductId = 9, Name = "Tone Oilnume ¤¤«¬«á­I¥]", Price = 27199, CategoryId = 2, Photos = "Backpack1.jpg,Backpack1_D_1.jpg,Backpack1_D_2.jpg,Backpack1_D_3.jpg,Backpack1_D_4.jpg,Backpack1_D_5.jpg,Backpack1_D_6.jpg", },
-                new Product { ProductId = 10, Name = "Tone Oilnume «á­I¥]", Price = 28670, CategoryId = 2, Photos = "Backpack2.jpg,Backpack2_D_1.jpg,Backpack2_D_2.jpg,Backpack2_D_3.jpg,Backpack2_D_4.jpg,Backpack2_D_5.jpg" },
+                new Product { ProductId = 9, Name = "Tone Oilnume ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½]", Price = 27199, CategoryId = 2, Photos = "Backpack1.jpg,Backpack1_D_1.jpg,Backpack1_D_2.jpg,Backpack1_D_3.jpg,Backpack1_D_4.jpg,Backpack1_D_5.jpg,Backpack1_D_6.jpg", },
+                new Product { ProductId = 10, Name = "Tone Oilnume ï¿½ï¿½Iï¿½]", Price = 28670, CategoryId = 2, Photos = "Backpack2.jpg,Backpack2_D_1.jpg,Backpack2_D_2.jpg,Backpack2_D_3.jpg,Backpack2_D_4.jpg,Backpack2_D_5.jpg" },
 
 
-                new Product { ProductId = 11, Name = "Belchord ªø§¨", Price = 22605, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip1.jpg" },
-                new Product { ProductId = 12, Name = "Diario ªø§¨", Price = 9189, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip2.jpg" },
-                new Product { ProductId = 13, Name = "Tone Oilnume µì¼L¦¡¹s¿úªø§¨", Price = 8822, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip3.jpg" },
-                new Product { ProductId = 14, Name = "Tone Oilnume ÄñÂ¶¦¡ªø§¨", Price = 8454, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip4.jpg" },
-                new Product { ProductId = 15, Name = "Urbano ªø¥Ö§¨", Price = 9924, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip5.jpg" },
+                new Product { ProductId = 11, Name = "Belchord ï¿½ï¿½ï¿½ï¿½", Price = 22605, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip1.jpg" },
+                new Product { ProductId = 12, Name = "Diario ï¿½ï¿½ï¿½ï¿½", Price = 9189, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip2.jpg" },
+                new Product { ProductId = 13, Name = "Tone Oilnume ï¿½ï¿½Lï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Price = 8822, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip3.jpg" },
+                new Product { ProductId = 14, Name = "Tone Oilnume ï¿½ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Price = 8454, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip4.jpg" },
+                new Product { ProductId = 15, Name = "Urbano ï¿½ï¿½ï¿½Ö§ï¿½", Price = 9924, CategoryId = 3, Photos = "/Assets/images/Longclip/Longclip5.jpg" },
 
-                new Product { ProductId = 16, Name = "Belchord ¹s¿ú¥]", Price = 7719, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet1.jpg" },
-                new Product { ProductId = 17, Name = "Urbano ¹s¿ú¥]", Price = 4044, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet2.jpg" },
-                new Product { ProductId = 18, Name = "BrProductIdle ¤è§Î¹s¿ú¥]", Price = 3910, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet3.jpg" },
-                new Product { ProductId = 19, Name = "Tone Oilnume µì¼L¦¡¹s¿ú³U", Price = 5514, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet4.jpg" },
-                new Product { ProductId = 20, Name = "Diario Âù³§¦¡¹s¿ú¥]", Price = 2757, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet5.jpg" },
-                new Product { ProductId = 21, Name = "Tone Oilnume µì¼L¦¡°g§A¹s¿ú¥]", Price = 2573, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet6.jpg" },
-                new Product { ProductId = 22, Name = "Cordovan °¨¿á§Î¹s¿ú¥]", Price = 8150, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet7.jpg" },
-                new Product { ProductId = 23, Name = "Diario L«¬©ÔÁåµu§¨", Price = 4261, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet8.jpg" },
+                new Product { ProductId = 16, Name = "Belchord ï¿½sï¿½ï¿½ï¿½]", Price = 7719, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet1.jpg" },
+                new Product { ProductId = 17, Name = "Urbano ï¿½sï¿½ï¿½ï¿½]", Price = 4044, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet2.jpg" },
+                new Product { ProductId = 18, Name = "BrProductIdle ï¿½ï¿½Î¹sï¿½ï¿½ï¿½]", Price = 3910, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet3.jpg" },
+                new Product { ProductId = 19, Name = "Tone Oilnume ï¿½ï¿½Lï¿½ï¿½ï¿½sï¿½ï¿½ï¿½U", Price = 5514, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet4.jpg" },
+                new Product { ProductId = 20, Name = "Diario ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½]", Price = 2757, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet5.jpg" },
+                new Product { ProductId = 21, Name = "Tone Oilnume ï¿½ï¿½Lï¿½ï¿½ï¿½gï¿½Aï¿½sï¿½ï¿½ï¿½]", Price = 2573, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet6.jpg" },
+                new Product { ProductId = 22, Name = "Cordovan ï¿½ï¿½ï¿½ï¿½Î¹sï¿½ï¿½ï¿½]", Price = 8150, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet7.jpg" },
+                new Product { ProductId = 23, Name = "Diario Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½", Price = 4261, CategoryId = 4, Photos = "/Assets/images/Coinwallet/Coinwallet8.jpg" },
 
-                new Product { ProductId = 24, Name = "Bridle ¦W¤ù§¨", Price = 5113, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard1.jpg" },
-                new Product { ProductId = 25, Name = "Clarte «H«Ê¦W¤ù§¨", Price = 3492, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard2.jpg" },
-                new Product { ProductId = 26, Name = "Cordovan °¨Áv¥Ö¦W¤ù§¨", Price = 7719, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard3.jpg" },
-                new Product { ProductId = 27, Name = "Cordovan °¨Áv¥Ö²¼¥d®M", Price = 4962, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard4.jpg" },
-                new Product { ProductId = 28, Name = "Urbano ¦W¤ù§¨", Price = 6249, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard5.jpg" },
-                new Product { ProductId = 29, Name = "Urbano ©ÔÁå¥d¤ù§¨", Price = 5514, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard6.jpg" },
-                new Product { ProductId = 30, Name = "Bridle ©ÔÁå¥d¤ù§¨", Price = 5153, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard7.jpg" }
+                new Product { ProductId = 24, Name = "Bridle ï¿½Wï¿½ï¿½ï¿½ï¿½", Price = 5113, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard1.jpg" },
+                new Product { ProductId = 25, Name = "Clarte ï¿½Hï¿½Ê¦Wï¿½ï¿½ï¿½ï¿½", Price = 3492, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard2.jpg" },
+                new Product { ProductId = 26, Name = "Cordovan ï¿½ï¿½ï¿½vï¿½Ö¦Wï¿½ï¿½ï¿½ï¿½", Price = 7719, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard3.jpg" },
+                new Product { ProductId = 27, Name = "Cordovan ï¿½ï¿½ï¿½vï¿½Ö²ï¿½ï¿½dï¿½M", Price = 4962, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard4.jpg" },
+                new Product { ProductId = 28, Name = "Urbano ï¿½Wï¿½ï¿½ï¿½ï¿½", Price = 6249, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard5.jpg" },
+                new Product { ProductId = 29, Name = "Urbano ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½ï¿½ï¿½", Price = 5514, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard6.jpg" },
+                new Product { ProductId = 30, Name = "Bridle ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½ï¿½ï¿½", Price = 5153, CategoryId = 5, Photos = "/Assets/images/Namecard/Namecard7.jpg" }
 
                );
 
@@ -71,7 +71,7 @@ namespace Leder.Migrations
               new Category { CategoryId = 5, CategoryName = "Namecard" }
               );
 
-            
+
         }
     }
 }

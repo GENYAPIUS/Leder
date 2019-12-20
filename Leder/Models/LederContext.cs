@@ -25,6 +25,8 @@ namespace Leder.Models
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<UserDetail> UserDetail { get; set; } //實體化UserDetails表
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
     }
 }
