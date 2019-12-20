@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace Leder.Models.Cart
 {
@@ -15,21 +16,28 @@ namespace Leder.Models.Cart
         public Cart()
         {
             this.cartItems = new List<CartItem>();
-        }
 
+        }
+        //變數都放這(首)------------------------------------------------
         //儲存所有商品
         private List<CartItem> cartItems;
+        //當前購物車的總價
+        private decimal? _totalAmount = 0.0m;
+        //變數都放這(尾)------------------------------------------------
+
+        public bool Shift = false;
         public int Count
         {
             get { return this.cartItems.Count; }
         }
+  
 
-        //取得商品總價
-        private decimal? _totalAmount = 0.0m;
+        //取得商品總價(首)-----------------------------------------------
         public decimal? TotalAmount
         {
             get 
             {
+                _totalAmount = 0.0m;
                 foreach(var cartItem in this.cartItems)
                 {
                     _totalAmount = _totalAmount + cartItem.Amount;
@@ -37,16 +45,16 @@ namespace Leder.Models.Cart
                 return _totalAmount;
             }
         }
+        //取得商品總價(尾)----------------------------------------------
 
         //新增一筆Prodct，使用ProdctId
-        public bool AddProduct(int ProuctId)
+        public bool AddProduct(int ProuctId, int? quantity)
         {
             var findItem = this.cartItems.Where(s=>s.Id ==ProuctId)
                                          .Select(s=>s)
                                          .FirstOrDefault();
-
             //判斷相同Id的CartItem是否已經存在購物車內
-            if(findItem==default(Models.Cart.CartItem))
+            if (findItem==default(CartItem))
             {
                 //不存在購物車內則新增一筆
                 using (LederContext db = new LederContext())
@@ -54,34 +62,45 @@ namespace Leder.Models.Cart
                     var product = (from s in db.Products
                                    where s.ProductId == ProuctId
                                    select s).FirstOrDefault();
-                    if(product !=default(Models.Product))
+                    if(product !=default(Product))
                     {
-                        this.AddProduct(product);
+                        this.AddProduct(product, quantity);
                     }
                 }
             }
+            //存在購物車內
             else
-            {   //存在購物車內，則增加數量
-                findItem.Quantity += 1;
+            {  
+                    findItem.Quantity += quantity;
             }
             return true;
                 
         }
 
         //新增一筆Prodct，使用Prodct物件
-        public bool AddProduct(Product product)
+        public bool AddProduct(Product product,int? quantity)
         {
             //將Product轉為CartItem
-            var cartItem = new Models.Cart.CartItem()
+            var cartItem = new CartItem()
             {
                 Id = product.ProductId,
                 Name = product.Name,
                 Price = product.Price,
-                Photo = product.Photo,
-                Quantity = 1
+                Photo = product.Photos,
+                Quantity = quantity
             };
             //加入CartItem至購物車
             this.cartItems.Add(cartItem);
+            return true;
+        }
+        //更新購物車(尾)------------------------------------------------
+
+        public bool EditProduct(int ProuctId, int? quantity)
+        {
+            var findItem = this.cartItems.Where(s => s.Id == ProuctId)
+                                         .Select(s => s)
+                                         .FirstOrDefault();
+            findItem.Quantity = quantity;
             return true;
         }
 
@@ -110,6 +129,8 @@ namespace Leder.Models.Cart
             this.cartItems.Clear();
             return true;
         }
+
+
 
         public IEnumerator<CartItem> GetEnumerator()
         {

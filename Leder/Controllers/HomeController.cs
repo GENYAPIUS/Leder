@@ -35,7 +35,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Price = i.Price,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Photo = i.Photo,
+                    Photo = i.Photos,
                     ProductPage = "#"
                 });                    
             }

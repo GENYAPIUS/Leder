@@ -13,12 +13,13 @@ namespace Leder.Models.Cart
         public int Id { get; set; }    //商品編號
         public string Name { get; set; }//商品名稱
         public decimal? Price { get; set; }//商品購買價格
-        public int Quantity { get; set; }//商品購買數量
+        public int? Quantity { get; set; }//商品購買數量
         //商品小計
         public string Photo { get; set; }
         public decimal? Amount
         {
             get { return this.Price * this.Quantity; }
         }
+
     }
 }
