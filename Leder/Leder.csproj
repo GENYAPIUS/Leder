@@ -215,6 +215,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApprovedResult.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
     <Compile Include="Models\Cart\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -224,10 +225,22 @@
     <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\PaymentParam.cs" />
+    <Compile Include="Models\PaymentResult.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\TokenResult.cs" />
+    <Compile Include="PayPalAPI\Config\AccountConfig.cs" />
+    <Compile Include="PayPalAPI\Config\UrlConfig.cs" />
+    <Compile Include="PayPalAPI\Enums\ApprovedNameState.cs" />
+    <Compile Include="PayPalAPI\Enums\PaypalCurrency.cs" />
+    <Compile Include="PayPalAPI\Enums\PaypalState.cs" />
+    <Compile Include="PayPalAPI\HttpHelper.cs" />
+    <Compile Include="PayPalAPI\Paypal\Approved.cs" />
+    <Compile Include="PayPalAPI\Paypal\CreatePayment.cs" />
+    <Compile Include="PayPalAPI\Paypal\ShowPaymentDetails.cs" />
+    <Compile Include="PayPalAPI\Paypal\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
-    <Compile Include="Repository\PayPalClient.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />

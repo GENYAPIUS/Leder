@@ -1,34 +1,46 @@
-﻿        paypal.Buttons({
-            createOrder: function (data, actions) {
-                // 此功能設置交易明細，包括金額和行項目明細。
-                console.log(data)
-                console.log(actions)
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: $("#TotalAmount").val()
-                        }
-                    }]
-                });
+﻿paypal.Button.render({
+    env: 'sandbox',
+    client: {
+        sandbox: 'AUaiHPKubOvW2WEVoToVgaTDf0XU6g8E3cb0pICGF1Y1tbDlzb6WKnenjVcUVPAV0opf7bk6dbXpHM_M'
             },
-            onApprove: function (data, actions) {
-                // 此功能從交易中獲取資金。
-                return actions.order.capture().then(function (details) {
-                    // 此功能向您的買家顯示交易成功消息。
-                    alert('您的交易已完成  金額總計：TWD ' + $("#TotalAmount").val())
-                    //致電您的服務器以保存交易
-                    return fetch('/paypal-transaction-complete', {
-                        method: 'post',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            orderID: data.orderID
-                        })
-                    });
-                });
+    style: {
+    size: 'medium',
+    color: 'black',
+    shape: 'pill',
+    label: 'paypal',
+    tagline: 'false',
+    fundingicons: 'true'
+},
+    commit: true,
+    payment: function (data, actions) {
+        return actions.payment.create({
+            // 此功能設置交易明細，包括金額和行項目明細。
+            transactions: [
+                {
+                    amount: {
+                        total: $("#TotalAmount").val(),
+                        currency: "TWD"
+                    },
+                    description: "测试商品描述",
+                    custom: "X00002"
+                }
+            ],
+            redirect_urls: {
+                return_url: 'http://localhost:4478/Success.aspx?type=js',
+                cancel_url: 'http://localhost:4478/Cancel.aspx'
             }
-        }).render('#paypaltest');
+        });
+    },
+    onAuthorize: function (data, actions) {
+        return actions.payment.execute()
+            .then(function () {
+                actions.redirect();
+            });
+    },
+    onCancel: function (data, actions) {
+        actions.redirect();
+    }
+        }, '#paypaltest');
 // 此功能會在您的網頁上顯示智能付款按鈕。
 
 
