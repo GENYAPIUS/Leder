@@ -4,14 +4,89 @@
 }
 
 <h2>index</h2>
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div id="MainArea">
+    <tableComponent v-bind:is="view" v-bind:propsDatas="datas" >
+    </tableComponent>
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<template id="product-table"> 
+     <table>
+        <thead>
+        <tr>
+        <th>商品照片</th>
+        <th>商品Id</th>
+        <th>商品名稱</th>
+        <th>商品價格</th>
+        <th>商品分類</th>
+        <th>商品斜述</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="product in propsDatas">
+                <td><img v-bind:src="product.Photos" width="100px"></td>
+                <td>{{product.Id}}</td>
+                <td>{{product.Name}}</td>
+                <td>{{product.Price}}</td>
+                <td>{{product.Category}}</td>
+                <td>{{product.Description}}</td>
+            </tr>
+        </tbody> 
+        </table>    
+</template>
+
+
+
+@section Scripts{
+
+    <script>
+        var sourceData;
+        var sideBarVue = new Vue({
+            el: "#dashBoardSidebar",
+            methods: {
+                ProductOverview: function () {
+                    ajaxGet("Dashboard/GetAllProduct", "Get");
+                    mainAreaVue.$data.view = "productTable"
+                    mainAreaVue.$data.datas = sourceData;
+                }
+            }
+        })
+            
+
+         var mainAreaVue = new Vue({
+            el: "#MainArea",
+            data: {
+                view: "",
+                datas: sourceData
+            },
+            components:{
+                productTable:{
+                    template:"#product-table",
+                    props:['propsDatas']
+                }
+            }
+        })
+
+
+        function ajaxGet(url, type, data) {
+            if (url == null || type == null) { return; }
+            if(data == null) { data = "" };
+            $.ajax({
+                url: url,
+                type: type,
+                data: data,
+                dataType: "JSON",
+                contentType: "application/json",
+                async:false,
+                success: function (response) {
+                    console.log(response);
+                    sourceData = response;
+                }
+            });
+        }
+
+
+
+
+    </script>
+}

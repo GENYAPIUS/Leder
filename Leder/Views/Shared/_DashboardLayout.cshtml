@@ -28,7 +28,6 @@
 
     <!-- Font-awesome圖案-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
     @RenderSection("Styles", required: false)
 </head>
 
@@ -61,13 +60,14 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <h3>General</h3>
-                            <ul class="nav side-menu">
+                            <ul class="nav side-menu" id="dashBoardSidebar">
                                 <li>
                                     <a href="Dashboard"><i class="fa fa-home"></i> Dashboard</a>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-edit"></i> 產品管理表單 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
+                                        <li v-on:click="ProductOverview()">產品總覽</li>
                                         <li>@Html.ActionLink("產品進貨統計","Procurement")</li>
                                         <li><a href="#">產品銷貨統計</a></li>
                                         <li><a href="#">Form</a></li>
@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    @RenderSection("Scripts", required: false)
+    
 
     <!-- jQuery -->
     <script src="~/Assets/vendors/jquery/dist/jquery.min.js"></script>
@@ -176,10 +176,12 @@
     <!-- NProgress -->
     <script src="~/Assets/vendors/nprogress/nprogress.js"></script>
     <!-- jQuery custom content scroller -->
-    <script src="~/Assetsvendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-
+    <script src="~/Assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- Vue.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="~/Assets/build/js/custom.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
 

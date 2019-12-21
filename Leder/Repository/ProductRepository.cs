@@ -35,5 +35,12 @@ namespace Leder.Repository
             var result = _db.Products.AsQueryable();
             return result;
         }
+
+        public string GetProductNameByID(int? ProductID)//依照產品ID尋找產品姓名
+        {
+            var temp = _db.Products.FirstOrDefault(x=>x.ProductId==ProductID);
+            string ProductName = temp.Name;
+            return ProductName;
+        }
     }
 }

@@ -65,6 +65,14 @@ namespace Leder.Migrations
               new Category { CategoryId = 5, CategoryName = "Namecard" }
               );
 
+            context.Procurement.AddOrUpdate(
+                x => x.ProcurementId,
+                new Procurement { ProcurementId = 1, ProductId = 15, Quantity = 3, UnitPrize = 5, PurchaseDate = DateTime.Parse("2019 / 10 / 21 19:33:51") },
+                new Procurement { ProcurementId = 2, ProductId = 10, Quantity = 2, UnitPrize = 2, PurchaseDate = DateTime.Parse("2019 / 10 / 23 14:1:03") },
+                new Procurement { ProcurementId = 3, ProductId = 12, Quantity = 5, UnitPrize = 1, PurchaseDate = DateTime.Parse("2019 / 10 / 24 15:33:09") },
+                new Procurement { ProcurementId = 4, ProductId = 13, Quantity = 4, UnitPrize = 3, PurchaseDate = DateTime.Parse("2019 / 10 / 25 12:32:36") },
+                new Procurement { ProcurementId = 5, ProductId = 14, Quantity = 1, UnitPrize = 2, PurchaseDate = DateTime.Parse("2019 / 10 / 26 11:54:12") });
+
 
         }
     }

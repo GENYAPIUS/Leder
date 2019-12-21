@@ -1,50 +1,40 @@
-﻿@model IEnumerable<Leder.Models.Procurement>
+﻿
+<h2>訂單進貨主頁面</h2>
+<div id="ProcumentBlock">
+    <table>
+        <thead>
+            <tr>
+                <th>訂單編號</th>
+                <th>產品名稱</th>
+                <th>產品單價</th>
+                <th>產品數量</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{}}</th>
+                <th>{{}}</th>
+                <th>{{}}</th>
+                <th>{{}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script>
+        var recieve;
 
-@{
-   Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+        new Vue({
+            el: '#ProcumentBlock',
+            data: {}
+            ,
+            
+
+        });
+
+
+
+
+
+    </script>
 }
-
-    <h2>訂單進貨主頁面</h2>
-
-<p>
-    @Html.ActionLink("新增進貨紀錄", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PurchaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitPrize)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PurchaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrize)
-        </td>
-        <td>
-            @Html.ActionLink("修改", "Edit", new { id = item.ProcurementId })
-            @Html.ActionLink("刪除", "Delete", new { id = item.ProcurementId })
-        </td>
-    </tr>
-}
-
-</table>
