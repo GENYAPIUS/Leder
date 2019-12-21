@@ -3,8 +3,8 @@
 @model List<ProductViewModel>
 @{
     int totalPage = (int)ViewData["totalPage"];
-    string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model);
-    var photos = Json.Decode(dataJson);
+    //string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model);
+    //var photos = Json.Decode(dataJson);
 }
 
 <div class="aa-product-catg-body" id="ProductDisplay">
@@ -17,7 +17,7 @@
                     <figure>
                         <!--當我按下圖片，就會連到路由:ProductDetail/Id-->
                         <a class="aa-product-img" href="@Url.Action("ProductDetail", new { id = @p.Id})">
-                            <img src="/Assets/images/@p.Category" style="width:280px" alt="polo shirt img">
+                            <img src="/Assets/images/@p.Category/@p.Photos[0]" style="width:280px" alt="polo shirt img">
                         </a>
                         <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                         <figcaption>

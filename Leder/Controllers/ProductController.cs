@@ -8,8 +8,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Newtonsoft.Json;
-
 
 
 namespace Leder.Controllers
@@ -168,27 +166,15 @@ namespace Leder.Controllers
         }
 
         public ActionResult ProductDetail(int? Id)
-        {           
-
+        {
             productRepo = new ProductRepository(db);
             categoryRepo = new CategoryRepository(db);
 
-            //顯示在ProductDetail的其他圖片
-            string[] manyPhotos = { "Backpack1_D_1.jpg", "Backpack1_D_2.jpg", "Backpack1_D_3.jpg", "Backpack1_D_4.jpg", "Backpack1_D_5.jpg", "Backpack1_D_6.jpg" };
-            string photoJSON = JsonConvert.SerializeObject(manyPhotos);
-           
-
             var i = productRepo.GetAll().FirstOrDefault((x) => x.ProductId == Id);
-
-
-
             if (i == null)
             {
-                //找不到id就跳出
                 return RedirectToAction("Index", "Home");
             }
-
-            
 
             //我是用FirstOrDefault找出唯一的一組，如果這邊寫成List<ProductViewModel>會報錯
             ProductViewModel productVM = new ProductViewModel()
@@ -197,11 +183,8 @@ namespace Leder.Controllers
                 Name = i.Name,
                 Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                 Price = i.Price,
-                Photos = i.Photos.Split(',') 
-
+                Photos = i.Photos.Split(',')
             };
-
-
 
             return View(productVM);
         }

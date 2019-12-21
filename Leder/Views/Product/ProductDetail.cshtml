@@ -2,7 +2,7 @@
 @model ProductViewModel
 @{ 
    
-   var photos = Json.Encode(Model.Photos);  //將C#陣列轉成JSON字串
+   //var photos = Json.Encode(Model.Photos);  //將C#陣列轉成JSON字串
 
 }
 
@@ -19,7 +19,7 @@
                                         <div class="aa-product-view-slider">
                                             <div id="demo-1" class="simpleLens-gallery-container">
                                                 <div class="simpleLens-container">
-                                                    <div class="simpleLens-big-image-container"><a data-lens-image="@Model.Photos[0]" class="simpleLens-lens-image"><img src="@Model.Photos[0]" class="simpleLens-big-image"></a></div>
+                                                    <div class="simpleLens-big-image-container"><a data-lens-image="/Assets/images/@Model.Category/@Model.Photos[0]" class="simpleLens-lens-image"><img src="/Assets/images/@Model.Category/@Model.Photos[0]" class="simpleLens-big-image"></a></div>
                                                 </div>
                                             </div>
                                         </div>                                                              
@@ -83,9 +83,9 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea, voluptas! Aliquam facere quas cumque rerum dolore impedit, dicta ducimus repellat dignissimos, fugiat, minima quaerat necessitatibus? Optio adipisci ab, obcaecati, porro unde accusantium facilis repudiandae.</p>
                             </div>
 
-                            @foreach (var photo in photos)
+                            @foreach (var photo in Model.Photos)
                             {
-                            <div style=" text-align:center;"><p><img src="~/Assets/images/@Model.Category/@photo" /></p></div>
+                                <div style=" text-align:center;"><p><img src="~/Assets/images/@Model.Category/@photo" /></p></div>
                             }
 
                             <div class="tab-pane fade " id="review">

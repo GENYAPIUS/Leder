@@ -1,7 +1,6 @@
 ﻿@using Leder.ViewModels;
 @model IEnumerable<ProductViewModel>
-@{ 
-}
+
 <section id="aa-product-category">
     <div class="container">
         <div class="row">
@@ -32,8 +31,8 @@
     <script>
 
         /*number跟val放全域變數，希望使用者原初的頁碼or排序法能被記住*/
-        var number = 1;  //按到第幾頁，number跟著變
-        var value = 1;   //排序方法
+        var number = 1; //按到第幾頁，number跟著變
+        var value = 1;    //排序方法
         Initialize();
         function Initialize() {
             //頁碼
