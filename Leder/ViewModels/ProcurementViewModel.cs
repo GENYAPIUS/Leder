@@ -11,7 +11,7 @@ namespace Leder.ViewModels
         [Key]
         public int ProcurementId { get; set; }
         public string Name { get; set; }
-        public DateTime PuchuseDate { get; set; }
+        public string PurchaseDate { get; set; }
         public int Quantity { get; set; }
         public int UnitPrize { get; set; }
       

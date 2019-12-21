@@ -5,25 +5,25 @@
 
 <h2>index</h2>
 <div id="MainArea">
-    <tableComponent v-bind:is="view" v-bind:propsDatas="datas" >
+    <tableComponent v-bind:is="view" v-bind:props-data="sourceData">
     </tableComponent>
 </div>
 
 
-<template id="product-table"> 
-     <table>
+<template id="product-table">
+    <table class="table">
         <thead>
-        <tr>
-        <th>商品照片</th>
-        <th>商品Id</th>
-        <th>商品名稱</th>
-        <th>商品價格</th>
-        <th>商品分類</th>
-        <th>商品斜述</th>
-        </tr>
+            <tr>
+                <th>商品照片</th>
+                <th>ID</th>
+                <th>名稱</th>
+                <th>價格</th>
+                <th>分類</th>
+                <th>敘述</th>
+            </tr>
         </thead>
         <tbody>
-            <tr v-for="product in propsDatas">
+            <tr v-for="product in propsData">
                 <td><img v-bind:src="product.Photos" width="100px"></td>
                 <td>{{product.Id}}</td>
                 <td>{{product.Name}}</td>
@@ -31,8 +31,32 @@
                 <td>{{product.Category}}</td>
                 <td>{{product.Description}}</td>
             </tr>
-        </tbody> 
-        </table>    
+        </tbody>
+    </table>
+</template>
+
+
+<template id="procurement-table">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>訂單編號</th>
+                <th>名稱</th>
+                <th>單價</th>
+                <th>數量</th>
+                <th>日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="procurement in propsData">
+                <td>{{procurement.ProcurementId}}</td>
+                <td>{{procurement.Name}}</td>
+                <td>{{procurement.UnitPrize}}</td>
+                <td>{{procurement.Quantity}}</td>
+                <td>{{procurement.PurchaseDate}}</td>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 
@@ -45,48 +69,75 @@
             el: "#dashBoardSidebar",
             methods: {
                 ProductOverview: function () {
-                    ajaxGet("Dashboard/GetAllProduct", "Get");
+                    ajaxFunc("GetAllProduct", "Get");
                     mainAreaVue.$data.view = "productTable"
-                    mainAreaVue.$data.datas = sourceData;
+                    
+                    mainAreaVue.$data.sourceData = sourceData;
+                },
+                ProcurementOverview: function () {
+                    ajaxFunc("GetAllProcurements", "Get");
+                    mainAreaVue.$data.view = "procurementTable";
+                    mainAreaVue.$data.sourceData = sourceData;
                 }
             }
         })
-            
 
-         var mainAreaVue = new Vue({
+
+        var mainAreaVue = new Vue({
             el: "#MainArea",
             data: {
                 view: "",
-                datas: sourceData
+                sourceData: sourceData
             },
-            components:{
-                productTable:{
-                    template:"#product-table",
-                    props:['propsDatas']
+            components: {
+                productTable: {
+                    template: "#product-table",
+                    props: ['propsData']
+                },
+                procurementTable: {
+                    template: "#procurement-table",
+                    props: ['propsData']                   
                 }
             }
         })
 
 
-        function ajaxGet(url, type, data) {
+        function ajaxFunc(url, type, data) {
             if (url == null || type == null) { return; }
-            if(data == null) { data = "" };
+            if (data == null) { data = "" };
             $.ajax({
                 url: url,
                 type: type,
                 data: data,
                 dataType: "JSON",
                 contentType: "application/json",
-                async:false,
+                async: false,
                 success: function (response) {
                     console.log(response);
                     sourceData = response;
                 }
             });
         }
-
-
-
-
     </script>
 }
+
+@section Styles{
+    <style>
+        tr{
+            text-align:center;
+            margin:auto;
+            
+        }
+        th{
+            margin:auto;
+              text-align:center;
+        }
+
+
+
+
+
+    </style>
+    
+    
+    }

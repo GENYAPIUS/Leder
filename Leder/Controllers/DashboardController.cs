@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace Leder.Controllers
 {
@@ -44,7 +45,7 @@ namespace Leder.Controllers
             return Json(productViewModel, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public ActionResult GetAllProcuments()
+        public ActionResult GetAllProcurements()
         {
             ProductRepository productRepo = new ProductRepository(db);
             ProcurementRepository procurementRepo = new ProcurementRepository(db);
@@ -55,12 +56,14 @@ namespace Leder.Controllers
                 {
                     Name = productRepo.GetProductNameByID(item.ProductId),
                     ProcurementId = item.ProcurementId,
-                    PuchuseDate = item.PurchaseDate,
+                    PurchaseDate = item.PurchaseDate.ToString("yyyy/MM/dd hh:mm:ss"),
                     Quantity = item.Quantity,
                     UnitPrize = item.UnitPrize,
                     
+                
 
                 };
+                Debug.WriteLine(item.PurchaseDate);
                 procurements.Add(procurementVM);
             }
 
