@@ -14,7 +14,9 @@ namespace Leder.ViewModels
         public string PurchaseDate { get; set; }
         public int Quantity { get; set; }
         public int UnitPrize { get; set; }
-      
-      
+
+        public int ProductId { get; set; }
+
+
     }
 }

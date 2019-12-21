@@ -50,7 +50,7 @@ namespace Leder.Controllers
             ProductRepository productRepo = new ProductRepository(db);
             ProcurementRepository procurementRepo = new ProcurementRepository(db);
             List<ProcurementViewModel> procurements = new List<ProcurementViewModel>();
-                foreach(Procurement item in procurementRepo.GetAll().ToList())
+            foreach(Procurement item in procurementRepo.GetAll().ToList())
             {
                 ProcurementViewModel procurementVM = new ProcurementViewModel()
                 {
@@ -59,15 +59,44 @@ namespace Leder.Controllers
                     PurchaseDate = item.PurchaseDate.ToString("yyyy/MM/dd hh:mm:ss"),
                     Quantity = item.Quantity,
                     UnitPrize = item.UnitPrize,
-                    
-                
-
                 };
-                Debug.WriteLine(item.PurchaseDate);
                 procurements.Add(procurementVM);
             }
 
             return Json(procurements, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult EditProcurement(Procurement procurement)
+        {
+            //var procurement = JsonConvert.DeserializeObject<Procurement>(procurementJson);
+            ProductRepository productRepo = new ProductRepository(db);
+            ProcurementRepository procurementRepo = new ProcurementRepository(db);
+            List<ProcurementViewModel> procurements = new List<ProcurementViewModel>();
+            //將變更儲存在資料庫
+            if (ModelState.IsValid)
+            {
+                db.Entry(procurement).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            //抓取改變後的資料
+            foreach(Procurement item in procurementRepo.GetAll().ToList())
+            {
+                ProcurementViewModel procurementVM = new ProcurementViewModel()
+                {
+                    Name = productRepo.GetProductNameByID(item.ProductId),
+                    ProcurementId = item.ProcurementId,
+                    PurchaseDate = item.PurchaseDate.ToString("yyyy/MM/dd hh:mm:ss"),
+                    Quantity = item.Quantity,
+                    UnitPrize = item.UnitPrize,
+                };
+                procurements.Add(procurementVM);
+            }
+           return Json(procurements);
+        }
+        [HttpGet]
+        public void GetAllSales(){
+            
         }
     }
 }

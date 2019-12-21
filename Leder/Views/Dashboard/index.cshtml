@@ -11,52 +11,87 @@
 
 
 <template id="product-table">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>商品照片</th>
-                <th>ID</th>
-                <th>名稱</th>
-                <th>價格</th>
-                <th>分類</th>
-                <th>敘述</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="product in propsData">
-                <td><img v-bind:src="product.Photos" width="100px"></td>
-                <td>{{product.Id}}</td>
-                <td>{{product.Name}}</td>
-                <td>{{product.Price}}</td>
-                <td>{{product.Category}}</td>
-                <td>{{product.Description}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>商品照片</th>
+                    <th>ID</th>
+                    <th>名稱</th>
+                    <th>價格</th>
+                    <th>分類</th>
+                    <th>敘述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="product in propsData">
+                    <td><img v-bind:src="product.Photos" width="100px"></td>
+                    <td>{{product.Id}}</td>
+                    <td>{{product.Name}}</td>
+                    <td>{{product.Price}}</td>
+                    <td>{{product.Category}}</td>
+                    <td>{{product.Description}}</td>
+                </tr>
+            </tbody>
+        </table>
+       
+    </div>
 </template>
 
 
 <template id="procurement-table">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>訂單編號</th>
-                <th>名稱</th>
-                <th>單價</th>
-                <th>數量</th>
-                <th>日期</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="procurement in propsData">
-                <td>{{procurement.ProcurementId}}</td>
-                <td>{{procurement.Name}}</td>
-                <td>{{procurement.UnitPrize}}</td>
-                <td>{{procurement.Quantity}}</td>
-                <td>{{procurement.PurchaseDate}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>訂單編號</th>
+                    <th>名稱</th>
+                    <th>單價</th>
+                    <th>數量</th>
+                    <th>日期</th>
+                    <th>修改訂單</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="procurement in propsData">
+                    <td>{{procurement.ProcurementId}}</td>
+                    <td>{{procurement.Name}}</td>
+                    <td>{{procurement.UnitPrize}}</td>
+                    <td>{{procurement.Quantity}}</td>
+                    <td>{{procurement.PurchaseDate}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" v-on:click="DisplayModal(procurement)">修改</button>
+                        <button type="button" class="btn btn-danger">刪除</button>
+                    </td>
+                    @*data-toggle="modal" data-target="#exampleModal"*@
+                    @*v-on:click="EditProcurement(procurement)"*@
+
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal fade" id="procurementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control" v-model="procurement.ProcurementId"><br />
+                        <input class="form-control"><br />
+                        <input class="form-control"><br />
+                        <input class="form-control"><br />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">關閉視窗</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 
@@ -65,23 +100,31 @@
 
     <script>
         var sourceData;
+        var modalVue;
         var sideBarVue = new Vue({
             el: "#dashBoardSidebar",
             methods: {
                 ProductOverview: function () {
                     ajaxFunc("GetAllProduct", "Get");
                     mainAreaVue.$data.view = "productTable"
-                    
+
                     mainAreaVue.$data.sourceData = sourceData;
                 },
                 ProcurementOverview: function () {
                     ajaxFunc("GetAllProcurements", "Get");
                     mainAreaVue.$data.view = "procurementTable";
                     mainAreaVue.$data.sourceData = sourceData;
-                }
+                    modalVue = new Vue({
+                        el: "#procurementModal",
+                        data: {
+                            procurement: undefined
+                        }
+                    });
+                },
+
             }
         })
-
+        
 
         var mainAreaVue = new Vue({
             el: "#MainArea",
@@ -96,10 +139,25 @@
                 },
                 procurementTable: {
                     template: "#procurement-table",
-                    props: ['propsData']                   
+                    props: ['propsData'],
+                    methods: {
+                        DisplayModal:function(procurementSource){
+                            modalVue.$data.procurement = procurementSource;
+                            $("#ProcurementModal").modal("toggle");
+                        },
+                        EditProcurement: function (procurementSource) {
+                            var procurement = {
+                                "procurement": procurementSource
+                            }
+                            ajaxFunc("EditProcurement","Post",procurement)
+                            mainAreaVue.$data.sourceData = sourceData;
+                        }
+                    }
                 }
             }
-        })
+        });
+
+
 
 
         function ajaxFunc(url, type, data) {
@@ -113,7 +171,6 @@
                 contentType: "application/json",
                 async: false,
                 success: function (response) {
-                    console.log(response);
                     sourceData = response;
                 }
             });
@@ -123,21 +180,16 @@
 
 @section Styles{
     <style>
-        tr{
-            text-align:center;
-            margin:auto;
-            
-        }
-        th{
-            margin:auto;
-              text-align:center;
+        tr {
+            text-align: center;
+            margin: auto;
         }
 
-
-
-
-
+        th {
+            margin: auto;
+            text-align: center;
+        }
     </style>
-    
-    
-    }
+
+
+}
