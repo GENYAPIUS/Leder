@@ -47,7 +47,7 @@ namespace Leder.Controllers
         }
         
         [HttpPost]
-        public ActionResult OrderData(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode)
+        public ActionResult OrderData(string Email, string RecieverName, string RecieverPhone, string RecieverAddress, string RecieverZipCode,string PayStatus)
         {
             OrderViewModel orders = new OrderViewModel();
             orders.Email = Email;
@@ -55,6 +55,7 @@ namespace Leder.Controllers
             orders.RecieverPhone = RecieverPhone;
             orders.RecieverAddress = RecieverAddress;
             orders.RecieverZipCode = RecieverZipCode;
+            orders.PayStatus = PayStatus;
             orders.Carts = Models.Cart.Operation.GetCurrentCart();
             orders.CartItems = orders.Carts.ToList();
 

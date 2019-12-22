@@ -28,7 +28,7 @@ namespace Leder.Controllers
                     RecieverZipCode = orderViewModel.RecieverZipCode,
                     OrderDate = DateTime.Now,
                     TotalAmount = orderViewModel.Carts.TotalAmount,
-                    PayStatus = "貨到付款",
+                    PayStatus = orderViewModel.PayStatus,
                     OrderStatus = "未出貨"
 
                 };

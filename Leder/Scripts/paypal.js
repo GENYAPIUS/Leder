@@ -21,12 +21,12 @@
                         total: $("#TotalAmount").val(),
                         currency: "TWD"
                     },
-                    description: "测试商品描述",
-                    custom: "X00002"
+                    //description: "测试商品描述",
+                    custom: "X00002",
                 }
             ],
             redirect_urls: {
-                return_url: 'http://localhost:4478/Success.aspx?type=js',
+                return_url: '/Order/Index',
                 cancel_url: 'http://localhost:4478/Cancel.aspx'
             }
         });

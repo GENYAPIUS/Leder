@@ -123,45 +123,5 @@
 </section>
 <!-- / Cart view section -->
 @section Scripts{
-    <script>
-        $('#paycheck').click(function () {
-
-            if (document.getElementById("NameForm").value == "" || document.getElementById("TelForm").value == "" || document.getElementById("ZipForm").value == "") {
-                
-                return;
-            }
-            else {
-                 $.ajax({
-                        url:"@Url.Action("OrderData","ShoppingCart")",
-                        type: "post",
-                        contentType: 'application/json',
-                        data: JSON.stringify({
-                            'Email': $('#EmailForm').val(),
-                            'RecieverName': $('#NameForm').val(),
-                            'RecieverPhone': $('#TelForm').val(),
-                            'RecieverAddress': $('#AddressForm').val(),
-                            'RecieverZipCode': $('#ZipForm').val()
-                            })                     
-                    });
-
-
-                if (document.getElementById("paypal").checked) {                 
-
-                    document.getElementById("RecieveForm").action = '@Url.Action("Order", "ShoppingCart")';
-                    document.getElementById("RecieveForm").submit();
-                }
-                else if (document.getElementById("cashdelivery").checked) {
-
-                    document.getElementById("RecieveForm").action = '@Url.Action("CashOrder", "ShoppingCart")';
-                    document.getElementById("RecieveForm").submit();
-
-                    
-                }
-            }
-        });
-
-
-
-    </script>
-
+    <script src="~/Scripts/PaymentMethod.js"></script>
 }

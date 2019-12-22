@@ -263,6 +263,7 @@
     <Content Include="Assets\build\js\custom.min.js" />
     <Content Include="Content\lite-blue-theme.css" />
     <Content Include="Scripts\CartIndex.js" />
+    <Content Include="Scripts\PaymentMethod.js" />
     <Content Include="Scripts\paypal.js" />
     <Content Include="Scripts\ShiftCartModalFunction.js" />
     <Content Include="Scripts\ShoppingCartFunction.js" />

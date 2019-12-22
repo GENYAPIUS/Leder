@@ -13,6 +13,7 @@ namespace Leder.ViewModels
         public string RecieverPhone { get; set; }
         public string RecieverAddress { get; set; }
         public string RecieverZipCode { get; set; }
+        public string PayStatus { get; set; }
         public Cart Carts { get; set; }
         public IEnumerable<CartItem> CartItems { get; set; }
     }
