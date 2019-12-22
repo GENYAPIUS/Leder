@@ -78,7 +78,7 @@ namespace Leder.Controllers
                     Id = i.ProductId,
                     Name = i.Name,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    Price = i.Price,
+                    Price = i.Price,                   
                     Photos = i.Photos.Split(',')
                 });
 
@@ -183,7 +183,9 @@ namespace Leder.Controllers
                 Name = i.Name,
                 Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                 Price = i.Price,
-                Photos = i.Photos.Split(',')
+                Color = i.Color,
+                Photos = i.Photos.Split(','),
+                Description = i.Description
             };
 
             return View(productVM);

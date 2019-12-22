@@ -115,6 +115,8 @@ img {
 }
 
 .aa-add-to-cart-btn {
+  text-align:center;
+  width:160px;
   border: 1px solid #ccc;
   color: #555;
   display: inline-block;
@@ -2185,13 +2187,62 @@ img {
   width: 30px;
 }
 
-/*以下五個是有顯示在Product Detail上的*/
+/*皮革顏色*/
+
+
+.rectangle-pink {
+    height: 20px;
+    width: 30px;
+    background-color: #D87093;
+}
+
+.rectangle-green {
+    height: 20px;
+    width: 30px;
+    background-color: #006400;
+}
+
+.rectangle-blue {
+    height: 20px;
+    width: 30px;
+    background-color: #0044BB;
+}
+
+.rectangle-brown {
+    height: 20px;
+    width: 30px;
+    background-color: #8B0000;
+}
+
+.rectangle-darkbrown {
+    height: 20px;
+    width: 30px;
+    background-color: #8B4513;
+}
+
+.rectangle-lightbrown {
+    height: 20px;
+    width: 30px;
+    background-color: #FF6347;
+}
+
+.rectangle-black {
+    height: 20px;
+    width: 30px;
+    background-color: #000000;
+}
+
+
 .aa-color-red {
     background-color: #8B0000;
 }
 
 .aa-color-green {
     background-color: #006400;
+}
+
+.aa-color-blue {
+    background-color: #0044BB;
 }
 
 .aa-color-darkbrown {
@@ -2393,7 +2444,7 @@ img {
   margin: 0 0 20px 30px;
   width: 29.916%;
 }
-
+aa-prod-quantity
 #aa-product-category .aa-product-catg-content .aa-product-catg-body .aa-product-catg li .aa-product-descrip {
   display: none;
 }
@@ -2519,9 +2570,16 @@ img {
 
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity {
   margin-top: 10px;
+  display: inline-block;
+
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity form {
+  display: inline-block;
+}
+
+
+#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity .ProductQuantity {
   display: inline-block;
 }
 

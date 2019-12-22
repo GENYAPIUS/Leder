@@ -15,9 +15,9 @@ namespace Leder.Models
         public decimal? Price { get; set; }    //產品價格NT$
         public int? CategoryId { get; set; }   //產品類別
         public string Photos { get; set; }   //產品照片
+        public string Color { get; set; }   //皮革顏色
         public string Description { get; set; } //產品頁面的敘述文字
         public int UnitInStock { get; set; } //產品庫存
-        //public string[] ColorChoices { get; set; }//產品其他顏色
 
 
         //Navigation Property

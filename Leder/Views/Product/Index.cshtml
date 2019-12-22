@@ -20,10 +20,12 @@
                             <a id="list-catg" href="#"><span class="fa fa-list"></span></a>
                         </div>
                     </div>
-                    @Html.Partial("_ProductPartial", Model);
+                    <div id="ProductArea">
+                    @Html.Partial("_ProductPartial", Model)
+                    </div>
                 </div>
             </div>
-            @Html.Partial("_SidebarPartial");
+            @Html.Partial("_SidebarPartial")
         </div>
     </div>
 </section>
@@ -33,72 +35,67 @@
         /*number跟val放全域變數，希望使用者原初的頁碼or排序法能被記住*/
         var number = 1; //按到第幾頁，number跟著變
         var value = 1;    //排序方法
-        Initialize();
-        function Initialize() {
-            //頁碼
-            $('.PageNumber').click(function () {
-                number = this.innerText;  //取頁數的值，也順便更動全域變數number
-                var routePath = location.pathname; //抓Url的值
-                $.ajax({
-                    type: "Post",
-                    url: "/Product/Pagination",
-                    data: { PageNumber: number, Value: value, RoutePath: routePath },
-                    dataType: "text",
-                    success: function (response) {
-                        $("#ProductDisplay").empty();
-                        $("#PagenumberDisplay").empty();
-                        $("#ProductDisplay").html(response);
-                        Initialize();
-                        $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
-                    }
-                });
-            })
 
-            //排序方法
-            $('#SortedDropdown').change(function (e) {   //下拉式選單改變發生時
-                value = $(this).val();                   //選到哪個value
-                var routePath = location.pathname;       //抓Url的值
-                $.ajax({
-                    type: "Post",
-                    url: "/Product/Pagination",
-                    data: { PageNumber: number, Value: value, RoutePath: routePath },
-                    dataType: "text",
-                    success: function (response) {
-                        $("#ProductDisplay").empty();
-                        $("#PagenumberDisplay").empty();
-                        $("#ProductDisplay").html(response);
-                        Initialize();
-                        $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
-                    }
-                });
-            });
+       //click()為document.getElementById().addEventListener()
 
-            //Sidebar看點到哪個商品類別
-            $('.ProductCategory').click(function (e) {
-                    var stateObj = { index: this.id };
-                    window.history.pushState(stateObj, this.id, '/Product/'+this.id);
-                    var category = this.id;      
 
-                $.ajax({
-                    type: "Post",
-                    url: "/Product/ChangeCategory",
-                    data: { Category: category },
-                    dataType: "text",
-                    success: function (response) {
-                        $("#ProductDisplay").empty();
-                        $("#PagenumberDisplay").empty();
-                        $("#ProductDisplay").html(response);
-                        Initialize();
-                    }
-                });
-            })
+        //頁碼
+        $('.PageNumber').click(changePage);
+        //排序方法
+        $('#SortedDropdown').change(changeSortedWay);   
+        //Sidebar看點到哪個商品類別                         
+        $('.ProductCategory').click(ChangeCategory);
+        PageNumberHover()
 
-            //滑鼠移至頁碼就會變成手指鼠標
-            $('.PageNumber').hover(function () {
-                $(this).css("cursor", "pointer");
-            });
+        function changePage() {
+            number = this.innerText;  //取頁數的值，也順便更動全域變數number
+            var routePath = location.pathname; //抓Url的值
+            var obj = { PageNumber: number, Value: value, RoutePath: routePath }
+            ajaxCall("/Product/Pagination", "Post", obj)
+            $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
+
         }
+                   
+        function changeSortedWay() { 
+            value = $(this).val();                   //選到哪個value
+            var routePath = location.pathname;       //抓Url的值
+            var obj =  { PageNumber: number, Value: value, RoutePath: routePath }
 
+            ajaxCall("/Product/Pagination", "Post", obj)
+            $('html, body').scrollTop(140); //讓網頁卷軸移到可以看到商品的視角
+
+          }
+       
+
+         function ChangeCategory(){
+            var stateObj = { index: this.id };
+            window.history.pushState(stateObj, this.id, '/Product/'+this.id);
+            var category = this.id;   
+
+            var obj = { Category: category };               
+            ajaxCall("/Product/ChangeCategory", "Post", obj);
+          }            
+
+         function ajaxCall(url, type, data) {            
+              if (url == null || type == null) { return; }
+              if(data == null) { data = "" };
+                $.ajax({
+                 type: type,
+                 url: url,
+                 data:data,
+                 dataType: "text",
+                 success: function (response) {
+                     $("#ProductArea").html(response);
+                     $('.PageNumber').click(changePage);
+                     PageNumberHover();                                         
+                 }
+             });
+         }
+        function PageNumberHover(){
+         //滑鼠移至頁碼就會變成手指鼠標
+         $('.PageNumber').hover(function () {
+             $(this).css("cursor", "pointer");
+         });
+        }
     </script>
 }
-

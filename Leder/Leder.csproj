@@ -197,6 +197,14 @@
     <Compile Include="Migrations\201912190328186_PhotoToPhotos.Designer.cs">
       <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912211056119_localTest.cs" />
+    <Compile Include="Migrations\201912211056119_localTest.Designer.cs">
+      <DependentUpon>201912211056119_localTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912211112144_addColor.cs" />
+    <Compile Include="Migrations\201912211112144_addColor.Designer.cs">
+      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
@@ -4098,6 +4106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912190328186_PhotoToPhotos.resx">
       <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912211056119_localTest.resx">
+      <DependentUpon>201912211056119_localTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912211112144_addColor.resx">
+      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
