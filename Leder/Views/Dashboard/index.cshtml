@@ -4,10 +4,8 @@
 }
 
 <h2>index</h2>
-<div id="MainArea">
-    <tableComponent v-bind:is="view" v-bind:props-data="sourceData">
-    </tableComponent>
-</div>
+<tableComponent id="MainArea" v-bind:is="view" v-bind:props-data="sourceData">
+</tableComponent>
 
 
 <template id="product-table">
@@ -34,7 +32,7 @@
                 </tr>
             </tbody>
         </table>
-       
+
     </div>
 </template>
 
@@ -55,7 +53,7 @@
             <tbody>
                 <tr v-for="procurement in propsData">
                     <td>{{procurement.ProcurementId}}</td>
-                    <td>{{procurement.Name}}</td>
+                    <td>{{procurement.ProductName}}</td>
                     <td>{{procurement.UnitPrize}}</td>
                     <td>{{procurement.Quantity}}</td>
                     <td>{{procurement.PurchaseDate}}</td>
@@ -65,11 +63,10 @@
                     </td>
                     @*data-toggle="modal" data-target="#exampleModal"*@
                     @*v-on:click="EditProcurement(procurement)"*@
-
                 </tr>
             </tbody>
         </table>
-        <div class="modal fade" id="procurementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" ref="procurementModal" id="procurementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -78,15 +75,19 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <input class="form-control" v-model="procurement.ProcurementId"><br />
-                        <input class="form-control"><br />
-                        <input class="form-control"><br />
-                        <input class="form-control"><br />
+                    <div class="modal-body" v-if="modalData">
+
+                        <label>進貨商品名稱：<br>&nbsp;&nbsp;&nbsp;{{modalData.ProductName}}</label><br>
+                        <label for="procurementDate">進貨日期</label>
+                        <input name="procurementDate" class="form-control" v-model="modalData.PurchaseDate">
+                        <label for="procurementQuantity">數量</label>
+                        <input name="procurementQuantity" class="form-control" v-model.number="modalData.Quantity"><br />
+                        <label for="procurementUnitPrize">進貨單價</label>
+                        <input name="procurementUnitPrize" class="form-control" v-model.number="modalData.UnitPrize"><br />
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">關閉視窗</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" v-on:click="DismissModal()">關閉視窗</button>
+                        <button type="button" class="btn btn-primary" v-on:click="EditProcurement(modalData)">儲存變更</button>
                     </div>
                 </div>
             </div>
@@ -95,41 +96,35 @@
 </template>
 
 
-
 @section Scripts{
 
     <script>
         var sourceData;
         var modalVue;
+        var temp = null;
         var sideBarVue = new Vue({
             el: "#dashBoardSidebar",
             methods: {
                 ProductOverview: function () {
-                    ajaxFunc("GetAllProduct", "Get");
+                    ajaxFunc("/Dashboard/GetAllProduct", "Get");
                     mainAreaVue.$data.view = "productTable"
 
                     mainAreaVue.$data.sourceData = sourceData;
                 },
                 ProcurementOverview: function () {
-                    ajaxFunc("GetAllProcurements", "Get");
+                    ajaxFunc("/Dashboard/GetAllProcurements", "Get");
                     mainAreaVue.$data.view = "procurementTable";
                     mainAreaVue.$data.sourceData = sourceData;
-                    modalVue = new Vue({
-                        el: "#procurementModal",
-                        data: {
-                            procurement: undefined
-                        }
-                    });
-                },
+                    },
+                }
+            })
 
-            }
-        })
-        
 
         var mainAreaVue = new Vue({
             el: "#MainArea",
             data: {
                 view: "",
+                editData: null,
                 sourceData: sourceData
             },
             components: {
@@ -140,25 +135,37 @@
                 procurementTable: {
                     template: "#procurement-table",
                     props: ['propsData'],
+                    data() {
+                        return {
+                            modalData: null,
+                        };
+                    },
                     methods: {
-                        DisplayModal:function(procurementSource){
-                            modalVue.$data.procurement = procurementSource;
-                            $("#ProcurementModal").modal("toggle");
+                        DisplayModal: function (procurementSource) {
+                            this.$data.modalData = procurementSource;
+                            temp = JSON.stringify(sourceData);
+                            $(this.$refs.procurementModal).modal("toggle");
+                        },
+                        DismissModal: function () {
+                            sourceData = JSON.parse(temp);
+                            temp = null;
+                            mainAreaVue.$data.sourceData = sourceData;
+                            $(this.$refs.procurementModal).modal("toggle");
                         },
                         EditProcurement: function (procurementSource) {
-                            var procurement = {
+                            console.log(procurementSource);
+                            var procurementJson = JSON.stringify({
                                 "procurement": procurementSource
-                            }
-                            ajaxFunc("EditProcurement","Post",procurement)
+                            });
+                            console.log(procurementJson);
+                            ajaxFunc("/DashBoard/EditProcurement", "Post", procurementJson)
                             mainAreaVue.$data.sourceData = sourceData;
+                            $(this.$refs.procurementModal).modal("toggle");
                         }
                     }
                 }
             }
         });
-
-
-
 
         function ajaxFunc(url, type, data) {
             if (url == null || type == null) { return; }
