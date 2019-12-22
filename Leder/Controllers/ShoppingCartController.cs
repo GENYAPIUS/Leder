@@ -64,6 +64,17 @@ namespace Leder.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UpdataOrderPayStatus(string PayStatus,string TotalAmount)
+        {
+            OrderViewModel orders = (OrderViewModel)Session["ReceiverData"];
+            if (TotalAmount == orders.Carts.TotalAmount.ToString())
+            { orders.PayStatus = PayStatus; }
+            else
+            { orders.PayStatus = "異常的款項"; }
+            return View();
+        }
+
         public ActionResult AddToCart(int id,int? inQuantity)
         {
             var currentCart = Models.Cart.Operation.GetCurrentCart();

@@ -22,23 +22,28 @@
                         currency: "TWD"
                     },
                     //description: "测试商品描述",
-                    custom: "X00002",
+                    //custom: "X00002",
                 }
             ],
             redirect_urls: {
-                return_url: '/Order/Index',
-                cancel_url: 'http://localhost:4478/Cancel.aspx'
+                return_url: '/Order/Index'
             }
         });
     },
     onAuthorize: function (data, actions) {
         return actions.payment.execute()
             .then(function () {
+                $.ajax({
+                    url: "/ShoppingCart/UpdataOrderPayStatus",
+                    type: "post",
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        'PayStatus': 'PayPal付款',
+                        'TotalAmount': $("#TotalAmount").val(),
+                    })
+                });
                 actions.redirect();
             });
-    },
-    onCancel: function (data, actions) {
-        actions.redirect();
     }
         }, '#paypaltest');
 // 此功能會在您的網頁上顯示智能付款按鈕。

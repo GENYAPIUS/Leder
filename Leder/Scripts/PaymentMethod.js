@@ -7,7 +7,7 @@ $('#paycheck').click(function () {
     }
     else {
         if (document.getElementById("paypal").checked) {
-            PaymentMethod("PayPal付款");
+            PaymentMethod("尚未付款");
             document.getElementById("RecieveForm").action = '/ShoppingCart/Order';
             document.getElementById("RecieveForm").submit();
         }
@@ -20,7 +20,6 @@ $('#paycheck').click(function () {
 });
 
 function PaymentMethod(paycheck) {
-    var i = paycheck;
     $.ajax({
         url: "/ShoppingCart/OrderData",
         type: "post",
