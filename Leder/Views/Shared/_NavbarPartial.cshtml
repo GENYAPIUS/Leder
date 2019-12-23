@@ -78,12 +78,12 @@
                             <li class="dropdown">
                                 @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                 <ul class="dropdown-menu">
-                                    <li><a href="~/Manage">會員資料</a></li>
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+                                    <li><a href="~/Manage">會員資料</a></li>                                    
                                     @if (User.Identity.Name == "admin55688@gmail.com")
                                     {
-                                <li><a href="~/Dashboard/index">前往後台</a></li>
+                                        <li><a href="~/Dashboard/index">前往後台</a></li>
                                     }
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
                                 </ul>
                             </li>
                         }
