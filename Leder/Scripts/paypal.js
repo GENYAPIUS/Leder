@@ -45,8 +45,9 @@
                 actions.redirect();
             });
     }
-        }, '#paypaltest');
+}, '#paypaltest');
 // 此功能會在您的網頁上顯示智能付款按鈕。
+
 
 
 

@@ -7,10 +7,12 @@ using System.Web.Mvc;
 using Leder.Models;
 using Leder.ViewModels;
 
+
 namespace Leder.Controllers
 {
     public class OrderController : Controller
     {
+        ShoppingCartController shoppingCart = new ShoppingCartController();
         // GET: Order
         public ActionResult Index()
         {
@@ -40,6 +42,7 @@ namespace Leder.Controllers
                 }
 
                 db.SaveChanges();
+                shoppingCart.ClearCart();
 
             }
 
