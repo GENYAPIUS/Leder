@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201912190328186_PhotoToPhotos.Designer.cs">
       <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912230922568_addColorDescription.cs" />
+    <Compile Include="Migrations\201912230922568_addColorDescription.Designer.cs">
+      <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApprovedResult.cs" />
@@ -4135,6 +4139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912190328186_PhotoToPhotos.resx">
       <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912230922568_addColorDescription.resx">
+      <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
