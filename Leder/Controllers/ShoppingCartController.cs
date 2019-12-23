@@ -25,6 +25,11 @@ namespace Leder.Controllers
             var userData = db.UserDetail.Where(x => x.Email == HttpContext.User.Identity.Name);
             var currentCart = Models.Cart.Operation.GetCurrentCart();
 
+            if (currentCart.TotalAmount == 0.0m)
+            {
+                return View("Index");
+            }            
+
             ViewData["UserData"] = userData;
             ViewData["CurrentCart"] = currentCart;
 

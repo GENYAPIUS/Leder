@@ -40,19 +40,25 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="aa-checkout-single-bill">
-                                                                <input id="NameForm" type="text" placeholder="收貨人姓名*" required />
+                                                                <input id="NameForm" type="text" placeholder="收貨人姓名*" class="required" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="aa-checkout-single-bill">
-                                                                <input id="TelForm" type="text" placeholder="收貨人電話*" required />
+                                                                <input id="TelForm" type="text" maxlength="10" minlength="8"
+                                                                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                                                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                                                                       placeholder="收貨人電話*" class="required" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="aa-checkout-single-bill">
-                                                                <input id="ZipForm" type="text" placeholder="郵遞區號*" required>
+
+                                                                <input id="ZipForm" type="text" maxlength="5" minlength="3" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                                                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                                                                       placeholder="郵遞區號*" class="required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -62,7 +68,7 @@
                                                             <div class="aa-checkout-single-bill">
                                                                 @foreach (var item in userData)
                                                                 {
-                                                                    <textarea id="AddressForm" cols="8" rows="2" placeholder="收貨人地址*" required>@item.Address</textarea>
+                                                                    <textarea id="AddressForm" cols="8" rows="2" placeholder="收貨人地址*" class="required">@item.Address</textarea>
                                                                 }
                                                             </div>
                                                         </div>
@@ -72,7 +78,11 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+
+
+
                             <div class="col-md-4">
                                 <div class="checkout-right">
                                     <h4>Order Summary</h4>
@@ -96,7 +106,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>總價</th>
-                                                    <td>@String.Format(currentCart.TotalAmount.ToString())</td>
+                                                    <td id="total">@String.Format(currentCart.TotalAmount.ToString())</td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -124,4 +134,20 @@
 <!-- / Cart view section -->
 @section Scripts{
     <script src="~/Scripts/PaymentMethod.js"></script>
+
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+
+    <script>
+        $("#RecieveForm").validate();
+        $.extend($.validator.messages, {
+            required: "請您輸入完整資料",
+            maxlength: $.validator.format("提醒您最多只能輸入 {0} 個字元"),
+            minlength: $.validator.format("請您輸入最少 {0} 個字元")
+        });
+        
+
+    </script>
 }
