@@ -33,10 +33,10 @@ jQuery(function($){
   /* ----------------------------------------------------------- */
     
      jQuery(".aa-cartbox").hover(function(){
-      jQuery(this).find(".aa-cartbox-summary").fadeIn(500);
+      jQuery(this).find(".aa-cartbox-summary").fadeIn(1);
     }
       ,function(){
-          jQuery(this).find(".aa-cartbox-summary").fadeOut(500);
+          jQuery(this).find(".aa-cartbox-summary").fadeOut(1);
       }
      );   
   
