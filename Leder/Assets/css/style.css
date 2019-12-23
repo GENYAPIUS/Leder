@@ -863,7 +863,7 @@ img {
   display: inline;
   float: left;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 #aa-slider .aa-slider-area .seq-title {
