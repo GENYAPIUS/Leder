@@ -421,11 +421,11 @@
     <Content Include="Assets\images\Totebag\Totebag8_D_4.jpg" />
     <Content Include="Assets\images\Totebag\Totebag8_D_5.jpg" />
     <Content Include="Content\lite-blue-theme.css" />
-    <Content Include="Scripts\CartIndex.js" />
-    <Content Include="Scripts\PaymentMethod.js" />
-    <Content Include="Scripts\paypal.js" />
-    <Content Include="Scripts\ShiftCartModalFunction.js" />
-    <Content Include="Scripts\ShoppingCartFunction.js" />
+    <Content Include="Assets\js\CartIndex.js" />
+    <Content Include="Assets\js\PaymentMethod.js" />
+    <Content Include="Assets\js\paypal.js" />
+    <Content Include="Assets\js\ShiftCartModalFunction.js" />
+    <Content Include="Assets\js\ShoppingCartFunction.js" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\font-awesome.css" />
