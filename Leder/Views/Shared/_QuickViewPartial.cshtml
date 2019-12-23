@@ -1,9 +1,9 @@
 ﻿@using Leder.ViewModels;
 @model ProductViewModel
+    @{ 
+         //var photos = Json.Encode(Model.Photos);  //將C#陣列轉成JSON字串
 
-@{
-    ViewBag.Title = "_QuickViewPartial";
-}
+    }
 
 <!-- quick view modal -->
 <div class="modal fade" id="@Model.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -19,8 +19,8 @@
                                 <div class="simpleLens-container">
                                     <div class="simpleLens-big-image-container">
                                         <!-- data-lens-image這個屬性不是絕對路徑，不用加~ -->
-                                        <a class="simpleLens-lens-image" data-lens-image="@Model.Photos">
-                                            <img src="@Model.Photos" style="width:280px" class="simpleLens-big-image">
+                                        <a class="simpleLens-lens-image" data-lens-image="/Assets/images/@Model.Category/@Model.Photos[0]">
+                                            <img src="/Assets/images/@Model.Category/@Model.Photos[0]" style="width:280px">
                                         </a>
                                     </div>
                                 </div>
@@ -38,25 +38,13 @@
                                 <span class="aa-product-view-price">NT$@Model.Price</span>
                                 <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                             </div>
-                            <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h6>
-                            <h4>Size</h4>
-                            <div class="aa-prod-view-size">
-                                <a href="#">S</a>
-                                <a href="#">M</a>
-                                <a href="#">L</a>
-                                <a href="#">XL</a>
-                            </div>
                             <div class="aa-prod-quantity">
-                                <form action="">
-                                    <select name="" id="">
-                                        <option value="0" selected>1</option>
-                                        <option value="1">2</option>
-                                        <option value="2">3</option>
-                                        <option value="3">4</option>
-                                        <option value="4">5</option>
-                                        <option value="5">6</option>
-                                    </select>
-                                </form>                             
+                                
+                                    <h6>數量</h6>
+                                    <form action="">
+                                        <input type="number" min="1" value="1" style="width:50px" />
+                                    </form>
+                                
                             </div>
                             <div class="aa-prod-view-bottom">
                                 <a onclick="AddToCart('@Model.Id', 1)" href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>

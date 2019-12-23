@@ -17,8 +17,10 @@ namespace Leder.Models
         public string Color { get; set; }   //皮革顏色
 
         public string Photos { get; set; }   //產品照片
+        public string Color { get; set; }   //皮革顏色
         public string Description { get; set; } //產品頁面的敘述文字
         public int UnitInStock { get; set; } //產品庫存
+
 
         //Navigation Property
         [ForeignKey("CategoryId")]

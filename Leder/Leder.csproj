@@ -201,9 +201,9 @@
     <Compile Include="Migrations\201912030756535_TestCreate.Designer.cs">
       <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912060756349_TestCreate1.cs" />
-    <Compile Include="Migrations\201912060756349_TestCreate1.Designer.cs">
-      <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
+    <Compile Include="Migrations\201912060834122_TestCreate1.cs" />
+    <Compile Include="Migrations\201912060834122_TestCreate1.Designer.cs">
+      <DependentUpon>201912060834122_TestCreate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201912180341171_AddOrderModel.cs" />
     <Compile Include="Migrations\201912180341171_AddOrderModel.Designer.cs">
@@ -216,6 +216,13 @@
     <Compile Include="Migrations\201912230922568_addColorDescription.cs" />
     <Compile Include="Migrations\201912230922568_addColorDescription.Designer.cs">
       <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
+    <Compile Include="Migrations\201912211056119_localTest.cs" />
+    <Compile Include="Migrations\201912211056119_localTest.Designer.cs">
+      <DependentUpon>201912211056119_localTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912211112144_addColor.cs" />
+    <Compile Include="Migrations\201912211112144_addColor.Designer.cs">
+      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -514,6 +521,8 @@
     <Content Include="Scripts\jquery.simpleLens.js" />
     <Content Include="Scripts\jquery.smartmenus.bootstrap.js" />
     <Content Include="Scripts\jquery.smartmenus.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -4131,8 +4140,8 @@
     <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
       <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912060756349_TestCreate1.resx">
-      <DependentUpon>201912060756349_TestCreate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912060834122_TestCreate1.resx">
+      <DependentUpon>201912060834122_TestCreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912180341171_AddOrderModel.resx">
       <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
@@ -4143,8 +4152,14 @@
     <EmbeddedResource Include="Migrations\201912230922568_addColorDescription.resx">
       <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912211056119_localTest.resx">
+      <DependentUpon>201912211056119_localTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912211112144_addColor.resx">
+      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
+    </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>

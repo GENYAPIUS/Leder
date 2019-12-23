@@ -22,12 +22,7 @@ namespace Leder.Repository
             return result;
         }
 
-       
-        //public IEnumerable<Product> GetProductInCatagory(string Category)
-        //{
-        //    var result = _db.Products.Where(x => x.CategoryId == Category).AsQueryable();
-        //    return result;
-        //}
+        
 
         //給ProductDetail呼叫
         public IEnumerable<Product> GetAll()
@@ -35,5 +30,9 @@ namespace Leder.Repository
             var result = _db.Products.AsQueryable();
             return result;
         }
+
+
+       
+
     }
 }

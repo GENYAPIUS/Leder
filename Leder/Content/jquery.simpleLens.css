@@ -34,16 +34,16 @@
     position:relative;
 }
 
-.simpleLens-mouse-cursor{
-	background-color:#CCC;
-	opacity:0.2;
-	filter: alpha(opacity = 20);
-	position:absolute;
-	top:0;
-	left:0;
-	border:1px solid #999;
-	box-shadow:0 0 2px 2px #999;
-	cursor:none;
+.simpleLens-mouse-cursor {
+    background-color: #CCC;
+    opacity: 0.2;
+    filter: alpha(opacity = 20);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #999;
+    box-shadow: 0 0 2px 2px #999;
+    cursor: zoom-in;
 }
 
 .simpleLens-lens-element {

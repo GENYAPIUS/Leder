@@ -14,7 +14,7 @@
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Leder.Models.LederContext context)
+        protected override void Seed(LederContext context)
         {
             //  This method will be called after migrating to the latest version.
 

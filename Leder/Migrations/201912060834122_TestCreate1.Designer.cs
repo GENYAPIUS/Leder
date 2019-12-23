@@ -13,7 +13,7 @@ namespace Leder.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201912060756349_TestCreate1"; }
+            get { return "201912060834122_TestCreate1"; }
         }
         
         string IMigrationMetadata.Source
