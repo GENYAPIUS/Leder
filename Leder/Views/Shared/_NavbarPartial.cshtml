@@ -20,18 +20,18 @@
                         </li>
                         
                     </ul>
-                    <ul class="nav navbar-nav" style="padding:0">                        
+                    <ul class="nav navbar-nav" style="padding:0">
                         <li><a href="~/Home/Index">Home</a></li>
                         @*<li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                季節性活動
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Christmas 2019</a></li>
-                                <li><a href="#">New Year 2020</a></li>
-                            </ul>
-                        </li>*@
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                季節性活動
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Christmas 2019</a></li>
+                <li><a href="#">New Year 2020</a></li>
+            </ul>
+        </li>*@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="~/Product/Index">
                                 皮革商品
@@ -67,12 +67,21 @@
                             using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <li>
-                                    @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                </li>
-                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                @*<li>
+                    @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>*@
+
 
                             }
+                            @Html.AntiForgeryToken()
+                            <li class="dropdown">
+                                @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Manage">會員資料</a></li>
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+                                </ul>
+                            </li>
                         }
                         else
                         {
@@ -100,7 +109,7 @@
 
 
     </div>
-    </div>
+    
 
     <!-- / header top  -->
 
