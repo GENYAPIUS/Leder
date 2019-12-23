@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     //取得當前購物車所有內容
     var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
@@ -6,7 +6,7 @@
     <a class="aa-cart-link" href="~/ShoppingCart">
         <span class="fa fa-shopping-cart"></span>
         <span class="aa-cart-title">SHOPPING CART</span>
-        <span class="aa-cart-notify">@String.Format("{0}",currentCart.Count)</span>
+        <span class="aa-cart-notify">@String.Format("{0}", currentCart.Count)</span>
     </a>
     <div class="aa-cartbox-summary">
         @if (currentCart.Count > 0)
@@ -14,14 +14,16 @@
             <ul>
                 @foreach (var cartItem in currentCart)
                 {
+                    var i = 1;
                     <li>
-                        <a class="aa-cartbox-img" href="#"><img src="~/Assets/images/HomeImages/@cartItem.Photo" alt="img"></a>
+                        <a class="aa-cartbox-img" href="#"><img src="@cartItem.Photo" alt="img"></a>
                         <div class="aa-cartbox-info">
                             <h4><a href="#">@cartItem.Name</a></h4>
                             <p>@cartItem.Quantity x $@cartItem.Price</p>
                         </div>
                         <a class="aa-remove-product"><span class="fa fa-times" onclick="RemoveFromCart('@cartItem.Id')"></span></a>
                     </li>
+                    i++;
                 }
                 <li>
                     <span class="aa-cartbox-total-title">
@@ -44,12 +46,14 @@
                     </span>
                 </li>
                 <li>
-                    <a class="aa-cartbox-checkout aa-primary-btn" href="~/Products1/Index">前往購物頁面</a>
+                    <a class="aa-cartbox-checkout aa-primary-btn" href="~/Product/Index">前往購物頁面</a>
                 </li>
             </ul>
 
         }
-
+        @if (currentCart.Shift == true)
+        {
+            @Html.Partial("_ShiftCartModal")
+        }
     </div>
 </div>
-

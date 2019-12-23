@@ -4666,4 +4666,16 @@ img {
     padding: 5px 2px;
   }
 }
+#shiftCart img{
+    width:80px;
+    height:100px;
+}
+#shiftCart tbody tr td {
+    text-align: left;
+    line-height: 100px;
+}
+#shiftCart .yesandno {
+    float: right;
+    line-height:20px
+}
 /*# sourceMappingURL=style.css.map */

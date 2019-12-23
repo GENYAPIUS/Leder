@@ -25,7 +25,6 @@
 
     <!-- Main style sheet 更改成scss自動生成-->
     <link href="~/Assets/css/style.css" rel="stylesheet">
-
     <!-- Google Font 引用字型 在base/_variables.scss設定 -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -45,10 +44,6 @@
     </div>
 
     @Html.Partial("_FooterPartial")
-
-
-    @*購物車的JavaScripts*@
-    @Html.Partial("ShoppingCartFunction")
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -70,7 +65,11 @@
     <script src="~/Scripts/nouislider.js"></script>
     <!-- Custom Script js -->
     <script src="~/Assets/js/script.js"></script>
+    <!--購物車的JavaScripts -->
+    <script src="~/Scripts/ShoppingCartFunction.js"></script>
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
 

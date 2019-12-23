@@ -1,0 +1,88 @@
+﻿@model Leder.ViewModels.OrderViewModel
+
+
+<section id="cart-view">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-view-area">
+                    <div class="cart-view-table">
+                        <form action="">
+                            <div class="table-responsive">
+                                <h2>結帳頁面</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Email</th>
+                                            <th>收貨人姓名</th>
+                                            <th>收貨人電話</th>
+                                            <th>收貨人地址</th>
+                                            <th>郵遞區號</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.DisplayFor(m => m.Email)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverName)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverPhone)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverAddress)</td>
+                                            <td>@Html.DisplayFor(m => m.RecieverZipCode)</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>商品</th>
+                                            <th>商品名</th>
+                                            <th>單價</th>
+                                            <th>數量</th>
+                                            <th>總價</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var i in Model.CartItems)
+                                        {
+                                            <tr>
+                                                <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
+                                                <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
+                                                <td>@Html.DisplayFor(m => i.Price)</td>
+                                                <td><a class="aa-cart-quantity">@Html.DisplayFor(m => i.Quantity)</a></td>
+                                                <td>@Html.DisplayFor(m => i.Amount)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        <!-- Cart Total view -->
+                        <div class="cart-view-total">
+                            <table class="aa-totals-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>                                        
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                            <div id="paypaltest" style="margin-top:10px">
+                                <input id="TotalAmount" type="text" style="display:none" value="@String.Format("{0}",  Model.Carts.TotalAmount)" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script type="text/javascript" src="~/Scripts/paypal.js"></script>
+}

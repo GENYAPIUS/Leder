@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "MyCart";
-    
+
     var currentCart = Leder.Models.Cart.Operation.GetCurrentCart();
 }
 <!-- Cart view section -->
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table">
-                        @if (currentCart.Count > 0)
+                        @if (currentCart.Count() > 0)
                         {
                             <form action="">
                                 <div class="table-responsive">
@@ -28,25 +28,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @{ var cartItemId = 2000;}
                                             @foreach (var i in Model)
                                             {
                                                 <tr>
-                                                    <td><a class="remove" onclick="RemoveFromCart('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
-                                                    <td><a href="#"><img src="~/Assets/images/HomeImages/@Html.DisplayFor(m => i.Photo)" alt="img"></a></td>
+                                                    <td><a href="~/ShoppingCart" class="remove" onclick="RemoveFromCart('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
+                                                    <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
                                                     <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
                                                     <td>@Html.DisplayFor(m => i.Price)</td>
-                                                    <td><input id="quantity" class="aa-cart-quantity" type="number" value="@Html.DisplayFor(m => i.Quantity)"></td>
+                                                    <td>
+                                                        <input id="@(cartItemId+1000)" class="aa-cart-quantity" type="number" min="1" value="@Html.DisplayFor(m => i.Quantity)">
+                                                        <input id="@cartItemId" value="@Html.DisplayFor(m => i.Id)" style="display:none" />
+                                                    </td>
                                                     <td>@Html.DisplayFor(m => i.Amount)</td>
                                                 </tr>
+                                                cartItemId++;
                                             }
                                             <tr>
                                                 <td colspan="6" class="aa-cart-view-bottom">
-                                                    <input class="aa-cart-view-btn" type="submit" value="Update Cart">
+                                                    <div class="aa-cart-coupon">
+                                                    </div>
+                                                    <input type="submit" value="刷新頁面" class="aa-cart-view-btn" />
+                                                    <input id="Update" class="aa-cart-view-btn" type="button" value="更新購物車">
+                                                    <input id="MyCount" value="@currentCart.Count" style="display:none" />
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
+
                             </form>
                             <!-- Cart Total view -->
                             <div class="cart-view-total">
@@ -79,7 +89,7 @@
                                 <table class="aa-totals-table">
                                     <tbody>
                                         <tr>
-                                            <td><a class="aa-cart-view-btn" href="~/Products1/Index">前往購物頁面</a></td>
+                                            <td><a class="aa-cart-view-btn" href="~/Product/Index">前往購物頁面</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -91,5 +101,7 @@
         </div>
     </div>
 </section>
-
 <!-- / Cart view section -->
+@section Scripts{
+    <script src="~/Scripts/CartIndex.js"></script>
+    }
