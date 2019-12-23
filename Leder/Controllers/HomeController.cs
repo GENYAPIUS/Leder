@@ -47,30 +47,30 @@ namespace Leder.Controllers
                 new SliderPartialViewModel
                 {
                     Id = 1,
-                    ADTopic = "Leder Collection No.1",
+                    ADTopic = "Leder Collection",
                     ADUrl = "/Assets/images/HomeImages/top_picture1.jpg",
                     ADStatement = "Share with you. Leder.",
-                    ADDiscount = "Save Up to 25% Off",
+                    ADDiscount = "On Sale!",
                     ADPageLink = "#"
 
                 },
                 new SliderPartialViewModel
                 {
                     Id = 2,
-                    ADTopic = "Leder Collection No.2",
+                    ADTopic = "Leder Collection",
                     ADUrl = "/Assets/images/HomeImages/top_picture2.jpg",
                     ADStatement = "Share with you. Leder.",
-                    ADDiscount = "Save Up to 30% Off",
+                    ADDiscount = "On Sale!",
                     ADPageLink = "#"
 
                 },
                 new SliderPartialViewModel
                 {
                     Id = 3,
-                    ADTopic = "Leder Collection No.3",
+                    ADTopic = "Leder Collection",
                     ADUrl = "/Assets/images/HomeImages/top_picture3.jpg",
                     ADStatement = "Share with you. Leder.",
-                    ADDiscount = "Save Up to 35% Off",
+                    ADDiscount = "On Sale!",
                     ADPageLink = "#"
 
                 }
