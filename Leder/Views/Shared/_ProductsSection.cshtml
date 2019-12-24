@@ -21,13 +21,13 @@
                 <!-- start single product item -->
                 <li>
                     <figure>
-                        <a class="aa-product-img" href="@item.ProductPage">
-                            <img class="img-responsive" src="@item.Photo" alt="@item.Name">
+                        <a class="aa-product-img" href="~/Product/@item.Category">
+                            <img class="img-responsive" src="/Assets/images/@item.Category/@item.Photo" alt="@item.Name">
                         </a>
                         <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                         <figcaption>
                             <h4 class="aa-product-title"><a href="#">@item.Name</a></h4>
-                            <span class="aa-product-price ">$@item.Price</span><span class="aa-product-price"><del>$@item.Price</del></span>
+                            <span class="aa-product-price ">$@item.Price</span>@*<span class="aa-product-price"><del>$@item.Price</del></span>*@
                         </figcaption>
                     </figure>
                     <div class="aa-product-hvr-content">

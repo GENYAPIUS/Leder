@@ -18,20 +18,20 @@
                             <!-- img based logo -->
                             <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
                         </li>
-                        
+
                     </ul>
                     <ul class="nav navbar-nav" style="margin-top:20px;margin-left:20px">
                         <li><a href="~/Home/Index">Home</a></li>
                         @*<li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                季節性活動
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Christmas 2019</a></li>
-                <li><a href="#">New Year 2020</a></li>
-            </ul>
-        </li>*@
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    季節性活動
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Christmas 2019</a></li>
+                    <li><a href="#">New Year 2020</a></li>
+                </ul>
+            </li>*@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="~/Product/Index">
                                 皮革商品
@@ -58,8 +58,11 @@
                             </ul>
                         </li>
                         @*<li>@Html.ActionLink("聯絡里德", "#")</li>*@
-
-
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" style="margin-top:20px;margin-left:20px">
+                        <li id="CartLayout">
+                            @Html.Partial("_CartPartial")
+                        </li>
 
                         @if (Request.IsAuthenticated)
 
@@ -75,10 +78,11 @@
 
                             }
                             @Html.AntiForgeryToken()
-                            <li class="dropdown"><span class="glyphicon glyphicon-user"></span>
+                            <li class="dropdown">
+                                
                                 @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                 <ul class="dropdown-menu">
-                                    <li><a href="~/Manage">會員資料</a></li>                                    
+                                    <li><a href="~/Manage">會員資料</a></li>
                                     @if (User.Identity.Name == "admin55688@gmail.com")
                                     {
                                         <li><a href="~/Dashboard/index">前往後台</a></li>
@@ -89,17 +93,15 @@
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li>@Html.ActionLink("註冊", "Register", "Account")</li>
+                            <li>@Html.ActionLink("登入", "Login", "Account")</li>
 
                         }
- 
 
-                        <li><a href="~/Checkout">Checkout</a></li>
-                        <li id="CartLayout">
-                            @Html.Partial("_CartPartial")
-                        </li>
-                    </ul>                    
+
+                        @*<li><a href="~/Checkout">Checkout</a></li>*@
+
+                    </ul>
                 </div>
             </nav>
         </div>
