@@ -216,7 +216,7 @@
     <Compile Include="Migrations\201912230922568_addColorDescription.cs" />
     <Compile Include="Migrations\201912230922568_addColorDescription.Designer.cs">
       <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="Migrations\201912211056119_localTest.cs" />
     <Compile Include="Migrations\201912211056119_localTest.Designer.cs">
       <DependentUpon>201912211056119_localTest.cs</DependentUpon>
@@ -4094,10 +4094,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
-    <Content Include="Views\Product\Backpack.cshtml" />
-    <Content Include="Views\Product\Longclip.cshtml" />
-    <Content Include="Views\Product\Coinwallet.cshtml" />
-    <Content Include="Views\Product\Namecard.cshtml" />
     <Content Include="Views\Shared\_SliderPartial.cshtml" />
     <Content Include="Views\Shared\_PromoteProductsPartial.cshtml" />
     <Content Include="Views\Shared\_ProductsSectionPartial.cshtml" />
@@ -4159,8 +4155,8 @@
     <EmbeddedResource Include="Migrations\201912211112144_addColor.resx">
       <DependentUpon>201912211112144_addColor.cs</DependentUpon>
     </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>

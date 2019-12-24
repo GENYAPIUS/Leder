@@ -183,7 +183,6 @@ namespace Leder.Controllers
                 Name = i.Name,
                 Category = categoryRepo.GetCategoryNameById(i.CategoryId),
                 Price = i.Price,
-                Color = i.Color,
                 Photos = i.Photos.Split(','),
                 Description = i.Description
             };

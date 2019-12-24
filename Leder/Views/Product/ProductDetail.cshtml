@@ -1,10 +1,6 @@
 ﻿@using Leder.ViewModels;
 @model ProductViewModel
-@{ 
-   
-   //var photos = Json.Encode(Model.Photos);  //將C#陣列轉成JSON字串
 
-}
 
 <!-- product category -->
 <section id="aa-product-details">
@@ -34,8 +30,7 @@
                                             <span class="aa-product-view-price">NT$@Model.Price</span>
                                             <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                                         </div>
-                                        <h4 class="rectangleColor"> 皮革顏色</h4>
-                                        <div class="rectangleColor rectangle-@Model.Color"></div>
+                                       
                                         <div class="aa-prod-quantity">
                                             <form action="">
                                                 <h4 class="ProductQuantity">數量</h4> <input type="number" min="1" value="1" style="width:40px" />
@@ -70,13 +65,11 @@
                             <div class="col-lg-2"></div>
                         </div>
 
-
-                        @foreach (var photo in Model.Photos)
-                        {
-                            <div style="text-align:center;"><p><img src="~/Assets/images/@Model.Category/@photo" /></p></div>
-                        }
-
-
+                     
+                            @foreach (var item in Model.Photos)
+                            {
+                                <div style="text-align:center;"><p><img src="~/Assets/images/@Model.Category/@item" /></p></div>
+                            }
 
 
                     </div>
