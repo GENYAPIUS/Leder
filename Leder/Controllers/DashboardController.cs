@@ -1,14 +1,10 @@
 ﻿using Leder.Models;
-using Leder.ViewModels;
 using Leder.Repository;
-using System;
+using Leder.ViewModels;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace Leder.Controllers
 {
@@ -46,7 +42,7 @@ namespace Leder.Controllers
         {
             ProductRepository productRepo = new ProductRepository(db);
             List<SelectProductViewModel> selectProductViewModel = new List<SelectProductViewModel>();
-            foreach(Product p in productRepo.GetAll().ToList())
+            foreach (Product p in productRepo.GetAll().ToList())
             {
                 SelectProductViewModel productVM = new SelectProductViewModel()
                 {
@@ -80,6 +76,22 @@ namespace Leder.Controllers
             return Json(procurements, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetChartData()
+        {
+            ProcurementRepository procurementRepo = new ProcurementRepository(db);
+            var procurement = from p in procurementRepo.GetAll()
+                              group p by new { p.PurchaseDate.Year, p.PurchaseDate.Month } into g
+                              select new
+                              {
+                                  YM = g.Key.Year + "/" + g.Key.Month,
+                                  //QuantityTotal = g.Sum(p.Quantity),
+                                  //PriceTotal = g.Sum(p.Quantity*p.UnitPrize)
+
+                              };
+
+            return Json("");
+        }
+
         [HttpPost]
         public ActionResult CreateProcurement(Procurement procurement)
         {
@@ -89,7 +101,7 @@ namespace Leder.Controllers
             //將輸入資料儲存在資料庫
             if (ModelState.IsValid)
             {
-                db.Entry(procurement).State = EntityState.Modified;
+                db.Procurement.Add(procurement);
                 db.SaveChanges();
             }
             //抓取改變後的資料

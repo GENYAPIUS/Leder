@@ -12,7 +12,7 @@ var chartComponent = {
     props: ['propsData'],
     data() {
         return {
-            modalData: null,
+            chartData: null,
         };
     },
     methods: procurementTableMethods

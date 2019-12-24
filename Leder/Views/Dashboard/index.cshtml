@@ -4,7 +4,7 @@
 }
 
 <h2>index</h2>
-<tableComponent id="MainArea" v-bind:is="view" v-bind:props-data="sourceData">
+<tableComponent id="MainArea" v-bind:is="view" v-bind:props-data="sourceData" v-bind:props-list="productData">
 </tableComponent>
 @section Scripts{
     <script src="/Assets/js/dashboard/productTable.js"></script>
@@ -12,21 +12,22 @@
     <script src="/Assets/js/dashboard/dashboardChart.js"></script>
     <script>
         var sourceData;
+        var productList;
         var temp = null;
         var sideBarVue = new Vue({
             el: "#dashBoardSidebar",
             methods: {
                 ProductOverview: function () {
-                    ajaxFunc("/Dashboard/GetAllProduct", "Get");
                     mainAreaVue.$data.view = "productTable";
+                    ajaxFunc("/Dashboard/GetAllProduct", "Get");
                     mainAreaVue.$data.sourceData = sourceData;
                 },
                 ProcurementOverview: function () {
-                    ajaxFunc("/Dashboard/GetAllProcurements", "Get");
                     mainAreaVue.$data.view = "procurementTable";
-                    mainAreaVue.$data.sourceData = sourceData;
+                    ajaxFunc("/Dashboard/GetAllProcurements", "Get");
+                    mainAreaVue.$data.sourceData = sourceData
                     ajaxFunc("/Dashboard/GetProductList","Get");
-                    mainAreaVue.$data.productData = sourceData;
+                    mainAreaVue.$data.productData = sourceData
                 },
             }
         })
@@ -35,7 +36,7 @@
             el: "#MainArea",
             data: {
                 view: "",
-                productData:null,
+                productData: null,
                 sourceData: sourceData
             },
             components: {
@@ -56,7 +57,9 @@
                 contentType: "application/json",
                 async: false,
                 success: function (response) {
-                    sourceData = response;
+                   
+                        sourceData = response;
+                    
                 }
             });
         }

@@ -1,5 +1,5 @@
-var procurementModalTemplate = 
-`<div class="modal fade" ref="procurementModal" id="procurementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+var procurementModalTemplate =
+    `<div class="modal fade" ref="procurementModal" id="procurementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,10 +24,10 @@ var procurementModalTemplate =
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
-var procurementDeleteModalTemplate = 
-`<div class="modal fade" ref="procurementDeleteModal" id="procurementDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+var procurementDeleteModalTemplate =
+    `<div class="modal fade" ref="procurementDeleteModal" id="procurementDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -52,7 +52,7 @@ var procurementDeleteModalTemplate =
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
 var procurementCreateModalTemplate = `
 <div class="modal fade" ref="procurementCreateModal" id="procurementCreateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,21 +65,17 @@ var procurementCreateModalTemplate = `
                 </button>
             </div>       
                <div class="modal-body" v-if="modalData">
-
-                    <label>進貨商品名稱:
-<select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-                       </label><br>
-                    <label for="procurementDate">進貨日期</label>
+                    <label for="productName">進貨商品名稱</label>
+                       <select v-model="modalData.ProductId">
+                            <option v-bind:value=product.Id v-for="product in propsList">{{product.Name}}</option>
+                       </select><br />
+                    <label for="procurementDate">進貨日期</label><br />
                     <input name="procurementDate" class="form-control" v-model="modalData.PurchaseDate">
-                    <label for="procurementQuantity">數量</label>
+                    <label for="procurementQuantity" >數量</label>
                     <input name="procurementQuantity" class="form-control" v-model.number="modalData.Quantity"><br />
                     <label for="procurementUnitPrize">進貨單價</label>
                     <input name="procurementUnitPrize" class="form-control" v-model.number="modalData.UnitPrize"><br />
+                    {{modalData.ProductId}},{{modalData.PurchaseDate}},{{modalData.Quantity}},{{modalData.UnitPrize}}
                 </div>
             <div class="modal-footer">             
                 <button type="button" class="btn btn-primary" v-on:click="CreateProcurement(modalData)">新增訂單</button>
@@ -90,11 +86,13 @@ var procurementCreateModalTemplate = `
 </div>
 `
 
+
+
 var procurementTableTemplate = `
 <div>
     <table class="table">
         <thead>
-         <button type="button" class="btn btn-info" v-on:click="DisplayModal(null,$refs.procurementCreateModal)">新增訂單</button>
+         <button type="button" class="btn btn-info" v-on:click="DisplayModal($data.modalData,$refs.procurementCreateModal)">新增訂單</button>
             <tr>
                 <th>訂單編號</th>
                 <th>名稱</th>
@@ -124,27 +122,36 @@ var procurementTableTemplate = `
 </div>
 `
 
+const procurementData = {
+    ProcurementId: null,
+    ProductId: null,
+    PurchaseDate: "",
+    Quantity: null,
+    UnitPrize: null
+}
+
 var procurementTableMethods = {
     DisplayModal: function (Source, thisModal) {
         if (Source != null) {
-           
             this.$data.modalData = Source;
         }
-
-        temp = JSON.stringify(sourceData);
+        if (thisModal == this.$refs.procurementCreateModal) {
+            this.$data.modalData = procurementData;
+        }
+        temp = JSON.stringify(mainAreaVue.$data.sourceData);
         $(thisModal).modal("toggle");
     },
-    DisplayCreateModal: function () {
-    
-    },
+    //DisplayCreateModal: function () {
+
+    //},
     DismissModal: function (thisModal) {
         sourceData = JSON.parse(temp);
         temp = null;
+        this.$data.modalData = null
         mainAreaVue.$data.sourceData = sourceData;
         $(thisModal).modal("toggle");
     },
     EditProcurement: function (procurementSource) {
-        console.log(procurementSource);
         var procurementJson = JSON.stringify({
             "procurement": procurementSource
         });
@@ -153,7 +160,7 @@ var procurementTableMethods = {
         $(this.$refs.procurementModal).modal("toggle");
     },
     CreateProcurement: function (procurementSource) {
-        var procurementJson = Json.stringify({
+        var procurementJson = JSON.stringify({
             "procurement": procurementSource
         });
         ajaxFunc("/DashBoard/CreateProcurement", "Post", procurementJson)
@@ -192,9 +199,10 @@ function ProcurementAction(actionName, procurementSource, thisModal) {
 
 var procurementTableComponent = {
     template: procurementTableTemplate,
-    props: ['propsData'],
+    props: ['propsData', 'propsList'],
     data() {
         return {
+
             modalData: null,
         };
     },
