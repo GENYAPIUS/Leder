@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -205,10 +208,12 @@
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\ProcurementRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChartViewModel.cs" />
     <Compile Include="ViewModels\ProcurementViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
+    <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
@@ -224,6 +229,9 @@
     <Content Include="Assets\build\images\loading.gif" />
     <Content Include="Assets\build\js\custom.js" />
     <Content Include="Assets\build\js\custom.min.js" />
+    <Content Include="Assets\js\dashboard\dashboardChart.js" />
+    <Content Include="Assets\js\dashboard\procurementTable.js" />
+    <Content Include="Assets\js\dashboard\productTable.js" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\font-awesome.css" />
@@ -3913,7 +3921,6 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\index.cshtml" />
-    <Content Include="Views\Dashboard\Procurement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

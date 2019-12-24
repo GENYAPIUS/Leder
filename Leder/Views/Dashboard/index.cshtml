@@ -6,40 +6,40 @@
 <h2>index</h2>
 <tableComponent id="MainArea" v-bind:is="view" v-bind:props-data="sourceData">
 </tableComponent>
-
 @section Scripts{
     <script src="/Assets/js/dashboard/productTable.js"></script>
     <script src="/Assets/js/dashboard/procurementTable.js"></script>
+    <script src="/Assets/js/dashboard/dashboardChart.js"></script>
     <script>
         var sourceData;
-        var modalVue;
         var temp = null;
         var sideBarVue = new Vue({
             el: "#dashBoardSidebar",
             methods: {
                 ProductOverview: function () {
                     ajaxFunc("/Dashboard/GetAllProduct", "Get");
-                    mainAreaVue.$data.view = "productTable"
-
+                    mainAreaVue.$data.view = "productTable";
                     mainAreaVue.$data.sourceData = sourceData;
                 },
                 ProcurementOverview: function () {
                     ajaxFunc("/Dashboard/GetAllProcurements", "Get");
                     mainAreaVue.$data.view = "procurementTable";
                     mainAreaVue.$data.sourceData = sourceData;
-                    },
-                }
-            })
-
+                    ajaxFunc("/Dashboard/GetProductList","Get");
+                    mainAreaVue.$data.productData = sourceData;
+                },
+            }
+        })
 
         var mainAreaVue = new Vue({
             el: "#MainArea",
             data: {
                 view: "",
-                editData: null,
+                productData:null,
                 sourceData: sourceData
             },
             components: {
+                dashboardChart: chartComponent,
                 productTable: productTableComponent,
                 procurementTable: procurementTableComponent
             }
@@ -75,6 +75,4 @@
             text-align: center;
         }
     </style>
-
-
 } 
