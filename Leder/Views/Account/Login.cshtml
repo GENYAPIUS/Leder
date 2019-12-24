@@ -5,7 +5,7 @@
     
 }
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-sm-8 col-md-8">
             <p></p>
             <p></p>
             <p></p>
@@ -20,31 +20,31 @@
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="row">
-                        <div class="col-md-3"></div>
+                        <div class="col-sm-3 col-md-3"></div>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-4">
+                            <div class="col-sm-4 col-md-4">
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
-                        </div><div class="col-md-3"></div>
+                        </div><div class="col-sm-3 col-md-3"></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3"></div>
+                        <div class="col-sm-3 col-md-3"></div>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-4">
+                            <div class="col-sm-4 col-md-4">
                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="col-md-3"></div>
+                        <div class="col-sm-3 col-md-3"></div>
                     </div>
 
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-offset-5 col-md-10">
+                            <div class="col-sm-offset-5 col-md-offset-5 col-sm-10 col-md-10">
                                 <div class="checkbox">
                                     @Html.CheckBoxFor(m => m.RememberMe)
                                     @Html.LabelFor(m => m.RememberMe)
@@ -56,7 +56,7 @@
 
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-md-offset-5 col-md-8">
+                            <div class="col-sm-offset-5 col-md-offset-5 col-sm-8 col-md-8">
                                 <input style="width:300px" type="submit" value="登入" class="btn btn-default  " id="btn_login" />
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                 }
             </section>
             </div>
-        <div class="col-md-4">
+        <div class="col-sm-4 col-md-4">
             <section id="socialLoginForm">
                 @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </section>
