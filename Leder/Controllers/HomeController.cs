@@ -32,8 +32,7 @@ namespace Leder.Controllers
                     Name = i.Name,
                     Price = i.Price,
                     Category = categoryRepo.GetCategoryNameById(i.CategoryId),
-                    //Photo = i.Photos,
-                    ProductPage = "#"
+                    Photo = i.Photos.Split(',')[0]                    
                 });                    
             }
           
@@ -48,7 +47,7 @@ namespace Leder.Controllers
                     ADUrl = "/Assets/images/HomeImages/top_picture1.jpg",
                     ADStatement = "Share with you. Leder.",
                     ADDiscount = "On Sale!",
-                    ADPageLink = "~/Product/"
+                    ADPageLink = "/Product/Totebag"
 
                 },
                 new SliderPartialViewModel
@@ -58,7 +57,7 @@ namespace Leder.Controllers
                     ADUrl = "/Assets/images/HomeImages/top_picture2.jpg",
                     ADStatement = "Share with you. Leder.",
                     ADDiscount = "On Sale!",
-                    ADPageLink = "~/Product/"
+                    ADPageLink = "/Product/Totebag"
 
                 },
                 new SliderPartialViewModel
@@ -68,7 +67,7 @@ namespace Leder.Controllers
                     ADUrl = "/Assets/images/HomeImages/top_picture3.jpg",
                     ADStatement = "Share with you. Leder.",
                     ADDiscount = "On Sale!",
-                    ADPageLink = "~/Product/"
+                    ADPageLink = "/Product/Totebag"
 
                 }
             };

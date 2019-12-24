@@ -21,24 +21,25 @@
                 <!-- start single product item -->
                 <li>
                     <figure>
-                        <a class="aa-product-img" href="@item.ProductPage">
-                            <img class="img-responsive" src="@item.Photo" alt="@item.Name">
+                        <a class="aa-product-img" href="~/Product/@item.Category">
+                            <img class="img-responsive" src="/Assets/images/@item.Category/@item.Photo" alt="@item.Name">
                         </a>
-                        <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                        
+                        <a onclick="AddToCart('@item.Id', 1)" class="aa-add-card-btn" href=""><span class="fa fa-shopping-cart"></span>加入購物車</a>
                         <figcaption>
                             <h4 class="aa-product-title"><a href="#">@item.Name</a></h4>
-                            <span class="aa-product-price ">$@item.Price</span><span class="aa-product-price"><del>$@item.Price</del></span>
+                            <span class="aa-product-price ">$@item.Price</span>@*<span class="aa-product-price"><del>$@item.Price</del></span>*@
                         </figcaption>
                     </figure>
                     <div class="aa-product-hvr-content">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"  style="background-color:rgba(255,255,255,0.6)">
                             <span class="fa fa-heart-o"></span>
                         </a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Compare">
+                        @*<a href="#" data-toggle="tooltip" data-placement="top" title="Compare">
                             <span class="fa fa-exchange"></span>
-                        </a>
+                        </a>*@
                         <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal"
-                           data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                           data-target="#quick-view-modal"  style="background-color:rgba(255,255,255,0.6)"><span class="fa fa-search"></span></a>
                     </div>
                     <!-- product badge -->
                     <span class="aa-badge aa-sale" href="#">SALE!</span>
@@ -48,8 +49,8 @@
                 <!-- / start single product item -->
             }
         </ul>
-        <a class="aa-browse-btn" href="#">
-            Browse all Product <span class="fa fa-long-arrow-right"></span>
+        <a class="aa-browse-btn" href="/Product/@tag[i]">
+            瀏覽更多商品 <span class="fa fa-long-arrow-right"></span>
         </a>
     </div>
     <!-- / product category  -->
