@@ -1,4 +1,18 @@
-﻿function AddToCart(productId, inQuantity) {
+﻿if (location.href == 'https://localhost:44386/ShoppingCart/Order') {
+    function No() {
+        alert("再付款頁面時不能使用此功能，請在其他頁面使用");
+    }
+
+    $("#YesAddCart").click(function () {
+        No();
+    });
+    $("#NoAddCart").click(function () {
+        No();
+    });
+}
+else
+{
+    function AddToCart(productId, inQuantity) {
     $.ajax({
         type: 'POST',
         url: '/ShoppingCart/AddToCart',
@@ -22,7 +36,7 @@ function ShiftCartOK() {
         });
 }
 
-$("#YesAddCart").click(function () {;
+$("#YesAddCart").click(function () {
     $('#shiftCart').hide();
     $('.modal-backdrop').hide();
     for (var i = 1; i < $("#shiftCount").val(); i++) {
@@ -38,3 +52,7 @@ $("#NoAddCart").click(function () {
     $('.modal-backdrop').hide();
     ShiftCartOK();
 });
+}
+
+
+
