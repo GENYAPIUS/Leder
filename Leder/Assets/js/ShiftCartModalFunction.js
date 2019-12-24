@@ -1,4 +1,4 @@
-﻿if (location.href == 'https://localhost:44386/ShoppingCart/Order') {
+﻿if (location.href == window.location.protocol + '//' + window.location.host +'/ShoppingCart/Order') {
     function No() {
         alert("再付款頁面時不能使用此功能，請在其他頁面使用");
     }
