@@ -17,6 +17,5 @@ namespace Leder.ViewModels
         public string Description { get; set; } //產品頁面的敘述文字
 
 
-
         }
 }
