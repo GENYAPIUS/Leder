@@ -216,6 +216,7 @@
     <Compile Include="Migrations\201912230922568_addColorDescription.cs" />
     <Compile Include="Migrations\201912230922568_addColorDescription.Designer.cs">
       <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
+      </Compile>
     <Compile Include="Migrations\201912211056119_localTest.cs" />
     <Compile Include="Migrations\201912211056119_localTest.Designer.cs">
       <DependentUpon>201912211056119_localTest.cs</DependentUpon>
