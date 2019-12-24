@@ -47,7 +47,7 @@ namespace Leder.Controllers
                     ADUrl = "/Assets/images/HomeImages/top_picture1.jpg",
                     ADStatement = "Share with you. Leder.",
                     ADDiscount = "On Sale!",
-                    ADPageLink = "~/Product/"
+                    ADPageLink = "/Product/Totebag"
 
                 },
                 new SliderPartialViewModel
@@ -57,7 +57,7 @@ namespace Leder.Controllers
                     ADUrl = "/Assets/images/HomeImages/top_picture2.jpg",
                     ADStatement = "Share with you. Leder.",
                     ADDiscount = "On Sale!",
-                    ADPageLink = "~/Product/"
+                    ADPageLink = "/Product/Totebag"
 
                 },
                 new SliderPartialViewModel
@@ -67,7 +67,7 @@ namespace Leder.Controllers
                     ADUrl = "/Assets/images/HomeImages/top_picture3.jpg",
                     ADStatement = "Share with you. Leder.",
                     ADDiscount = "On Sale!",
-                    ADPageLink = "~/Product/"
+                    ADPageLink = "/Product/Totebag"
 
                 }
             };
