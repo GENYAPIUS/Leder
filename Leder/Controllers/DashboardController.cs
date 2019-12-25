@@ -30,7 +30,7 @@ namespace Leder.Controllers
                     Name = p.Name,
                     Price = (int)p.Price,
                     Category = categoryRepo.GetCategoryNameById(p.CategoryId),
-                    Photos = p.Photos,
+                    Photos = p.Photos.Split(','),
                     Description = p.Description
                 };
                 productViewModel.Add(productVM);
