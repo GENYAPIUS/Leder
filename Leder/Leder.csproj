@@ -52,6 +52,9 @@
     <Reference Include="BraintreeHttp-Dotnet, Version=0.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BraintreeHttp-Dotnet.0.1.5\lib\netstandard2.0\BraintreeHttp-Dotnet.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -193,6 +196,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProcurementsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,6 +236,7 @@
     <Compile Include="Models\LederContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\Procurement.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\PaymentParam.cs" />
@@ -251,10 +256,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\ProcurementRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChartViewModel.cs" />
+    <Compile Include="ViewModels\ProcurementViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
+    <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
@@ -458,6 +467,9 @@
     <Content Include="Assets\js\paypal.js" />
     <Content Include="Assets\js\ShiftCartModalFunction.js" />
     <Content Include="Assets\js\ShoppingCartFunction.js" />
+    <Content Include="Assets\js\dashboard\dashboardChart.js" />
+    <Content Include="Assets\js\dashboard\procurementTable.js" />
+    <Content Include="Assets\js\dashboard\productTable.js" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\font-awesome.css" />
