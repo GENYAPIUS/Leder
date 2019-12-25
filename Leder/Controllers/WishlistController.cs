@@ -15,22 +15,23 @@ namespace Leder.Controllers
         // GET: Wishlist
         public ActionResult Index()
         {
-            var currentWishlist = Models.Wishlist.Operation.GetCurrentWishlist();
-            return View(currentWishlist.ToList());
-        }
-        public ActionResult AddToWishlist(int id)
-        {
-            var currentWishlist = Models.Wishlist.Operation.GetCurrentWishlist();
-            currentWishlist.AddProduct(id);
-
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddToWishlist(int productId)
+        {
+            WishlistRepository repo = new WishlistRepository();
+            var currentList = repo.GetCurrentWishlist();  //取得當前的商品的資料
+            return PartialView("_WishlistPartial", currentList);
+           
         }
 
         public ActionResult RemoveWishlit(int id)
         {
-            var currentWishlist = Models.Wishlist.Operation.GetCurrentWishlist();
-            currentWishlist.RemoveProduct(id);
-            return View();
+            WishlistRepository repo = new WishlistRepository();
+            var currentList = repo.GetCurrentWishlist();  //取得要刪除的那一筆資料
+            return PartialView("_WishlistPartial", currentList);
         }
 
 

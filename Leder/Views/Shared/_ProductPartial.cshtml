@@ -23,7 +23,7 @@
                                 </figcaption>
                             </figure>
                             <div class="aa-product-hvr-content">
-                                <a onclick="AddToWishlist('@p.Id', 1)" href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                                <a onclick="AddToWishlist('@p.Id')" href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                                 <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#@p.Id"><span class="fa fa-search"></span></a>
                             </div>
                             <!-- product badge右上角的sales標籤 -->
@@ -67,17 +67,15 @@
 @section Scripts {
 <script>
 
-      function AddToWishlist(productId) {
-        $.ajax({
+    function AddToWishlist(productId) {         
+          $.ajax({
             type: 'POST',
             url: '/Wishlist/AddToWishlist',
-            data: { id: productId }
+            data: { ProductId: productId }
+           
         })
-            //.done(function (msg) {
-            //    //將回傳的購物車頁面填入 CartLayout#Cart
-            //    $('#CartLayout').html(msg);
-            //});
-}
+            
+       }
 
 
 </script>    
