@@ -95,6 +95,24 @@ namespace Leder.Controllers
             }
             return Json(chartViewModel, JsonRequestBehavior.AllowGet);
         }
+        // [HttpGet]
+        // public ActionResult GetSalesData()
+        // {
+        //     ProductRepository productRepo = new ProductRepository(db);
+        //     OrderDetailRepository orderDetailRepo = new OrderDetailRepository(db);
+        //     List<SalesViewModel> sales = new List<SalesViewModel>();
+
+        //     foreach(Product p in productRepo.GetAll().ToList())
+        //     {
+        //         SalesViewModel salesVM = new SalesViewModel()
+        //         {
+        //             ProductName = p.Name,
+        //             TotalPrize = orderDetailRepo.GetAmountByProductid(p.ProductId)
+        //         };
+        //         sales.Add(salesVM);
+        //     }
+        //     return Json(sales, JsonRequestBehavior.AllowGet);
+        // }
         [HttpPost]
         public ActionResult CreateProcurement([Bind(Include = "ProductId,PurchaseDate,Quantity,UnitPrize")]Procurement procurement)
         {

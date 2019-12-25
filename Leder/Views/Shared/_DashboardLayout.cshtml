@@ -30,7 +30,10 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     @RenderSection("Styles", required: false)
 </head>
-
+@{ 
+    string Name = HttpContext.Current.User.Identity.Name;
+    string AdminName = Name.Split('@')[0];
+}
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
@@ -49,7 +52,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>@HttpContext.Current.User.Identity.Name</h2>
+                            <h2>@AdminName</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->

@@ -14,7 +14,7 @@ namespace Leder.Repository
         {
             _db = productContext;
         }
-
+        
         
         public string GetCategoryNameById(int? CategoryId)
         {
