@@ -17,110 +17,110 @@
     <hr />
     <div class="container">
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.Email, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.Password, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.Address, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @id = "Address_text" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
                 <input type="checkbox" id="CopyAddress_Checked">與住家地址同
-                @Html.LabelFor(m => m.ShipAddress, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.ShipAddress, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.TextBoxFor(m => m.ShipAddress, new { @class = "form-control", @id = "ShipAddress_text" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label", })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.BirthDate, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label", })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @placeholder = "", @id = "BirthDate" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.CellPhone, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.CellPhone, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", @placeholder = "(例):09XX-XXX-XXX" })
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                @Html.LabelFor(m => m.IdentityCard, new { @class = "col-md-2 control-label" })
-                <div class="col-md-4">
+                @Html.LabelFor(m => m.IdentityCard, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     @Html.TextBoxFor(m => m.IdentityCard, new { @class = "form-control", @placeholder = "(例):A123456789" })
                     
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-md-2 col-xs-2 col-sm-2"></div>
             <div class="form-group">
-                <div class="col-md-offset-4 col-md-10">
+                <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-4 col-xs-10 col-sm-10 col-md-10">
                     @Html.CheckBoxFor(m => m.PrivatePolicy_Checked)我已仔細閱讀並同意遵守<a href="#PrivatePolicy" style="color:darkgoldenrod" data-toggle="modal" data-target="#PrivatePolicyModal">隱私權政策</a><br>
                     @Html.Hidden(nameof(Model.IsTrue), "true")
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="form-group">
-                <div class="col-md-offset-4 col-md-10">
+                <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-4 col-xs-10 col-sm-10 col-md-10">
                     @* <input type="checkbox" id="MustCheck" name="MustCheck">我已仔細閱讀並同意遵守<a href="#PrivatePolicy" style="color:darkgoldenrod" data-toggle="modal" data-target="#PrivatePolicyModal">隱私權政策</a><br>*@
                     <input type="submit" id="btn_register" class="btn btn-default" value="註冊" style="width:380px">
                    
@@ -128,7 +128,7 @@
                     
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
             @Html.ValidationSummary("", new { @class = "text-danger" })
         </div>
