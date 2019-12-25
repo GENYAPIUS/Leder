@@ -1,93 +1,17 @@
-
-﻿<tableComponent id="MainArea" v-bind:is="view" v-bind:props-data="sourceData" v-bind:props-list="productData">
-</tableComponent>
-
-
-@section Scripts{
-    <script type="text/javascript" src="/scripts/moment.min.js"></script>
-    <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script src="/Assets/js/dashboard/productTable.js"></script>
-    <script src="/Assets/js/dashboard/procurementTable.js"></script>
-    <script src="/Assets/js/dashboard/dashboardChart.js"></script>
-
-
-    <script>
-        var sourceData;
-        var productList;
-        var temp = null;
-        var sideBarVue = new Vue({
-            el: "#dashBoardSidebar",
-            methods: {
-                ProductOverview: function () {
-                    ajaxFunc("/Dashboard/GetAllProduct", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
-                    mainAreaVue.$data.view = "productTable";
-                },
-                ProcurementOverview: function () {
-                    ajaxFunc("/Dashboard/GetAllProcurements", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
-                    ajaxFunc("/Dashboard/GetProductList","Get");
-                    mainAreaVue.$data.productData = sourceData;
-                    mainAreaVue.$data.view = "procurementTable";
-                },
-                ChartOverView: function () {
-                    ajaxFunc("/Dashboard/GetPricePerMonthData", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
-
-                    mainAreaVue.$data.view = "dashboardChart";
-                }
-            }
-        })
-
-        var mainAreaVue = new Vue({
-            el: "#MainArea",
-            data: {
-                view: "",
-                productData: null,
-                sourceData: sourceData
-            },
-            components: {
-                dashboardChart: chartComponent,
-                productTable: productTableComponent,
-                procurementTable: procurementTableComponent
-            },
-            mounted() {
-                this.$nextTick(function () { sideBarVue.ChartOverView(); })
-            }
-        });
-
-        function ajaxFunc(url, type, data) {
-            if (url == null || type == null) { return; }
-            if (data == null) { data = "" };
-            $.ajax({
-                url: url,
-                type: type,
-                data: data,
-                dataType: "JSON",
-                contentType: "application/json",
-                async: false,
-                success: function (response) {
-					sourceData = response
-                }
-            });
-        }
-    </script>
+﻿
+@{
+    ViewBag.Title = "Dashboard Index";
 }
 
-@section Styles{
-    <style>
-        tr {
-            text-align: center;
-            margin: auto;
-        }
+<h2>index</h2>
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
 
-        th {
-            margin: auto;
-            text-align: center;
-        }
-    </style>
-} 
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

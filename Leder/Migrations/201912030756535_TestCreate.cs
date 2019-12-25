@@ -3,7 +3,7 @@ namespace Leder.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class TestCreate : DbMigration
     {
         public override void Up()
         {
@@ -24,61 +24,12 @@ namespace Leder.Migrations
                         Name = c.String(),
                         Price = c.Decimal(precision: 18, scale: 2),
                         CategoryId = c.Int(),
-                        Photos = c.String(),
+                        Photo = c.String(),
                         Description = c.String(),
                     })
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.Categories", t => t.CategoryId)
                 .Index(t => t.CategoryId);
-            
-            CreateTable(
-                "dbo.OrderDetails",
-                c => new
-                    {
-                        OrderDetailId = c.Int(nullable: false, identity: true),
-                        OrderId = c.Guid(nullable: false),
-                        ProductId = c.Int(nullable: false),
-                        Price = c.Decimal(precision: 18, scale: 2),
-                        Quantity = c.Int(),
-                        Amount = c.Decimal(precision: 18, scale: 2),
-                        Discount = c.Decimal(nullable: false, precision: 18, scale: 2),
-                    })
-                .PrimaryKey(t => t.OrderDetailId)
-                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
-                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
-                .Index(t => t.OrderId)
-                .Index(t => t.ProductId);
-            
-            CreateTable(
-                "dbo.Orders",
-                c => new
-                    {
-                        OrderId = c.Guid(nullable: false),
-                        Email = c.String(),
-                        RecieverName = c.String(nullable: false, maxLength: 30),
-                        RecieverPhone = c.String(nullable: false, maxLength: 15),
-                        RecieverAddress = c.String(nullable: false, maxLength: 256),
-                        OrderDate = c.DateTime(nullable: false),
-                        RecieverZipCode = c.String(nullable: false, maxLength: 5),
-                        TotalAmount = c.Decimal(precision: 18, scale: 2),
-                        PayStatus = c.String(),
-                        OrderStatus = c.String(),
-                    })
-                .PrimaryKey(t => t.OrderId);
-            
-            CreateTable(
-                "dbo.Procurements",
-                c => new
-                    {
-                        ProcurementId = c.Int(nullable: false, identity: true),
-                        ProductId = c.Int(nullable: false),
-                        PurchaseDate = c.DateTime(nullable: false),
-                        Quantity = c.Int(nullable: false),
-                        UnitPrize = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ProcurementId)
-                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
-                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -169,9 +120,6 @@ namespace Leder.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Procurements", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.OrderDetails", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -179,9 +127,6 @@ namespace Leder.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Procurements", new[] { "ProductId" });
-            DropIndex("dbo.OrderDetails", new[] { "ProductId" });
-            DropIndex("dbo.OrderDetails", new[] { "OrderId" });
             DropIndex("dbo.Products", new[] { "CategoryId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -189,9 +134,6 @@ namespace Leder.Migrations
             DropTable("dbo.UserDetails");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Procurements");
-            DropTable("dbo.Orders");
-            DropTable("dbo.OrderDetails");
             DropTable("dbo.Products");
             DropTable("dbo.Categories");
         }

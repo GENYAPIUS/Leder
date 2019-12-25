@@ -124,7 +124,7 @@
                     @* <input type="checkbox" id="MustCheck" name="MustCheck">我已仔細閱讀並同意遵守<a href="#PrivatePolicy" style="color:darkgoldenrod" data-toggle="modal" data-target="#PrivatePolicyModal">隱私權政策</a><br>*@
                     <input type="submit" id="btn_register" class="btn btn-default" value="註冊" style="width:380px">
                    
-                        @Html.ActionLink("移至會員登入頁面", "Login", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("移至會員登入頁面", "Login",null, new { @class = "btn btn-primary" })
                     
                 </div>
             </div>
@@ -177,6 +177,7 @@
             </div>
         </div>
 
+        }
 
         @section Scripts {
             <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
@@ -213,5 +214,3 @@
                 }
             </style>
         }
-
-}

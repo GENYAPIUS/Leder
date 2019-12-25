@@ -28,6 +28,7 @@
 
     <!-- Font-awesome圖案-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     @RenderSection("Styles", required: false)
 </head>
 
@@ -49,7 +50,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>@HttpContext.Current.User.Identity.Name</h2>
+                            <h2>Boss</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -60,14 +61,22 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <h3>General</h3>
-                            <ul class="nav side-menu" id="dashBoardSidebar">
-                                <li v-on:click="ChartOverView()"><a><i class="fa fa-home"></i>Dashboard</a></li>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="index.html">Dashboard1</a></li>
+                                        <li><a href="index2.html">Dashboard2</a></li>
+                                        <li><a href="index3.html">Dashboard3</a></li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <a><i class="fa fa-edit"></i> 產品管理表單 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li v-on:click="ProductOverview()"><a>產品總覽</a></li>
-                                        <li v-on:click="ProcurementOverview()"><a>產品進貨統計</a></li>
-                                        <li v-on:click=""><a>產品銷貨統計</a></li>
+                                        <li><a href="#">產品進貨紀錄</a></li>
+                                        <li><a href="#">產品銷貨統計</a></li>
+                                        <li><a href="#">Form</a></li>
+                                        <li><a href="#">Form</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -80,8 +89,11 @@
                                         <li><a href="other_charts.html">Other Charts</a></li>
                                     </ul>
                                 </li>
+
+
                             </ul>
                         </div>
+
                     </div>
                     <!-- /sidebar menu -->
                     <!-- /menu footer buttons -->
@@ -131,11 +143,11 @@
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>DashBoard</h3>
+                            <main role="main" class="">
+                                @RenderBody()
+                            </main>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                    @RenderBody()
                 </div>
             </div>
             <!-- /page content -->
@@ -150,7 +162,7 @@
         </div>
     </div>
 
-
+    @RenderSection("Scripts", required: false)
 
     <!-- jQuery -->
     <script src="~/Assets/vendors/jquery/dist/jquery.min.js"></script>
@@ -161,14 +173,10 @@
     <!-- NProgress -->
     <script src="~/Assets/vendors/nprogress/nprogress.js"></script>
     <!-- jQuery custom content scroller -->
-    <script src="~/Assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- Chart.js -->
-    <script src="~/Assets/vendors/Chart.js/dist/Chart.js"></script>
-    <!-- Vue.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="~/Assetsvendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="~/Assets/build/js/custom.min.js"></script>
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
 
