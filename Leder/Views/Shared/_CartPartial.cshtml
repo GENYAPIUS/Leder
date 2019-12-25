@@ -11,7 +11,7 @@
     <div class="aa-cartbox-summary">
         @if (currentCart.Count > 0)
         {
-            <ul>
+            <ul class="aa-cartbox-Item">
                 @foreach (var cartItem in currentCart)
                 {
                     var i = 1;
@@ -25,6 +25,9 @@
                     </li>
                     i++;
                 }
+            </ul>
+            <br>
+            <ul>
                 <li>
                     <span class="aa-cartbox-total-title">
                         Total
