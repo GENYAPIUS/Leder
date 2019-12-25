@@ -9,8 +9,16 @@ namespace Leder.Repository
     public class WishlistRepository
     {
       
-        public List<Wishlist> GetCurrentWishlist()
+        public List<Wishlist> GetCurrentWishlist(int productId)
         {
+            LederContext db = new LederContext();
+            ProductRepository Productrepo = new ProductRepository(db);
+
+            var item = Productrepo.FirstOrDefault(x => x.ProductId == productId);
+
+
+
+
             if (HttpContext.Current != null)
             {
                 if (HttpContext.Current.Session["Wishlist"] == null)

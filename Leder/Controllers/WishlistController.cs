@@ -21,8 +21,9 @@ namespace Leder.Controllers
         [HttpPost]
         public ActionResult AddToWishlist(int productId)
         {
-            WishlistRepository repo = new WishlistRepository();
-            var currentList = repo.GetCurrentWishlist();  //取得當前的商品的資料
+            WishlistRepository Wishlistrepo = new WishlistRepository();
+
+            var currentList = Wishlistrepo.GetCurrentWishlist(productId);  //取得當前的商品的資料
             return PartialView("_WishlistPartial", currentList);
            
         }
