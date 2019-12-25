@@ -446,7 +446,6 @@
     <Content Include="Assets\js\CartIndex.js" />
     <Content Include="Assets\js\PaymentMethod.js" />
     <Content Include="Assets\js\paypal.js" />
-    <Content Include="Assets\js\ShiftCartModalFunction.js" />
     <Content Include="Assets\js\ShoppingCartFunction.js" />
     <Content Include="Assets\js\dashboard\dashboardChart.js" />
     <Content Include="Assets\js\dashboard\procurementTable.js" />
