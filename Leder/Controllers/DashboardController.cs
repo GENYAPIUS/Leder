@@ -77,7 +77,7 @@ namespace Leder.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetPricePerMonthData()
+        public ActionResult GetPricePerMonthChartData()
         {
             ProcurementRepository procurementRepo = new ProcurementRepository(db);
             ChartViewModel chartViewModel = new ChartViewModel();
@@ -98,9 +98,19 @@ namespace Leder.Controllers
         [HttpGet]
         public ActionResult GetSalesData()
         {
+            ProductRepository productRepo = new ProductRepository(db);
+            OrderDetailRepository orderDetailRepo = new OrderDetailRepository(db);
             List<SalesViewModel> salesViewModels = new List<SalesViewModel>();
-
-            return Json("",JsonRequestBehavior.AllowGet);
+           
+            foreach(var p in productRepo.GetAll().ToList())
+            {
+                SalesViewModel salesVM = new SalesViewModel() { 
+                ProductName = p.Name,
+                TotalPrize = orderDetailRepo.GetAmountByProductid(p.ProductId)
+                };
+                salesViewModels.Add(salesVM);
+            }
+            return Json(salesViewModels, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public ActionResult CreateProcurement([Bind(Include = "ProductId,PurchaseDate,Quantity,UnitPrize")]Procurement procurement)
