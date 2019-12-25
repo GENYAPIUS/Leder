@@ -1,69 +1,72 @@
 ﻿
 @{ var shiftCart = Leder.Models.Cart.Operation.GetShiftCart(); }
-<div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true"backdrop="static" data-keyboard="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-                <div class="modal-title ">
-                    網站偵測到您未登入時的購物車清單，請問是否要加進您的購物車中
+    <div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true" backdrop="static" data-keyboard="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <div class="modal-title ">
+                        網站偵測到您未登入時的購物車清單，請問是否要加進您的購物車中
+                    </div>
                 </div>
-            </div>
-            <div class="modal-body">
-                <table class="table">
-                    @{var shiftCartId = 1; var QuantityId = 1001;}
-                    <thead>
-                        <tr>
-                            <th>Photo</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var cartItem in shiftCart)
-                        {
+                <div class="modal-body">
+                    <table class="table">
+                        @{var shiftCartId = 1; var QuantityId = 1001;}
+                        <thead>
                             <tr>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cartItem in shiftCart)
+                            {
+                                <tr>
+                                    <td>
+                                        <a class="aa-cartbox-img"><img src="/Assets/images/@cartItem.Category/@cartItem.Photo" alt="img"></a>
+                                    </td>
+                                    <td>
+                                        <a>@cartItem.Name</a>
+                                    </td>
+                                    <td>
+                                        $@cartItem.Price
+                                    </td>
+                                    <td>
+                                        @cartItem.Quantity
+                                        <input id="@QuantityId" value="@cartItem.Quantity" style="display:none" />
+                                    </td>
+                                    <td>
+                                        @cartItem.Amount
+                                    </td>
+                                </tr>
+                                <input id="@shiftCartId" value="@cartItem.Id" style="display:none" />
+                                shiftCartId++;
+                                QuantityId++;
+                            }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
-                                    <a class="aa-cartbox-img"><img src="/Assets/images/@cartItem.Category/@cartItem.Photo" alt="img"></a>
-                                </td>
-                                <td>
-                                    <a>@cartItem.Name</a>
-                                </td>
-                                <td>
-                                    $@cartItem.Price
-                                </td>
-                                <td>
-                                    @cartItem.Quantity
-                                    <input id="@QuantityId" value="@cartItem.Quantity" style="display:none" />
-                                </td>
-                                <td>
-                                    @cartItem.Amount
+                                    <input id="shiftCount" value="@shiftCartId" style="display:none" />
                                 </td>
                             </tr>
-                            <input id="@shiftCartId" value="@cartItem.Id" style="display:none" />
-                            shiftCartId++;
-                            QuantityId++;
-                        }
-                    <tr>
-                        <td></td><td></td><td></td><td></td>
-                        <td>
-                            <input id="shiftCount" value="@shiftCartId" style="display:none" />
-                            <div class="yesandno">
-                                <a id="YesAddCart"  class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
-                                <a id="NoAddCart"  class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div >
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <a id="YesAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
+                    <a id="NoAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="~/Assets/js/ShiftCartModalFunction.js"></script>
