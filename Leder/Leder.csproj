@@ -243,6 +243,7 @@
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
+    <Compile Include="ViewModels\SalesViewModel.cs" />
     <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -4131,7 +4132,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
-    <Content Include="Views\Dashboard\index.cshtml" />
     <Content Include="Views\ShoppingCart\Order.cshtml" />
     <Content Include="Views\Shared\_ShiftCartModal.cshtml" />
     <Content Include="Views\ShoppingCart\CashOrder.cshtml" />
@@ -4140,6 +4140,7 @@
     <Content Include="Views\Blog\Blog1.cshtml" />
     <Content Include="Views\Blog\Blog2.cshtml" />
     <Content Include="Views\Blog\Blog3.cshtml" />
+    <Content Include="Views\Dashboard\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

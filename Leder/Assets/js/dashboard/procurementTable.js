@@ -187,7 +187,7 @@ var procurementTableComponent = {
     methods: procurementTableMethods,
     mounted() {
         $(this.$refs.procurementTable).DataTable({
-            "iDisplayLength": 5
+           
         });
 
     }
