@@ -12,7 +12,7 @@ var procurementModalTemplate =
 
                 <label>進貨商品名稱：<br>&nbsp;&nbsp;&nbsp;{{modalData.ProductName}}</label><br>
                 <label for="procurementDate">進貨日期</label>
-                <input name="procurementDate" class="form-control" v-model="modalData.PurchaseDate">
+                <input id="procurementDate" name="procurementDate" class="form-control" v-model="modalData.PurchaseDate">
                 <label for="procurementQuantity">數量</label>
                 <input name="procurementQuantity" class="form-control" v-model.number="modalData.Quantity"><br />
                 <label for="procurementUnitPrize">進貨單價</label>
@@ -90,7 +90,7 @@ var procurementCreateModalTemplate = `
 
 var procurementTableTemplate = `
 <div>
-    <table class="table">
+    <table class="table" id="ProcurementTB">
         <thead>
          <button type="button" class="btn btn-info" v-on:click="DisplayModal($data.modalData,$refs.procurementCreateModal)">新增訂單</button>
             <tr>
@@ -208,3 +208,9 @@ var procurementTableComponent = {
     },
     methods: procurementTableMethods
 }
+
+$(function () {
+    $('#ProcurementTB').DataTable({
+        "iDisplayLength": 5
+    });
+});

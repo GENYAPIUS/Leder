@@ -93,7 +93,7 @@ namespace Leder.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateProcurement(Procurement procurement)
+        public ActionResult CreateProcurement([Bind(Include = "ProductId,PurchaseDate,Quantity,UnitPrize")]Procurement procurement)
         {
             ProductRepository productRepo = new ProductRepository(db);
             ProcurementRepository procurementRepo = new ProcurementRepository(db);
