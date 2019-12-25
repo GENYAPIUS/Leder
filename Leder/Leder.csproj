@@ -243,7 +243,6 @@
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
-    <Compile Include="ViewModels\SalesViewModel.cs" />
     <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

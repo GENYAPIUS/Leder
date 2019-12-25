@@ -95,13 +95,6 @@ namespace Leder.Controllers
             }
             return Json(chartViewModel, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
-        public ActionResult GetSalesData()
-        {
-            List<SalesViewModel> salesViewModels = new List<SalesViewModel>();
-
-            return Json("",JsonRequestBehavior.AllowGet);
-        }
         [HttpPost]
         public ActionResult CreateProcurement([Bind(Include = "ProductId,PurchaseDate,Quantity,UnitPrize")]Procurement procurement)
         {
