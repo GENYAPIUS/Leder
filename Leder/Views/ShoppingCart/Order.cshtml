@@ -46,8 +46,8 @@
                                         @foreach (var i in Model.CartItems)
                                         {
                                             <tr>
-                                                <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
-                                                <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
+                                                <td><img src="/Assets/images/@Html.DisplayFor(m=>i.Category)/@Html.DisplayFor(m=>i.Photo)" alt="img"></td>
+                                                <td class="aa-cart-title">@Html.DisplayFor(m => i.Name)</td>
                                                 <td>@Html.DisplayFor(m => i.Price)</td>
                                                 <td><a class="aa-cart-quantity">@Html.DisplayFor(m => i.Quantity)</a></td>
                                                 <td>@Html.DisplayFor(m => i.Amount)</td>
@@ -63,7 +63,7 @@
                                 <tbody>
                                     <tr>
                                         <th>Total</th>
-                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>                                        
+                                        <td>NTD $ @String.Format("{0}", Model.Carts.TotalAmount)</td>
                                     </tr>
                                 </tbody>
 
@@ -84,5 +84,5 @@
 
 @section Scripts{
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script type="text/javascript" src="~/Scripts/paypal.js"></script>
+    <script type="text/javascript" src="~/Assets/js/paypal.js"></script>
 }

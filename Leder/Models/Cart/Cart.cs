@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Leder.Repository;
 
 namespace Leder.Models.Cart
 {
@@ -59,12 +60,15 @@ namespace Leder.Models.Cart
                 //不存在購物車內則新增一筆
                 using (LederContext db = new LederContext())
                 {
+                    CategoryRepository categoryRepo = new CategoryRepository(db);
+                    
                     var product = (from s in db.Products
                                    where s.ProductId == ProuctId
                                    select s).FirstOrDefault();
-                    if(product !=default(Product))
+                    var category = categoryRepo.GetCategoryNameById(product.CategoryId);
+                    if (product !=default(Product))
                     {
-                        this.AddProduct(product, quantity);
+                        this.AddProduct(product, quantity, category);
                     }
                 }
             }
@@ -78,15 +82,16 @@ namespace Leder.Models.Cart
         }
 
         //新增一筆Prodct，使用Prodct物件
-        public bool AddProduct(Product product,int? quantity)
+        public bool AddProduct(Product product,int? quantity, string category)
         {
             //將Product轉為CartItem
             var cartItem = new CartItem()
             {
                 Id = product.ProductId,
                 Name = product.Name,
+                Category = category,
                 Price = product.Price,
-                Photo = product.Photos,
+                Photo = product.Photos.Split(',')[0],
                 Quantity = quantity
             };
             //加入CartItem至購物車
