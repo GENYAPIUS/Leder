@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table">
-                        @if (currentWishlist != null)
+                        @if (Model.Count() != 0)
                         {
                             <form action="">
                                 <div class="table-responsive">
@@ -48,7 +48,7 @@
                                 <table class="aa-totals-table">
                                     <tbody>
                                         <tr>
-                                            <td><a class="aa-cart-view-btn" href="~/Product/Index">前往購物頁面</a></td>
+                                            <td><a class="aa-cart-view-btn" href="~/Product/Totebag">前往購物頁面</a></td>
                                         </tr>
                                     </tbody>
                                 </table>

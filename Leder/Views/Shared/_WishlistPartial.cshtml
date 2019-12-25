@@ -1,12 +1,15 @@
-﻿@model IEnumerable<Leder.Models.Wishlist>
+﻿@model List<Wishlist>
+@{ 
+    var items = (IEnumerable<Wishlist>)Model;
+}
 
 <tbody id="wishlistDisplay">
 
-    @foreach (var p in Model)
+    @foreach (var p in items)
     {
         <tr>
-            <td><a href="~/ShoppingCart" class="remove" onclick="RemoveWishlit('@Html.DisplayFor(m => p.Id)')"><fa class="fa fa-close"></fa></a></td>
-            <td><a href="#"><img src="@Html.DisplayFor(m=>p.Photo)" alt="img"></a></td>
+            <td><a href="~/ShoppingCart" class="remove" onclick="RemoveWishlist('@Html.DisplayFor(m => p.Id)')"><fa class="fa fa-close"></fa></a></td>
+            <td><a href="#"><img src="/Assets/images/@Html.DisplayFor(m=>p.Category)/@Html.DisplayFor(m=>p.Photo)" alt="img"></a></td>
             <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => p.Name)</a></td>
             <td>@Html.DisplayFor(m => p.Price)</td>
         </tr>
@@ -23,16 +26,12 @@
 @section Scripts {
     <script>
 
-        function RemoveWishlit(productId) {
+        function RemoveWishlist(productId) {
             $.ajax({
                 type: 'POST',
-                url: '/Wishlist/RemoveWishlit',
-                data: { id: productId },
-                success: function (response) {
-                    alert(response);
-                    $("#wishlistDisplay").html(response);
-                }
-            })
+                url: '/Wishlist/RemoveWishlist',
+                data: { id: productId }
+            });
 
         }
 
