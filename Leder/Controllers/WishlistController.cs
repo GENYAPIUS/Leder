@@ -10,7 +10,7 @@ using Leder.Repository;
 
 namespace Leder.Controllers
 {
-    
+
     public class WishlistController : Controller
     {
         LederContext db = new LederContext();
@@ -18,8 +18,7 @@ namespace Leder.Controllers
         // GET: Wishlist
         public ActionResult Index()
         {
-            WishlistRepository repo = new WishlistRepository();
-            var currentList = repo.GetCurrentWishlist();
+            var currentList = (List<Wishlist>)Session["Wishlist"];
 
             return View(currentList);
         }
@@ -27,37 +26,53 @@ namespace Leder.Controllers
         [HttpPost]
         public ActionResult AddToWishlist(int productId)
         {
-            
-            CategoryRepository categoryRepo = new CategoryRepository(db);
+            List<Wishlist> currentList = new List<Wishlist>();
             var product = db.Products.FirstOrDefault(x => x.ProductId == productId);
-            WishlistRepository Wishlistrepo = new WishlistRepository();
+            CategoryRepository categoryRepo = new CategoryRepository(db);
 
-            var currentList = Wishlistrepo.GetCurrentWishlist();  
-
-            if (currentList.Find(x => x.Id == productId) == null)
+            if (Session["Wishlist"] == null)
             {
                 Wishlist wishitem = new Wishlist
                 {
                     Id = productId,
                     Name = product.Name,
-                    Category = categoryRepo.GetCategoryNameById(productId),
+                    Category = categoryRepo.GetCategoryNameById(product.CategoryId),
                     Photo = product.Photos.Split(',')[0],
                     Price = product.Price
                 };
                 currentList.Add(wishitem);
 
                 Session["Wishlist"] = currentList;
-            }            
+
+            }
+            else
+            {
+                currentList = (List<Wishlist>)Session["Wishlist"];
+                if (currentList.Find(x => x.Id == productId) == null)
+                {
+                    Wishlist wishitem = new Wishlist
+                    {
+                        Id = productId,
+                        Name = product.Name,
+                        Category = categoryRepo.GetCategoryNameById(product.CategoryId),
+                        Photo = product.Photos.Split(',')[0],
+                        Price = product.Price
+                    };
+                    currentList.Add(wishitem);
+
+                    Session["Wishlist"] = currentList;
+                }
+            }
+
 
             return PartialView("_WishlistPartial", currentList);
-           
+
         }
 
         [HttpPost]
         public ActionResult RemoveWishlist(int id)
         {
-            WishlistRepository repo = new WishlistRepository();
-            var currentList = repo.GetCurrentWishlist();
+            List<Wishlist> currentList = (List<Wishlist>)Session["Wishlist"];
             var item = currentList.FirstOrDefault(x => x.Id == id);
             currentList.Remove(item);
 

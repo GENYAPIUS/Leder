@@ -64,19 +64,4 @@
             </nav>
         </div>
     
-@section Scripts {
-<script>
 
-    function AddToWishlist(id) {         
-          $.ajax({
-            type: 'POST',
-            url: '/Wishlist/AddToWishlist',
-            data: { productId: id}
-           
-        });
-            
-       }
-
-
-</script>    
-}

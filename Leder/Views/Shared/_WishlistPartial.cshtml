@@ -23,18 +23,3 @@
     </tr>
 </tbody>
 
-@section Scripts {
-    <script>
-
-        function RemoveWishlist(productId) {
-            $.ajax({
-                type: 'POST',
-                url: '/Wishlist/RemoveWishlist',
-                data: { id: productId }
-            });
-
-        }
-
-
-    </script>
-}
