@@ -7,7 +7,7 @@
 
 
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" ,onsubmit = "AddAddress()"}))
 {
     @Html.AntiForgeryToken()
 
@@ -54,8 +54,19 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Address, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
                 <div class="col-xs-4 col-sm-4 col-md-4">
-                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @id = "Address_text" })
-                </div>
+
+                    <select name="item_value[2][city]" id="city" class="custom-select mr-2 " required>
+                        <option value="" disabled="disabled" selected="selected">請選擇縣市</option>
+                    </select>
+                    <select name="item_value[2][area]" id="area" class="custom-select " required>
+                        <option value="" disabled="disabled" selected="selected">請選擇區域</option>
+                    </select>
+                    <br />
+
+                    <input name="item_value[2][address]" id="AddressDetail" class="form-control" type="text" placeholder="請輸入地址" required>
+                    <input name="Address" id="Address" type="hidden" value="" />
+                </div >
+                    @*Html.TextBoxFor(m => m.Address, new { @class = "form-control", @id = "Address_text", @placeholder = "請輸入地址" })*@
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
@@ -129,9 +140,9 @@
                 </div>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3"></div>
-        </div>
             @Html.ValidationSummary("", new { @class = "text-danger" })
         </div>
+    </div>
         <div class="modal fade" id="PrivatePolicyModal" role="dialog" style="background-color:antiquewhite">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -183,7 +194,7 @@
             <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
             <script src="~/Scripts/jquery.validate.min.js"></script>
             <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+            <script src="~/Assets/js/Address.js"></script>
             <script type="text/javascript" src="/scripts/moment.min.js"></script>
             <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
             <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
@@ -191,7 +202,7 @@
             <script>
                 $("#CopyAddress_Checked").change(function () {
                     if ($(this).prop("checked")) {
-                        $('#ShipAddress_text').val($('#Address_text').val());
+                        $('#ShipAddress_text').val(AddressSelectList.ReturnSelectAddress('city', 'area') + $('#AddressDetail').val());
                     }
                     else {
                         $('#ShipAddress_text').val("");
@@ -200,6 +211,10 @@
                 $('#BirthDate').datetimepicker({
                     format: "YYYY/MM/DD"
                 });
+                function AddAddress() {
+                    $('#Address').val(AddressSelectList.ReturnSelectAddress('city', 'area') + $('#AddressDetail').val());
+                };
+            
             </script>
         }
         @section Styles{
