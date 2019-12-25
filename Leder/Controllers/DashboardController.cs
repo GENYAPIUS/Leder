@@ -76,22 +76,30 @@ namespace Leder.Controllers
             return Json(procurements, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetChartData()
+        [HttpGet]
+        public ActionResult GetPricePerMonthData()
         {
             ProcurementRepository procurementRepo = new ProcurementRepository(db);
+            ChartViewModel chartViewModel = new ChartViewModel();
             var procurement = from p in procurementRepo.GetAll()
                               group p by new { p.PurchaseDate.Year, p.PurchaseDate.Month } into g
                               select new
                               {
                                   YM = g.Key.Year + "/" + g.Key.Month,
-                                  //QuantityTotal = g.Sum(p.Quantity),
-                                  //PriceTotal = g.Sum(p.Quantity*p.UnitPrize)
-
+                                  PriceTotal = g.Sum(p => p.Quantity * p.UnitPrize)
                               };
-
-            return Json("");
+            foreach (var p in procurement)
+            {
+                chartViewModel.Label.Add(p.YM);
+                chartViewModel.Data.Add(p.PriceTotal);
+            }
+            return Json(chartViewModel, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpGet]
+        public ActionResult GetSalesData()
+        {
+            return Json("",JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public ActionResult CreateProcurement(Procurement procurement)
         {
@@ -187,12 +195,6 @@ namespace Leder.Controllers
                 procurements.Add(procurementVM);
             }
             return Json(procurements);
-        }
-
-        [HttpGet]
-        public void GetAllSales()
-        {
-
         }
     }
 }
