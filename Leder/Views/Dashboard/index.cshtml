@@ -12,7 +12,7 @@
     <script src="/Assets/js/dashboard/productTable.js"></script>
     <script src="/Assets/js/dashboard/procurementTable.js"></script>
     <script src="/Assets/js/dashboard/dashboardChart.js"></script>
-    <script src="/Assets/js/dashboard/SalesTable.js"></script>
+    <script src="/Assets/js/dashboard/salesTable.js"></script>
 
 
     <script>
@@ -35,15 +35,12 @@
                     mainAreaVue.$data.view = "procurementTable";
                 },
                 ChartOverView: function () {
-                    ajaxFunc("/Dashboard/GetPricePerMonthData", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
-
                     mainAreaVue.$data.view = "dashboardChart";
                 },
                 SalesOverView: function () {
                     ajaxFunc("/Dashboard/GetSalesData", "Get");
                     mainAreaVue.$data.sourceData = sourceData;
-                    mainAreaVue.$data.view = "SalesTable";
+                    mainAreaVue.$data.view = "salesTable";
                 }
             }
         })

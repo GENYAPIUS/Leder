@@ -95,6 +95,17 @@ namespace Leder.Controllers
             }
             return Json(chartViewModel, JsonRequestBehavior.AllowGet);
         }
+        //[HttpGet]
+        //public ActionResult GetSalesChartData()
+        //{
+        //    ProductRepository productRepo = new ProductRepository(db);
+        //    OrderDetailRepository orderDetailRepo = new OrderDetailRepository(db);
+        //    ChartViewModel chartViewModel = new ChartViewModel();
+        //    var sales = from p in productRepo.GetAll()
+        //                join 
+
+        //    return Json("", JsonRequestBehavior.AllowGet);
+        //}
         [HttpGet]
         public ActionResult GetSalesData()
         {

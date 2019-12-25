@@ -1,8 +1,8 @@
 ﻿var SalesTableTemplate = `
-<div class="container">
+<div class="container" style="width:30%;float:left">
 <div class="row">
-    <table class="table">
-        <thead class="col col-3">
+    <table class="table col-md-6">
+        <thead>
             <tr>
                 <th>名稱</th>
                 <th>總銷售金額</th>

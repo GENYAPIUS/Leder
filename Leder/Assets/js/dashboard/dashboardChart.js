@@ -102,10 +102,16 @@ var chartMethods = {
 
 var chartComponent = {
     template: chartTemplate,
-    props: ['propsData'],
+    data() {
+        return {
+            chartData: undefined
+        }
+    },
     methods: chartMethods,
     mounted() {
-        this.DisplayChart();
+        ajaxFunc("/Dashboard/GetPricePerMonthData", "Get");
+        this.$data.chartData = sourceData
+        this.DisplayChart(this.$refs.costPerMonthChart, 'bar');
     }
 }
 
