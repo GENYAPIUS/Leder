@@ -98,6 +98,8 @@ namespace Leder.Controllers
         [HttpGet]
         public ActionResult GetSalesData()
         {
+            List<SalesViewModel> salesViewModels = new List<SalesViewModel>();
+
             return Json("",JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
