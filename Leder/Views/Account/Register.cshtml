@@ -55,19 +55,20 @@
                 @Html.LabelFor(m => m.Address, new { @class = "col-xs-2 col-sm-2 col-md-2 control-label" })
                 <div class="col-xs-4 col-sm-4 col-md-4">
 
-                    <select name="item_value[2][city]" id="city" class="custom-select mr-2 " required>
+                    <select name="item_value[2][city]" id="city" class="custom-select mr-2 ">
                         <option value="" disabled="disabled" selected="selected">請選擇縣市</option>
                     </select>
-                    <select name="item_value[2][area]" id="area" class="custom-select " required>
+                    <select name="item_value[2][area]" id="area" class="custom-select ">
                         <option value="" disabled="disabled" selected="selected">請選擇區域</option>
                     </select>
                     <br />
 
-                    <input name="item_value[2][address]" id="AddressDetail" class="form-control" type="text" placeholder="請輸入地址" required>
-                    <input name="Address" id="Address" type="hidden" value="" />
-                </div >
-                    @*Html.TextBoxFor(m => m.Address, new { @class = "form-control", @id = "Address_text", @placeholder = "請輸入地址" })*@
-            </div>
+                    @*<input name="item_value[2][address]" id="Address" class="form-control" type="text" placeholder="請輸入地址">*@
+                    @*<input name="Address" id="Address" type="hidden" value="" />*@
+                    @Html.TextBoxFor(m => m.Address, new { @name = "item_value[2][address]", @class = "form-control", @id = "Address", @placeholder = "請輸入地址" })
+
+                </div>
+                </div>
             <div class="col-xs-3 col-sm-3 col-md-3"></div>
         </div>
 
@@ -134,13 +135,14 @@
                 <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-4 col-xs-10 col-sm-10 col-md-10">
                     @* <input type="checkbox" id="MustCheck" name="MustCheck">我已仔細閱讀並同意遵守<a href="#PrivatePolicy" style="color:darkgoldenrod" data-toggle="modal" data-target="#PrivatePolicyModal">隱私權政策</a><br>*@
                     <input type="submit" id="btn_register" class="btn btn-default" value="註冊" style="width:380px">
-                   
                         @Html.ActionLink("移至會員登入頁面", "Login", null, new { @class = "btn btn-primary" })
-                    
                 </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3"></div>
-            @Html.ValidationSummary("", new { @class = "text-danger" })
+            @*<div class="col-xs-3 col-sm-3 col-md-3"></div>*@
+            <div>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+            </div>
+            
         </div>
     </div>
         <div class="modal fade" id="PrivatePolicyModal" role="dialog" style="background-color:antiquewhite">
@@ -201,7 +203,7 @@
             <script>
                 $("#CopyAddress_Checked").change(function () {
                     if ($(this).prop("checked")) {
-                        $('#ShipAddress_text').val(AddressSelectList.ReturnSelectAddress('city', 'area') + $('#AddressDetail').val());
+                        $('#ShipAddress_text').val(AddressSelectList.ReturnSelectAddress('city', 'area') + $('#Address').val());
                     }
                     else {
                         $('#ShipAddress_text').val("");
@@ -211,7 +213,7 @@
                     format: "YYYY/MM/DD"
                 });
                 function AddAddress() {
-                    $('#Address').val(AddressSelectList.ReturnSelectAddress('city', 'area') + $('#AddressDetail').val());
+                        $('#Address').val(AddressSelectList.ReturnSelectAddress('city', 'area') + $('#Address').val());
                 };
             
             </script>
