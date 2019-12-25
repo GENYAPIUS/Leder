@@ -38,6 +38,21 @@ namespace Leder.Controllers
           
             ViewData["ProductsSectionData"] = productsSections;
 
+            List<ProductViewModel> productVM = new List<ProductViewModel>();
+            foreach (var i in Product)
+            {
+                productVM.Add(new ProductViewModel()
+                {
+                    Id = i.ProductId,
+                    Name = i.Name,
+                    Price = i.Price,
+                    Category = categoryRepo.GetCategoryNameById(i.CategoryId),
+                    Photos = i.Photos.Split(',')
+                });
+            }
+            ViewData["ProductsSectionQuickViewData"] = productVM;
+
+
             List<SliderPartialViewModel> sliders = new List<SliderPartialViewModel>()
             {
                 new SliderPartialViewModel
