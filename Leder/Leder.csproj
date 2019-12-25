@@ -202,29 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912030756535_TestCreate.cs" />
-    <Compile Include="Migrations\201912030756535_TestCreate.Designer.cs">
-      <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912060834122_TestCreate1.cs" />
-    <Compile Include="Migrations\201912060834122_TestCreate1.Designer.cs">
-      <DependentUpon>201912060834122_TestCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912180341171_AddOrderModel.cs" />
-    <Compile Include="Migrations\201912180341171_AddOrderModel.Designer.cs">
-      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912190328186_PhotoToPhotos.cs" />
-    <Compile Include="Migrations\201912190328186_PhotoToPhotos.Designer.cs">
-      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912230922568_addColorDescription.cs" />
-    <Compile Include="Migrations\201912230922568_addColorDescription.Designer.cs">
-      <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912211112144_addColor.cs" />
-    <Compile Include="Migrations\201912211112144_addColor.Designer.cs">
-      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
+    <Compile Include="Migrations\201912251041429_InitialCreate.cs" />
+    <Compile Include="Migrations\201912251041429_InitialCreate.Designer.cs">
+      <DependentUpon>201912251041429_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -4174,27 +4154,12 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
-      <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912060834122_TestCreate1.resx">
-      <DependentUpon>201912060834122_TestCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912180341171_AddOrderModel.resx">
-      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912190328186_PhotoToPhotos.resx">
-      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912230922568_addColorDescription.resx">
-      <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912211112144_addColor.resx">
-      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\201912251041429_InitialCreate.resx">
+      <DependentUpon>201912251041429_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
