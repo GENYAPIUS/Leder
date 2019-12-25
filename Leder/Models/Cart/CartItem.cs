@@ -12,6 +12,7 @@ namespace Leder.Models.Cart
     {
         public int Id { get; set; }    //商品編號
         public string Name { get; set; }//商品名稱
+        public string Category { get; set; }
         public decimal? Price { get; set; }//商品購買價格
         public int? Quantity { get; set; }//商品購買數量
         //商品小計

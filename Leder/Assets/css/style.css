@@ -865,7 +865,7 @@ img {
   display: inline;
   float: left;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 
 #aa-slider .aa-slider-area .seq-title {
@@ -939,6 +939,8 @@ img {
   float: left;
   display: inline;
   width: 100%;
+  align-items: center;
+  
 }
 
 #aa-promo .aa-promo-area {
@@ -952,7 +954,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
-  height: 400px;
+  height: 580px;
   overflow: hidden;
 }
 
@@ -964,7 +966,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
-  height: 400px;
+  height: 500px;
   background-color: #ddd;
 }
 
@@ -972,7 +974,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
-  height: 400px;
+  height: 580px;
 }
 
 #aa-promo .aa-promo-area .aa-promo-right .aa-single-promo-right {
@@ -4395,6 +4397,7 @@ aa-prod-quantity
   #aa-promo .aa-promo-area .aa-promo-right .aa-single-promo-right {
     height: 250px;
     width: 100%;
+    
   }
   #aa-product .aa-product-area {
     margin-top: 20px;

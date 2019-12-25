@@ -2,127 +2,108 @@
 <!-- Start header section -->
 <header id="aa-header">
     <!-- start header top  -->
-    <div class="aa-header-top" style="height:87px">
-        <div class="container" style="margin-top:20px;padding:0 0 0 5px">
-            <nav class="navbar navbar-default" style="background-color: #FFFFFF;border:none">
+    <div class="aa-header-top" style="min-height:87px;background-color: #FFFFFF;border:none;">
+        <div class="container" style="margin-top:20px;">
+
+            <nav class="navbar navbar-default navbar-fixed-top" style="height:auto;background-color: rgba(255,255,255,0.95);border:none;padding:0 0 0 0">
                 <div class="container-fluid">
-                    <ul class="nav navbar-nav" style="padding:0 10px 0 0">
-                        <li class="aa-logo">
-                            <span>
-                                <!-- Text based logo -->
-                                <a href="~/Home/Index">
-                                    <span class="fa fa-shopping-bag" style="font-size: 32px"></span>
-                                    <p>Leder<strong>里德皮件店</strong> <span>Your best Leather Partner</span></p>
-                                </a>
-                            </span>
-                            <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
-                        </li>
-                        
-                    </ul>
-                    <ul class="nav navbar-nav" style="padding:0">
-                        <li><a href="~/Home/Index">Home</a></li>
-                        @*<li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                季節性活動
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Christmas 2019</a></li>
-                <li><a href="#">New Year 2020</a></li>
-            </ul>
-        </li>*@
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="~/Product/Index">
-                                皮革商品
-                                <span class="caret"></span>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="margin-top:20px;background-color:brown">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="aa-logo" style="margin-top:20px;margin-left:20px;margin-right:20px">
+                            <a href="~/Home/Index">
+                                <span class="fa fa-shopping-bag" style="font-size: 32px"></span>
+                                <p>Leder<strong>里德皮件店</strong> <span>Your best Leather Partner</span></p>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="~/Product/Totebag">側背包</a></li>
-                                <li><a href="~/Product/Backpack">後背包</a></li>
-                                <li><a href="~/Product/Longclip">長夾</a></li>
-                                <li><a href="~/Product/Coinwallet">零錢包</a></li>
-                                <li><a href="~/Product/Namecard">名片夾</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">關於里德</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#aa-latest-blog">
-                                專欄文章
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">專欄文章1</a></li>
-                                <li><a href="#">專欄文章2</a></li>
-                                <li><a href="#">專欄文章3</a></li>
-                            </ul>
-                        </li>
-
-                        @if (Request.IsAuthenticated) 
-                        {
-                        <li><a href="~/Wishlist/Index">❤</a></li>
-                        }
-                        @*<li>@Html.ActionLink("聯絡里德", "#")</li>*@
-
-
-
-                        @if (Request.IsAuthenticated)
-
-                        {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                @*<li>
-                    @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>*@
-
-
-                            }
-                            @Html.AntiForgeryToken()
+                        </span>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar" style="height:auto;margin-top:20px;margin-left:20px">
+                        <ul class="nav navbar-nav">
+                            <li><a href="~/Home/Index">Home</a></li>
+                            @*<li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        季節性活動
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Christmas 2019</a></li>
+                                        <li><a href="#">New Year 2020</a></li>
+                                    </ul>
+                                </li>*@
                             <li class="dropdown">
-                                <span class="glyphicon glyphicon-user"></span>
-                                @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="~/Product/Totebag">
+                                    皮革商品
+                                    <span class="caret"></span>
+                                </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="~/Manage">會員資料</a></li>
-                                    @if (User.Identity.Name == "admin55688@gmail.com")
-                                    {
-                                        <li><a href="~/Dashboard/index">前往後台</a></li>
-                                    }
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+                                    <li><a href="~/Product/Totebag">側背包</a></li>
+                                    <li><a href="~/Product/Backpack">後背包</a></li>
+                                    <li><a href="~/Product/Longclip">長夾</a></li>
+                                    <li><a href="~/Product/Coinwallet">零錢包</a></li>
+                                    <li><a href="~/Product/Namecard">名片夾</a></li>
                                 </ul>
                             </li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li><a href="#">關於里德</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#aa-latest-blog">
+                                    專欄文章
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">專欄文章1</a></li>
+                                    <li><a href="#">專欄文章2</a></li>
+                                    <li><a href="#">專欄文章3</a></li>
+                                </ul>
+                            </li>
+                            @if (Request.IsAuthenticated) 
+                            {
+                                <li><a href="~/Wishlist/Index">❤</a></li>
+                            }
+                            @*<li>@Html.ActionLink("聯絡里德", "#")</li>*@
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" style="margin-right:20px">
 
-                        }
 
+                            @if (Request.IsAuthenticated)
 
-                        <li><a href="~/Checkout">Checkout</a></li>
-                        <li id="CartLayout">
-                            @Html.Partial("_CartPartial")
-                        </li>
-                    </ul>                    
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                }
+                                @Html.AntiForgeryToken()
+                                <li class="dropdown">
+
+                                    @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                    <ul class="dropdown-menu">
+                                        <li><a href="~/Manage">會員資料</a></li>
+                                        @if (User.Identity.Name == "admin55688@gmail.com")
+                                        {
+                                            <li><a href="~/Dashboard/index">前往後台</a></li>
+                                        }
+                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("註冊", "Register", "Account")</li>
+                                <li>@Html.ActionLink("登入", "Login", "Account")</li>
+
+                            }
+                            <li id="CartLayout">
+                                @Html.Partial("_CartPartial")
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
+
         </div>
-
-
-
-
-
-
-
-
-
-
     </div>
-    
-
     <!-- / header top  -->
-
 </header>
 <!-- / header section -->
