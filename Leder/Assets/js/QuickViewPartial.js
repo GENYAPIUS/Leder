@@ -1,4 +1,4 @@
-﻿function AddToCart(productId, inQuantity) {
+﻿function AddItemsToCart(productId, inQuantity) {
     $.ajax({
         type: 'POST',
         url: '/ShoppingCart/AddToCart',
@@ -10,8 +10,8 @@
         });
 }
 
-$("#addcart").click(function () {
-    var productId = $("#addcartval").val();
-    var inQuantity = $("#ProductQuantity").val();
-    AddToCart(productId, inQuantity);
+$("#addItemsToCart").click(function () {
+    var productId = $("#addItemsCartVal").val();
+    var inQuantity = $("#ItemsProductQuantity").val();
+    AddItemsToCart(productId, inQuantity);
 });

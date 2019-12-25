@@ -38,13 +38,13 @@
 
                                 <h6>數量</h6>
                                 <form action="">
-                                    <input id="ProductQuantity" type="number" min="1" value="1" style="width:50px" />
+                                    <input id="ItemsProductQuantity" type="number" min="1" value="1" style="width:50px" />
                                 </form>
 
                             </div>
                             <div class="aa-prod-view-bottom">
-                                <a id="addcart" href="" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                <input id="addcartval" type="text" style="display:none" value="@Model.Id" />
+                                <a id="addItemsToCart" href="" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                <input id="addItemsCartVal" type="text" style="display:none" value="@Model.Id" />
                                 @Html.ActionLink("View Detail", "ProductDetail", "Product", new { id = @Model.Id }, htmlAttributes: new { @class = "aa-add-to-cart-btn" })
                             </div>
                         </div>
@@ -56,7 +56,3 @@
 </div>
 <!-- / quick view modal -->
 
-@section Scripts{
-    @*在QuickView購買時抓產品跟數量*@
-    <script src="~/Assets/js/QuickViewPartial.js"></script>
-}
