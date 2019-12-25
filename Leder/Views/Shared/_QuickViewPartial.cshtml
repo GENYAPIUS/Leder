@@ -1,10 +1,10 @@
 ﻿@using Leder.ViewModels;
 @model ProductViewModel
-   
+
 <!-- quick view modal -->
 <div class="modal fade" id="@Model.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" > 
+        <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div class="row">
@@ -20,7 +20,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                
+
 
                             </div>
                         </div>
@@ -35,18 +35,17 @@
                                 <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                             </div>
                             <div class="aa-prod-quantity">
-                                
-                                    <h6>數量</h6>
-                                    <form action="">
-                                        <input type="number" min="1" value="1" style="width:50px" />
-                                    </form>
-                                
+
+                                <h6>數量</h6>
+                                <form action="">
+                                    <input id="ProductQuantity" type="number" min="1" value="1" style="width:50px" />
+                                </form>
+
                             </div>
                             <div class="aa-prod-view-bottom">
-                                <a onclick="AddToCart('@Model.Id', 1)" href="" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                @*<a href="#" class="aa-add-to-cart-btn">View Details</a>*@
-                                
-                                @Html.ActionLink("View Detail", "ProductDetail","Product", new { id=@Model.Id},htmlAttributes: new { @class = "aa-add-to-cart-btn" })
+                                <a id="addcart" href="" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                <input id="addcartval" type="text" style="display:none" value="@Model.Id" />
+                                @Html.ActionLink("View Detail", "ProductDetail", "Product", new { id = @Model.Id }, htmlAttributes: new { @class = "aa-add-to-cart-btn" })
                             </div>
                         </div>
                     </div>
@@ -56,3 +55,8 @@
     </div><!-- /.modal-dialog -->
 </div>
 <!-- / quick view modal -->
+
+@section Scripts{
+    @*在QuickView購買時抓產品跟數量*@
+    <script src="~/Assets/js/QuickViewPartial.js"></script>
+}
