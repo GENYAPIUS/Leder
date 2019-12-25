@@ -18,9 +18,9 @@ namespace Leder.Models.Cart
             CacheItemPolicy policy = new CacheItemPolicy();
             bool shift = false;  //用來判斷是否需要轉移購物車的變數(預設為false 不用轉移)
 
-            if (HttpContext.Current.User.Identity.IsAuthenticated )
+            if (HttpContext.Current.User.Identity.IsAuthenticated )  //判斷是否登入狀態
             {
-                if(HttpContext.Current.Session["Non-membersId"]!=null)
+                if(HttpContext.Current.Session["Non-membersId"]!=null) //如果一進入官網就是登入狀態，Session["Non-membersId"]會是null
                 {
                     if (((Cart)cache[HttpContext.Current.Session["Non-membersId"].ToString()]).Count != 0 && HttpContext.Current.Session["CartId"].ToString() != HttpContext.Current.User.Identity.Name)
                     {
@@ -32,7 +32,7 @@ namespace Leder.Models.Cart
                 HttpContext.Current.Session["CartId"] = HttpContext.Current.User.Identity.Name;
                 HttpContext.Current.Session["MemberId"] = HttpContext.Current.Session["CartId"];
             }
-            else
+            else  //匿名狀態進入官網，通常第一次進入官網Session["CartId"]會是null
             {
                 if (HttpContext.Current.Session["CartId"] == null || HttpContext.Current.Session["CartId"] == HttpContext.Current.Session["MemberId"])
                 {   //還沒有Id 或者 剛登出  的話，給他一組GUID當Id
@@ -42,19 +42,22 @@ namespace Leder.Models.Cart
                 }
             }
 
+            //把NewGuid存進UserId
             string UserId = HttpContext.Current.Session["CartId"].ToString();
-            if (cache[UserId] == null)
+            if (cache[UserId] == null) //是新的使用者，不是新的就跳出
             {
-                Cart cart = new Cart();
+                Cart cart = new Cart();               
                 policy.SlidingExpiration = TimeSpan.FromMinutes(30);
                 cache.Set(UserId, cart, policy);
+              
+
             }
             if (shift == true)
             {   //將需要轉移購物車的訊息存至Cart，並將shift改回預設值
                 ((Cart)cache[UserId]).Shift = true;
                 shift = false;
             }
-            return (Cart)cache[UserId];
+            return (Cart)cache[UserId];  //類似塞資料
 
         }
 

@@ -57,6 +57,11 @@
                                 <li><a href="#">專欄文章3</a></li>
                             </ul>
                         </li>
+
+                        @if (Request.IsAuthenticated) 
+                        {
+                        <li><a href="~/Wishlist/Index">❤</a></li>
+                        }
                         @*<li>@Html.ActionLink("聯絡里德", "#")</li>*@
 
 
@@ -75,10 +80,11 @@
 
                             }
                             @Html.AntiForgeryToken()
-                            <li class="dropdown"><span class="glyphicon glyphicon-user"></span>
+                            <li class="dropdown">
+                                <span class="glyphicon glyphicon-user"></span>
                                 @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                 <ul class="dropdown-menu">
-                                    <li><a href="~/Manage">會員資料</a></li>                                    
+                                    <li><a href="~/Manage">會員資料</a></li>
                                     @if (User.Identity.Name == "admin55688@gmail.com")
                                     {
                                         <li><a href="~/Dashboard/index">前往後台</a></li>
@@ -93,7 +99,7 @@
                             <li>@Html.ActionLink("Login", "Login", "Account")</li>
 
                         }
- 
+
 
                         <li><a href="~/Checkout">Checkout</a></li>
                         <li id="CartLayout">

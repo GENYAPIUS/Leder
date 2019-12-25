@@ -16,11 +16,11 @@ namespace Leder.Models.Cart
         public Cart()
         {
             this.cartItems = new List<CartItem>();
-
         }
         //變數都放這(首)------------------------------------------------
         //儲存所有商品
         private List<CartItem> cartItems;
+
         //當前購物車的總價
         private decimal? _totalAmount = 0.0m;
         //變數都放這(尾)------------------------------------------------
@@ -131,7 +131,6 @@ namespace Leder.Models.Cart
         }
 
 
-
         public IEnumerator<CartItem> GetEnumerator()
         {
             return ((IEnumerable<CartItem>)cartItems).GetEnumerator();
@@ -141,5 +140,8 @@ namespace Leder.Models.Cart
         {
             return ((IEnumerable<CartItem>)cartItems).GetEnumerator();
         }
+
+
+
     }
 }

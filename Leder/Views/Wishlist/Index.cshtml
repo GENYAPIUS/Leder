@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Leder.Models.Wishlist.WishlistItem>
+
+@{
+    ViewBag.Title = "Wishlist";
+    var currentWishlist = Leder.Models.Wishlist.Operation.GetCurrentWishlist();
+}
+<!-- Cart view section -->
+<section id="cart-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-view-area">
+                    <div class="cart-view-table">
+                        @if (currentWishlist != null)
+                        {
+                            <form action="">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>@Html.DisplayNameFor(m => m.Photo)</th>
+                                                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                                <th>@Html.DisplayNameFor(m => m.Price)</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        @Html.Partial("_WishlistPartial")
+                                    </table>
+                                </div>
+                            </form>
+
+                        }
+                        else
+                        {
+                            <form action="">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>你目前還沒有收藏任何好商品</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </form>
+                            <div class="cart-view-total">
+                                <table class="aa-totals-table">
+                                    <tbody>
+                                        <tr>
+                                            <td><a class="aa-cart-view-btn" href="~/Product/Index">前往購物頁面</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Cart view section -->
+

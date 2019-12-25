@@ -194,6 +194,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,9 @@
     <Compile Include="Models\PaymentResult.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\TokenResult.cs" />
+    <Compile Include="Models\Wishlist\Operation.cs" />
+    <Compile Include="Models\Wishlist\Wishlist.cs" />
+    <Compile Include="Models\Wishlist\WishlistItem.cs" />
     <Compile Include="PayPalAPI\Config\AccountConfig.cs" />
     <Compile Include="PayPalAPI\Config\UrlConfig.cs" />
     <Compile Include="PayPalAPI\Enums\ApprovedNameState.cs" />
@@ -4115,6 +4119,8 @@
     <Content Include="Views\Shared\_ShiftCartModal.cshtml" />
     <Content Include="Views\ShoppingCart\CashOrder.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Wishlist\Index.cshtml" />
+    <Content Include="Views\Shared\_WishlistPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

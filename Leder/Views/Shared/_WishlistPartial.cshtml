@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Leder.Models.Wishlist.WishlistItem>
+
+<tbody id="wishlistDisplay">
+
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td><a href="~/ShoppingCart" class="remove" onclick="RemoveWishlit('@Html.DisplayFor(m => i.Id)')"><fa class="fa fa-close"></fa></a></td>
+            <td><a href="#"><img src="@Html.DisplayFor(m=>i.Photo)" alt="img"></a></td>
+            <td><a class="aa-cart-title" href="#">@Html.DisplayFor(m => i.Name)</a></td>
+            <td>@Html.DisplayFor(m => i.Price)</td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="6" class="aa-cart-view-bottom">
+            <div class="aa-cart-coupon">
+            </div>
+        </td>
+    </tr>
+</tbody>
+
+@section Scripts {
+    <script>
+
+        function RemoveWishlit(productId) {
+            $.ajax({
+                type: 'POST',
+                url: '/Wishlist/RemoveWishlit',
+                data: { id: productId },
+                success: function (response) {
+                    alert(response);
+                    $("#wishlistDisplay").html(response);
+                }
+            })
+
+        }
+
+
+    </script>
+}
