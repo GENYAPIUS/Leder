@@ -11,7 +11,7 @@
     <div class="aa-cartbox-summary">
         @if (currentCart.Count > 0)
         {
-            <ul>
+            <ul class="aa-cartbox-Item">
                 @foreach (var cartItem in currentCart)
                 {
                     var i = 1;
@@ -25,6 +25,9 @@
                     </li>
                     i++;
                 }
+            </ul>
+            <br>
+            <ul>
                 <li>
                     <span class="aa-cartbox-total-title">
                         Total
@@ -34,8 +37,12 @@
                     </span>
                 </li>
             </ul>
-            <a class="aa-cartbox-checkout aa-primary-btn" href="~/Checkout">前往結帳</a>
-            <a class="aa-cartbox-checkout aa-primary-btn" onclick="ClearCart()">清空</a>
+                <a class="aa-cartbox-checkout aa-primary-btn" href="~/Checkout">前往結帳</a>
+                <a class="aa-cartbox-checkout aa-primary-btn" onclick="ClearCart()">清空</a>
+                if (currentCart.Shift == true)
+                {
+                    <a class="aa-cartbox-checkout aa-primary-btn" data-toggle="modal" data-target="#shiftCart">您有一項訊息</a>
+                }
         }
         else
         {
@@ -48,12 +55,15 @@
                 <li>
                     <a class="aa-cartbox-checkout aa-primary-btn" href="~/Product/Totebag">前往購物頁面</a>
                 </li>
+                @if (currentCart.Shift == true)
+                {
+                    <li>
+                        <a class="aa-cartbox-checkout aa-primary-btn" data-toggle="modal" data-target="#shiftCart">您有一項訊息</a>
+                    </li>
+                }
             </ul>
 
         }
-        @if (currentCart.Shift == true)
-        {
-            @Html.Partial("_ShiftCartModal")
-        }
+
     </div>
 </div>

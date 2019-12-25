@@ -1,4 +1,4 @@
-﻿<a class="aa-cartbox-checkout aa-primary-btn" data-toggle="modal" data-target="#shiftCart">您有一項訊息</a>
+﻿
 @{ var shiftCart = Leder.Models.Cart.Operation.GetShiftCart(); }
 <div id="shiftCart" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true"backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
@@ -28,7 +28,7 @@
                         {
                             <tr>
                                 <td>
-                                    <a class="aa-cartbox-img"><img src="@cartItem.Photo" alt="img"></a>
+                                    <a class="aa-cartbox-img"><img src="/Assets/images/@cartItem.Category/@cartItem.Photo" alt="img"></a>
                                 </td>
                                 <td>
                                     <a>@cartItem.Name</a>
@@ -53,8 +53,8 @@
                         <td>
                             <input id="shiftCount" value="@shiftCartId" style="display:none" />
                             <div class="yesandno">
-                                <a id="YesAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
-                                <a id="NoAddCart" class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
+                                <a id="YesAddCart"  class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">是</a>
+                                <a id="NoAddCart"  class="aa-cartbox-checkout aa-primary-btn" data-dismiss="modal">否</a>
                             </div>
                         </td>
                     </tr>
