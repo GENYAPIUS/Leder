@@ -1,7 +1,7 @@
 ﻿
 $('#paycheck').click(function () {
 
-    if (document.getElementById("NameForm").value == "" || document.getElementById("TelForm").value == "" || document.getElementById("ZipForm").value == ""){
+    if (document.getElementById("NameForm").value == "" || document.getElementById("TelForm").value == "" || document.getElementById("ZipForm").value == "" || $("#RecieveForm").valid() == false){
         return;
     }
     else {
