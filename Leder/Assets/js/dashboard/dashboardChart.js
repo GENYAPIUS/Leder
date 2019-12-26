@@ -5,10 +5,6 @@ var chartTemplate = `
             <div class="x_panel">
                 <div class="x_title">
                     <h2>每月成本</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -20,10 +16,6 @@ var chartTemplate = `
             <div class="x_panel">
                 <div class="x_title">
                     <h2>各產品銷售額佔總銷售額百分比</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -51,6 +43,7 @@ var chartMethods = {
                         }]
                     },
                     options: {
+                        responsive: true,
                         scales: {
                             yAxes: [{
                                 ticks: {
@@ -65,8 +58,9 @@ var chartMethods = {
                 var dataSource = this.$data.chartData;
                 var colors = []
                 for (let i = 0; i < dataSource.Label.length; i++) {
-                    color.push(getRandomColor());
+                    colors.push(getRandomColor());
                 }
+                console.log(colors);
                 var chartData = {
                     labels: dataSource.Label,
                     datasets: [{
@@ -74,9 +68,15 @@ var chartMethods = {
                         backgroundColor: colors,
                     }]
                 };
-                var chart = new Chart(ctx, {
+                var chart = new Chart(chartSource, {
                     type: 'doughnut',
-                    data: chartData
+                    data: chartData,
+                    options: {
+                        legend: {
+                            display: false,
+                        },
+                        responsive: true,
+                    }
                 });
                 break;
         }
@@ -93,8 +93,11 @@ var chartComponent = {
     methods: chartMethods,
     mounted() {
         ajaxFunc("/Dashboard/GetPricePerMonthChartData", "Get");
-        this.$data.chartData = sourceData
+        this.$data.chartData = sourceData;
         this.DisplayChart(this.$refs.costPerMonthChart, 'bar');
+        ajaxFunc("/Dashboard/GetSalesChartData", "Get");
+        this.$data.chartData = sourceData;
+        this.DisplayChart(this.$refs.salesChart, 'doughnut');
     }
 }
 

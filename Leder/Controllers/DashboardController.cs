@@ -103,10 +103,10 @@ namespace Leder.Controllers
             ChartViewModel chartViewModel = new ChartViewModel();
             foreach(var p in productRepo.GetAll().ToList())
             {
-                chartViewModel.Label.Add(p.Name);
+                chartViewModel.Label.Add($"{p.ProductId}:{p.Name}");
                 chartViewModel.Data.Add(orderDetailRepo.GetAmountByProductid(p.ProductId));
             }
-            return Json("", JsonRequestBehavior.AllowGet);
+            return Json(chartViewModel, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public ActionResult GetSalesData()
