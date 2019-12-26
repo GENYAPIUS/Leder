@@ -21,18 +21,18 @@
                 <!-- start single product item -->
                 <li>
                     <figure>
-                        <a class="aa-product-img" href="~/Product/@item.Category">
+                        <a class="aa-product-img" href="~/Id/@item.Id">
                             <img class="img-responsive" src="/Assets/images/@item.Category/@item.Photo" alt="@item.Name">
                         </a>
                         
-                        <a onclick="AddToCart('@item.Id', 1)" class="aa-add-card-btn" href=""><span class="fa fa-shopping-cart"></span>加入購物車</a>
+                        <a onclick="AddToCart('@item.Id', 1)" class="aa-add-card-btn" href="javascript:void(0)"><span class="fa fa-shopping-cart"></span>加入購物車</a>
                         <figcaption>
                             <h4 class="aa-product-title"><a href="#">@item.Name</a></h4>
                             <span class="aa-product-price ">$@item.Price</span>@*<span class="aa-product-price"><del>$@item.Price</del></span>*@
                         </figcaption>
                     </figure>
                     <div class="aa-product-hvr-content">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist" style="background-color:rgba(255,255,255,0.6)">
+                        <a onclick="AddToWishlist('@item.Id')" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Add to Wishlist" style="background-color:rgba(255,255,255,0.6)">
                             <span class="fa fa-heart-o"></span>
                         </a>
                         @*<a href="#" data-toggle="tooltip" data-placement="top" title="Compare">
