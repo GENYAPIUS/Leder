@@ -42,7 +42,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-4">
-            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @placeholder = "(例):1980-01-01" })
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @placeholder = "(例):1980-01-01", @id = "BirthDate" })
         </div>
     </div>
     <div class="form-group">
@@ -68,6 +68,15 @@
     <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Assets/js/Address.js"></script>
+    <script type="text/javascript" src="/scripts/moment.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
     <!-- Font awesome -->
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script>
+        $('#BirthDate').datetimepicker({
+            format: "YYYY/MM/DD"
+        });
+    </script>
 }
