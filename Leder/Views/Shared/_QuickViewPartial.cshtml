@@ -20,8 +20,6 @@
                                         </a>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -35,16 +33,9 @@
                                 <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                             </div>
                             <div class="aa-prod-quantity">
-
-                                <h6>數量</h6>
-                                <form action="">
-                                    <input id="ItemsProductQuantity" type="number" min="1" value="1" style="width:50px" />
-                                </form>
-
                             </div>
                             <div class="aa-prod-view-bottom">
-                                <a id="addItemsToCart" href="" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                <input id="addItemsCartVal" type="text" style="display:none" value="@Model.Id" />
+                                <a " onclick="AddToCart('@Model.Id', 1)" href="" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                                 @Html.ActionLink("View Detail", "ProductDetail", "Product", new { id = @Model.Id }, htmlAttributes: new { @class = "aa-add-to-cart-btn" })
                             </div>
                         </div>

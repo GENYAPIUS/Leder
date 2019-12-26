@@ -454,7 +454,6 @@
     <Content Include="Assets\images\Totebag\Totebag8_D_4.jpg" />
     <Content Include="Assets\images\Totebag\Totebag8_D_5.jpg" />
     <Content Include="Assets\js\Address.js" />
-    <Content Include="Assets\js\QuickViewPartial.js" />
     <Content Include="Assets\js\dashboard\salesTable.js" />
     <Content Include="Assets\js\ProductDetail.js" />
     <Content Include="Assets\js\Wishlist.js" />
