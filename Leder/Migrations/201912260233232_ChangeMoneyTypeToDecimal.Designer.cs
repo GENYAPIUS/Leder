@@ -7,13 +7,13 @@ namespace Leder.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class ChangeMoneyTypeToDecimal : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeMoneyTypeToDecimal));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912200631374_InitialCreate"; }
+            get { return "201912260233232_ChangeMoneyTypeToDecimal"; }
         }
         
         string IMigrationMetadata.Source

@@ -36,10 +36,10 @@ var chartTemplate = `
 `
 
 var chartMethods = {
-    GetChart(chartSource, chartType) {
+    DisplayChart(chartSource, chartType) {
         switch (chartType) {
             case 'bar':
-                var dataSource = this.$props.propsData;
+                var dataSource = this.$data.chartData;
                 var chart = new Chart(chartSource, {
                     type: 'bar',
                     data: {
@@ -62,7 +62,7 @@ var chartMethods = {
                 });
                 break;
             case 'doughnut':
-                var dataSource = this.$props.propsData;
+                var dataSource = this.$data.chartData;
                 var colors = []
                 for (let i = 0; i < dataSource.Label.length; i++) {
                     color.push(getRandomColor());
@@ -72,7 +72,6 @@ var chartMethods = {
                     datasets: [{
                         data: dataSource.Data,
                         backgroundColor: colors,
-                        hoverBackgroundColor: colors
                     }]
                 };
                 var chart = new Chart(ctx, {
@@ -82,30 +81,20 @@ var chartMethods = {
                 break;
         }
     },
-    DisplayChart() {
-        var dataSource = this.$props.propsData;
-        var barChartSource = this.$refs.costPerMonthChart
-        var costChart = new Chart(barChartSource, {
-            type: 'bar',
-            data: {
-                labels: dataSource.Label,
-                datasets: [{
-                    label: "成本",
-                    backgroundColor: "rgba(38, 185, 154, 0.31)",
-                    data: dataSource.Data
-                },
-                ]
-            }
-        });
-    }
 }
 
 var chartComponent = {
     template: chartTemplate,
-    props: ['propsData'],
+    data() {
+        return {
+            chartData: undefined
+        }
+    },
     methods: chartMethods,
     mounted() {
-        this.DisplayChart();
+        ajaxFunc("/Dashboard/GetPricePerMonthChartData", "Get");
+        this.$data.chartData = sourceData
+        this.DisplayChart(this.$refs.costPerMonthChart, 'bar');
     }
 }
 

@@ -5,13 +5,12 @@
 @section Scripts{
     <script type="text/javascript" src="/scripts/moment.min.js"></script>
     <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script src="/Assets/js/dashboard/productTable.js"></script>
     <script src="/Assets/js/dashboard/procurementTable.js"></script>
     <script src="/Assets/js/dashboard/dashboardChart.js"></script>
+    <script src="/Assets/js/dashboard/salesTable.js"></script>
 
 
     <script>
@@ -29,15 +28,17 @@
                 ProcurementOverview: function () {
                     ajaxFunc("/Dashboard/GetAllProcurements", "Get");
                     mainAreaVue.$data.sourceData = sourceData;
-                    ajaxFunc("/Dashboard/GetProductList","Get");
+                    ajaxFunc("/Dashboard/GetProductList", "Get");
                     mainAreaVue.$data.productData = sourceData;
                     mainAreaVue.$data.view = "procurementTable";
                 },
                 ChartOverView: function () {
-                    ajaxFunc("/Dashboard/GetPricePerMonthData", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
-
                     mainAreaVue.$data.view = "dashboardChart";
+                },
+                SalesOverView: function () {
+                    ajaxFunc("/Dashboard/GetSalesData", "Get");
+                    mainAreaVue.$data.sourceData = sourceData;
+                    mainAreaVue.$data.view = "salesTable";
                 }
             }
         })
@@ -52,7 +53,8 @@
             components: {
                 dashboardChart: chartComponent,
                 productTable: productTableComponent,
-                procurementTable: procurementTableComponent
+                procurementTable: procurementTableComponent,
+                SalesTable: SalesTableComponent
             },
             mounted() {
                 this.$nextTick(function () { sideBarVue.ChartOverView(); })
@@ -70,7 +72,7 @@
                 contentType: "application/json",
                 async: false,
                 success: function (response) {
-					sourceData = response
+                    sourceData = response
                 }
             });
         }
@@ -78,6 +80,8 @@
 }
 
 @section Styles{
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <style>
         tr {
             text-align: center;

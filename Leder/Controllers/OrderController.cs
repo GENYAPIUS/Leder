@@ -38,7 +38,7 @@ namespace Leder.Controllers
 
                 foreach (var item in orderViewModel.CartItems)
                 {
-                    db.OrderDetails.Add(new OrderDetail { OrderId = orders.OrderId, ProductId = item.Id, Price = item.Price, Quantity = item.Quantity, Amount = item.Amount });
+                    db.OrderDetails.Add(new OrderDetail { OrderId = orders.OrderId, ProductId = item.Id, Price = item.Price, Quantity = item.Quantity, Amount = (decimal)item.Amount });
                 }
 
                 db.SaveChanges();
