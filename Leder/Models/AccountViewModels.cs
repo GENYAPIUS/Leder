@@ -11,7 +11,7 @@ namespace Leder.Models
         [Display(Name = "電子信箱")]
         public string Email { get; set; }
 
-        //[RegularExpression(@"/^09[0-9]{8}$/")]
+        [RegularExpression(@"/^09[0-9]{8}$/", ErrorMessage = "輸入格式錯誤(例:0912345678)")]
         [Display(Name = "行動電話")]
         public string CellPhone { get; set; }
         [Required]
@@ -25,7 +25,7 @@ namespace Leder.Models
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
         [Required]
-        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
+        [RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
@@ -106,7 +106,7 @@ namespace Leder.Models
         [Display(Name = "確認密碼")]
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
-        //[RegularExpression(@"/^09[0-9]{8}$/")]
+        [RegularExpression(@"/^09[0-9]{8}$/", ErrorMessage =  "輸入格式錯誤(例:0912345678)")]
         [Display(Name = "行動電話")]
         public string CellPhone { get; set; }
         [Required]
@@ -120,7 +120,7 @@ namespace Leder.Models
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
         [Required]
-        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", )ErrorMessage = "輸入格式錯誤(例:A123456789)")]
+        [RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
