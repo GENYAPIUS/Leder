@@ -52,6 +52,9 @@
     <Reference Include="BraintreeHttp-Dotnet, Version=0.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BraintreeHttp-Dotnet.0.1.5\lib\netstandard2.0\BraintreeHttp-Dotnet.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -188,39 +191,21 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProcurementsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912030756535_TestCreate.cs" />
-    <Compile Include="Migrations\201912030756535_TestCreate.Designer.cs">
-      <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912060834122_TestCreate1.cs" />
-    <Compile Include="Migrations\201912060834122_TestCreate1.Designer.cs">
-      <DependentUpon>201912060834122_TestCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912180341171_AddOrderModel.cs" />
-    <Compile Include="Migrations\201912180341171_AddOrderModel.Designer.cs">
-      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912190328186_PhotoToPhotos.cs" />
-    <Compile Include="Migrations\201912190328186_PhotoToPhotos.Designer.cs">
-      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912230922568_addColorDescription.cs" />
-    <Compile Include="Migrations\201912230922568_addColorDescription.Designer.cs">
-      <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912211112144_addColor.cs" />
-    <Compile Include="Migrations\201912211112144_addColor.Designer.cs">
-      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
+    <Compile Include="Migrations\201912251041429_InitialCreate.cs" />
+    <Compile Include="Migrations\201912251041429_InitialCreate.Designer.cs">
+      <DependentUpon>201912251041429_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +217,7 @@
     <Compile Include="Models\LederContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\Procurement.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\PaymentParam.cs" />
@@ -252,10 +238,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\ProcurementRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChartViewModel.cs" />
+    <Compile Include="ViewModels\ProcurementViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
+    <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
@@ -271,6 +261,10 @@
     <Content Include="Assets\build\images\loading.gif" />
     <Content Include="Assets\build\js\custom.js" />
     <Content Include="Assets\build\js\custom.min.js" />
+    <Content Include="Assets\images\about1.jpg" />
+    <Content Include="Assets\images\about2.jpg" />
+    <Content Include="Assets\images\about3.jpg" />
+    <Content Include="Assets\images\about4.jpg" />
     <Content Include="Assets\images\Backpack\Backpack1_D_1.jpg" />
     <Content Include="Assets\images\Backpack\Backpack1_D_2.jpg" />
     <Content Include="Assets\images\Backpack\Backpack1_D_3.jpg" />
@@ -281,6 +275,27 @@
     <Content Include="Assets\images\Backpack\Backpack2_D_3.jpg" />
     <Content Include="Assets\images\Backpack\Backpack2_D_4.jpg" />
     <Content Include="Assets\images\Backpack\Backpack2_D_5.jpg" />
+    <Content Include="Assets\images\Big.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_1.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_2.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_3.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_4.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_5.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_6.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_7.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_Big.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_pro1.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog1_title1.png" />
+    <Content Include="Assets\images\BlogImages\Blog2_1.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_2.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_3.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_4.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_5.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_6.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_Big.jpg" />
+    <Content Include="Assets\images\BlogImages\Blog2_title1.png" />
+    <Content Include="Assets\images\BlogImages\Blog3_Big.png" />
+    <Content Include="Assets\images\BlogImages\Blog3_Japan.png" />
     <Content Include="Assets\images\Coinwallet\Coinwallet1_D_1.jpg" />
     <Content Include="Assets\images\Coinwallet\Coinwallet1_D_2.jpg" />
     <Content Include="Assets\images\Coinwallet\Coinwallet1_D_3.jpg" />
@@ -432,6 +447,8 @@
     <Content Include="Assets\images\Totebag\Totebag8_D_3.jpg" />
     <Content Include="Assets\images\Totebag\Totebag8_D_4.jpg" />
     <Content Include="Assets\images\Totebag\Totebag8_D_5.jpg" />
+    <Content Include="Assets\js\Address.js" />
+    <Content Include="Assets\js\QuickViewPartial.js" />
     <Content Include="Assets\js\ProductDetail.js" />
     <Content Include="Assets\js\Wishlist.js" />
     <Content Include="Content\lite-blue-theme.css" />
@@ -440,6 +457,9 @@
     <Content Include="Assets\js\paypal.js" />
     <Content Include="Assets\js\ShiftCartModalFunction.js" />
     <Content Include="Assets\js\ShoppingCartFunction.js" />
+    <Content Include="Assets\js\dashboard\dashboardChart.js" />
+    <Content Include="Assets\js\dashboard\procurementTable.js" />
+    <Content Include="Assets\js\dashboard\productTable.js" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\font-awesome.css" />
@@ -4120,13 +4140,17 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\_ViewStart.cshtml" />
-    <Content Include="Views\Dashboard\index.cshtml" />
     <Content Include="Views\ShoppingCart\Order.cshtml" />
     <Content Include="Views\Shared\_ShiftCartModal.cshtml" />
     <Content Include="Views\ShoppingCart\CashOrder.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Shared\_WishlistPartial.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Blog1.cshtml" />
+    <Content Include="Views\Blog\Blog2.cshtml" />
+    <Content Include="Views\Blog\Blog3.cshtml" />
+    <Content Include="Views\Dashboard\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -4142,27 +4166,12 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912030756535_TestCreate.resx">
-      <DependentUpon>201912030756535_TestCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912060834122_TestCreate1.resx">
-      <DependentUpon>201912060834122_TestCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912180341171_AddOrderModel.resx">
-      <DependentUpon>201912180341171_AddOrderModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912190328186_PhotoToPhotos.resx">
-      <DependentUpon>201912190328186_PhotoToPhotos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912230922568_addColorDescription.resx">
-      <DependentUpon>201912230922568_addColorDescription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912211112144_addColor.resx">
-      <DependentUpon>201912211112144_addColor.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\201912251041429_InitialCreate.resx">
+      <DependentUpon>201912251041429_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
