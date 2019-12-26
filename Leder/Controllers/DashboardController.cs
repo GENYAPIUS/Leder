@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Leder.Controllers
 {
+    [Authorize(Users = "admin55688@gmail.com")]
     public class DashboardController : Controller
     {
         LederContext db = new LederContext();
