@@ -140,7 +140,7 @@ namespace Leder.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} 的長度至少必須為 {2} 個字元。", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} 的長度至少必須為 {2} 個字元。", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "密碼")]
         public string Password { get; set; }
