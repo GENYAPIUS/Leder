@@ -40,14 +40,14 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="aa-checkout-single-bill">
-                                                                <input id="NameForm" type="text" placeholder="收貨人姓名*"maxlength="30" minlength="2" class="required" />
+                                                                <input id="NameForm" name="NameForm" type="text" placeholder="收貨人姓名*"maxlength="30" minlength="2" class="required" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="aa-checkout-single-bill">
-                                                                <input id="TelForm" type="text" maxlength="15" minlength="8"
+                                                                <input id="TelForm" name="TelForm" type="text" maxlength="15" minlength="8"
                                                                        onkeyup="this.value=this.value.replace(/\D/g,'')"
                                                                        onafterpaste="this.value=this.value.replace(/\D/g,'')"
                                                                        placeholder="收貨人電話*" class="required" />
@@ -56,7 +56,7 @@
                                                         <div class="col-md-6">
                                                             <div class="aa-checkout-single-bill">
 
-                                                                <input id="ZipForm" type="text" maxlength="5" minlength="3" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                                                <input id="ZipForm" name="ZipForm" type="text" maxlength="5" minlength="3" onkeyup="this.value=this.value.replace(/\D/g,'')"
                                                                        onafterpaste="this.value=this.value.replace(/\D/g,'')"
                                                                        placeholder="郵遞區號*" class="required">
                                                             </div>
@@ -68,7 +68,7 @@
                                                             <div class="aa-checkout-single-bill">
                                                                 @foreach (var item in userData)
                                                                 {
-                                                                    <textarea id="AddressForm" cols="8" rows="2" placeholder="收貨人地址*" maxlength="256" minlength="2" class="required">@item.Address</textarea>
+                                                                    <textarea id="AddressForm" name="AddressForm" cols="8" rows="2" placeholder="收貨人地址*" maxlength="256" minlength="2" class="required">@item.Address</textarea>
                                                                 }
                                                             </div>
                                                         </div>
