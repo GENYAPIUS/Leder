@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201912251041429_InitialCreate.Designer.cs">
       <DependentUpon>201912251041429_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912260233232_ChangeMoneyTypeToDecimal.cs" />
+    <Compile Include="Migrations\201912260233232_ChangeMoneyTypeToDecimal.Designer.cs">
+      <DependentUpon>201912260233232_ChangeMoneyTypeToDecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApprovedResult.cs" />
@@ -244,6 +248,7 @@
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
+    <Compile Include="ViewModels\SalesViewModel.cs" />
     <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -4168,6 +4173,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912251041429_InitialCreate.resx">
       <DependentUpon>201912251041429_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912260233232_ChangeMoneyTypeToDecimal.resx">
+      <DependentUpon>201912260233232_ChangeMoneyTypeToDecimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

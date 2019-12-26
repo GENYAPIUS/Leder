@@ -14,9 +14,9 @@ namespace Leder.Repository
             _db = context;
         }
 
-        public decimal? GetAmountByProductid(int id)
+        public decimal GetAmountByProductid(int id)
         {
-           decimal? amount = 0;
+           decimal amount = 0;
             var  temp = _db.OrderDetails.Where(x=>x.ProductId==id);
             foreach(var i in temp)
             {

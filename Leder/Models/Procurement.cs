@@ -15,7 +15,7 @@ namespace Leder.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}")]
         public DateTime PurchaseDate { get; set; }
         public int Quantity { get; set; }
-        public int UnitPrize { get; set; }
+        public decimal UnitPrize { get; set; }
      
         [ForeignKey("ProductId")]
 

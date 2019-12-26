@@ -5,8 +5,6 @@
 @section Scripts{
     <script type="text/javascript" src="/scripts/moment.min.js"></script>
     <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
-    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script src="/Assets/js/dashboard/productTable.js"></script>
@@ -56,7 +54,7 @@
                 dashboardChart: chartComponent,
                 productTable: productTableComponent,
                 procurementTable: procurementTableComponent,
-                SalesTable:SalesTableComponent
+                SalesTable: SalesTableComponent
             },
             mounted() {
                 this.$nextTick(function () { sideBarVue.ChartOverView(); })
@@ -82,6 +80,8 @@
 }
 
 @section Styles{
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <style>
         tr {
             text-align: center;
