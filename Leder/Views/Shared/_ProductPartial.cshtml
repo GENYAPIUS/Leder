@@ -23,7 +23,7 @@
                         </figcaption>
                     </figure>
                     <div class="aa-product-hvr-content">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                        <a onclick="AddToWishlist('@p.Id')" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                         <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#@p.Id"><span class="fa fa-search"></span></a>
                     </div>
                     <!-- product badge右上角的sales標籤 -->
@@ -34,6 +34,8 @@
         </div>
     </ul>
     <!-- quick view modal -->
+
+
     @foreach (var p in Model)
     {
         @Html.Partial("_QuickViewPartial", p)

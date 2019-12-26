@@ -1,0 +1,25 @@
+﻿@model List<Wishlist>
+@{ 
+    var items = (IEnumerable<Wishlist>)Model;
+}
+
+<tbody id="wishlistDisplay">
+
+    @foreach (var p in items)
+    {
+        <tr>
+            <td><a href="~/Wishlist/Index" class="remove" onclick="RemoveWishlist('@Html.DisplayFor(m => p.Id)')"><fa class="fa fa-close"></fa></a></td>
+            <td><a href="~/Id/@p.Id"><img src="/Assets/images/@Html.DisplayFor(m=>p.Category)/@Html.DisplayFor(m=>p.Photo)" alt="img"></a></td>
+            <td><a class="aa-cart-title" href="~/Id/@p.Id">@Html.DisplayFor(m => p.Name)</a></td>
+            <td>@Html.DisplayFor(m => p.Price)</td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="6" class="aa-cart-view-bottom">
+            <div class="aa-cart-coupon">
+            </div>
+        </td>
+    </tr>
+</tbody>
+

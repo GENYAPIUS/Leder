@@ -18,6 +18,7 @@ namespace Leder.Controllers
             var currentCart = Models.Cart.Operation.GetCurrentCart();
             return View(currentCart.ToList()); 
         }
+
         [Authorize]
         public ActionResult Checkout()
         {

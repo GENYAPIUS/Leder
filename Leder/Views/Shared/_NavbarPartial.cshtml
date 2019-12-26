@@ -58,7 +58,8 @@
                                     <li><a href="~/Blog/Blog3">日本快訊--毛嵐</a></li>
                                 </ul>
                             </li>
-                            @*<li>@Html.ActionLink("聯絡里德", "#")</li>*@
+                            
+                           
                         </ul>
                         <ul class="nav navbar-nav navbar-right" style="margin-right:20px">
 
@@ -76,6 +77,7 @@
                                     @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                     <ul class="dropdown-menu">
                                         <li><a href="~/Manage">會員資料</a></li>
+                                        <li><a href="~/Wishlist/Index">我的願望清單</a></li>
                                         @if (User.Identity.Name == "admin55688@gmail.com")
                                         {
                                             <li><a href="~/Dashboard/index">前往後台</a></li>
@@ -89,6 +91,10 @@
                                 <li>@Html.ActionLink("註冊", "Register", "Account")</li>
                                 <li>@Html.ActionLink("登入", "Login", "Account")</li>
 
+                            }
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li><a href="~/Wishlist/Index" class="fa fa-heart-o"></a></li>
                             }
                             <li id="CartLayout">
                                 @Html.Partial("_CartPartial")
