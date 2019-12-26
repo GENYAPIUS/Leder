@@ -23,7 +23,7 @@ $(".aa-cart-quantity").change(function () {
         var Quantity2 = $("#" + (i + 2999)).val();
         TotalAmountwow += Number(price) * Number(Quantity2)
     }
-    $("#TotalAmountwow").val("$" + TotalAmountwow)
+    $("#TotalAmountwow").val("$ " + TotalAmountwow+".00")
 });
 
 function Overload() {
