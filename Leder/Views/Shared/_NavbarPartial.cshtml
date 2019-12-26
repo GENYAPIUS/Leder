@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@{ var currentCart = Leder.Models.Cart.Operation.GetCurrentCart(); }
 <!-- Start header section -->
 <header id="aa-header">
     <!-- start header top  -->
@@ -108,4 +109,8 @@
     </div>
     <!-- / header top  -->
 </header>
+@if (currentCart.Shift == true)
+{
+    @Html.Partial("_ShiftCartModal")
+}
 <!-- / header section -->

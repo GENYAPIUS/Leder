@@ -26,24 +26,18 @@
                 }
             ],
             redirect_urls: {
-                return_url: '/Order/Index'
+                return_url: '/Order/Index',
             }
         });
     },
     onAuthorize: function (data, actions) {
         return actions.payment.execute()
             .then(function () {
-                $.ajax({
-                    url: "/ShoppingCart/UpdataOrderPayStatus",
-                    type: "post",
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        'PayStatus': 'PayPal付款',
-                        'TotalAmount': $("#TotalAmount").val(),
-                    })
-                });
                 actions.redirect();
             });
+    },
+    onCancel: function (data, actions) {
+        alert("您取消了交易")
     }
 }, '#paypaltest');
 // 此功能會在您的網頁上顯示智能付款按鈕。

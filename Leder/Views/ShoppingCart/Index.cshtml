@@ -38,6 +38,7 @@
                                                     <td>
                                                         <input id="@(cartItemId+1000)" class="aa-cart-quantity" type="number" min="1" value="@Html.DisplayFor(m => i.Quantity)">
                                                         <input id="@cartItemId" value="@Html.DisplayFor(m => i.Id)" style="display:none" />
+                                                        <input id="@(cartItemId+2000)" value="@Html.DisplayFor(m => i.Price)" style="display:none" />
                                                     </td>
                                                     <td>@Html.DisplayFor(m => i.Amount)</td>
                                                 </tr>
@@ -47,8 +48,6 @@
                                                 <td colspan="6" class="aa-cart-view-bottom">
                                                     <div class="aa-cart-coupon">
                                                     </div>
-                                                    <input type="submit" value="刷新頁面" class="aa-cart-view-btn" />
-                                                    <input id="Update" class="aa-cart-view-btn" type="button" value="更新購物車">
                                                     <input id="MyCount" value="@currentCart.Count" style="display:none" />
                                                 </td>
                                             </tr>
@@ -64,11 +63,11 @@
                                     <tbody>
                                         <tr>
                                             <th>Total</th>
-                                            <td>$ @String.Format("{0}", currentCart.TotalAmount)</td>
+                                            <td><input type="text" disabled="disabled" id="TotalAmountwow" value="$ @Html.Raw(String.Format("{0}", currentCart.TotalAmount))"> </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="~/Checkout" class="aa-cart-view-btn">Proced to Checkout</a>
+                                <a id="gotoCheckout" href="~/Checkout" class="aa-cart-view-btn">Proced to Checkout</a>
                             </div>
                         }
                         else
