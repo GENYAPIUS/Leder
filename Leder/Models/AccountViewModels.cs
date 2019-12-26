@@ -29,6 +29,12 @@ namespace Leder.Models
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
+        public bool IsTrue => true;
+        [Required]
+        [Display(Name = "請閱讀隱私權政策後打勾。")]
+        [Compare("IsTrue", ErrorMessage = "請閱讀隱私權政策後打勾。")]
+        //[Display(Name = "隱私權政策")]
+        public bool PrivatePolicy_Checked { get; set; }
     }
 
     public class ExternalLoginListViewModel
