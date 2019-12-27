@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 /**
  * Theme Name: Modern Slide In
@@ -189,22 +189,18 @@ html,
 }
 
 .seq .seq-model {
-  bottom: 15%;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   /* Don't allow the image to exceed its original height */
   /*max-height: 568px;*/
-  max-height: 100%;
 }
 
 .seq .seq-model img {
   /* Don't allow the image to exceed its original height */
-  /*max-height: 568px;*/
-  max-height: 100%;
   display: block;
-  height: 100%;
+  height: calc(100% - 87px);
   width: auto;
-  margin: 0 auto;
+  margin: 0px auto;
   opacity: 0;
   -webkit-transform: translate3d(60px, 0, 0);
   -ms-transform: translate3d(60px, 0, 0);
@@ -394,7 +390,7 @@ html,
   }
 
   .seq .seq-in .seq-model img {
-    height: 100%;
+    height: calc(100% - 87px);
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
