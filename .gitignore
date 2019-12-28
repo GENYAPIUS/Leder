@@ -354,8 +354,8 @@ MigrationBackup/
 #心智圖檔
 Xmind/
 
-#web.config
-Web.config
+#connectionStrings.config
+connectionStrings.config
 
 #Identity
 Startup.Auth.cs

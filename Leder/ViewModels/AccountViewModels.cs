@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Leder.Models
+namespace Leder.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -11,21 +11,25 @@ namespace Leder.Models
         [Display(Name = "電子信箱")]
         public string Email { get; set; }
 
-        //[RegularExpression(@"/^09[0-9]{8}$/", ErrorMessage = "輸入格式錯誤(例:0912345678)")]
+        [RegularExpression(@"^09[0-9]{8}$", ErrorMessage = "輸入格式錯誤(例:0912345678)")]
         [Display(Name = "行動電話")]
         public string CellPhone { get; set; }
+
         [Required]
         [Display(Name = "住家地址")]
         public string Address { get; set; }
+
         [Required]
         [Display(Name = "運送地址")]
         public string ShipAddress { get; set; }
+
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
+
         [Required]
-        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
+        [RegularExpression(@"^[A-Za-z][12]\d{8}$", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
@@ -89,7 +93,7 @@ namespace Leder.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel //註冊時的ViewModel，我加了其他必備欄位。
+    public class RegisterViewModel //註冊時的ViewModel，加了其他必備欄位。
     {
         [Required]
         [EmailAddress]
@@ -106,21 +110,26 @@ namespace Leder.Models
         [Display(Name = "確認密碼")]
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
-        //[RegularExpression(@"/^09[0-9]{8}$/", ErrorMessage =  "輸入格式錯誤(例:0912345678)")]
+
+        [RegularExpression(@"^09[0-9]{8}$", ErrorMessage =  "輸入格式錯誤(例:0912345678)")]
         [Display(Name = "行動電話")]
         public string CellPhone { get; set; }
+
         [Required]
         [Display(Name = "住家地址")]
         public string Address { get; set; }
+
         [Required]
         [Display(Name = "運送地址")]
         public string ShipAddress { get; set; }
+
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "生日")]
         public DateTime BirthDate { get; set; }
+
         [Required]
-        //[RegularExpression(@"/^[A-Za-z][12]\d{8}$/", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
+        [RegularExpression(@"^[A-Za-z][12]\d{8}$", ErrorMessage = "輸入格式錯誤(例:A123456789)")]
         [Display(Name = "身分證")]
         public string IdentityCard { get; set; }
 
@@ -128,7 +137,6 @@ namespace Leder.Models
         [Required]
         [Display(Name = "請閱讀隱私權政策後打勾。")]
         [Compare("IsTrue", ErrorMessage = "請閱讀隱私權政策後打勾。")]
-        //[Display(Name = "隱私權政策")]
         public bool PrivatePolicy_Checked { get; set; }
     }
 
