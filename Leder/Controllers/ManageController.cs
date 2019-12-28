@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Leder.Models;
+using Leder.ViewModels;
 using System.Collections.Generic;
 using System.Data.Entity;
 
