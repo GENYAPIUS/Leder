@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Leder.Models;
 using Leder.ViewModels;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Leder.Controllers
 {
@@ -164,6 +165,19 @@ namespace Leder.Controllers
                     try
                     {
                         db.SaveChanges();
+
+                        // 角色名稱
+                        var roleName = "一般會員";
+
+                        // 判斷角色是否存在
+                        if (HttpContext.GetOwinContext().Get<ApplicationRoleManager>().RoleExists(roleName) == false)
+                        {
+                            // 若角色不存在，則建立角色
+                            var role = new IdentityRole(roleName);
+                            await HttpContext.GetOwinContext().Get<ApplicationRoleManager>().CreateAsync(role);
+                        }
+                        // 將使用者加入該角色
+                        await UserManager.AddToRoleAsync(user.Id, roleName);
                     }
                     catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) //當初為了除錯而增加的，日後維護也方便
                     {
