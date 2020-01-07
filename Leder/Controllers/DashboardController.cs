@@ -222,5 +222,28 @@ namespace Leder.Controllers
             }
             return Json(procurements);
         }
+
+        [HttpGet]
+        public ActionResult GetMemberData()
+        {
+            MemberRepository memberRepo = new MemberRepository(db);
+            List<MembershipViewModel> membershipViewModels = new List<MembershipViewModel>();
+
+            foreach(UserDetail item in memberRepo.GetAllMember().ToList())
+            {
+                MembershipViewModel membershipVM = new MembershipViewModel()
+                {
+                    UserDetailID = item.UserDetailID,
+                    Email = item.Email,
+                    IdentityCard = item.IdentityCard,
+                    BirthDay = item.BirthDay,
+                    Address = item.Address,
+                    ShipAddress = item.ShipAddress,
+                    MemberRole = ""
+                };
+                membershipViewModels.Add(membershipVM);
+            }
+            return Json(membershipViewModels, JsonRequestBehavior.AllowGet);
+        }
     }
 }

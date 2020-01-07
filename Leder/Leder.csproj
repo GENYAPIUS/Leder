@@ -247,6 +247,7 @@
     <Compile Include="Repository\ProcurementRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ChartViewModel.cs" />
+    <Compile Include="ViewModels\MembershipViewModel.cs" />
     <Compile Include="ViewModels\ProcurementViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
