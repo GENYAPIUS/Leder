@@ -11,7 +11,7 @@
     <script src="/Assets/js/dashboard/procurementTable.js"></script>
     <script src="/Assets/js/dashboard/dashboardChart.js"></script>
     <script src="/Assets/js/dashboard/salesTable.js"></script>
-
+    <script src="~/Assets/js/dashboard/membersTable.js"></script>
 
     <script>
         var sourceData;
@@ -39,6 +39,11 @@
                     ajaxFunc("/Dashboard/GetSalesData", "Get");
                     mainAreaVue.$data.sourceData = sourceData;
                     mainAreaVue.$data.view = "salesTable";
+                },
+                MembersOverView: function () {
+                    ajaxFunc("/Dashboard/GetMemberData", "Get");
+                    mainAreaVue.$data.sourceData = sourceData;
+                    mainAreaVue.$data.view = "membersTable";
                 }
             }
         })
@@ -54,7 +59,8 @@
                 dashboardChart: chartComponent,
                 productTable: productTableComponent,
                 procurementTable: procurementTableComponent,
-                SalesTable: SalesTableComponent
+                SalesTable: SalesTableComponent,
+                membersTable: membersTableComponent
             },
             mounted() {
                 this.$nextTick(function () { sideBarVue.ChartOverView(); })

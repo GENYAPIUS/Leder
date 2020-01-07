@@ -236,10 +236,10 @@ namespace Leder.Controllers
                     UserDetailID = item.UserDetailID,
                     Email = item.Email,
                     IdentityCard = item.IdentityCard,
-                    BirthDay = item.BirthDay,
+                    BirthDay = item.BirthDay.ToString("yyyy/MM/dd"),
                     Address = item.Address,
                     ShipAddress = item.ShipAddress,
-                    MemberRole = ""
+                    MemberRole = memberRepo.GetRoleName(item.Email)
                 };
                 membershipViewModels.Add(membershipVM);
             }

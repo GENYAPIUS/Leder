@@ -13,7 +13,7 @@ namespace Leder.ViewModels
         public string Email { get; set; }
         public string Address { get; set; }        
         public string ShipAddress { get; set; }         
-        public DateTime BirthDay { get; set; }
+        public string BirthDay { get; set; }
         public string IdentityCard { get; set; }
         public string MemberRole { get; set; }
     }
