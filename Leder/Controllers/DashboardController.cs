@@ -245,5 +245,44 @@ namespace Leder.Controllers
             }
             return Json(membershipViewModels, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult GetOrderList()
+        {
+            ProductRepository productRepo = new ProductRepository(db);
+            List<SelectProductViewModel> selectProductViewModel = new List<SelectProductViewModel>();
+            foreach (Product p in productRepo.GetAll().ToList())
+            {
+                SelectProductViewModel productVM = new SelectProductViewModel()
+                {
+                    Id = p.ProductId,
+                    Name = p.Name
+                };
+                selectProductViewModel.Add(productVM);
+            }
+            return Json(selectProductViewModel, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult GetAllOrders() //拿到所有訂單資料
+        {
+            ProductRepository productRepo = new ProductRepository(db);
+            ProcurementRepository procurementRepo = new ProcurementRepository(db);
+            List<ProcurementViewModel> procurements = new List<ProcurementViewModel>();
+            foreach (Procurement item in procurementRepo.GetAll().ToList())
+            {
+                ProcurementViewModel procurementVM = new ProcurementViewModel()
+                {
+                    ProcurementId = item.ProcurementId,
+                    ProductName = productRepo.GetProductNameByID(item.ProductId),
+                    PurchaseDate = item.PurchaseDate.ToString("yyyy/MM/dd hh:mm:ss"),
+                    Quantity = item.Quantity,
+                    UnitPrize = item.UnitPrize,
+                    ProductId = item.ProductId
+                };
+                procurements.Add(procurementVM);
+            }
+
+            return Json(procurements, JsonRequestBehavior.AllowGet);
+        }
     }
 }
