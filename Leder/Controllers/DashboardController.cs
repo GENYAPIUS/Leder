@@ -245,44 +245,36 @@ namespace Leder.Controllers
             }
             return Json(membershipViewModels, JsonRequestBehavior.AllowGet);
         }
-
-        [HttpGet]
-        public ActionResult GetOrderList()
-        {
-            ProductRepository productRepo = new ProductRepository(db);
-            List<SelectProductViewModel> selectProductViewModel = new List<SelectProductViewModel>();
-            foreach (Product p in productRepo.GetAll().ToList())
-            {
-                SelectProductViewModel productVM = new SelectProductViewModel()
-                {
-                    Id = p.ProductId,
-                    Name = p.Name
-                };
-                selectProductViewModel.Add(productVM);
-            }
-            return Json(selectProductViewModel, JsonRequestBehavior.AllowGet);
-        }
         [HttpGet]
         public ActionResult GetAllOrders() //拿到所有訂單資料
         {
-            ProductRepository productRepo = new ProductRepository(db);
-            ProcurementRepository procurementRepo = new ProcurementRepository(db);
-            List<ProcurementViewModel> procurements = new List<ProcurementViewModel>();
-            foreach (Procurement item in procurementRepo.GetAll().ToList())
+            OrderFromRepository orderFrom = new OrderFromRepository(db);
+            List<SelectOrderViewModel> selectOrderViews = new List<SelectOrderViewModel>();
+            foreach (Order item in orderFrom.GetAll().ToList())
             {
-                ProcurementViewModel procurementVM = new ProcurementViewModel()
+                SelectOrderViewModel selectOrder = new SelectOrderViewModel()
                 {
-                    ProcurementId = item.ProcurementId,
-                    ProductName = productRepo.GetProductNameByID(item.ProductId),
-                    PurchaseDate = item.PurchaseDate.ToString("yyyy/MM/dd hh:mm:ss"),
-                    Quantity = item.Quantity,
-                    UnitPrize = item.UnitPrize,
-                    ProductId = item.ProductId
+                    OrderId = item.OrderId,
+                    RecieverName = item.RecieverName,
+                    Email=item.Email,
+                    RecieverPhone = item.RecieverPhone,
+                    RecieverAddress = item.RecieverAddress,
+                    OrderDate = item.OrderDate.ToString("yyyy/MM/dd hh:mm:ss"),
+                    RecieverZipCode = item.RecieverZipCode,
+                    TotalAmount = item.TotalAmount,
+                    PayStatus = item.PayStatus,
+                    OrderStatus=item.OrderStatus
+
                 };
-                procurements.Add(procurementVM);
+                selectOrderViews.Add(selectOrder);
             }
 
-            return Json(procurements, JsonRequestBehavior.AllowGet);
+            return Json(selectOrderViews, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult OrdersShip()
+        {
+
         }
     }
 }

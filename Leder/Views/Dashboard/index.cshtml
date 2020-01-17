@@ -12,6 +12,7 @@
     <script src="/Assets/js/dashboard/dashboardChart.js"></script>
     <script src="/Assets/js/dashboard/salesTable.js"></script>
     <script src="~/Assets/js/dashboard/membersTable.js"></script>
+    <script src="~/Assets/js/dashboard/orderTable.js"></script>
 
     <script>
         var sourceData;
@@ -48,9 +49,7 @@
                 OrderOverView: function () {
                     ajaxFunc("/Dashboard/GetAllOrders", "Get");
                     mainAreaVue.$data.sourceData = sourceData;
-                    ajaxFunc("/Dashboard/GetOrderList", "Get");
-                    mainAreaVue.$data.productData = sourceData;
-                    mainAreaVue.$data.view = "procurementTable";
+                    mainAreaVue.$data.view = "orderTable";
                 }
             }
         })
@@ -67,7 +66,8 @@
                 productTable: productTableComponent,
                 procurementTable: procurementTableComponent,
                 SalesTable: SalesTableComponent,
-                membersTable: membersTableComponent
+                membersTable: membersTableComponent,
+                orderTable:orderTableComponent
             },
             mounted() {
                 this.$nextTick(function () { sideBarVue.ChartOverView(); })

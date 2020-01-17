@@ -213,6 +213,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
+    <Compile Include="Repository\OrderFromRepository.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApprovedResult.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
@@ -253,6 +254,7 @@
     <Compile Include="ViewModels\ProductsSectionViewModel.cs" />
     <Compile Include="ViewModels\PromoteProductViewModel.cs" />
     <Compile Include="ViewModels\SalesViewModel.cs" />
+    <Compile Include="ViewModels\SelectOrderViewModel.cs" />
     <Compile Include="ViewModels\SelectProductViewModel.cs" />
     <Compile Include="ViewModels\SliderPartialViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -457,6 +459,7 @@
     <Content Include="Assets\images\Totebag\Totebag8_D_5.jpg" />
     <Content Include="Assets\js\Address.js" />
     <Content Include="Assets\js\dashboard\membersTable.js" />
+    <Content Include="Assets\js\dashboard\orderTable.js" />
     <Content Include="Assets\js\dashboard\salesTable.js" />
     <Content Include="Assets\js\ProductDetail.js" />
     <Content Include="Assets\js\Wishlist.js" />
