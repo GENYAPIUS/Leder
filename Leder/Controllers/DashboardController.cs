@@ -271,10 +271,5 @@ namespace Leder.Controllers
 
             return Json(selectOrderViews, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult OrdersShip()
-        {
-
-        }
     }
 }
