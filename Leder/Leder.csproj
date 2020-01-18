@@ -220,6 +220,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LederContext.cs" />
+    <Compile Include="ViewModels\AddMemberViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\Procurement.cs" />

@@ -1,9 +1,15 @@
 ﻿using Leder.Models;
 using Leder.Repository;
 using Leder.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Leder.Controllers
@@ -102,7 +108,7 @@ namespace Leder.Controllers
             ProductRepository productRepo = new ProductRepository(db);
             OrderDetailRepository orderDetailRepo = new OrderDetailRepository(db);
             ChartViewModel chartViewModel = new ChartViewModel();
-            foreach(var p in productRepo.GetAll().ToList())
+            foreach (var p in productRepo.GetAll().ToList())
             {
                 chartViewModel.Label.Add($"{p.ProductId}:{p.Name}");
                 chartViewModel.Data.Add(orderDetailRepo.GetAmountByProductid(p.ProductId));
@@ -115,12 +121,13 @@ namespace Leder.Controllers
             ProductRepository productRepo = new ProductRepository(db);
             OrderDetailRepository orderDetailRepo = new OrderDetailRepository(db);
             List<SalesViewModel> salesViewModels = new List<SalesViewModel>();
-           
-            foreach(var p in productRepo.GetAll().ToList())
+
+            foreach (var p in productRepo.GetAll().ToList())
             {
-                SalesViewModel salesVM = new SalesViewModel() { 
-                ProductName = p.Name,
-                TotalPrize = orderDetailRepo.GetAmountByProductid(p.ProductId)
+                SalesViewModel salesVM = new SalesViewModel()
+                {
+                    ProductName = p.Name,
+                    TotalPrize = orderDetailRepo.GetAmountByProductid(p.ProductId)
                 };
                 salesViewModels.Add(salesVM);
             }
@@ -229,7 +236,7 @@ namespace Leder.Controllers
             MemberRepository memberRepo = new MemberRepository(db);
             List<MembershipViewModel> membershipViewModels = new List<MembershipViewModel>();
 
-            foreach(UserDetail item in memberRepo.GetAllMember().ToList())
+            foreach (UserDetail item in memberRepo.GetAllMember().ToList())
             {
                 MembershipViewModel membershipVM = new MembershipViewModel()
                 {
@@ -244,6 +251,105 @@ namespace Leder.Controllers
                 membershipViewModels.Add(membershipVM);
             }
             return Json(membershipViewModels, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public DashboardController() { }
+        public DashboardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        [HttpPost]
+        public async Task AddMemberToRole(string userId, string roleName)
+        {
+            if (HttpContext.GetOwinContext().Get<ApplicationRoleManager>().RoleExists(roleName) == false)
+            {
+                // 若角色不存在，則建立角色
+                var role = new IdentityRole(roleName);
+                await HttpContext.GetOwinContext().Get<ApplicationRoleManager>().CreateAsync(role);
+            }
+            // 將使用者加入該角色
+            await UserManager.AddToRoleAsync(userId, roleName);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddMember(AddMemberViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User { UserName = model.Email, Email = model.Email, PhoneNumber = model.CellPhone };//拿來接User的資料
+                var userdetail = new UserDetail { Address = model.Address, BirthDay = model.BirthDate, IdentityCard = model.IdentityCard, ShipAddress = model.ShipAddress, Email = model.Email };//拿來接UserDetail的資料
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false); //User經由Identity寫入資料庫
+                    db.UserDetail.Add(userdetail);//UserDetail經由EF寫入資料庫
+                    db.SaveChanges();
+
+                    // 角色名稱
+                    var roleName = "一般會員";
+
+                    // 判斷角色是否存在
+                    if (HttpContext.GetOwinContext().Get<ApplicationRoleManager>().RoleExists(roleName) == false)
+                    {
+                        // 若角色不存在，則建立角色
+                        var role = new IdentityRole(roleName);
+                        await HttpContext.GetOwinContext().Get<ApplicationRoleManager>().CreateAsync(role);
+                    }
+                    // 將使用者加入該角色
+                    await UserManager.AddToRoleAsync(user.Id, roleName);
+                }
+            }
+
+            MemberRepository memberRepo = new MemberRepository(db);
+            List<MembershipViewModel> membershipViewModels = new List<MembershipViewModel>();
+
+            foreach (UserDetail item in memberRepo.GetAllMember().ToList())
+            {
+                MembershipViewModel membershipVM = new MembershipViewModel()
+                {
+                    UserDetailID = item.UserDetailID,
+                    Email = item.Email,
+                    IdentityCard = item.IdentityCard,
+                    BirthDay = item.BirthDay.ToString("yyyy/MM/dd"),
+                    Address = item.Address,
+                    ShipAddress = item.ShipAddress,
+                    MemberRole = memberRepo.GetRoleName(item.Email)
+                };
+                membershipViewModels.Add(membershipVM);
+            }
+            return Json(membershipViewModels);
         }
     }
 }

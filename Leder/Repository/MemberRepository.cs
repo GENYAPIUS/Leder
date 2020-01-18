@@ -44,5 +44,20 @@ namespace Leder.Repository
 
             return result;
         }
+
+        public string GetUserId(string email)
+        {
+            string result;
+            var user = _db.Users.FirstOrDefault(x => x.Email == email);
+            if(user != null)
+            {
+                result = user.Id;                
+            }
+            else
+            {
+                result = "";                
+            }
+            return result;
+        }
     }
 }
