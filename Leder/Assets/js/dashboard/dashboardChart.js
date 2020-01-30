@@ -92,11 +92,9 @@ var chartComponent = {
     },
     methods: chartMethods,
     mounted() {
-        ajaxFunc("/Dashboard/GetPricePerMonthChartData", "Get");
-        this.$data.chartData = sourceData;
+        this.$data.chartData = ajaxFunc("/Dashboard/GetPricePerMonthChartData", "Get");
         this.DisplayChart(this.$refs.costPerMonthChart, 'bar');
-        ajaxFunc("/Dashboard/GetSalesChartData", "Get");
-        this.$data.chartData = sourceData;
+        this.$data.chartData = ajaxFunc("/Dashboard/GetSalesChartData", "Get");
         this.DisplayChart(this.$refs.salesChart, 'doughnut');
     }
 }

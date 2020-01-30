@@ -21,45 +21,39 @@
         var sideBarVue = new Vue({
             el: "#dashBoardSidebar",
             methods: {
-                ProductOverview: function () {
-                    ajaxFunc("/Dashboard/GetAllProduct", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
+                ProductOverview() {
+                    mainAreaVue.$data.sourceData = ajaxFunc("/Dashboard/GetAllProduct", "Get");
                     mainAreaVue.$data.view = "productTable";
                 },
-                ProcurementOverview: function () {
-                    ajaxFunc("/Dashboard/GetAllProcurements", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
-                    ajaxFunc("/Dashboard/GetProductList", "Get");
-                    mainAreaVue.$data.productData = sourceData;
+                ProcurementOverview() {
+                    mainAreaVue.$data.sourceData = ajaxFunc("/Dashboard/GetAllProcurements", "Get");
+                    mainAreaVue.$data.productData = ajaxFunc("/Dashboard/GetProductList", "Get");
                     mainAreaVue.$data.view = "procurementTable";
                 },
-                ChartOverView: function () {
+                ChartOverView() {
                     mainAreaVue.$data.view = "dashboardChart";
                 },
-                SalesOverView: function () {
-                    ajaxFunc("/Dashboard/GetSalesData", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
+                SalesOverView() {
+                    mainAreaVue.$data.sourceData = ajaxFunc("/Dashboard/GetSalesData", "Get");
                     mainAreaVue.$data.view = "salesTable";
                 },
-                MembersOverView: function () {
-                    ajaxFunc("/Dashboard/GetMemberData", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
+                MembersOverView() {
+                    mainAreaVue.$data.sourceData = ajaxFunc("/Dashboard/GetMemberData", "Get");
                     mainAreaVue.$data.view = "membersTable";
                 },
-                OrderOverView: function () {
-                    ajaxFunc("/Dashboard/GetAllOrders", "Get");
-                    mainAreaVue.$data.sourceData = sourceData;
+                OrderOverView() {
+                    mainAreaVue.$data.sourceData = ajaxFunc("/Dashboard/GetAllOrders", "Get");
                     mainAreaVue.$data.view = "orderTable";
                 }
             }
-        })
+        });
 
         var mainAreaVue = new Vue({
             el: "#MainArea",
             data: {
                 view: "",
                 productData: null,
-                sourceData: sourceData
+                sourceData: null
             },
             components: {
                 dashboardChart: chartComponent,
@@ -70,24 +64,28 @@
                 orderTable:orderTableComponent
             },
             mounted() {
-                this.$nextTick(function () { sideBarVue.ChartOverView(); })
+                this.$nextTick(function() { sideBarVue.ChartOverView(); });
             }
         });
 
         function ajaxFunc(url, type, data) {
+            var async = true;
             if (url == null || type == null) { return; }
             if (data == null) { data = "" };
+            if (type === "Get") { async = false; }
+            var _data;
             $.ajax({
                 url: url,
                 type: type,
                 data: data,
                 dataType: "JSON",
                 contentType: "application/json",
-                async: false,
-                success: function (response) {
-                    sourceData = response
+                async: async,
+                success(response) {
+                    _data = response;
                 }
             });
+            return _data;
         }
     </script>
 }
